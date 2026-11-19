@@ -24,9 +24,11 @@ const baseContent = JSON.parse(git('show', `${base}:app/v2/build-info.json`)).co
 const baseTree = new Map(git('ls-tree', '-r', base, '--', 'app/v2').trim().split('\n').filter(Boolean).map((l) => { const [meta, p] = l.split('\t'); return [p, meta.split(' ')[2]]; }));
 const now = git('ls-files', '--', 'app/v2').trim().split('\n').filter(Boolean);
 const info = JSON.parse(readFileSync('app/v2/build-info.json', 'utf8'));
+const { safePath } = require('../packaging/desktop/update.js'); // القاعدة نفسها في UpdatePack.java
 const files = [];
 for (const p of now) {
   if (p === 'app/v2/build-info.json') continue;
+  if (!safePath(p.slice('app/v2/'.length))) { console.log(`يُترك (لا يحمّله التطبيق): ${p}`); continue; } // مثل audio/quran/README.md
   const blob = git('hash-object', p).trim();
   if (baseTree.get(p) === blob) continue;
   files.push({ rel: p.slice('app/v2/'.length), data: readFileSync(p) });
