@@ -388,7 +388,7 @@ test('recording persists audio and releases the microphone on navigation', () =>
   assert.deepEqual(errors, [])
 }));
 
-test('all 21 lessons render every scene for both genders and levels', () => fixture(async ({
+test('every lesson renders every scene for both genders and levels', () => fixture(async ({
   page: p,
   errors
 }) => {
@@ -415,9 +415,10 @@ test('all 21 lessons render every scene for both genders and levels', () => fixt
         lv
       })
   }
-  assert.equal(files.length, 21);
+  // كل درس في lessons/ له صفحة (21 درساً حتى U06، و24 بعد U07)
+  assert.equal(files.length, fs.readdirSync(path.join(root, '../../lessons')).filter(x => /^U\d\d\.L\d\d\.json$/.test(x)).length);
   // العدد يتغير مع المحتوى؛ المهم أن كل درس عُرض كاملاً بلا خطأ (نحو 30 مشهداً × 4 تشغيلات لكل درس)
-  assert.ok(count >= 21 * 4 * 20, 'rendered ' + count);
+  assert.ok(count >= files.length * 4 * 20, 'rendered ' + count);
   assert.deepEqual(errors, []);
   console.log('RENDERED', count)
 }));
