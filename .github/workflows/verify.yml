@@ -1,0 +1,35 @@
+name: Verify curriculum and application
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      # كتاب المعلم PDF (tests/books.cjs يبنيه ويفحص خط الآية)
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # fonttools: فحص خط المصحف (رموز كل آية في خط صفحتها، QPC V2)
+      - run: pip install markdown fonttools
+      - run: npm run validate
+      - run: python3 tools/qpc2_import.py --check
+      # التطبيق والكتب كما في المستودع هي ما تولّده الدروس (الكتب PDF خارج الفحص: فيها تاريخ التوليد)
+      - name: Regenerate and compare
+        run: |
+          npm run build
+          for f in lessons/*.json; do node tools/generate.mjs "$f" > /dev/null; done
+          git diff --stat --exit-code -- app/v2 build ':!build/pdf'
+      - run: npm test
+      - run: npm run test:terms
+      # المشي الآلي في كل درس وكل اختبار، للولد والبنت
+      - run: node tools/walk-gen.js --fast
+      - run: node tools/walk-gen.js --fast --tests
+      # الكتب المرفقة من المحتوى الحالي؟ تنبيه هنا، ومانع في بوابة الإصدار (tools/release-gate.sh)
+      - run: node tools/check-books.mjs --warn

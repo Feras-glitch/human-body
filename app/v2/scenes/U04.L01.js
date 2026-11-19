@@ -1,0 +1,66 @@
+/* تأليف خاص — U04.L01 «التنفس: كيف يدخل الهواء ويخرج؟» */
+(() => {
+const E = id => LD.explain.find(e => e.id === id);
+/* جذع من الأمام: قفص صدري، رئتان، حجاب حاجز، بطن. k = 0 زفير … 1 شهيق كامل */
+/* صدر بمنظر أمامي: قصبة هوائية بحلقات، شعبتان، رئتان، أضلاع، وحجاب حاجز أحمر يهبط مع الشهيق. k: 0 زفير … 1 شهيق عميق */
+const torso = (id) => `<svg id="${id}" class="torsofig" viewBox="0 0 320 340" role="img" aria-label="الصدر: الرئتان والحجاب الحاجز" style="width:100%;max-width:320px;display:block;margin:auto;background:#fff;border-radius:18px">
+  <defs><linearGradient id="${id}_l" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7B4B0"/><stop offset="1" stop-color="#EE8F92"/></linearGradient></defs>
+  <path d="M132 0v22q0 16-34 22q-46 8-58 34q-8 22-6 66v196h252V144q2-44-6-66q-12-26-58-34q-34-6-34-22V0z" fill="#F9E2CC" stroke="#E3BC98" stroke-width="2"/>
+  <ellipse class="belly" cx="160" cy="292" rx="78" ry="34" fill="#F3D2B4" style="transform-origin:160px 292px;transform-box:view-box"/>
+  <g class="lung" style="transform-origin:160px 48px;transform-box:view-box"><image href="img/sv-lungs.webp" x="76" y="38" width="168" height="159"/></g>
+  <g class="ribs" opacity=".5" style="transform-origin:160px 80px;transform-box:view-box"><image href="img/sv-ribs.webp" x="64" y="36" width="192" height="191.4"/></g>
+  <path class="dia" fill="#C0392B" stroke="#8E2A20" stroke-width="1.5" stroke-linejoin="round"/>
+  <g class="air" opacity="0" style="transition:opacity .25s"><path class="air-p" d="M192 22v34m-9-10l9 12l9-12" stroke="#2E8FCB" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <text x="100" y="24" text-anchor="middle" font-size="12" font-weight="600" fill="#7A4A3E" font-family="IBM Plex Sans Arabic">القصبة الهوائية</text><path d="M138 28l18 16" stroke="#7A4A3E" stroke-width="1.5"/>
+  <text x="160" y="332" text-anchor="middle" font-size="12" fill="#7A6E66" font-family="IBM Plex Sans Arabic">الأحمر: الحجاب الحاجز</text></svg>`;
+function setBreath(id,k){ const s=document.getElementById(id); if(!s) return; k=Math.max(0,Math.min(1,+k||0)); const prev=s.dataset.k===undefined?k:+s.dataset.k; s.dataset.k=k;
+  s.querySelector('.ribs').style.transform=`scale(${1+0.05*k},${1+0.03*k}) translateY(${-5*k}px)`;
+  s.querySelectorAll('.lung').forEach(l=>l.style.transform=`scale(${1+0.07*k},${1+0.2*k})`);
+  const Y=228+6*k, h=34-28*k; s.querySelector('.dia').setAttribute('d',`M68 ${Y}Q160 ${Y-2*h} 252 ${Y}L252 ${Y+11}Q160 ${Y+11-2*h} 68 ${Y+11}Z`);
+  s.querySelector('.belly').style.transform=`scale(${1+0.1*k},${1+0.14*k})`;
+  /* سهم الهواء: إلى الداخل مع الشهيق وإلى الخارج مع الزفير */
+  const air=s.querySelector('.air'); if(Math.abs(k-prev)>0.004){ air.setAttribute('opacity',1); s.querySelector('.air-p').setAttribute('transform',k>prev?'':'rotate(180 192 40)'); s.querySelector('.air-p').setAttribute('stroke',k>prev?'#2E8FCB':'#8AA2B5'); clearTimeout(s._air); s._air=setTimeout(()=>air.setAttribute('opacity',0),700); } }
+
+/* 1. الجذب: يد على البطن */
+const hook={ id:'hook', render(){ need(); return `<div class="scene"><h2>${tx(LD.hook.text)}</h2>${torso('t0')}<input type="range" id="br0" min="0" max="100" value="0" style="width:100%"><div class="row" style="justify-content:space-between"><span class="note">زفير</span><span class="note">شهيق عميق</span></div>
+  ${LD.hook.options.map((o,i)=>`<button class="opt" data-i="${i}">${tx(o)}</button>`).join('')}<div class="fb" id="fb"></div></div>`; },
+  after(){ setBreath('t0',0); $('#br0').oninput=e=>setBreath('t0',e.target.value/100); $$('.opt[data-i]').forEach(b=>b.onclick=()=>{ $$('.opt[data-i]').forEach(x=>x.classList.add('dim')); b.classList.remove('dim'); b.classList.add('ok'); $('#fb').className='fb ok'; $('#fb').textContent='راقب{|ي} الخط الأحمر وأنت تحرك المنزلق… سنعرف اسمه بعد قليل.'; speak($('#fb').textContent); ok(); }); speak(tx(LD.hook.text)); } };
+
+/* 2. طريق الهواء (يحل محل E2) */
+const PATH=[['الأنف','يدفّئ الهواء ويرطّبه ويحجز الغبار'],['الحنجرة','في العنق؛ فيها غطاء يُغلق عند البلع'],['القصبة الهوائية','أنبوب بحلقات صلبة — جسّه في عنقك'],['الشعبتان','واحدة لكل رئة'],['الأنابيب الدقيقة والحويصلات','كشجرة مقلوبة تنتهي بمئات الملايين من الأكياس الصغيرة']];
+const airpath={ id:'E2', render(){ need(); return `<div class="scene">${sayNar(E('E2').text)}<h2>تابع{|ي} الهواء: اضغط{|ي} كل محطة بالترتيب</h2>
+  <svg viewBox="0 0 320 310" role="img" aria-label="طريق الهواء من الأنف إلى الحويصلات" style="width:100%;max-width:320px;display:block;margin:auto;background:#fff;border-radius:18px">
+    <image href="img/sv-airway.webp" x="8" y="5" width="234.8" height="300" preserveAspectRatio="none"/>
+    <path d="M91.2 58.8H262M114.0 109.3H262M123.8 148.5H262M124.7 186.0H262M89.5 234.9H262" stroke="#B8860B" stroke-width="1.6" stroke-dasharray="3 3" fill="none"/>
+    ${[[282,58.8],[282,109.3],[282,148.5],[282,186.0],[282,234.9]].map(([x,y],i)=>`<g class="st" data-i="${i}" style="cursor:pointer"><circle cx="${x}" cy="${y}" r="19" fill="#FFC93C" stroke="#D9A623" stroke-width="3"/><text x="${x}" y="${y+6}" text-anchor="middle" font-size="17" font-family="Baloo Bhaijaan 2">${i+1}</text></g>`).join('')}
+    <circle id="air" r="7" fill="#BFE7FF" stroke="#2E8FCB" stroke-width="2.5" cx="63.4" cy="60.4" style="transition:cx .5s ease,cy .5s ease"/></svg><div class="fb" id="fb" role="status" hidden></div><div id="info"></div></div>`; },
+  after(){ let next=0; const XS=[91.2,114.0,123.8,124.7,89.5], Y=[58.8,109.3,148.5,186.0,234.9]; $$('.st').forEach(s=>s.onclick=()=>{ const i=+s.dataset.i; if(i!==next){ noteMiss(); fb('bad','بالترتيب: المحطة '+(next+1)+' أولاً.'); return; } $('#fb').hidden=true; s.querySelector('circle').setAttribute('fill','#9BD77A'); const a=$('#air'); a.setAttribute('cx',XS[i]); a.setAttribute('cy',Y[i]); $('#info').innerHTML+=`<div class="card"><b>${i+1}. ${PATH[i][0]}</b> — ${PATH[i][1]}</div>`; speak(PATH[i][0]+'. '+PATH[i][1]); next++; if(next===5){ award(); ok(); } }); speak(tx(E('E2').text)); } };
+
+/* 3. محاكي الشهيق والزفير (يحل محل E3 وE4) */
+const sim={ id:'E3', render(){ need(); return `<div class="scene"><h2>أنت{|ِ} الحجاب الحاجز: اسحب{|ي} نفسك{|ِ} إلى الأسفل</h2>${torso('t1')}<input type="range" id="br1" min="0" max="100" value="0" style="width:100%"><div class="card" id="st">حرّك{|ي} المنزلق ببطء وراقب{|ي}: الحجاب الحاجز، الأضلاع، الرئتين، البطن.</div>${sayNar(E('E3').text)}${sayNar(E('E4').text)}</div>`; },
+  after(){ setBreath('t1',0); let mn=100,mx=0; $('#br1').oninput=e=>{ const k=e.target.value/100; setBreath('t1',k); mn=Math.min(mn,k*100); mx=Math.max(mx,k*100); $('#st').innerHTML = k>0.5 ? '<b>شهيق:</b> الحجاب الحاجز انقبض ونزل، الأضلاع ارتفعت، الصدر اتسع، الرئتان تمددتا، والبطن اندفع إلى الأمام.' : '<b>زفير:</b> العضلات ارتخت، الحجاب الحاجز عاد قبّة، الصدر ضاق، الرئتان انكمشتا.'; if(mn<10&&mx>90){ award(); ok(); } }; speak(tx(E('E3').text+' '+E('E4').text)); } };
+
+/* 4. عدّاد الأنفاس: دقيقة لكل مرحلة (يحل محل exp) */
+const X=LD.experiment; const PH=[['rest','راحة','اجلس{|ي} {هادئاً|هادئةً} دقيقتين ويدك{|ِ} على بطنك{|ِ}، ثم {ابدأ|ابدئي}.'],['move','بعد الحركة','اقفز{|ي} أو امشِ{|ي} سريعاً دقيقة، ثم اجلس{|ي} و{ابدأ|ابدئي} فوراً.'],['recover','بعد الراحة','اجلس{|ي} دقيقتين ثم عُدّ{|ي} مرة ثالثة.']];
+const breaths={ id:'exp', render(){ need(); const r=nums(store.get('breaths',{})); return `<div class="scene"><h2>تجربة: ${tx(X.title)}</h2><div class="card" style="background:#FFF3D6"><b>السلامة:</b> ${X.safety.slice(0,2).map(tx).join(' ')}${safetyMore(X,2)}</div><div class="card">${tx(X.steps[1])} <span class="note">(نعدّ دقيقة كاملة: التنفس غير منتظم، والعدّ القصير ثم الضرب يضاعف الخطأ)</span></div>
+  ${PH.map(([k,ar,hint])=>`<div class="card"><b>${ar}</b> <span class="note">— ${hint}</span><div class="row" style="align-items:center;margin-top:6px"><button class="opt" style="width:auto;margin:0" data-start="${k}">▶ {ابدأ|ابدئي} دقيقة</button><button class="opt" style="width:auto;margin:0;background:var(--teal);color:#fff" data-tap="${k}" disabled>🌬 نَفَس</button><span class="big" style="font-size:1.4rem" id="t_${k}">${r[k]!=null?r[k]+' في الدقيقة':'—'}</span></div></div>`).join('')}
+  <div class="fb" id="fb" role="status"></div><div id="cmp"></div></div>`; },
+  after(){ const r=nums(store.get('breaths',{})); const show=()=>{ if(r.rest!=null&&r.move!=null&&r.recover!=null){ const up=r.move-r.rest; $('#cmp').innerHTML=`<div class="card"><b>قارن{|ي}:</b> راحة ${r.rest} → بعد الحركة ${r.move} (${up>0?'+'+up:up}) → بعد الراحة ${r.recover}. ${up>0?'زاد ثم عاد: عضلاتك طلبت أكسجيناً أكثر فأمر الدماغ عضلات التنفس أن تعمل أسرع — والقلب معها في اللحظة نفسها.':'لم يزد؟ ربما كانت الحركة خفيفة؛ كرر إن شئت.'}</div>`; award(); ok(); } }; show();
+    $$('[data-start]').forEach(b=>b.onclick=()=>{ const k=b.dataset.start; let n=0, left=60; const tap=$(`[data-tap="${k}"]`); tap.disabled=false; $$('[data-start]').forEach(x=>x.disabled=true); /* مرحلة واحدة في كل مرة */ b.textContent='⏱ 60'; tap.onclick=()=>{ n++; tap.textContent='🌬 '+n; }; speak(tx('{ابدأ|ابدئي}: اضغط{|ي} «نَفَس» مع كل ارتفاع لبطنك{|ِ}.')); const tm=sceneInterval(()=>{ left--; b.textContent='⏱ '+left; if(left<=0){ clearInterval(tm); tap.disabled=true; $$('[data-start]').forEach(x=>x.disabled=false); b.textContent='↻ {أعد|أعيدي}'; tap.textContent='🌬 نَفَس'; /* عدّ{|ي} غير معقول (صفر أو ضغط متواصل) لا يُحفظ */ if(n<6||n>80){ fb('bad','عددت{|ِ} '+n+' في دقيقة — هذا لا يشبه العدّ الحقيقي. {أعد|أعيدي} واضغط{|ي} مرة مع كل '+('breaths'==='pulse'?'نبضة {تحسّها|تحسّينها}':'ارتفاع لبطنك{|ِ}')+'.'); return; } r[k]=n; store.set('breaths',r); $('#t_'+k).textContent=r[k]+' في الدقيقة'; speak(`${n} في الدقيقة.`); show(); } },1000); }); speak([SAY.experiment, tx(X.title)]); } };
+
+/* 5. (ب) من يقود؟ محاكي حبس النفس (يحل محل E6) */
+const co2={ id:'E6', skip:()=>level!=='B', render(){ ok(); if(level!=='B') return `<div class="scene">${sayBuddy('للمستوى ب: من يضبط سرعة التنفس؟ الدماغ، تلقائياً. تستطيع{|ين} رفع مستواك{|ِ} من أول درس في الوحدة.')}</div>`;
+  return `<div class="scene">${sayNar(E('E6').text)}<h2>جرّب{|ي} على الشاشة (لا بنفسك{|ِ}!): احبس{|ي} النفس</h2><div class="card"><div class="note">ثاني أكسيد الكربون في الدم</div><div class="bar" style="height:22px"><i id="co2" style="width:20%;background:#8A6D1F"></i></div><div class="fb" id="fb"></div></div><div class="row" style="justify-content:center"><button class="opt" style="width:auto;background:var(--coral);color:#fff" id="hold">🤐 احبس{|ي} النفس</button></div>${torso('t2')}</div>`; },
+  after(){ if(level!=='B') return; setBreath('t2',0.3); let tm=null; $('#hold').onclick=()=>{ if(tm) return; let v=20; $('#fb').className='fb ok'; $('#fb').textContent='الحجاب الحاجز متوقف بإرادتك…'; tm=sceneInterval(()=>{ v+=6; $('#co2').style.width=v+'%'; if(v>=85){ clearInterval(tm); tm=null; $('#fb').className='fb bad'; $('#fb').textContent='الدماغ قاس الارتفاع وأخذ القيادة: نَفَس رغماً عنك! ثم يهبط ثاني أكسيد الكربون.'; speak($('#fb').textContent); let k=0; const an=sceneInterval(()=>{ k+=0.1; setBreath('t2',Math.abs(Math.sin(k))); $('#co2').style.width=Math.max(20,85-k*25)+'%'; if(k>2.6){ clearInterval(an); $('#co2').style.width='20%'; } },80); } },250); }; speak(tx(E('E6').text)); } };
+
+/* 6. (ب) نموذج الزجاجة والبالون */
+const bottle={ id:'bottle', render(){ ok(); if(level!=='B') return null; return `<div class="scene"><h2>نموذج الزجاجة والبالون — {جرّبه|جرّبيه} هنا ثم {اصنعه|اصنعيه}</h2>
+  <svg viewBox="0 0 240 300" style="width:220px;display:block;margin:auto;background:#fff;border-radius:18px"><path d="M100 20h40v30q40 10 40 50v150H60V100q0-40 40-50z" fill="#E6F7F4" stroke="#1E8F82" stroke-width="4"/><path d="M110 20v40" stroke="#1E8F82" stroke-width="4"/><ellipse id="bal" cx="120" cy="110" rx="18" ry="24" fill="#FF6B57" style="transition:all .5s"/><path id="mem" d="M60 250q60 0 120 0" stroke="#D9A623" stroke-width="8" fill="none" stroke-linecap="round"/><text x="120" y="285" text-anchor="middle" font-size="12" fill="#7A6E66" font-family="IBM Plex Sans Arabic">الغشاء الأصفر = الحجاب الحاجز</text></svg>
+  <input type="range" id="mm" min="0" max="100" value="0" style="width:100%"><div class="row" style="justify-content:space-between"><span class="note">أرخِ الغشاء</span><span class="note">اسحبه للأسفل</span></div><div class="fb ok" id="fb"></div>
+  <div class="card"><b>ما يُظهره النموذج:</b> نزول الحجاب الحاجز يوسّع الفراغ فيدخل الهواء. <b>ما لا يُظهره:</b> رئة واحدة لا اثنتان، لا أضلاع تتحرك، البالون لا يبادل غازات، والزجاجة صلبة والصدر مرن.</div></div>`; },
+  after(){ if(level!=='B') return; $('#mm').oninput=e=>{ const k=e.target.value/100; $('#mem').setAttribute('d',`M60 250q60 ${k*50} 120 0`); $('#bal').setAttribute('rx',18+k*18); $('#bal').setAttribute('ry',24+k*24); $('#fb').textContent = k>0.5?'الفراغ حول البالون اتسع فدخل الهواء من الفوهة وانتفخ — البالون لم يسحب شيئاً بنفسه.':'الغشاء عاد فضاق الفراغ وخرج الهواء.'; }; speak('اسحب{|ي} الغشاء الأصفر إلى الأسفل وراقب البالون.'); } };
+const nz = sc => ({ ...sc, render(){ const h=sc.render.call(sc); return h===null ? `<div class="scene">${sayBuddy('نموذج الزجاجة للمستوى ب. تستطيع{|ين} رفع مستواك{|ِ} من أول درس في الوحدة.')}` + '</div>' : h; } });
+
+window.CUSTOM={ replace:{ hook, E2:airpath, E3:sim, E6:co2, exp:breaths }, after:{ E7:[nz(bottle)] }, drop:['E4','exp_result'] };
+})();
+

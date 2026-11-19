@@ -1,0 +1,1245 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "body-curriculum/lesson.schema.json",
+  "title": "قالب الدرس الموحّد — المصدر الوحيد الذي تُولَّد منه مخرجات المعلم والطالب والتقييم",
+  "type": "object",
+  "required": [
+    "id",
+    "unit",
+    "title",
+    "version",
+    "scope",
+    "objectives",
+    "science",
+    "misconceptions",
+    "experiment",
+    "flow",
+    "assessment",
+    "sources"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^U[0-9]{2}\\.L[0-9]{2}$",
+      "description": "معرّف ثابت يظهر في الكتاب والتطبيق والدفتر"
+    },
+    "unit": {
+      "type": "object",
+      "required": [
+        "id",
+        "title"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "title": {
+      "type": "object",
+      "required": [
+        "ar"
+      ],
+      "properties": {
+        "ar": {
+          "type": "string"
+        },
+        "en": {
+          "type": "string"
+        }
+      }
+    },
+    "driving_question": {
+      "type": "string",
+      "description": "سؤال يملكه الطفل؛ يثير الفضول ولا يُحتسب"
+    },
+    "version": {
+      "type": "object",
+      "required": [
+        "content",
+        "science_reviewed_on"
+      ],
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "science_reviewed_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "changelog": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "duration_min": {
+      "type": "object",
+      "properties": {
+        "digital": {
+          "type": "integer"
+        },
+        "classroom": {
+          "type": "integer"
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "prerequisites",
+        "opens",
+        "deferred"
+      ],
+      "properties": {
+        "prerequisites": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "ref",
+              "why"
+            ],
+            "properties": {
+              "ref": {
+                "type": "string"
+              },
+              "why": {
+                "type": "string"
+              },
+              "hard": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "opens": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "deferred": {
+          "type": "array",
+          "description": "المعرفة المؤجلة ولماذا وإلى أين",
+          "items": {
+            "type": "object",
+            "required": [
+              "what",
+              "why",
+              "to"
+            ],
+            "properties": {
+              "what": {
+                "type": "string"
+              },
+              "why": {
+                "type": "string"
+              },
+              "to": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "objectives": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "level",
+          "statement",
+          "evidence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^U[0-9]{2}\\.L[0-9]{2}\\.O[0-9]+$"
+          },
+          "level": {
+            "type": "string",
+            "enum": [
+              "A",
+              "B"
+            ],
+            "description": "A = 8–9، B = 10–12 (يُبنى فوق A)"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "identity",
+              "location",
+              "function",
+              "mechanism",
+              "relationship",
+              "application",
+              "scientific_thinking",
+              "structure",
+              "classification",
+              "communication"
+            ]
+          },
+          "statement": {
+            "type": "string",
+            "description": "ما نريد أن يثبته الطفل، بصيغة قابلة للملاحظة"
+          },
+          "evidence": {
+            "type": "string",
+            "description": "كيف نلاحظ أنه أثبته"
+          }
+        }
+      }
+    },
+    "concepts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "term",
+          "atlas"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "term": {
+            "type": "object",
+            "required": [
+              "ar",
+              "en",
+              "zh",
+              "pinyin"
+            ],
+            "properties": {
+              "ar": {
+                "type": "string"
+              },
+              "en": {
+                "type": "string"
+              },
+              "zh": {
+                "type": "string"
+              },
+              "pinyin": {
+                "type": "string"
+              },
+              "match": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "card": {
+            "type": "object",
+            "properties": {
+              "A": {
+                "type": "string"
+              },
+              "B": {
+                "type": "string"
+              }
+            },
+            "description": "بطاقة المفهوم في الأطلس بمستويين"
+          },
+          "atlas": {
+            "type": "object",
+            "required": [
+              "layer",
+              "element"
+            ],
+            "properties": {
+              "layer": {
+                "type": "string"
+              },
+              "element": {
+                "type": "string"
+              }
+            },
+            "description": "ربط المفهوم بعنصر في الأطلس الحي"
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "core",
+              "supporting"
+            ]
+          }
+        }
+      }
+    },
+    "science": {
+      "type": "object",
+      "required": [
+        "central_fact",
+        "facts",
+        "teacher_background",
+        "allowed_simplifications",
+        "how_we_know",
+        "model_limits"
+      ],
+      "properties": {
+        "central_fact": {
+          "type": "string"
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "level",
+              "text",
+              "source"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "level": {
+                "type": "string",
+                "enum": [
+                  "A",
+                  "B"
+                ]
+              },
+              "text": {
+                "type": "string"
+              },
+              "source": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "objective": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "numbers": {
+          "type": "array",
+          "description": "أرقام ومقاييس يحبها الطفل، بمصدر",
+          "items": {
+            "type": "object",
+            "required": [
+              "text",
+              "source"
+            ],
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "source": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "teacher_background": {
+          "type": "string",
+          "description": "أعمق من مستوى الطفل بدرجة واحدة؛ يجيب عن أسئلة الطلاب المتوقعة"
+        },
+        "allowed_simplifications": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "how_we_know": {
+          "type": "array",
+          "description": "أداة أو عالم أو تجربة تاريخية",
+          "items": {
+            "type": "object",
+            "required": [
+              "text"
+            ],
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "source": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "what_changed": {
+          "type": "array",
+          "description": "ما كان يُعتقد وتغيّر",
+          "items": {
+            "type": "string"
+          }
+        },
+        "model_limits": {
+          "type": "array",
+          "description": "ما لا يُظهره رسم هذا الدرس",
+          "items": {
+            "type": "string"
+          }
+        },
+        "animal_comparison": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "source": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "open_questions": {
+          "type": "array",
+          "description": "ما لا يعرفه أحد بعد — أسئلة مفتوحة حقيقية بصياغة للطفل",
+          "items": {
+            "type": "object",
+            "required": [
+              "q",
+              "why_open"
+            ],
+            "properties": {
+              "q": {
+                "type": "string"
+              },
+              "why_open": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "misconceptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "ref",
+          "child_says",
+          "teacher_response",
+          "diagnostic_item"
+        ],
+        "properties": {
+          "ref": {
+            "type": "string",
+            "description": "معرّف من سجل التصورات الخاطئة M01…"
+          },
+          "child_says": {
+            "type": "string",
+            "description": "ما سيقوله الطفل حرفياً"
+          },
+          "teacher_response": {
+            "type": "string"
+          },
+          "diagnostic_item": {
+            "type": "string",
+            "description": "معرّف بند التقييم الذي يكشفه"
+          },
+          "remedy": {
+            "type": "string",
+            "description": "تمثيل بديل في التطبيق"
+          }
+        }
+      }
+    },
+    "experiment": {
+      "type": "object",
+      "required": [
+        "title",
+        "materials",
+        "steps",
+        "safety",
+        "expected",
+        "explain"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "materials": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "safety": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expected": {
+          "type": "string"
+        },
+        "explain": {
+          "type": "string",
+          "description": "التفسير يأتي بعد التجربة لا قبلها"
+        },
+        "record": {
+          "type": "string",
+          "description": "ما يدوّنه الطفل في دفتر الأطلس"
+        },
+        "alternatives": {
+          "type": "array",
+          "description": "بدائل لمن لا يستطيع أداء التجربة",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "flow": {
+      "type": "object",
+      "description": "الخطوات الست؛ النصوص هنا هي ما يسمعه/يقرأه الطفل حرفياً",
+      "required": [
+        "hook",
+        "explain",
+        "practice",
+        "check",
+        "notebook",
+        "how_we_know"
+      ],
+      "properties": {
+        "hook": {
+          "type": "object",
+          "required": [
+            "text"
+          ],
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "options": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "explain": {
+          "type": "array",
+          "description": "مشاهد على الأطلس",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "atlas",
+              "text"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "level": {
+                "type": "string",
+                "enum": [
+                  "A",
+                  "B"
+                ]
+              },
+              "atlas": {
+                "type": "object",
+                "properties": {
+                  "layers": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "highlight": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "zoom": {
+                    "type": "string"
+                  },
+                  "animate": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "practice": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/item"
+          }
+        },
+        "check": {
+          "type": "array",
+          "description": "تحقق بمثال جديد لم يُستعمل في الشرح",
+          "items": {
+            "$ref": "#/$defs/item"
+          }
+        },
+        "notebook": {
+          "type": "object",
+          "required": [
+            "draw",
+            "label",
+            "write"
+          ],
+          "properties": {
+            "draw": {
+              "type": "string"
+            },
+            "label": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "write": {
+              "type": "string"
+            }
+          }
+        },
+        "how_we_know": {
+          "type": "object",
+          "required": [
+            "text",
+            "limit_question"
+          ],
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "limit_question": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "assessment": {
+      "type": "object",
+      "required": [
+        "items",
+        "rubrics",
+        "delayed_recall",
+        "transfer"
+      ],
+      "properties": {
+        "items": {
+          "type": "array",
+          "description": "منفصلة عن التدريب؛ ثلاث صيغ لكل هدف على الأقل",
+          "items": {
+            "$ref": "#/$defs/item"
+          }
+        },
+        "rubrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "for",
+              "levels"
+            ],
+            "properties": {
+              "for": {
+                "type": "string"
+              },
+              "levels": {
+                "type": "object",
+                "required": [
+                  "0",
+                  "1",
+                  "2"
+                ],
+                "properties": {
+                  "0": {
+                    "type": "string"
+                  },
+                  "1": {
+                    "type": "string"
+                  },
+                  "2": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delayed_recall": {
+          "type": "array",
+          "description": "بعد ≥3 أيام",
+          "items": {
+            "$ref": "#/$defs/item"
+          }
+        },
+        "transfer": {
+          "type": "array",
+          "description": "سياق جديد لم يُدرَّس",
+          "items": {
+            "$ref": "#/$defs/item"
+          }
+        },
+        "class_diagnostic": {
+          "type": "array",
+          "description": "للمعلم قبل الوحدة",
+          "items": {
+            "$ref": "#/$defs/item"
+          }
+        }
+      }
+    },
+    "teacher": {
+      "type": "object",
+      "properties": {
+        "lesson_plan_45": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "minutes",
+              "activity"
+            ],
+            "properties": {
+              "minutes": {
+                "type": "integer"
+              },
+              "activity": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "expected_questions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "q",
+              "a"
+            ],
+            "properties": {
+              "q": {
+                "type": "string"
+              },
+              "a": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "differentiation": {
+          "type": "object",
+          "properties": {
+            "struggling": {
+              "type": "string"
+            },
+            "advanced": {
+              "type": "string"
+            },
+            "accessibility": {
+              "type": "string"
+            }
+          }
+        },
+        "kit": {
+          "type": "array",
+          "description": "ما يُضاف إلى عُدّة المعلم",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "url",
+          "accessed"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "accessed": {
+            "type": "string",
+            "format": "date"
+          },
+          "used_for": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "organ_letter": {
+      "type": "object",
+      "description": "«رسالة من أعضاء جسمي»: العضو يتكلم بضمير المتكلم بصدق علمي؛ تُسجَّل بصوت مميز",
+      "required": [
+        "from",
+        "text"
+      ],
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "passport": {
+      "type": "array",
+      "description": "«جواز سفر جسمي»: أرقام يحسبها الطفل من قياساته",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "formula",
+          "unit"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "formula": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "find_the_error": {
+      "type": "array",
+      "description": "«ابحث عن الخطأ»: رسم فيه خطأ مقصود واحد",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "atlas_variant",
+          "error",
+          "answer"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "atlas_variant": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "detects": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "true_size": {
+      "type": "array",
+      "description": "«اصنعه بحجمه الحقيقي»",
+      "items": {
+        "type": "object",
+        "required": [
+          "text"
+        ],
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "source": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "history": {
+      "type": "array",
+      "description": "علماء حضارتنا وتاريخ العلم: دقة صارمة",
+      "items": {
+        "type": "object",
+        "required": [
+          "who",
+          "where_when",
+          "did",
+          "did_not",
+          "method_lesson",
+          "source"
+        ],
+        "properties": {
+          "who": {
+            "type": "string"
+          },
+          "origin": {
+            "type": "string",
+            "description": "البلد والدين حيث يُثري"
+          },
+          "where_when": {
+            "type": "string"
+          },
+          "did": {
+            "type": "string",
+            "description": "ما فعله بالضبط"
+          },
+          "did_not": {
+            "type": "string",
+            "description": "ما لم يفعله أو ما بقي بعده مجهولاً"
+          },
+          "method_lesson": {
+            "type": "string",
+            "description": "ما يعلّمه عن منهج العلم"
+          },
+          "source": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "text": {
+            "type": "string",
+            "description": "النص كما يسمعه الطفل"
+          }
+        }
+      }
+    },
+    "faith": {
+      "type": "object",
+      "description": "الطبقة القيمية والإيمانية: غاية وقيم وتفكر فقط؛ لا إثبات علمي",
+      "properties": {
+        "opening": {
+          "$ref": "#/$defs/faith_item"
+        },
+        "closing": {
+          "$ref": "#/$defs/faith_item"
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "life_application": {
+      "type": "array",
+      "description": "«في حياتي»: موقف من حياة الطفل → ما يحدث في الجسم علمياً → ما أفعله أو أتجنبه → القيمة بكلماتنا (النص إن وقع في موضعه فقط)",
+      "items": {
+        "type": "object",
+        "required": [
+          "situation",
+          "science",
+          "action",
+          "value"
+        ],
+        "properties": {
+          "situation": {
+            "type": "string"
+          },
+          "science": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "reference": {
+            "type": "string",
+            "description": "نص شرعي من السجل إن وقع في موضعه بلا تكلّف — مطلوب حيث يوجد نص مناسب"
+          },
+          "why": {
+            "type": "string",
+            "description": "شرح السبب للطفل بلغته: لماذا هذا السلوك؟ (معنى الاختلاف، الابتلاء، حفظ النعمة، توزيع النعم والمهارات) بلا إقحام"
+          }
+        }
+      }
+    },
+    "dedication": {
+      "type": "object",
+      "description": "آخر درس في الوحدة: ملاحظة فتح الإهداء واختبار الوحدة (D07)",
+      "properties": {
+        "unit_complete": {
+          "type": "boolean"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "item": {
+      "type": "object",
+      "required": [
+        "id",
+        "objective",
+        "type",
+        "prompt",
+        "answer"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "objective": {
+          "type": "string"
+        },
+        "level": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "locate_on_atlas",
+            "choose",
+            "choose_reason",
+            "sequence",
+            "fix_model",
+            "explain_open",
+            "predict",
+            "true_false_why",
+            "compare"
+          ]
+        },
+        "prompt": {
+          "type": "string"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "answer": {
+          "description": "فهرس/قيمة/وصف الإجابة الصحيحة"
+        },
+        "feedback_correct": {
+          "type": "string"
+        },
+        "feedback_wrong": {
+          "type": "string",
+          "description": "تلميح، لا الجواب"
+        },
+        "detects": {
+          "type": "string",
+          "description": "معرّف تصور خاطئ إن كان البند تشخيصياً"
+        },
+        "atlas_target": {
+          "type": "string"
+        },
+        "rubric": {
+          "type": "string"
+        },
+        "explanation": {
+          "type": "string",
+          "description": "لماذا الجواب الصحيح صحيح، بجملة أو جملتين مما في الدرس؛ يراه الطفل بعد الإجابة أو بعد «أرني الصواب»."
+        },
+        "feedback_by_option": {
+          "type": "object",
+          "description": "ردّ خاص بخيار خاطئ (المفتاح رقم الخيار من 0)، مأخوذ من سجل التصورات؛ يظهر بدل «فكّر مرة أخرى».",
+          "patternProperties": {
+            "^[0-9]$": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "figure": {
+          "type": "string",
+          "description": "اسم صورة في app/v2/img (بلا امتداد) تُعرض فوق السؤال حين يسأل البند عن رسم.",
+          "pattern": "^[A-Za-z0-9._-]+$"
+        },
+        "alt": {
+          "type": "object",
+          "description": "بند بديل للمحاولة الثانية في الاختبار (البند 43): الهدف نفسه بصياغة جديدة؛ يرث id والهدف والمستوى من البند، وقد يغيّر النوع إلى نوع مغلق آخر.",
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "locate_on_atlas",
+                "choose",
+                "choose_reason",
+                "sequence",
+                "predict",
+                "true_false_why"
+              ]
+            },
+            "prompt": {
+              "type": "string"
+            },
+            "options": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "answer": {},
+            "explanation": {
+              "type": "string"
+            },
+            "feedback_by_option": {
+              "$ref": "#/$defs/item/properties/feedback_by_option"
+            },
+            "feedback_wrong": {
+              "type": "string"
+            },
+            "atlas_target": {
+              "type": "string"
+            },
+            "figure": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9._-]+$"
+            },
+            "detects": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "prompt",
+            "answer"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "faith_item": {
+      "type": "object",
+      "required": [
+        "text",
+        "reference",
+        "grade",
+        "usage",
+        "reviewed"
+      ],
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string",
+          "description": "سورة:آية أو الكتاب ورقم الحديث"
+        },
+        "grade": {
+          "type": "string",
+          "pattern": "^(قرآن|صحيح|حسن)",
+          "description": "قرآن، أو درجة الحديث كما في سجل الأحاديث (صحيح، حسن، وقد تُتبع ببيان: «صحيح (متفق عليه)»)"
+        },
+        "usage": {
+          "type": "string",
+          "enum": [
+            "غاية",
+            "قيمة",
+            "تفكر",
+            "شكر",
+            "حكم"
+          ],
+          "description": "وظيفة النص في الدرس: غاية، قيمة، تفكر، شكر، حكم — ولا يُستعمل نص شرعي إثباتاً لمعلومة علمية أبداً"
+        },
+        "reflection": {
+          "type": "string",
+          "description": "جملة التأمل كما تُقال للطفل"
+        },
+        "reviewed": {
+          "type": "boolean",
+          "description": "اعتمده مراجع شرعي"
+        },
+        "concept": {
+          "type": "string",
+          "description": "شرح مفهوم النص للطفل بلغته: ماذا يطلب ولماذا"
+        },
+        "level": {
+          "type": "string",
+          "enum": [
+            "فرض",
+            "ترغيب",
+            "نهي",
+            "خبر",
+            "تفكر"
+          ],
+          "description": "درجة التوجيه: فرض كالصلاة / ترغيب وتحبيب / نهي / خبر / دعوة للتفكر"
+        },
+        "avoid": {
+          "type": "string",
+          "description": "الفهم الخاطئ الذي يجب أن يُمنع"
+        },
+        "body_effect": {
+          "type": "string",
+          "description": "ما يحدث في الجسم (الطبقة العلمية) إن وُجد"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "what": "خط عرض الآيات",
+    "who": "مجمع الملك فهد لطباعة المصحف الشريف: خطوط مصحف المدينة النبوية، الإصدار الثاني (QPC V2)، خط لكل صفحة من المصحف فيها آية من المنهاج، ورمز لكل كلمة — من موقع المجمع (qurancomplex.gov.sa/TTF) عبر نسخته على GitHub (mustafa0x/qpc-fonts)، بلا تعديل",
+    "license": "لا نص رخصة في ملفات الخط، ولا معلومات حقوق لها في مكتبة QUL؛ تُستعمل بشروط خطوط المجمع الأخرى (مجاناً، بلا بيع ولا تعديل)، وتأكيد شروط المجمع لهذه الملفات قيد التحقق من صاحب المشروع",
+    "url": "https://qurancomplex.gov.sa",
+    "file": "KFGQPC-QCF2.txt"
+  },
+  {
+    "what": "رموز الآيات في خط الصفحة",
+    "who": "Quranic Universal Library (QUL) — Tarteel AI: بيانات «QPC V2 Glyphs – Ayah by Ayah»، بلا تعديل",
+    "license": "مكتبة QUL: تُراجع شروط كل مورد عند مؤلفه؛ والرموز ترميز خطوط المجمع نفسها",
+    "url": "https://qul.tarteel.ai",
+    "file": "KFGQPC-QCF2.txt"
+  },
+  {
+    "what": "النص القرآني الاحتياطي (إن تعذّر خط الصفحة)",
+    "who": "مجمع الملك فهد لطباعة المصحف الشريف: بيانات KFGQPC Hafs Smart v8 (2022) وخطها HafsSmart_08.ttf، وخط UthmanicHafs — مصحف المدينة النبوية، رواية حفص عن عاصم بالرسم العثماني",
+    "license": "رخصة المجمع للمستخدم: الاستعمال والنسخ والتوزيع مجاناً، بلا بيع ولا تعديل",
+    "url": "https://qurancomplex.gov.sa",
+    "file": "KFGQPC-fonts.txt"
+  },
+  {
+    "what": "النص القرآني للبحث والاحتياط",
+    "who": "مشروع Tanzil — نص Uthmani 1.1",
+    "license": "Creative Commons Attribution 3.0: يُنسخ كما هو بلا تعديل، مع ذكر المصدر والإحالة إلى tanzil.net",
+    "url": "https://tanzil.net",
+    "file": "Tanzil.txt"
+  },
+  {
+    "what": "تلاوة الآيات المرفقة",
+    "who": "الشيخ محمد صدّيق المنشاوي (مرتّل)، ملفات آيةً آية من everyayah.com",
+    "license": "إذن إعادة نشرها داخل التطبيق: قيد التحقق من صاحب المشروع",
+    "url": "https://everyayah.com"
+  },
+  {
+    "what": "خط العناوين",
+    "who": "Baloo Bhaijaan 2 — The Baloo 2 Project Authors (Ek Type)",
+    "license": "SIL Open Font License 1.1",
+    "file": "OFL-BalooBhaijaan2.txt"
+  },
+  {
+    "what": "خط النص",
+    "who": "IBM Plex Sans Arabic — IBM Corp.",
+    "license": "SIL Open Font License 1.1",
+    "file": "OFL-IBMPlexSansArabic.txt"
+  },
+  {
+    "what": "الحروف الصينية",
+    "who": "Noto Sans SC — Google",
+    "license": "SIL Open Font License 1.1",
+    "file": "OFL-NotoSansSC.txt"
+  },
+  {
+    "what": "بعض الرسوم التشريحية",
+    "who": "Servier Medical Art (smart.servier.com)، مقتبسة ومعدّلة: إزالة الخلفية، وتسميات عربية، ومناطق تفاعل",
+    "license": "Creative Commons Attribution 4.0 (CC BY 4.0)",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  {
+    "what": "المحتوى التعليمي والشيفرة وصور المشاهد",
+    "who": "© فراس",
+    "license": "كل الحقوق محفوظة ما لم يُذكر غير ذلك"
+  }
+]

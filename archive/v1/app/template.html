@@ -1,0 +1,813 @@
+<title>الأطلس الحي</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+/* Layout: atlas (SVG body) on one side, lesson panel on the other; stacked on phones. Paper-like ground, blood-red accent, teal for oxygen coding. */
+:root{
+  --bg:#f6f1e8; --panel:#fffdf8; --fg:#2b2320; --muted:#6f6259; --line:#e3d9cb;
+  --accent:#b4232c; --accent-soft:#f3d9d8; --ox:#c8323b; --deox:#3a5f9c; --teal:#1f7a74; --teal-soft:#d6ebe8;
+  --ok:#2e7d4f; --warn:#b26a00; --bone:#efe6d2; --lung:#e9b9b4; --muscle:#d98b7e; --skin:#f1dcc7;
+  --display:"Baloo Bhaijaan 2","IBM Plex Sans Arabic",system-ui,sans-serif;
+  --body:"IBM Plex Sans Arabic","Noto Sans Arabic",system-ui,sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#1b1715; --panel:#242020; --fg:#f1e9df; --muted:#b4a79b; --line:#3a332e;
+  --accent:#e05560; --accent-soft:#3d2224; --ox:#e05560; --deox:#6f93d6; --teal:#4fb3ab; --teal-soft:#1d3634;
+  --ok:#5fc08a; --warn:#e0a640; --bone:#5a5248; --lung:#7a4a48; --muscle:#8a4f46; --skin:#5c4a3d; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#1b1715; --panel:#242020; --fg:#f1e9df; --muted:#b4a79b; --line:#3a332e;
+  --accent:#e05560; --accent-soft:#3d2224; --ox:#e05560; --deox:#6f93d6; --teal:#4fb3ab; --teal-soft:#1d3634;
+  --ok:#5fc08a; --warn:#e0a640; --bone:#5a5248; --lung:#7a4a48; --muscle:#8a4f46; --skin:#5c4a3d; color-scheme:dark }
+
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.7;direction:rtl}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1180px;margin:0 auto;padding-block:12px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:6px 14px;border-bottom:1px solid var(--line)}
+.brand{font-family:var(--display);font-weight:800;font-size:1.35rem;letter-spacing:.2px}
+.brand small{display:block;font-family:var(--body);font-weight:500;font-size:.8rem;color:var(--muted);letter-spacing:.3px}
+.lesson-id{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.85rem}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--panel)}
+.seg button{border:0;background:transparent;color:var(--muted);padding:6px 14px;font-weight:600}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px;margin-top:16px;align-items:start}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+.atlas{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:12px;position:sticky;top:env(safe-area-inset-top,0px)}
+@media (max-width:860px){.atlas{position:static}}
+.atlas-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.atlas-head h2{margin:0;font-family:var(--display);font-size:1.05rem;font-weight:700}
+.layers{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:3px 10px;font-size:.8rem;font-weight:600}
+.chip[aria-pressed="true"]{background:var(--teal-soft);color:var(--teal);border-color:var(--teal)}
+svg.body{width:100%;max-width:100%;height:auto;display:block;aspect-ratio:400/620}
+svg.body text{font-family:var(--body);font-size:12px;fill:var(--fg)}
+.organ{cursor:pointer;transition:filter .2s,opacity .2s}
+.organ:hover{filter:brightness(1.08)}
+.region{pointer-events:all}
+.region.hl{fill:var(--teal-soft)!important;opacity:.55;stroke:var(--teal)!important}
+.hl{filter:drop-shadow(0 0 6px var(--accent)) brightness(1.1);stroke:var(--accent)!important;stroke-width:2.5!important}
+.dim{opacity:.22}
+.layer[hidden]{display:none}
+.target-ok{stroke:var(--ok)!important;stroke-width:3!important}
+@keyframes beat{0%,100%{transform:scale(1)}30%{transform:scale(1.07)}}
+.beating{animation:beat 1s ease-in-out infinite;transform-origin:215px 240px;transform-box:view-box}
+@keyframes dash{to{stroke-dashoffset:-40}}
+.flowing{stroke-dasharray:6 6;animation:dash 1.2s linear infinite}
+@keyframes pulse{0%,100%{r:5;opacity:1}50%{r:9;opacity:.5}}
+.pulsing{animation:pulse 1s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.beating,.flowing,.pulsing{animation:none}}
+.card{margin-top:10px;background:var(--bg);border:1px dashed var(--line);border-radius:10px;padding:10px 12px;font-size:.95rem;min-height:3.2em}
+.card b{font-family:var(--display)}
+.card .en{color:var(--muted);font-size:.85rem;direction:ltr;display:inline-block}
+.limits{margin-top:8px}
+.limits summary{cursor:pointer;color:var(--teal);font-weight:600;font-size:.9rem}
+.limits ul{margin:6px 0 0;padding-right:18px;font-size:.9rem;color:var(--muted)}
+
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;min-width:0}
+.steps{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px}
+.steps button{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:8px;padding:5px 10px;font-size:.82rem;font-weight:600}
+.steps button[aria-current="step"]{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+.steps button.done::before{content:"✓ ";color:var(--ok)}
+h1{font-family:var(--display);font-size:1.6rem;margin:0 0 4px;text-wrap:balance;line-height:1.3}
+h3{font-family:var(--display);font-size:1.15rem;margin:14px 0 6px}
+.q{font-family:var(--display);font-size:1.25rem;color:var(--accent);margin:4px 0 10px}
+p{margin:.4em 0}
+.say{display:flex;gap:10px;align-items:flex-start}
+.say p{flex:1;min-width:0;font-size:1.08rem}
+.btn{border:0;border-radius:10px;padding:9px 16px;font-weight:600;background:var(--accent);color:#fff}
+.btn.sec{background:var(--teal-soft);color:var(--teal)}
+.btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.btn:disabled{opacity:.45;cursor:default}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.opts{display:grid;gap:8px;margin-top:8px}
+.opt{text-align:start;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:10px;padding:10px 12px}
+.opt[aria-pressed="true"]{border-color:var(--teal);background:var(--teal-soft)}
+.opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--panel))}
+.opt.wrong{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 14%,var(--panel))}
+.opt .n{display:inline-block;min-width:1.6em;color:var(--muted);font-variant-numeric:tabular-nums}
+.fb{margin-top:8px;padding:8px 12px;border-radius:8px;font-size:.95rem}
+.fb.ok{background:color-mix(in srgb,var(--ok) 15%,var(--panel));color:var(--ok)}
+.fb.hint{background:color-mix(in srgb,var(--warn) 14%,var(--panel));color:var(--warn)}
+.item{border-top:1px solid var(--line);padding-block:12px}
+.item .meta{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.pulse-box{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:10px}
+@media (max-width:480px){.pulse-box{grid-template-columns:1fr}}
+.slot{border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--bg);text-align:center}
+.slot .lbl{font-size:.85rem;color:var(--muted)}
+.slot .val{font-family:var(--display);font-size:1.8rem;font-variant-numeric:tabular-nums;line-height:1.2}
+.slot .val small{font-size:.8rem;color:var(--muted);font-family:var(--body)}
+.counter{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:12px;padding:14px;border-radius:12px;background:var(--bg);border:1px solid var(--line)}
+.tap{width:120px;height:120px;border-radius:50%;border:0;background:var(--accent);color:#fff;font-family:var(--display);font-size:1.1rem;font-weight:700;box-shadow:0 6px 0 color-mix(in srgb,var(--accent) 70%,#000)}
+.tap:active{transform:translateY(3px);box-shadow:0 3px 0 color-mix(in srgb,var(--accent) 70%,#000)}
+.tap:disabled{background:var(--line);box-shadow:none;color:var(--muted)}
+.timer{font-variant-numeric:tabular-nums;font-family:var(--display);font-size:1.6rem}
+.safety{background:color-mix(in srgb,var(--warn) 12%,var(--panel));border-right:4px solid var(--warn);padding:10px 12px;border-radius:8px;font-size:.92rem;margin-top:10px}
+.safety ul,ol{padding-right:20px;margin:.3em 0}
+.numbers{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:8px}
+.num{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;font-size:.95rem}
+canvas#draw{width:100%;max-width:100%;aspect-ratio:4/3;border:1px solid var(--line);border-radius:10px;background:var(--panel);touch-action:none;display:block}
+textarea{width:100%;min-height:80px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--bg);color:var(--fg)}
+.tag{display:inline-block;font-size:.75rem;border-radius:6px;padding:1px 8px;background:var(--teal-soft);color:var(--teal);font-weight:600;vertical-align:middle}
+.tag.b{background:var(--accent-soft);color:var(--accent)}
+.foot{margin-top:18px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line);padding-top:10px}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.sr{position:absolute;left:-9999px}
+.profile{max-width:640px;margin:24px auto}
+.pf-grid{display:grid;grid-template-columns:160px minmax(0,1fr);gap:18px;align-items:start;margin-top:12px}
+@media (max-width:480px){.pf-grid{grid-template-columns:1fr}}
+.pf-photo{position:relative;display:flex;align-items:center;justify-content:center;text-align:center;width:160px;height:160px;border:2px dashed var(--line);border-radius:50%;cursor:pointer;color:var(--muted);overflow:hidden;background:var(--bg);font-size:.95rem;line-height:1.4}
+.pf-photo img{width:100%;height:100%;object-fit:cover}
+#pfName{width:100%;font:inherit;font-size:1.2rem;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg)}
+.pf-gender button{font-size:1.05rem;padding:8px 18px}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div class="brand"><a href="index.html" style="color:inherit;text-decoration:none">الأطلس الحي</a> <small>علمٌ يُنتفع به · جسم الإنسان للأطفال 8–12</small></div>
+  <div class="row" style="margin:0">
+    <button class="chip" id="whoami" hidden title="تغيير الملف" style="display:flex;align-items:center;gap:6px"><img id="whoImg" alt="" width="26" height="26" style="border-radius:50%;object-fit:cover" hidden><span id="whoName"></span></button>
+    <span class="lesson-id" id="lessonId"></span>
+    <button class="chip" id="parentBtn">👨‍👩‍👧 ولي الأمر / المعلم</button>
+    <div class="seg" role="group" aria-label="المستوى">
+      <button id="lvA" aria-pressed="true">مستوى أ · 8–9</button>
+      <button id="lvB" aria-pressed="false">مستوى ب · 10–12</button>
+    </div>
+  </div>
+</header>
+
+<section class="panel profile" id="profileScreen" hidden aria-label="الدخول">
+  <h1>مرحباً! من أنت؟</h1>
+  <p class="meta">اسمك وصورتك يبقيان على هذا الجهاز فقط ولا يُرسلان إلى أي مكان.</p>
+  <div class="pf-grid">
+    <label class="pf-photo" for="pfFile"><img id="pfPreview" alt="" hidden><span id="pfPh">📷<br>أضف صورتك<br><small>(اختياري)</small></span><input type="file" id="pfFile" accept="image/*" style="position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none"></label>
+    <div>
+      <label for="pfName"><b>اسمي</b></label>
+      <input id="pfName" type="text" maxlength="24" placeholder="اكتب اسمك" autocomplete="off">
+      <div class="seg pf-gender" role="group" aria-label="أنا" style="margin-top:10px">
+        <button id="pfBoy" aria-pressed="false">👦 ولد</button>
+        <button id="pfGirl" aria-pressed="false">👧 بنت</button>
+      </div>
+      <p class="fb hint" id="pfErr" hidden></p>
+      <div class="row"><button class="btn" id="pfGo">ابدأ</button></div>
+    </div>
+  </div>
+</section>
+<section class="panel" id="reviewScreen" hidden aria-label="تقييم ولي الأمر">
+  <div class="row" style="margin:0 0 8px"><h1 style="flex:1">تقييم ولي الأمر / المعلم</h1><button class="btn ghost" id="reviewClose">عودة إلى الدرس</button></div>
+  <div id="pinGate">
+    <p class="meta">هذه الشاشة للبالغ المشرف. <span id="pinHint"></span></p>
+    <input id="pin" type="password" inputmode="numeric" maxlength="4" placeholder="رقم من 4 أرقام" style="font:inherit;font-size:1.2rem;padding:8px 12px;border:1px solid var(--line);border-radius:10px;width:12em;background:var(--bg);color:var(--fg)">
+    <button class="btn" id="pinGo">دخول</button><p class="fb hint" id="pinErr" hidden></p>
+  </div>
+  <div id="reviewBody" hidden></div>
+</section>
+<div class="grid">
+  <section class="atlas" aria-label="الأطلس">
+    <div class="atlas-head">
+      <h2 id="atlasTitle">الجسم من الأمام</h2>
+      <div class="layers" id="layerChips"></div>
+    </div>
+    <svg class="body" viewBox="0 0 400 620" xmlns="http://www.w3.org/2000/svg" aria-label="رسم تعليمي لجسم الإنسان من الأمام">
+      <g id="viewBody">
+        <!-- skin / outline -->
+        <g class="layer" data-layer="skin" fill="var(--skin)" stroke="var(--line)" stroke-width="1.5">
+          <ellipse cx="200" cy="54" rx="34" ry="40"/>
+          <rect x="184" y="88" width="32" height="30" rx="8"/>
+          <path d="M132 118h136c16 0 24 10 24 26v160c0 16-8 26-24 26H132c-16 0-24-10-24-26V144c0-16 8-26 24-26z"/>
+          <path d="M108 140l-14 20c-6 10-8 20-8 32l8 150c0 10 8 16 16 16s16-6 16-16l-6-150 14-36z"/>
+          <path d="M292 140l14 20c6 10 8 20 8 32l-8 150c0 10-8 16-16 16s-16-6-16-16l6-150-14-36z"/>
+          <path d="M132 326h62l-6 150c0 10 2 30 2 110 0 12-8 18-20 18s-20-6-20-18V480z"/>
+          <path d="M268 326h-62l6 150c0 10-2 30-2 110 0 12 8 18 20 18s20-6 20-18V480z"/>
+        </g>
+
+        <!-- مناطق الجسم (طبقة شفافة للتحديد) -->
+        <g class="layer" data-layer="regions" fill="transparent" stroke="none">
+          <ellipse id="head" class="organ region" data-concept="head" cx="200" cy="54" rx="34" ry="40"/>
+          <rect id="neck" class="organ region" data-concept="neck" x="184" y="88" width="32" height="30"/>
+          <rect id="chest" class="organ region" data-concept="chest" x="112" y="118" width="176" height="110"/>
+          <rect id="abdomen" class="organ region" data-concept="abdomen" x="112" y="228" width="176" height="100"/>
+          <rect id="trunk" class="organ region" data-concept="trunk" x="108" y="118" width="184" height="212" fill="none" stroke="none" pointer-events="none"/>
+          <path id="upper_arm" class="organ region" data-concept="limbs" d="M108 140l-14 20c-6 10-8 20-8 32l4 60 30-4-4-56 14-36z"/>
+          <path id="forearm" class="organ region" data-concept="limbs" d="M90 252l4 90c0 6 4 10 8 12l18-2-6-104z"/>
+          <path id="thigh" class="organ region" data-concept="limbs" d="M132 326h62l-4 150h-56z"/>
+          <path id="lower_leg" class="organ region" data-concept="limbs" d="M134 476h56l-2 110h-50z"/>
+          <path id="limbs" class="organ region" data-concept="limbs" d="M268 326h-62l6 150h56z" />
+          <rect id="whole_body" class="organ region" data-concept="model" x="60" y="10" width="280" height="600" fill="none" stroke="none" pointer-events="none"/>
+          <rect id="right_side" x="200" y="10" width="140" height="600" fill="none" stroke="none" pointer-events="none"/>
+        </g>
+        <!-- muscles (legs only, for E8) -->
+        <g class="layer" data-layer="muscles" hidden>
+          <path id="leg_muscles" class="organ" data-concept="leg_muscles" d="M168 356c8 40 10 90 6 150 10 4 20 4 30 0-2-60 2-110 8-150-14-6-30-6-44 0zM204 356c6 40 10 90 8 150 10 4 20 4 30 0-4-60 0-110 6-150-14-6-30-6-44 0z" fill="var(--muscle)" stroke="var(--accent)" stroke-width="1" opacity=".9"/>
+          <text x="330" y="440" text-anchor="start">عضلات الساق</text>
+        </g>
+        <!-- skeleton: ribcage + sternum + spine -->
+        <g class="layer" data-layer="skeleton" id="skeleton">
+          <line x1="200" y1="118" x2="200" y2="330" stroke="var(--bone)" stroke-width="7" opacity=".7"/>
+          <g id="ribcage" class="organ" data-concept="chest" fill="none" stroke="var(--bone)" stroke-width="5" stroke-linecap="round">
+            <path d="M200 140c-36 4-66 20-78 44M200 140c36 4 66 20 78 44"/>
+            <path d="M200 164c-40 4-72 22-84 48M200 164c40 4 72 22 84 48"/>
+            <path d="M200 188c-42 6-74 26-86 52M200 188c42 6 74 26 86 52"/>
+            <path d="M200 212c-40 8-70 28-82 54M200 212c40 8 70 28 82 54"/>
+            <path d="M200 236c-34 10-60 28-72 50M200 236c34 10 60 28 72 50"/>
+            <rect x="193" y="136" width="14" height="118" rx="6" fill="var(--bone)" stroke="none"/>
+          </g>
+          <text x="214" y="132" text-anchor="start" font-size="11">عظم القص</text>
+          <!-- عظام ومفاصل الهيكل -->
+          <ellipse id="skull" class="organ" data-concept="skull" cx="200" cy="54" rx="30" ry="36" fill="var(--bone)" stroke="var(--line)" opacity=".9"/>
+          <path id="spine" class="organ" data-concept="spine" d="M200 118v212" stroke="var(--bone)" stroke-width="10" stroke-dasharray="8 3" fill="none"/>
+          <path id="pelvis" class="organ" data-concept="pelvis" d="M150 300c10-14 90-14 100 0 8 12 4 30-10 36-14 6-66 6-80 0-14-6-18-24-10-36z" fill="var(--bone)" stroke="var(--line)"/>
+          <path id="humerus" class="organ" data-concept="limbs" d="M104 150l-10 92" stroke="var(--bone)" stroke-width="12" stroke-linecap="round" fill="none"/>
+          <path id="femur" class="organ" data-concept="limbs" d="M165 336l-4 134" stroke="var(--bone)" stroke-width="14" stroke-linecap="round" fill="none"/>
+          <path id="tibia" class="organ" data-concept="limbs" d="M160 484l-2 100" stroke="var(--bone)" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <g id="joints" class="organ" data-concept="joint" fill="var(--teal)" opacity=".85">
+            <circle id="shoulder" class="organ" data-concept="ball_socket" cx="108" cy="146" r="9"/>
+            <circle id="elbow" class="organ" data-concept="hinge_joint" cx="94" cy="248" r="8"/>
+            <circle id="wrist" class="organ" data-concept="joint" cx="92" cy="346" r="7"/>
+            <circle id="hip" class="organ" data-concept="ball_socket" cx="166" cy="334" r="9"/>
+            <circle id="knee" class="organ" data-concept="hinge_joint" cx="161" cy="478" r="8"/>
+            <circle id="ankle" class="organ" data-concept="joint" cx="158" cy="586" r="7"/>
+            <circle id="neck_pivot" class="organ" data-concept="joint" cx="200" cy="118" r="6"/>
+          </g>
+          <text x="330" y="60" font-size="11">الجمجمة</text>
+          <text x="330" y="320" font-size="11">الحوض</text>
+          <text x="20" y="250" font-size="11">المرفق</text>
+          <text x="20" y="146" font-size="11">الكتف</text>
+          <text x="330" y="480" font-size="11">الركبة</text>
+        </g>
+        <!-- respiratory (lungs) -->
+        <g class="layer" data-layer="respiratory">
+          <path id="lungs" class="organ" data-concept="lungs" d="M186 150c-30 6-58 36-60 86-1 30 6 60 22 68 14 6 30 2 38-10V150zM214 150c30 6 58 36 60 86 1 30-6 60-22 68-14 6-30 2-38-10V150z" fill="var(--lung)" stroke="var(--line)" opacity=".85"/>
+        </g>
+        <!-- circulatory -->
+        <g class="layer" data-layer="circulatory">
+          <!-- veins (coded blue) -->
+          <g id="veins" stroke="var(--deox)" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".8">
+            <path class="vessel" d="M208 200V92c0-10 2-20 2-32"/>
+            <path class="vessel" d="M208 205c-30 8-60 20-96 60l-10 90"/>
+            <path class="vessel" d="M208 205c30 8 60 20 96 60l10 90"/>
+            <path class="vessel" d="M212 262c-6 60-14 100-22 150l-8 180M212 262c6 60 14 100 22 150l8 180"/>
+          </g>
+          <!-- arteries (red) -->
+          <g id="arteries" stroke="var(--ox)" stroke-width="4" fill="none" stroke-linecap="round">
+            <path id="aorta" class="vessel" d="M222 230c0-20 0-36-6-44-8-10-22-6-24 6"/>
+            <path class="vessel" d="M196 196V92c0-10-2-20-2-32"/>
+            <path class="vessel" d="M194 198c-30 8-56 22-90 60l-12 90"/>
+            <path class="vessel" d="M194 198c30 8 56 22 90 60l12 90"/>
+            <path class="vessel" d="M222 256c-4 60-10 100-18 150l-6 180M222 256c4 60 10 100 18 150l6 180"/>
+          </g>
+          <circle id="neck_artery" class="organ pulse-point" data-concept="pulse" cx="186" cy="108" r="5" fill="var(--ox)"/>
+          <circle id="wrist_artery" class="organ pulse-point" data-concept="pulse" cx="90" cy="348" r="5" fill="var(--ox)"/>
+          <circle class="pulse-point" cx="310" cy="348" r="5" fill="var(--ox)"/>
+          <text x="80" y="372" text-anchor="middle" font-size="11">نبض الرسغ</text>
+          <text x="150" y="104" text-anchor="end" font-size="11">نبض العنق</text>
+          <!-- heart: anterior view, apex toward patient's left (viewer's right) -->
+          <path id="heart" class="organ" data-concept="heart" d="M214 192c-14-8-30-2-34 12-4 16 2 36 14 54 10 14 26 22 36 24 14-4 22-18 24-36 2-18-4-36-18-46-8-6-16-8-22-8z" fill="var(--ox)" stroke="#7a1a21" stroke-width="2"/>
+          <text x="248" y="196" text-anchor="start" font-size="11">القلب</text>
+          <circle id="vessels" class="organ" data-concept="blood_vessel" cx="320" cy="300" r="12" fill="none" stroke="var(--ox)" stroke-width="2" opacity="0"/>
+        </g>
+      </g>
+
+      <!-- heart cross-section view (anatomical: viewer's left = patient's right) -->
+      <g id="viewSection" hidden>
+        <path d="M118 132c36-62 170-64 198 4 22 54 2 150-58 214-58 62-134 44-166-18-22-44-12-150 26-200z" fill="var(--lung)" stroke="#7a1a21" stroke-width="3" opacity=".55"/>
+        <!-- right atrium (viewer left top) -->
+        <path id="right_atrium" class="organ chamber" data-concept="atrium" d="M110 150c20-30 60-30 86-10v80h-96c-6-30-4-50 10-70z" fill="var(--deox)" opacity=".75" stroke="#263d63" stroke-width="2"/>
+        <!-- right ventricle (viewer left bottom) -->
+        <path id="right_ventricle" class="organ chamber" data-concept="ventricle" d="M104 236h92v70c-20 20-50 36-70 26-22-12-28-60-22-96z" fill="var(--deox)" opacity=".75" stroke="#263d63" stroke-width="3"/>
+        <!-- left atrium (viewer right top) -->
+        <path id="left_atrium" class="organ chamber" data-concept="atrium" d="M290 150c-20-30-60-30-86-10v80h96c6-30 4-50-10-70z" fill="var(--ox)" opacity=".8" stroke="#7a1a21" stroke-width="2"/>
+        <!-- left ventricle (viewer right bottom, thick wall) -->
+        <path id="left_ventricle" class="organ chamber" data-concept="ventricle" d="M296 236h-92v70c20 20 50 36 70 26 22-12 28-60 22-96z" fill="var(--ox)" opacity=".8" stroke="#7a1a21" stroke-width="7"/>
+        <!-- septum -->
+        <rect x="196" y="140" width="8" height="190" fill="#7a1a21" opacity=".8"/>
+        <!-- valves -->
+        <g id="valves" class="organ" data-concept="valve" stroke="#fff" stroke-width="4" stroke-linecap="round">
+          <path d="M120 226l20 10M176 226l-20 10"/>
+          <path d="M224 226l20 10M280 226l-20 10"/>
+          <path d="M150 108l10 16M160 108l-10 16"/>
+          <path d="M240 108l10 16M250 108l-10 16"/>
+        </g>
+        <!-- flow arrows -->
+        <g fill="none" stroke-width="3" stroke-linecap="round">
+          <path id="arrowIn" stroke="var(--deox)" d="M60 120l40 34" marker-end="url(#mB)"/>
+          <path id="arrowToLung" stroke="var(--deox)" d="M150 300c-30-20-40-120-10-170" marker-end="url(#mB)"/>
+          <path id="arrowFromLung" stroke="var(--ox)" d="M340 120l-40 34" marker-end="url(#mR)"/>
+          <path id="arrowOut" stroke="var(--ox)" d="M250 300c30-20 40-120 10-170" marker-end="url(#mR)"/>
+        </g>
+        <defs>
+          <marker id="mB" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--deox)"/></marker>
+          <marker id="mR" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--ox)"/></marker>
+        </defs>
+        <text x="150" y="190" text-anchor="middle" fill="#fff" font-weight="600">الأذين الأيمن</text>
+        <text x="250" y="190" text-anchor="middle" fill="#fff" font-weight="600">الأذين الأيسر</text>
+        <text x="150" y="280" text-anchor="middle" fill="#fff" font-weight="600">البطين الأيمن</text>
+        <text x="250" y="280" text-anchor="middle" fill="#fff" font-weight="600">البطين الأيسر</text>
+        <text x="72" y="106" text-anchor="middle" font-size="11">من الجسم</text>
+        <text x="130" y="80" text-anchor="middle" font-size="11">إلى الرئتين</text>
+        <text x="270" y="80" text-anchor="middle" font-size="11">من الرئتين</text>
+        <text x="330" y="106" text-anchor="middle" font-size="11">إلى الجسم</text>
+        <text x="200" y="420" text-anchor="middle" font-size="11" fill="var(--muted)">الأزرق ترميز للدم القليل الأكسجين؛ الدم أحمر دائماً</text>
+      </g>
+
+      <!-- shape comparison view -->
+      <g id="viewCompare" hidden>
+        <path d="M110 180c-30-30-80-10-80 30 0 40 50 70 80 100 30-30 80-60 80-100 0-40-50-60-80-30z" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/>
+        <text x="110" y="330" text-anchor="middle">رمز ❤ (للمشاعر)</text>
+        <path d="M286 170c-20-12-44-2-50 20-6 24 4 54 22 80 14 20 38 32 54 36 20-6 32-26 36-54 2-26-6-52-26-68-12-10-24-14-36-14z" fill="var(--ox)" stroke="#7a1a21" stroke-width="2"/>
+        <text x="300" y="330" text-anchor="middle">القلب الحقيقي (قبضة مخروطية)</text>
+      </g>
+
+      <!-- الذراع: عضلتان متقابلتان -->
+      <g id="viewArm" hidden>
+        <path d="M80 200h130c10 0 18 8 18 18v10c0 10-8 18-18 18H80z" fill="var(--bone)" stroke="var(--line)" stroke-width="2"/>
+        <text x="145" y="260" text-anchor="middle" font-size="12">عظم العضد</text>
+        <g id="arm_model" class="organ" data-concept="movement_model" fill="none" stroke="none"><rect x="60" y="150" width="300" height="300"/></g>
+        <g id="stomach_muscle" fill="none" stroke="none"><rect x="0" y="0" width="1" height="1"/></g>
+        <circle cx="228" cy="223" r="14" fill="var(--teal)" opacity=".8"/>
+        <text x="228" y="200" text-anchor="middle" font-size="12">المرفق</text>
+        <path id="forearm_bone" d="M236 214l80 110c6 8 2 20-8 24l-8 2c-8 2-16-2-20-8l-66-104z" fill="var(--bone)" stroke="var(--line)" stroke-width="2"/>
+        <text x="300" y="370" text-anchor="middle" font-size="12">عظم الساعد</text>
+        <path id="biceps" class="organ" data-concept="muscle" d="M96 196c20-34 90-40 124-14 10 8 14 16 22 22l-6 10c-10-6-18-10-30-14-30-10-80 0-104 10z" fill="var(--muscle)" stroke="#8a4f46" stroke-width="2"/>
+        <text x="150" y="176" text-anchor="middle" font-size="12">العضلة الأمامية (ذات الرأسين)</text>
+        <path id="triceps" class="organ" data-concept="antagonist_pair" d="M96 250c20 34 90 40 124 14 8-6 12-14 18-20l6 8c-8 8-14 14-26 18-30 10-80 0-122-10z" fill="var(--muscle)" stroke="#8a4f46" stroke-width="2" opacity=".85"/>
+        <text x="150" y="300" text-anchor="middle" font-size="12">العضلة الخلفية (ثلاثية الرؤوس)</text>
+        <path id="tendon" class="organ" data-concept="tendon" d="M236 206l10 20M238 236l8 14" stroke="#f3eee4" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <text x="290" y="222" font-size="11">وتر</text>
+        <path id="ligament" class="organ" data-concept="ligament" d="M222 236c6 6 14 8 22 6" stroke="var(--deox)" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <text x="200" y="262" font-size="11" fill="var(--deox)">رباط</text>
+        <text x="200" y="430" text-anchor="middle" font-size="11" fill="var(--muted)">العضلة تسحب فقط: الأمامية تثني، الخلفية تمدّ</text>
+      </g>
+
+      <!-- مقطع المفصل -->
+      <g id="viewJoint" hidden>
+        <path d="M120 120h70c20 0 36 16 36 36v40c0 20-16 36-36 36h-70z" fill="var(--bone)" stroke="var(--line)" stroke-width="2"/>
+        <path d="M280 120h-70c-20 0-36 16-36 36v40c0 20 16 36 36 36h70z" fill="var(--bone)" stroke="var(--line)" stroke-width="2"/>
+        <path id="cartilage" class="organ" data-concept="cartilage" d="M190 128c20 0 34 14 34 28v40c0 14-14 28-34 28" fill="none" stroke="#9ad1c8" stroke-width="10" stroke-linecap="round"/>
+        <path d="M210 128c-20 0-34 14-34 28v40c0 14 14 28 34 28" fill="none" stroke="#9ad1c8" stroke-width="10" stroke-linecap="round"/>
+        <path id="ligament2" class="organ" data-concept="ligament" d="M150 100c40-14 60-14 100 0M150 252c40 14 60 14 100 0" fill="none" stroke="var(--deox)" stroke-width="6" stroke-linecap="round"/>
+        <text x="200" y="88" text-anchor="middle" font-size="12" fill="var(--deox)">الرباط (عظم–عظم)</text>
+        <text x="200" y="285" text-anchor="middle" font-size="12">الغضروف الأملس + سائل زلق</text>
+        <text x="130" y="180" text-anchor="middle" font-size="12">عظم</text><text x="270" y="180" text-anchor="middle" font-size="12">عظم</text>
+        <g id="hinge_demo" transform="translate(70,340)"><rect x="0" y="0" width="90" height="16" rx="8" fill="var(--bone)"/><rect x="90" y="-40" width="16" height="60" rx="8" fill="var(--bone)" transform="rotate(-30 90 8)"/><text x="60" y="50" text-anchor="middle" font-size="11">مفصلي: اتجاه واحد</text></g>
+        <g id="ball_demo" transform="translate(250,340)"><path d="M0 20a40 40 0 0 1 80 0z" fill="var(--bone)"/><circle cx="40" cy="22" r="22" fill="var(--teal)" opacity=".8"/><text x="40" y="70" text-anchor="middle" font-size="11">كروي: كل الاتجاهات</text></g>
+      </g>
+
+      <!-- مقطع العظم -->
+      <g id="viewBone" hidden>
+        <path d="M120 120c0-30 160-30 160 0v360c0 30-160 30-160 0z" fill="var(--bone)" stroke="var(--line)" stroke-width="3"/>
+        <path id="marrow" class="organ" data-concept="bone_marrow" d="M160 160c0-14 80-14 80 0v300c0 14-80 14-80 0z" fill="#e8a7a0" stroke="#b86b64"/>
+        <path d="M140 200c20 10 20 30 0 40M260 300c-20 10-20 30 0 40" stroke="var(--ox)" stroke-width="3" fill="none"/>
+        <text x="200" y="100" text-anchor="middle" font-size="12">الطبقة الصلبة</text>
+        <text x="200" y="320" text-anchor="middle" font-size="12" fill="#5a2a26">نخاع العظم: مصنع الدم</text>
+        <text x="300" y="220" font-size="11" fill="var(--ox)">وعاء دموي</text>
+        <text x="200" y="520" text-anchor="middle" font-size="11" fill="var(--muted)">العظم حي: ينمو ويلتئم ويصنع الدم</text>
+      </g>
+
+      <!-- أنبوب الدم المفصول -->
+      <g id="viewTube" hidden>
+        <rect x="140" y="60" width="120" height="420" rx="30" fill="none" stroke="var(--line)" stroke-width="4"/>
+        <path id="plasma" class="organ" data-concept="plasma" d="M142 90h116v220H142z" fill="#f3dc8a" opacity=".9"/>
+        <rect x="142" y="310" width="116" height="10" fill="#f6f2ea"/>
+        <path id="rbc_layer" d="M142 320h116v140c0 10-50 20-58 20s-58-10-58-20z" fill="var(--ox)"/>
+        <text x="200" y="210" text-anchor="middle" font-size="13">البلازما (سائل أصفر)</text>
+        <text x="200" y="400" text-anchor="middle" font-size="13" fill="#fff">خلايا الدم</text>
+        <text x="300" y="318" font-size="10">طبقة بيضاء رقيقة</text>
+        <text x="200" y="520" text-anchor="middle" font-size="11" fill="var(--muted)">بعد الدوران بسرعة في جهاز الطرد المركزي</text>
+      </g>
+
+      <!-- قطرة دم مكبّرة -->
+      <g id="viewCells" hidden>
+        <circle cx="200" cy="300" r="170" fill="#f3dc8a" opacity=".5"/>
+        <g id="rbc" class="organ" data-concept="red_blood_cell">
+          <circle cx="150" cy="250" r="18" fill="var(--ox)"/><circle cx="150" cy="250" r="8" fill="#f0b3b0"/>
+          <circle cx="230" cy="220" r="18" fill="var(--ox)"/><circle cx="230" cy="220" r="8" fill="#f0b3b0"/>
+          <circle cx="260" cy="330" r="18" fill="var(--ox)"/><circle cx="260" cy="330" r="8" fill="#f0b3b0"/>
+          <circle cx="140" cy="350" r="18" fill="var(--ox)"/><circle cx="140" cy="350" r="8" fill="#f0b3b0"/>
+          <circle cx="190" cy="400" r="18" fill="var(--ox)"/><circle cx="190" cy="400" r="8" fill="#f0b3b0"/>
+          <circle cx="300" cy="260" r="18" fill="var(--ox)"/><circle cx="300" cy="260" r="8" fill="#f0b3b0"/>
+          <circle cx="110" cy="290" r="18" fill="var(--ox)"/><circle cx="110" cy="290" r="8" fill="#f0b3b0"/>
+        </g>
+        <circle id="wbc" class="organ" data-concept="white_blood_cell" cx="200" cy="300" r="28" fill="#f6f2ea" stroke="#8c7bb0" stroke-width="2"/><circle cx="196" cy="296" r="12" fill="#8c7bb0" opacity=".6"/>
+        <g id="platelet" class="organ" data-concept="platelet" fill="#d7a7e0"><ellipse cx="240" cy="380" rx="7" ry="4"/><ellipse cx="170" cy="200" rx="7" ry="4"/><ellipse cx="285" cy="200" rx="7" ry="4"/><ellipse cx="120" cy="400" rx="7" ry="4"/></g>
+        <text x="200" y="110" text-anchor="middle" font-size="12">قطرة دم تحت المجهر (نموذج؛ النِّسب غير حقيقية)</text>
+        <text x="60" y="500" font-size="11">● كريّة حمراء</text><text x="170" y="500" font-size="11">○ خلية بيضاء</text><text x="290" y="500" font-size="11">▪ صفيحة</text>
+      </g>
+
+      <!-- الشعيرة: محطة التبادل -->
+      <g id="viewCapillary" hidden>
+        <path d="M40 300c40-60 80-60 120 0" fill="none" stroke="var(--ox)" stroke-width="24" stroke-linecap="round"/>
+        <path id="capillaries" class="organ" data-concept="capillary" d="M160 300h80" fill="none" stroke="#e08a8a" stroke-width="8" stroke-linecap="round"/>
+        <path d="M240 300c40-60 80-60 120 0" fill="none" stroke="var(--deox)" stroke-width="24" stroke-linecap="round"/>
+        <g fill="var(--ox)"><circle cx="175" cy="300" r="4"/><circle cx="195" cy="300" r="4"/><circle cx="215" cy="300" r="4"/></g>
+        <path d="M200 285v-50M200 315v50" stroke="var(--teal)" stroke-width="2" marker-end="url(#mT)"/>
+        <defs><marker id="mT" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--teal)"/></marker></defs>
+        <text x="200" y="220" text-anchor="middle" font-size="11">أكسجين ومغذيات إلى الخلايا</text>
+        <text x="200" y="385" text-anchor="middle" font-size="11">فضلات وثاني أكسيد الكربون إلى الدم</text>
+        <text x="90" y="250" text-anchor="middle" font-size="11">شريان</text><text x="310" y="250" text-anchor="middle" font-size="11">وريد</text>
+        <text x="200" y="330" text-anchor="middle" font-size="10">شعيرة: جدار بطبقة واحدة</text>
+        <g id="loop_pulmonary" class="organ" data-concept="pulmonary_circuit" fill="none" stroke="none"><rect x="0" y="0" width="1" height="1"/></g>
+        <g id="loop_systemic" class="organ" data-concept="systemic_circuit" fill="none" stroke="none"><rect x="0" y="0" width="1" height="1"/></g>
+        <g id="whole_loop" class="organ" data-concept="circulation_model" fill="none" stroke="none"><rect x="0" y="0" width="1" height="1"/></g>
+      </g>
+
+      <!-- أدوات الكشف -->
+      <g id="viewTools" hidden>
+        <g id="eye_tool" class="organ" data-concept="observation"><ellipse cx="100" cy="120" rx="50" ry="28" fill="#fff" stroke="var(--fg)" stroke-width="2"/><circle cx="100" cy="120" r="16" fill="var(--teal)"/><circle cx="100" cy="120" r="7" fill="#000"/><text x="100" y="175" text-anchor="middle" font-size="12">العين: أرى ~0.1 مم</text></g>
+        <g id="ruler" class="organ" data-concept="measurement"><rect x="220" y="90" width="150" height="34" fill="#f1d99a" stroke="var(--fg)"/><path d="M235 90v12M250 90v8M265 90v12M280 90v8M295 90v12M310 90v8M325 90v12M340 90v8M355 90v12" stroke="var(--fg)"/><text x="295" y="150" text-anchor="middle" font-size="12">المسطرة: أقيس وأكرر</text></g>
+        <g id="microscope" class="organ" data-concept="instrument"><path d="M80 320c0-40 40-40 40 0v-70h20v70c0 60-60 60-60 0z" fill="#9aa5b1" stroke="var(--fg)"/><rect x="60" y="330" width="100" height="14" fill="#6b7a8a"/><text x="110" y="370" text-anchor="middle" font-size="12">المجهر: يرى الخلايا</text></g>
+        <g id="xray" class="organ" data-concept="instrument"><rect x="230" y="230" width="100" height="120" fill="#1b2430"/><path d="M280 250v80M262 290h36M258 258c6 10 10 10 14 0M308 258c-6 10-10 10-14 0" stroke="#e8eef5" stroke-width="5" stroke-linecap="round"/><text x="280" y="370" text-anchor="middle" font-size="12">الأشعة: ترى العظم</text></g>
+        <g id="stethoscope" class="organ" data-concept="instrument"><path d="M60 420c0 40 20 60 50 60s50-20 50-60" fill="none" stroke="var(--fg)" stroke-width="5"/><circle cx="110" cy="500" r="14" fill="#9aa5b1" stroke="var(--fg)"/><text x="110" y="540" text-anchor="middle" font-size="12">السماعة: تسمع القلب</text></g>
+        <g id="balance" class="organ" data-concept="fair_test"><path d="M280 420v80M230 500h100M240 440l40-10 40 10" stroke="var(--fg)" stroke-width="4" fill="none"/><rect x="226" y="440" width="28" height="12" fill="var(--teal)"/><rect x="306" y="440" width="28" height="12" fill="var(--teal)"/><text x="280" y="540" text-anchor="middle" font-size="12">المقارنة العادلة: شيء واحد يتغير</text></g>
+      </g>
+    </svg>
+    <div class="card" id="conceptCard">اضغط على أي عضو في الرسم لتقرأ بطاقته.</div>
+    <details class="limits" id="limits"><summary>ماذا لا يُظهر هذا الرسم؟</summary><ul id="limitsList"></ul></details>
+  </section>
+
+  <section class="panel" aria-label="الدرس">
+    <h1 id="title"></h1>
+    <div class="q" id="dq"></div>
+    <nav class="steps" id="steps" aria-label="خطوات الدرس"></nav>
+    <div id="stage"></div>
+    <div class="row" id="nav">
+      <button class="btn ghost" id="prev">السابق</button>
+      <button class="btn" id="next">التالي</button>
+      <span style="flex:1"></span>
+      <button class="btn sec" id="speak" title="اقرأ النص بصوت">🔊 اسمع</button>
+    </div>
+    <div class="foot" id="foot"></div>
+  </section>
+</div>
+</div>
+
+<script>
+const DATA = /*__DATA__*/;
+</script>
+<script>
+(function(){
+const hide = (el, b) => el && el.toggleAttribute('hidden', !!b);
+const $ = (s, r=document) => r.querySelector(s), $$ = (s, r=document) => [...r.querySelectorAll(s)];
+const pstore = { get(){ try{ return JSON.parse(localStorage.getItem('atlas:profile')||'null') }catch(e){ return null } }, set(v){ try{ localStorage.setItem('atlas:profile', JSON.stringify(v)) }catch(e){} } };
+let profile = pstore.get();
+function expand(text, gender, name){ let t=text; if(name) t=t.replace(/\{اسم\}/g,name); else t=t.replace(/،?\s*يا \{اسم\}/g,'').replace(/\{اسم\}،\s*/g,'').replace(/\{اسم\}/g,''); return t.replace(/\{([^{}|]*)\|([^{}|]*)\}/g,(_,m,f)=>gender==='f'?f:m); }
+const tx = (t) => typeof t==='string' ? expand(t, profile?.gender||'m', profile?.name||null) : t;
+const hasG = (t) => /\{[^{}|]*\|[^{}|]*\}/.test(t||'');
+const akey = (k, t) => (DATA.audio && DATA.audio[k]) ? k : (hasG(t) ? k + '.' + (profile?.gender||'m') : k);
+const store = { get(k,d){ try{ const v=localStorage.getItem('atlas:'+DATA.id+':'+k); return v?JSON.parse(v):d }catch(e){ return d } }, set(k,v){ try{ localStorage.setItem('atlas:'+DATA.id+':'+k, JSON.stringify(v)) }catch(e){} } };
+let level = store.get('level','A');
+let step = store.get('step',0);
+const progress = store.get('progress',{});   // itemId -> {ok, hints}
+const pulse = store.get('pulse',{rest:null,move:null,after:null});
+const stepsDef = [
+  {id:'hook',  name:'سؤال'},
+  {id:'exp',   name:'تجربتي'},
+  {id:'explain',name:'الأطلس يشرح'},
+  {id:'practice',name:'أتدرب'},
+  {id:'check', name:'أتحقق'},
+  {id:'notebook',name:'دفتري'},
+  {id:'know',  name:'كيف عرفنا؟'},
+  {id:'dedicate', name:'أهدي'},
+];
+const LAYERS = {skin:'الجلد',regions:'المناطق',skeleton:'الهيكل',respiratory:'التنفس',circulatory:'الدم',muscles:'العضلات'};
+let lastSpoken = '', lastKey = '';
+let audioEl = null;
+
+$('#lessonId').textContent = DATA.id + ' · إصدار ' + DATA.version.content;
+
+$('#foot').innerHTML = `آخر مراجعة علمية: ${DATA.version.science_reviewed_on} · المحتوى مولَّد من ملف الدرس المصدر ${DATA.id}.json · التقدم محفوظ على هذا الجهاز فقط.`;
+$('#limitsList').innerHTML = DATA.model_limits.map(l=>`<li>${l}</li>`).join('');
+
+// ---------- atlas ----------
+function setLayers(list){
+  $$('.layer').forEach(g => hide(g, !list.includes(g.dataset.layer)));
+  $$('#layerChips .chip').forEach(c => c.setAttribute('aria-pressed', String(list.includes(c.dataset.layer))));
+}
+$('#layerChips').innerHTML = Object.entries(LAYERS).map(([k,v])=>`<button class="chip" data-layer="${k}" aria-pressed="true">${v}</button>`).join('');
+$$('#layerChips .chip').forEach(c => c.onclick = () => { const g = $(`.layer[data-layer="${c.dataset.layer}"]`); hide(g, !g.hasAttribute('hidden')); c.setAttribute('aria-pressed', String(!g.hasAttribute('hidden'))); });
+const VIEWS = {body:['viewBody','الجسم من الأمام'], section:['viewSection','مقطع داخل القلب'], compare:['viewCompare','رمز ورسم حقيقي'], arm:['viewArm','الذراع: عظم ومفصل وعضلتان'], joint:['viewJoint','داخل المفصل'], bone:['viewBone','داخل العظم'], tube:['viewTube','أنبوب الدم المفصول'], cells:['viewCells','قطرة دم مكبّرة'], capillary:['viewCapillary','الشعيرة: محطة التبادل'], tools:['viewTools','أدوات نعرف بها']};
+const ZOOM2VIEW = {heart_section:'section', compare_shape:'compare', arm:'arm', three_types:'arm', joint_section:'joint', elbow:'joint', shoulder:'joint', compare_joints:'joint', bone_section:'bone', baby_vs_adult:'bone', tube:'tube', cells:'cells', wound:'cells', capillary:'capillary', vessel_wall:'capillary', hand_color:'capillary', instruments:'tools', scene_two_pictures:'tools', ruler_drop:'tools', fair_test:'tools'};
+function view(name){
+  for (const [k,[id,title]] of Object.entries(VIEWS)) hide($('#'+id), k !== name);
+  $('#atlasTitle').textContent = (VIEWS[name]||VIEWS.body)[1];
+}
+function clearFx(){ $$('.hl,.dim,.beating,.flowing,.pulsing,.target-ok').forEach(e => e.classList.remove('hl','dim','beating','flowing','pulsing','target-ok')); }
+function applyAtlas(a){
+  clearFx();
+  if(!a){ view('body'); setLayers(Object.keys(LAYERS)); return; }
+  const needView = (id) => { for (const [k,[vid]] of Object.entries(VIEWS)) { const el = document.getElementById(vid); if (el && el.querySelector('#'+CSS.escape(id))) return k; } return null; };
+  const z = a.zoom || 'body';
+  const vname = ZOOM2VIEW[z] || 'body';
+  view(vname);
+  if(a.layers && vname==='body') setLayers(['skin','regions',...a.layers]);
+  const hl = a.highlight || [];
+  const map = {right_heart:['right_atrium','right_ventricle'], left_heart:['left_atrium','left_ventricle'], atria:['right_atrium','left_atrium'], ventricles:['right_ventricle','left_ventricle'], vessels:['arteries','veins'], neck_artery:['neck_artery'], wrist_artery:['wrist_artery']};
+  hl.flatMap(h => map[h] || [h]).forEach(id => { const el = document.getElementById(id); if(el) el.classList.add('hl'); });
+  if(vname==='body' && hl.length){ const first = document.getElementById((map[hl[0]]||[hl[0]])[0]); if(first){ const vn = needView(first.id); if(vn && vn!=='body' && !ZOOM2VIEW[z]) view(vn); } }
+  if(a.animate==='beat') $('#heart').classList.add('beating');
+  if(a.animate==='flow' || a.animate==='flow_fast') $$('#arteries .vessel, #veins .vessel').forEach(v=>v.classList.add('flowing'));
+  if(a.animate==='pulse') $$('.pulse-point').forEach(p=>p.classList.add('pulsing'));
+  if(a.animate==='two_loops') $$('#viewSection [id^=arrow]').forEach(p=>p.classList.add('flowing'));
+}
+// concept cards (reference layer: always available)
+let locateHandler = null;
+$$('.organ').forEach(el => el.addEventListener('click', () => {
+  if(locateHandler){ locateHandler(el.id); return; }
+  const c = DATA.concepts.find(x => x.id === el.dataset.concept);
+  if(!c){ $('#conceptCard').innerHTML = `<b>${el.dataset.concept==='lungs'?'الرئتان':el.dataset.concept==='leg_muscles'?'عضلات الساق':el.id}</b> — بطاقة هذا العضو في درس آخر.`; return; }
+  const txt = (level==='B' && c.card.B) ? c.card.B : (c.card.A || c.card.B);
+  $('#conceptCard').innerHTML = `<b>${c.term.ar}</b> <span class="en">${c.term.en} · ${c.term.zh} <i>${c.term.pinyin}</i></span><br>${txt}`;
+}));
+
+// ---------- level ----------
+function setLevel(l){ level = l; store.set('level',l); $('#lvA').setAttribute('aria-pressed', String(l==='A')); $('#lvB').setAttribute('aria-pressed', String(l==='B')); render(); }
+$('#lvA').onclick = () => setLevel('A'); $('#lvB').onclick = () => setLevel('B');
+const inLevel = x => !x.level || x.level==='A' || level==='B';
+
+// ---------- speech ----------
+function speak(t, key){
+  if(!t) return;
+  if(audioEl){ audioEl.pause(); audioEl = null; }
+  if('speechSynthesis' in window) speechSynthesis.cancel();
+  const file = key && DATA.audio && (DATA.audio[key] || DATA.audio[key + '.' + (profile?.gender||'m')]);
+  if(file){ // تسجيل بشري مطابق للبصمة إن وُجد، وإلا القارئ الآلي (D09)
+    audioEl = new Audio('audio/' + file);
+    audioEl.onerror = () => { audioEl = null; tts(t); };
+    audioEl.play().catch(() => { audioEl = null; tts(t); });
+    return;
+  }
+  tts(t);
+}
+function tts(t){
+  if(!('speechSynthesis' in window)) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(t); u.lang = 'ar';
+  const v = speechSynthesis.getVoices().find(v => v.lang.startsWith('ar')); if(v) u.voice = v;
+  u.rate = .92; speechSynthesis.speak(u);
+}
+$('#speak').onclick = () => speak(lastSpoken, lastKey);
+
+// ---------- items ----------
+function renderItem(it, mount, {graded=true}={}){
+  const wrap = document.createElement('div'); wrap.className='item';
+  const saved = progress[it.id];
+  wrap.innerHTML = `<div class="meta">${it.id}${it.level?' · مستوى '+(it.level==='A'?'أ':'ب'):''}</div><p>${tx(it.prompt)}</p>`;
+  const fb = document.createElement('div');
+  const done = (ok, hint) => {
+    fb.className = 'fb ' + (ok?'ok':'hint'); fb.textContent = tx(ok ? (it.feedback_correct || 'صحيح.') : (hint || it.feedback_wrong || (profile?.gender==='f'?'حاولي مرة أخرى.':'حاول مرة أخرى.')));
+    if(graded){ const p = progress[it.id] || {hints:0, ok:false}; if(ok) p.ok = true; else p.hints++; progress[it.id]=p; store.set('progress',progress); markSteps(); }
+  };
+  if(it.type==='locate_on_atlas'){
+    const b = document.createElement('button'); b.className='btn sec'; b.textContent = 'اضغط على الموضع في الرسم';
+    b.onclick = () => { b.textContent='…اضغط الآن على الرسم'; const vn = (()=>{ for (const [k,[vid]] of Object.entries(VIEWS)) { const el = document.getElementById(vid); if (el && el.querySelector('#'+CSS.escape(it.atlas_target))) return k; } return 'body'; })(); view(vn); if(vn==='body') setLayers(Object.keys(LAYERS));
+      locateHandler = (id) => { locateHandler=null; b.textContent='اضغط على الموضع في الرسم'; const ok = id===it.answer; if(ok){ document.getElementById(id)?.classList.add('target-ok'); } done(ok); }; };
+    wrap.append(b);
+  } else if(['choose','choose_reason','predict'].includes(it.type) && it.options){
+    const opts = document.createElement('div'); opts.className='opts';
+    it.options.forEach((o,i)=>{ const b=document.createElement('button'); b.className='opt'; b.innerHTML=`<span class="n">${i+1}.</span> ${tx(o)}`;
+      b.onclick=()=>{ const ok = i===it.answer; $$('.opt',opts).forEach(x=>x.classList.remove('right','wrong')); b.classList.add(ok?'right':'wrong'); done(ok); }; opts.append(b); });
+    wrap.append(opts);
+  } else if(it.type==='sequence'){
+    const opts = document.createElement('div'); opts.className='opts'; let picked=[];
+    const hint = document.createElement('p'); hint.className='meta'; hint.textContent='اضغط العناصر بالترتيب الصحيح.';
+    const shuffled = it.options.map((o,i)=>({o,i})).sort(()=>Math.random()-.5);
+    shuffled.forEach(({o,i})=>{ const b=document.createElement('button'); b.className='opt'; b.textContent=o;
+      b.onclick=()=>{ if(b.getAttribute('aria-pressed')==='true') return; picked.push(i); b.setAttribute('aria-pressed','true'); b.innerHTML=`<span class="n">${picked.length}.</span> ${o}`;
+        if(picked.length===it.options.length){ const ok = picked.every((v,k)=>v===it.answer[k]); done(ok); if(!ok){ setTimeout(()=>{ picked=[]; $$('.opt',opts).forEach(x=>{x.removeAttribute('aria-pressed'); x.textContent=x.textContent.replace(/^\d+\.\s*/,'');}); },1500);} } }; opts.append(b); });
+    wrap.append(hint, opts);
+  } else { // open: explain_open, true_false_why, fix_model, compare
+    const ta = document.createElement('textarea'); ta.id = 'ta_'+it.id.replace(/\W/g,'_'); ta.placeholder='اكتب جوابك، أو قله لمعلمك/ولي أمرك بصوتك.'; ta.value = (saved && saved.text) || '';
+    const b = document.createElement('button'); b.className='btn ghost'; b.textContent='أظهر الإجابة النموذجية (بعد أن أجيب)';
+    const model = document.createElement('div'); model.className='fb ok'; model.hidden = true; model.innerHTML = `<b>إجابة نموذجية:</b> ${it.answer}${it.rubric?` <span class="tag">يُقيّمه إنسان بالمعيار ${it.rubric}</span>`:''}`;
+    ta.oninput = () => { progress[it.id] = Object.assign(progress[it.id]||{}, {text: ta.value}); store.set('progress',progress); };
+    b.onclick = () => { model.hidden = false; if(graded){ progress[it.id] = Object.assign(progress[it.id]||{}, {answered:true}); store.set('progress',progress); markSteps(); } };
+    wrap.append(ta, b, model);
+  }
+  wrap.append(fb); mount.append(wrap);
+}
+
+// ---------- stages ----------
+const stage = $('#stage');
+let explainIdx = store.get('explainIdx',0);
+function render(){
+  stage.innerHTML=''; lastSpoken='';
+  const s = stepsDef[step].id;
+  $('#prev').disabled = step===0; $('#next').textContent = step===stepsDef.length-1 ? 'أنهيتُ الدرس' : 'التالي';
+  if(s==='hook'){
+    applyAtlas({layers:['skeleton','circulatory'], highlight:['heart']});
+    const fo = DATA.faith?.opening;
+    stage.innerHTML = (fo ? `<div class="card" style="margin:0 0 12px;border-style:solid"><b style="font-family:var(--display)">﴿${fo.text}﴾</b> <span class="meta">${fo.reference}</span><br>${tx(fo.reflection||'')}</div>` : '') + `<h3>قبل أن نبدأ</h3><div class="say"><p>${tx(DATA.flow.hook.text)}</p></div><div class="opts" id="hookOpts"></div><p class="meta">هذا توقع فقط ولا يُحتسب. سنكتشف الجواب معاً.</p>`;
+    lastSpoken = tx(DATA.flow.hook.text); lastKey = 'hook';
+    DATA.flow.hook.options.forEach(o=>{ const b=document.createElement('button'); b.className='opt'; b.textContent=o; b.onclick=()=>{ $$('#hookOpts .opt').forEach(x=>x.removeAttribute('aria-pressed')); b.setAttribute('aria-pressed','true'); store.set('hook',o); }; if(store.get('hook')===o) b.setAttribute('aria-pressed','true'); $('#hookOpts').append(b); });
+  }
+  if(s==='exp'){
+    applyAtlas({layers:['circulatory'], highlight:['wrist_artery','neck_artery'], animate:'pulse', zoom:'body'});
+    const e = DATA.experiment;
+    stage.innerHTML = `<h3>${e.title}</h3>
+      <div class="safety"><b>قواعد السلامة أولاً:</b><ul>${e.safety.map(x=>`<li>${tx(x)}</li>`).join('')}</ul></div>
+      <ol>${e.steps.map(x=>`<li>${tx(x)}</li>`).join('')}</ol>
+      <div class="counter">
+        <div class="timer" id="timer">15</div>
+        <button class="tap" id="tap">ابدأ العدّ<br><small style="font-weight:500">اضغط مع كل دفعة</small></button>
+        <div class="row" style="margin:0"><button class="opt" data-slot="rest">سجّل كـ«راحة»</button><button class="opt" data-slot="move">سجّل كـ«بعد الحركة»</button><button class="opt" data-slot="after">سجّل كـ«بعد الراحة»</button></div>
+      </div>
+      <div class="pulse-box">
+        <div class="slot"><div class="lbl">راحة</div><div class="val" id="v_rest">—</div></div>
+        <div class="slot"><div class="lbl">بعد الحركة</div><div class="val" id="v_move">—</div></div>
+        <div class="slot"><div class="lbl">بعد الراحة</div><div class="val" id="v_after">—</div></div>
+      </div>
+      <div id="expExplain"></div>`;
+    lastSpoken = e.steps.map(tx).join(' '); lastKey = '';
+    let count=0, running=false, t=15, iv=null, lastResult=null;
+    const tap = $('#tap'), timer = $('#timer');
+    tap.onclick = () => {
+      if(!running){ running=true; count=0; t=15; tap.innerHTML='0<br><small style="font-weight:500">اضغط مع كل دفعة</small>';
+        iv = setInterval(()=>{ t--; timer.textContent=t; if(t<=0){ clearInterval(iv); running=false; lastResult=count*4; tap.disabled=false; tap.innerHTML=`${count} × 4 = <b>${lastResult}</b><br><small style="font-weight:500">في الدقيقة · اضغط لتعيد</small>`; timer.textContent='15'; } },1000);
+        return; }
+      count++; tap.innerHTML=`${count}<br><small style="font-weight:500">اضغط مع كل دفعة</small>`;
+    };
+    const show = () => { for(const k of ['rest','move','after']) $('#v_'+k).innerHTML = pulse[k]!=null ? `${pulse[k]}<small> /دقيقة</small>` : '—';
+      if(pulse.rest!=null && pulse.move!=null){ const d = pulse.move - pulse.rest; $('#expExplain').innerHTML = `<div class="fb ${d>0?'ok':'hint'}">${d>0?`زاد نبضك${profile?.gender==='f'?'ِ':''} ${d} دفعة في الدقيقة بعد الحركة.`:'لم يزد العدد؛ أعد العدّ بعد حركة أطول قليلاً، أو تأكد من موضع الإصبعين.'}${pulse.after!=null?(pulse.after<pulse.move?' ثم عاد ينخفض بعد الراحة.':' ولم ينخفض بعد؛ انتظر دقيقة أخرى وأعد العدّ.'):''}</div><h3>لماذا حدث هذا؟</h3><p>${tx(e.explain)}</p>`; lastSpoken = tx(e.explain); lastKey = 'experiment.explain'; } };
+    $$('[data-slot]').forEach(b => b.onclick = () => { if(lastResult==null) { b.classList.add('wrong'); setTimeout(()=>b.classList.remove('wrong'),800); return; } pulse[b.dataset.slot]=lastResult; store.set('pulse',pulse); show(); });
+    show();
+  }
+  if(s==='explain'){
+    const scenes = DATA.flow.explain.filter(inLevel);
+    explainIdx = Math.min(explainIdx, scenes.length-1);
+    const sc = scenes[explainIdx];
+    applyAtlas(sc.atlas);
+    stage.innerHTML = `<h3>${sc.id} <span class="tag ${sc.level==='B'?'b':''}">مستوى ${sc.level==='A'?'أ':'ب'}</span> <span class="meta">${explainIdx+1} / ${scenes.length}</span></h3>
+      <div class="say"><p>${tx(sc.text)}</p></div>
+      <div class="row"><button class="btn ghost" id="scPrev" ${explainIdx===0?'disabled':''}>المشهد السابق</button><button class="btn sec" id="scNext" ${explainIdx===scenes.length-1?'disabled':''}>المشهد التالي</button></div>
+      ${explainIdx===scenes.length-1 ? `<h3>أرقام تدهشك</h3><div class="numbers">${DATA.numbers.map(n=>`<div class="num">${n.text}</div>`).join('')}</div>`:''}`;
+    lastSpoken = tx(sc.text); lastKey = 'explain.' + sc.id;
+    $('#scPrev').onclick=()=>{explainIdx--; store.set('explainIdx',explainIdx); render();};
+    $('#scNext').onclick=()=>{explainIdx++; store.set('explainIdx',explainIdx); render();};
+    const seen = store.get('seen',[]); if(!seen.includes(sc.id)){ seen.push(sc.id); store.set('seen',seen); }
+    setTimeout(()=>speak(tx(sc.text), 'explain.' + sc.id), 150);
+  }
+  if(s==='practice' || s==='check'){
+    applyAtlas({layers:['skeleton','circulatory'], highlight:[]});
+    const list = (s==='practice'?DATA.flow.practice:DATA.flow.check).filter(inLevel);
+    stage.innerHTML = `<h3>${s==='practice'?'أتدرب مع إرشاد':'أتحقق بمثال جديد'}</h3><p class="meta">${s==='practice'?'الخطأ هنا طبيعي ويعطيك تلميحاً.':'أمثلة لم تظهر في الشرح. النجاح من المحاولة الأولى يُسجَّل «مستقلاً».'}</p>`;
+    list.forEach(it => renderItem(it, stage));
+  }
+  if(s==='notebook'){
+    applyAtlas({layers:['skeleton','circulatory'], highlight:['heart']});
+    const n = DATA.flow.notebook;
+    stage.innerHTML = `<h3>دفتر الأطلس — من الذاكرة</h3><p>${tx(n.draw)}</p><p><b>أسمّي:</b> ${n.label.join(' · ')}</p><p><b>أكتب:</b> ${n.write}</p>
+      <p class="meta">الأفضل أن ترسم على الورق في دفترك. يمكنك أيضاً الرسم هنا بإصبعك ثم تعرضه على معلمك أو ولي أمرك؛ تقييم الرسم يقوم به إنسان لا التطبيق.</p>
+      <canvas id="draw" width="800" height="600"></canvas><div class="row"><button class="btn ghost" id="clear">امسح</button><button class="btn sec" id="doneNb">رسمتُ وسمّيت ✓</button></div>`;
+    lastSpoken = tx(n.draw); lastKey = 'notebook';
+    const cv = $('#draw'), ctx = cv.getContext('2d'); let drawing=false;
+    const saved = store.get('drawing'); if(saved){ const im = new Image(); im.onload=()=>ctx.drawImage(im,0,0); im.src=saved; }
+    ctx.lineWidth=4; ctx.lineCap='round'; ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent');
+    const pos = ev => { const r=cv.getBoundingClientRect(); const p = ev.touches?ev.touches[0]:ev; return [(p.clientX-r.left)*cv.width/r.width,(p.clientY-r.top)*cv.height/r.height]; };
+    const start=ev=>{drawing=true; ctx.beginPath(); ctx.moveTo(...pos(ev)); ev.preventDefault();};
+    const move=ev=>{ if(!drawing) return; ctx.lineTo(...pos(ev)); ctx.stroke(); ev.preventDefault(); };
+    const end=()=>{ if(drawing){ drawing=false; try{ store.set('drawing', cv.toDataURL()); }catch(e){} } };
+    cv.addEventListener('pointerdown',start); cv.addEventListener('pointermove',move); window.addEventListener('pointerup',end);
+    $('#clear').onclick=()=>{ctx.clearRect(0,0,cv.width,cv.height); store.set('drawing',null);};
+    $('#doneNb').onclick=()=>{ store.set('notebook',true); markSteps(); $('#doneNb').textContent='تم ✓'; };
+  }
+  if(s==='know'){
+    applyAtlas({layers:['circulatory'], highlight:['heart','lungs'], animate:'flow'});
+    const k = DATA.flow.how_we_know;
+    stage.innerHTML = `<h3>كيف عرفنا؟</h3><div class="say"><p>${tx(k.text)}</p></div>
+      <h3>${tx(k.limit_question)}</h3><textarea id="limitAns" placeholder="اكتب أو قل لمعلمك…"></textarea>
+      <details class="limits" style="margin-top:8px"><summary>قارن إجابتك بقائمة الدرس</summary><ul>${DATA.model_limits.map(l=>`<li>${l}</li>`).join('')}</ul></details>
+      <h3>ماذا بعد؟</h3><p>بعد ثلاثة أيام يظهر لك استرجاع قصير (${DATA.assessment.delayed_recall.filter(inLevel).length} أسئلة). ثم «أفكّر أبعد»: ${DATA.assessment.transfer.filter(inLevel).map(t=>tx(t.prompt).split('؟')[0]+'؟').join(' · ')}</p>
+      ${DATA.life_application?.length ? `<h3>في حياتي</h3>${DATA.life_application.map((a,i)=>`<div class="card" style="margin-bottom:8px"><b>${tx(a.situation)}</b><br><span class="meta">ما يحدث في جسمي:</span> ${tx(a.science)}<br><span class="meta">ما أفعله:</span> ${tx(a.action)}${a.why?`<details style="margin-top:4px"><summary style="cursor:pointer;color:var(--teal)">لماذا؟</summary><p>${tx(a.why)}</p></details>`:''}<br><span class="tag">${tx(a.value)}</span> ${a.reference?`<span class="meta">${a.reference}</span>`:''} <button class="chip" data-life="${i}">🔊</button></div>`).join('')}` : ''}
+      ${DATA.history?.length ? `<h3>علماء حضارتنا</h3>${DATA.history.map(h=>`<div class="card" style="margin-bottom:8px"><b>${h.who}</b> <span class="meta">${h.origin?h.origin+' · ':''}${h.where_when}</span><br><b>فعل:</b> ${h.did}<br><b>لم يفعل:</b> ${h.did_not}<br><span class="tag">${h.method_lesson}</span></div>`).join('')}` : ''}
+      ${DATA.open_questions?.length ? `<h3>ما لا يعرفه أحد بعد</h3>${DATA.open_questions.map(q=>`<div class="card" style="margin-bottom:8px"><b>❓ ${tx(q.q)}</b><br>${tx(q.why_open)}</div>`).join('')}<p class="meta">عندك{|ِ} سؤال لم يُجب عنه الدرس؟ ضع{|ي}ه في صندوق الأسئلة المؤجلة في الصفحة الرئيسية.</p>`.replace(/\{([^|}]*)\|([^}]*)\}/g,(m,a,b)=>profile?.gender==='f'?b:a) : ''}
+      ${DATA.faith?.closing ? `<div class="card" style="border-style:solid;margin-top:12px"><b style="font-family:var(--display)">«${DATA.faith.closing.text}»</b> <span class="meta">${DATA.faith.closing.reference}</span><br>${tx(DATA.faith.closing.reflection||'')}</div>` : ''}
+      ${DATA.organ_letter ? `<h3>رسالة من أعضاء جسمي — ${DATA.organ_letter.from}</h3><div class="card" style="font-size:1.05rem">${tx(DATA.organ_letter.text)}</div><div class="row"><button class="btn sec" id="speakLetter">🔊 اسمع الرسالة</button></div>` : ''}
+      ${DATA.passport?.length ? `<h3>جواز سفر جسمي</h3><div class="numbers">${DATA.passport.map(q=>`<div class="num"><b>${tx(q.label)}</b><br><span class="meta">${tx(q.formula)}</span><br><span id="pp_${q.id}" style="font-family:var(--display);font-size:1.3rem;font-variant-numeric:tabular-nums"></span> ${q.unit!=='—'?q.unit:''}<br><small class="meta">${tx(q.note||'')}</small></div>`).join('')}</div>` : ''}
+      <p class="meta">المعرفة المؤجلة لهذا الدرس: ${DATA.deferred.map(d=>`${d.what} → ${d.to}`).join(' · ')}</p>`;
+    if(DATA.organ_letter) $('#speakLetter').onclick = () => speak(tx(DATA.organ_letter.text), 'organ_letter');
+    $$('[data-life]').forEach(b => b.onclick = () => { const a = DATA.life_application[+b.dataset.life]; speak(tx([a.situation,a.science,a.action,a.why||'',a.value].join(' ')), 'life.'+(+b.dataset.life+1)); });
+    // جواز السفر: حسابات من قياسات الطفل المحفوظة
+    const rest = pulse.rest; const fmt = n => Math.round(n).toLocaleString('ar-EG');
+    for(const q of DATA.passport||[]){ const el = $('#pp_'+q.id); if(!el) continue;
+      if(q.id==='beats_day' && rest) el.textContent = fmt(rest*60*24);
+      else if(q.id==='beats_year' && rest) el.textContent = fmt(rest*60*24*365);
+      else if(q.id==='pumped_day' && rest) el.textContent = fmt(rest*60*24*0.05);
+      else if(q.inputs?.length) el.textContent = '— (يحتاج قياسك{|ِ})'.replace(/\{[^}]*\}/, profile?.gender==='f'?'ِ':''); else el.textContent = q.formula.replace(/[^0-9,٠-٩]/g,'') ? '' : ''; }
+    lastSpoken = tx(k.text); lastKey = 'how_we_know';
+    $('#limitAns').value = store.get('limitAns','');
+    $('#limitAns').oninput = e => { store.set('limitAns', e.target.value); markSteps(); };
+  }
+  if(s==='dedicate'){
+    applyAtlas({layers:['circulatory'], highlight:['heart']});
+    const g = profile?.gender==='f';
+    const concepts = DATA.concepts.map(c=>c.term.ar);
+    const nums = [pulse.rest?`نبضي في الراحة ${pulse.rest}`:null, pulse.move?`بعد الحركة ${pulse.move}`:null].filter(Boolean).join('، ');
+    const d = store.get('dedication',{type:'teach',concept:concepts[0],text:'',status:'draft'});
+    stage.innerHTML = `<h3>تعلّم · افهم · طبّق · <span style="color:var(--accent)">انشر</span></h3>
+      <p><b style="font-family:var(--display);color:var(--accent)">${g?'ما تعلّمتِه ليس لكِ وحدكِ.':'ما تعلّمتَه ليس لك وحدك.'}</b> ${g?'تعلّمتِ وفهمتِ وطبّقتِ. الآن أهدي ما تعلمتِه لطفل آخر بصوتكِ.':'تعلّمتَ وفهمتَ وطبّقتَ. الآن أهدِ ما تعلمتَه لطفل آخر بصوتك.'} <span class="meta">الإهداء الكامل يُفتح بعد اكتمال الوحدة؛ هنا تمرين على إهداء هذا الدرس.</span></p>
+      <div class="seg" role="group" aria-label="نوع الإهداء" style="margin:8px 0"><button data-t="teach" aria-pressed="${d.type==='teach'}">أعلّمك مفهوماً</button><button data-t="share" aria-pressed="${d.type==='share'}">أشاركك تجربتي</button><button data-t="dare" aria-pressed="${d.type==='dare'}">أتحدّاك</button></div>
+      <label for="dedConcept"><b>المفهوم:</b></label> <select id="dedConcept">${concepts.map(c=>`<option ${c===d.concept?'selected':''}>${c}</option>`).join('')}</select>
+      <div class="card" id="scaffold"></div>
+      <textarea id="dedText" placeholder="${g?'اكتبي ما ستقولينه، أو سجّلي صوتكِ مباشرة في التطبيق':'اكتب ما ستقوله، أو سجّل صوتك مباشرة في التطبيق'}">${d.text||''}</textarea>
+      <div class="row"><input type="file" id="dedAudio" accept="audio/*" style="font-size:.85rem"><span class="meta">ملف صوتي (اختياري في هذا النموذج)</span></div>
+      <div class="safety"><b>بوابة الاعتماد:</b> لا يُنشر الإهداء قبل أن يسمعه ولي أمرك أو معلمك ويقيّم دقته (0/1/2). الاسم الأول فقط، ولا صورة وجه، ولا إرسال تلقائي.</div>
+      <div class="row"><button class="btn" id="dedSubmit">أرسله للاعتماد</button><span class="meta" id="dedStatus">${d.status==='pending'?'بانتظار اعتماد ولي الأمر':d.status==='approved'?'معتمد ✓ — جاهز للمشاركة':''}</span></div>`;
+    const scaffolds = {
+      teach: (c)=>`<b>هيكل إهدائك:</b><ol><li>ابدأ${g?'ي':''} بسؤال يملكه السامع: «${tx(DATA.driving_question)}»</li><li>اشرح${g?'ي':''} «${c}» برسمك${g?'ِ':''} من الدفتر، بجملتين أو ثلاث.</li><li>اذكر${g?'ي':''} شيئاً واحداً لا يُظهره رسمك${g?'ِ':''}.</li><li>اختم${g?'ي':''} بسؤال للسامع.</li></ol>`,
+      share: (c)=>`<b>هيكل إهدائك:</b><ol><li>ماذا فعلت${g?'ِ':''} في التجربة «${DATA.experiment.title}»؟</li><li>أرقامك${g?'ِ':''}: ${nums||'(سجّل التجربة أولاً)'}.</li><li>ماذا لاحظت${g?'ِ':''}؟ ولماذا حدث؟</li><li>ادعُ${g?'ي':''} السامع ليجرّب ويقارن.</li></ol>`,
+      dare: (c)=>`<b>هيكل إهدائك:</b><ol><li>اطرح${g?'ي':''} سؤالاً عن «${c}» تعرف${g?'ين':''} جوابه.</li><li>أعط${g?'ي':''} تلميحاً واحداً.</li><li>قل${g?'ي':''} الجواب في النهاية وسببه.</li></ol>`,
+    };
+    const renderScaffold = () => { $('#scaffold').innerHTML = scaffolds[d.type]($('#dedConcept').value); };
+    renderScaffold();
+    $$('[data-t]').forEach(b => b.onclick = () => { d.type=b.dataset.t; $$('[data-t]').forEach(x=>x.setAttribute('aria-pressed', String(x===b))); renderScaffold(); store.set('dedication',d); });
+    $('#dedConcept').onchange = () => { d.concept=$('#dedConcept').value; renderScaffold(); store.set('dedication',d); };
+    $('#dedText').oninput = e => { d.text=e.target.value; store.set('dedication',d); };
+    $('#dedSubmit').onclick = () => { if(!d.text && !$('#dedAudio').files.length){ $('#dedStatus').textContent='اكتب أو أرفق صوتاً أولاً.'; return; } d.status='pending'; store.set('dedication',d); $('#dedStatus').textContent='بانتظار اعتماد ولي الأمر'; markSteps(); };
+    lastSpoken = ''; lastKey='';
+  }
+  $$('#steps button').forEach((b,i)=>b.setAttribute('aria-current', i===step?'step':'false'));
+  markSteps();
+}
+function markSteps(){
+  const okAll = ids => ids.length && ids.every(id => progress[id] && (progress[id].ok || progress[id].answered));
+  const done = {
+    hook: !!store.get('hook'), exp: pulse.rest!=null && pulse.move!=null,
+    explain: DATA.flow.explain.filter(inLevel).every(sc => store.get('seen',[]).includes(sc.id)),
+    practice: okAll(DATA.flow.practice.filter(inLevel).map(i=>i.id)), check: okAll(DATA.flow.check.filter(inLevel).map(i=>i.id)),
+    notebook: !!store.get('notebook'), know: !!store.get('limitAns'), dedicate: ['pending','approved'].includes(store.get('dedication',{}).status),
+  };
+  $$('#steps button').forEach((b,i)=>b.classList.toggle('done', !!done[stepsDef[i].id]));
+}
+$('#steps').innerHTML = stepsDef.map((s,i)=>`<button data-i="${i}">${i+1}. ${s.name}</button>`).join('');
+$$('#steps button').forEach(b => b.onclick = () => { step = +b.dataset.i; store.set('step',step); render(); });
+$('#prev').onclick = () => { if(step>0){ step--; store.set('step',step); render(); } };
+$('#next').onclick = () => { if(step<stepsDef.length-1){ step++; store.set('step',step); render(); } else { stage.innerHTML += `<div class="fb ok">${profile?.gender==='f'?`أحسنتِ يا ${profile.name}، أنهيتِ درس ${DATA.id}. ما أثبتِّه مستقلةً محفوظ هنا؛ ما يحتاج تقييم إنسان (الرسم والشرح) اعرضيه على معلمتك أو ولي أمرك.`:`أحسنت يا ${profile?.name||''}، أنهيت درس ${DATA.id}. ما أثبتّه مستقلاً محفوظ هنا؛ ما يحتاج تقييم إنسان (الرسم والشرح) اعرضه على معلمك أو ولي أمرك.`}</div>`; } };
+
+// ---------- الملف الشخصي ----------
+function greetName(){ const n = profile?.name||''; return profile?.gender==='f' ? `أهلاً يا ${n}` : `أهلاً يا ${n}`; }
+function showProfile(edit){
+  const sc = $('#profileScreen'); sc.hidden = false; $('.grid').hidden = true;
+  $('#pfName').value = profile?.name||''; let g = profile?.gender||null; let photo = profile?.photo||null;
+  const setG = v => { g=v; $('#pfBoy').setAttribute('aria-pressed', String(v==='m')); $('#pfGirl').setAttribute('aria-pressed', String(v==='f')); };
+  setG(g);
+  const showPhoto = () => { if(photo){ $('#pfPreview').src=photo; $('#pfPreview').hidden=false; $('#pfPh').hidden=true; } };
+  showPhoto();
+  $('#pfBoy').onclick=()=>setG('m'); $('#pfGirl').onclick=()=>setG('f');
+  $('#pfFile').onchange = ev => { const f = ev.target.files[0]; if(!f) return; const im = new Image(); const url = URL.createObjectURL(f);
+    im.onload = () => { const c = document.createElement('canvas'); const S=256; c.width=c.height=S; const x=c.getContext('2d'); const r=Math.min(im.width,im.height); x.drawImage(im,(im.width-r)/2,(im.height-r)/2,r,r,0,0,S,S); photo=c.toDataURL('image/jpeg',.8); URL.revokeObjectURL(url); showPhoto(); }; im.src=url; };
+  $('#pfGo').onclick = () => { const name = $('#pfName').value.trim(); const err=$('#pfErr');
+    if(!name){ err.textContent='اكتب اسمك أولاً.'; err.hidden=false; return; } if(!g){ err.textContent='اختر: ولد أم بنت؟'; err.hidden=false; return; }
+    profile = {name, gender:g, photo}; pstore.set(profile); sc.hidden=true; $('.grid').hidden=false; applyProfile(); render(); };
+}
+function applyProfile(){
+  $('#title').textContent = DATA.title.ar; $('#dq').textContent = tx(DATA.driving_question);
+  if(!profile) return;
+  $('#whoami').hidden = false; $('#whoName').textContent = profile.name; if(profile.photo){ $('#whoImg').src=profile.photo; $('#whoImg').hidden=false; }
+  document.title = `الأطلس الحي — ${profile.name}`;
+}
+$('#whoami').onclick = () => showProfile(true);
+if(!profile){ showProfile(false); } else { applyProfile(); }
+
+// ---------- شاشة ولي الأمر / المعلم ----------
+const RUB = Object.fromEntries((DATA.assessment.rubrics||[]).map(r=>[r.for,r.levels]));
+function openItems(){ const all=[...DATA.flow.check, ...DATA.assessment.items, ...DATA.assessment.transfer]; return all.filter(it => ['explain_open','true_false_why','fix_model','compare'].includes(it.type) && inLevel(it)); }
+function renderReview(){
+  const body = $('#reviewBody'); const items = openItems();
+  const saved = store.get('drawing'); const ded = store.get('dedication',null);
+  const score = (id, k) => (progress[id]||{}).human?.[k];
+  body.innerHTML = `<p class="meta">الطفل: <b>${profile?.name||'—'}</b> · الدرس ${DATA.id} · ${items.length} إجابة مفتوحة تحتاج تقييم إنسان. الدرجات: 0 لا يذكر الفكرة · 1 صحيحة غير مكتملة · 2 صحيحة كاملة بلغته.</p>
+    <h3>١. الإجابات المفتوحة</h3>` +
+    items.map(it => { const p = progress[it.id]||{}; const lv = RUB[it.rubric]||RUB['R1']||{};
+      return `<div class="item"><div class="meta">${it.id} · هدف ${it.objective.split('.').pop()}</div><p><b>${tx(it.prompt)}</b></p>
+        <div class="card" style="margin:6px 0"><b>إجابة الطفل:</b> ${p.text ? p.text.replace(/</g,'&lt;') : '<span class="meta">لم يكتب؛ قد يكون أجاب شفهياً</span>'}</div>
+        <details><summary class="meta" style="cursor:pointer">الإجابة النموذجية والمعيار</summary><p>${it.answer}</p><ul class="meta">${['0','1','2'].map(k=>`<li><b>${k}</b>: ${lv[k]||''}</li>`).join('')}</ul></details>
+        <div class="row" style="margin-top:6px">${['0','1','2'].map(k=>`<button class="opt" data-score="${k}" data-item="${it.id}" aria-pressed="${String(score(it.id,'score')==+k)}">${k}</button>`).join('')}<input class="meta" data-note="${it.id}" placeholder="ملاحظة (اختياري)" value="${(p.human?.note||'').replace(/"/g,'&quot;')}" style="flex:1;min-width:8em;font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg)"></div></div>`; }).join('') +
+    `<h3>٢. دفتر الأطلس (الرسم من الذاكرة)</h3><p class="meta">${tx(DATA.flow.notebook.draw)}</p>${saved?`<img src="${saved}" alt="رسم الطفل" style="max-width:100%;border:1px solid var(--line);border-radius:10px;background:#fff">`:'<p class="meta">لا رسم محفوظ في التطبيق؛ قيّم الرسم الورقي.</p>'}
+     <div class="row" style="margin-top:6px">${['0','1','2'].map(k=>`<button class="opt" data-score="${k}" data-item="__notebook" aria-pressed="${String(score('__notebook','score')==+k)}">${k}</button>`).join('')}<span class="meta">${(RUB['R3-notebook']||{})['2']||''}</span></div>
+    <h3>٣. الإهداء</h3>${ded && ded.status!=='draft' ? `<div class="card"><b>${({teach:'أعلّمك مفهوماً',share:'أشاركك تجربتي',dare:'أتحدّاك'})[ded.type]||''}</b> · ${ded.concept||''}<br>${(ded.text||'').replace(/</g,'&lt;')||'<span class="meta">صوتي / بلا نص</span>'}<br><span class="meta">الحالة: ${ded.status==='approved'?'معتمد ✓':'بانتظار الاعتماد'}</span></div>
+      <div class="row"><button class="btn" id="dedApprove">اعتماد للمشاركة (الدقة العلمية 2)</button><button class="btn ghost" id="dedReturn">إعادة للتصحيح</button><input id="dedNote" placeholder="ما الذي يجب تصحيحه؟" style="flex:1;min-width:10em;font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg)"></div>` : '<p class="meta">لا إهداء مرسل بعد.</p>'}
+    <h3>٤. ملخص</h3><div class="numbers">${(()=>{ const ok = Object.values(progress).filter(p=>p.ok).length; const tried = Object.values(progress).filter(p=>p.ok||p.hints||p.answered).length; const hum = items.filter(it=>(progress[it.id]||{}).human).length; return `<div class="num"><b>${ok}</b><br><span class="meta">بند آلي صحيح</span></div><div class="num"><b>${tried}</b><br><span class="meta">بند جُرّب</span></div><div class="num"><b>${hum} / ${items.length}</b><br><span class="meta">إجابة مفتوحة قُيّمت</span></div><div class="num"><b>${pulse.rest?pulse.rest+' / '+(pulse.move||'—'):'—'}</b><br><span class="meta">نبض راحة / حركة</span></div>`; })()}</div>
+    <p class="meta">هذه المؤشرات للمتابعة لا للحكم؛ النجاح بعد تلميح يُسجَّل «بمساعدة». يُقيَّم الفهم العلمي منفصلاً عن القراءة والكتابة.</p>`;
+  $$('[data-score]',body).forEach(b => b.onclick = () => { const id=b.dataset.item; progress[id]=Object.assign(progress[id]||{},{human:Object.assign((progress[id]||{}).human||{},{score:+b.dataset.score,by:'adult',at:Date.now()})}); store.set('progress',progress); $$(`[data-item="${CSS.escape(id)}"]`,body).forEach(x=>x.setAttribute('aria-pressed', String(x===b))); });
+  $$('[data-note]',body).forEach(i => i.onchange = () => { const id=i.dataset.note; progress[id]=Object.assign(progress[id]||{},{human:Object.assign((progress[id]||{}).human||{},{note:i.value})}); store.set('progress',progress); });
+  const da=$('#dedApprove'); if(da){ da.onclick=()=>{ const d=store.get('dedication',{}); d.status='approved'; d.note=''; store.set('dedication',d); renderReview(); };
+    $('#dedReturn').onclick=()=>{ const d=store.get('dedication',{}); d.status='draft'; d.note=$('#dedNote').value; store.set('dedication',d); renderReview(); }; }
+}
+function openReview(){
+  $('.grid').hidden = true; $('#profileScreen').hidden = true; $('#reviewScreen').hidden = false;
+  let pin=null; try{ pin=localStorage.getItem('atlas:pin'); }catch(e){}
+  $('#pinHint').textContent = pin ? 'أدخل الرقم.' : 'أول مرة: اختر رقماً من 4 أرقام يفتح هذه الشاشة لاحقاً.';
+  $('#pinGate').hidden=false; $('#reviewBody').hidden=true; $('#pin').value='';
+  $('#pinGo').onclick=()=>{ const v=$('#pin').value.trim(); if(!/^\d{4}$/.test(v)){ $('#pinErr').textContent='أربعة أرقام.'; $('#pinErr').hidden=false; return; }
+    if(!pin){ try{ localStorage.setItem('atlas:pin',v); }catch(e){} pin=v; }
+    if(v!==pin){ $('#pinErr').textContent='الرقم غير صحيح.'; $('#pinErr').hidden=false; return; }
+    $('#pinGate').hidden=true; $('#reviewBody').hidden=false; renderReview(); };
+}
+$('#parentBtn').onclick=openReview;
+$('#reviewClose').onclick=()=>{ $('#reviewScreen').hidden=true; $('.grid').hidden=false; render(); };
+setLevel(level);
+})();
+</script>

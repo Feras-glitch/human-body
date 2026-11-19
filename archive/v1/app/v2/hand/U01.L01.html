@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="color-scheme" content="light only">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مهمة الطبيب الصغير</title>
+<link rel="stylesheet" href="../fonts/app-fonts.css">
+<link rel="stylesheet" href="engine.css">
+
+</head>
+<body>
+<div id="app">
+  <header>
+    <button class="home" id="homeBtn" title="خريطتي"><img src="img/ui-home.webp" alt="خريطتي" style="width:30px"></button>
+    <div class="bar"><i id="barFill"></i></div>
+    <span class="stars"><img src="img/ui-star.webp" alt="" style="width:18px;vertical-align:-3px"> <span id="starsTxt">0</span></span>
+  </header>
+  <main id="main"></main>
+  <footer><div class="fwrap">
+    <button class="back" id="backBtn" title="السابق">→</button>
+    <button class="next" id="nextBtn">التالي</button>
+    <button class="spk" id="spkBtn" title="اسمع"><img src="img/ui-speaker.webp" alt="اسمع" style="width:28px"></button>
+  </div></footer>
+</div>
+<div class="confetti" id="confetti"></div>
+<script>
+const LESSON = { id:'U01.L01', unit:'U01', title:'مهمة الطبيب الصغير', next:'index.html', home:'index.html',
+  check_ids:['U01.L01.P1','U01.L01.P2','U01.L01.P3','U01.L01.C1','U01.L01.C2','U01.L01.C3','U01.L01.C5'] };
+/* ===== مصطلحات الدرس (عربي · English · 中文 مبسّطة + pinyin) ===== */
+const TERMS = [
+  {id:'head',ar:'الرأس',en:'head',zh:'头',py:'tóu'},{id:'neck',ar:'العنق',en:'neck',zh:'脖子',py:'bózi'},{id:'chest',ar:'الصدر',en:'chest',zh:'胸',py:'xiōng'},
+  {id:'abdomen',ar:'البطن',en:'abdomen',zh:'腹部',py:'fùbù'},{id:'back',ar:'الظهر',en:'back',zh:'背',py:'bèi'},{id:'upperarm',ar:'العضد',en:'upper arm',zh:'上臂',py:'shàngbì'},
+  {id:'forearm',ar:'الساعد',en:'forearm',zh:'前臂',py:'qiánbì'},{id:'hand',ar:'اليد',en:'hand',zh:'手',py:'shǒu'},{id:'elbow',ar:'المرفق',en:'elbow',zh:'肘',py:'zhǒu'},
+  {id:'wrist',ar:'الرسغ',en:'wrist',zh:'手腕',py:'shǒuwàn'},{id:'thigh',ar:'الفخذ',en:'thigh',zh:'大腿',py:'dàtuǐ'},{id:'leg',ar:'الساق',en:'lower leg',zh:'小腿',py:'xiǎotuǐ'},
+  {id:'foot',ar:'القدم',en:'foot',zh:'脚',py:'jiǎo'},{id:'height',ar:'الطول',en:'height',zh:'身高',py:'shēngāo'},{id:'span',ar:'الباع',en:'arm span',zh:'臂展',py:'bìzhǎn'},
+  {id:'right',ar:'يمين',en:'right',zh:'右',py:'yòu'},{id:'left',ar:'يسار',en:'left',zh:'左',py:'zuǒ'},{id:'front',ar:'أمام',en:'front',zh:'前',py:'qián'},
+  {id:'behind',ar:'خلف',en:'back / behind',zh:'后',py:'hòu'},{id:'up',ar:'أعلى',en:'up / above',zh:'上',py:'shàng'},{id:'down',ar:'أسفل',en:'down / below',zh:'下',py:'xià'},
+  {id:'model',ar:'النموذج',en:'model',zh:'模型',py:'móxíng'}
+];
+</script>
+<script src="engine.js"></script>
+<script>
+const SCENES = [
+/* 0 — المستوى والبطل */
+{ id:'start', render(){ ok(); const lv = level;
+  return `<div class="scene">${scenePic('s01-title-'+(g()?'girl':'boy'))}
+    <h1>مهمة الطبيب الصغير</h1>
+    <p class="say"><b>{اسم}</b>، أنا <b>لمّاح</b>، رفيقك{|ِ} في هذه الرحلة. اليوم عندنا مهمة حقيقية: نساعد صديقاً يتألم… ولا نراه!</p>
+    <p class="note">اختر{|ي} مستواك{|ِ} (تستطيع{|ين} تغييره لاحقاً):</p>
+    <div class="lvl"><button data-l="A" aria-pressed="${lv!=='B'}">🌱 مستوى أ · 8–9</button><button data-l="B" aria-pressed="${lv==='B'}">🌳 مستوى ب · 10–12</button></div></div>`; },
+  after(){ $$('.lvl button').forEach(b=>b.onclick=()=>{ level=b.dataset.l; store.set('level',level); $$('.lvl button').forEach(x=>x.setAttribute('aria-pressed', String(x===b))); }); if(!level){ level='A'; store.set('level','A'); } speak(tx('{اسم}، أنا لمّاح، رفيقك في هذه الرحلة. اليوم عندنا مهمة حقيقية: نساعد صديقاً يتألم ولا نراه!')); } },
+
+/* 1 — الموقف: مكالمة */
+{ id:'call', render(){ ok(); return `<div class="scene">${scenePic('s02-call-'+(g()?'girl':'boy'))}
+    ${sayNar('رنّ الهاتف. صديقك{|ِ} <b>سامي</b> سقط في الملعب ويتألم. الطبيب على الهاتف يسأل: <b>«أين الألم بالضبط؟»</b>')}
+    ${sayNar('سامي يقول: «هنا! هنا!» ويشير بيده… لكن الطبيب <b>لا يراه</b>.')}
+    ${scenePic('s03-here')}
+    ${sayBuddy('كلمة «هنا» لا تسافر عبر الهاتف! نحتاج إلى <b>أسماء</b>. هل تعرف{|ين} أسماء أجزاء الجسم كلها؟ هيا نكتشفها.')}</div>`; },
+  after(){ speak(tx('رنّ الهاتف. صديقك سامي سقط في الملعب ويتألم. الطبيب يسأل: أين الألم بالضبط؟ سامي يقول: هنا! هنا! لكن الطبيب لا يراه. كلمة هنا لا تسافر عبر الهاتف. نحتاج إلى أسماء.')); } },
+
+/* 2 — اكتشاف الخريطة: المس كل جزء ليُسمّى */
+{ id:'discover', render(){ need(); return `<div class="scene"><h2>المس{|ي} كل جزء من الجسم لتعرف{|ي} اسمه</h2>
+    ${bodyMap({side:'front'})}
+    <div class="row" id="chips">${['head','neck','chest','abdomen','upperarm_r','forearm_r','hand_r','thigh','leg','foot'].map(k=>`<span class="chip off" data-k="${k}">${REGIONS[k].ar}</span>`).join('')}</div>
+    <div class="fb" id="fb"></div></div>`; },
+  after(){ const found=new Set(store.get('found',[])); const base=id=>id.replace(/_l$/,'').replace(/_r$/,'_r'); const upd=()=>{ $$('.hot').forEach(h=>{ if(found.has(h.dataset.ar)){ h.classList.add('lit'); h.querySelector('.label').removeAttribute('hidden'); } }); $$('#chips .chip').forEach(c=>c.className='chip '+(found.has(REGIONS[c.dataset.k].ar)?'done':'off')); if(found.size>=10){ $('#fb').className='fb ok'; $('#fb').textContent='اكتملت الخريطة! عشرة أسماء في جيبك.'; ok(); } };
+    upd(); $$('.hot').forEach(h=>h.onclick=()=>{ const ar=h.dataset.ar; if(!found.has(ar)){ found.add(ar); store.set('found',[...found]); award(0); } speak(ar); $('#fb').className='fb ok'; $('#fb').textContent='هذا '+ar+'.'; upd(); });
+    speak(tx('المس كل جزء من الجسم لتعرف اسمه.')); } },
+
+/* 3 — الذراع ثلاثة أجزاء */
+{ id:'arm', render(){ ok(); return `<div class="scene">${sayBuddy('لاحظت{|ِ}؟ الذراع ليست جزءاً واحداً. اثنِ{|ي} ذراعك{|ِ} من المنتصف: المكان الذي ينثني هو <b>المرفق</b>. وحرّك{|ي} كفك{|ِ} لأعلى ولأسفل: المكان الذي يتحرك عنده هو <b>الرسغ</b>.')}
+    ${sayNar('الآن سهل: من الكتف إلى المرفق: <b>العضد</b>. من المرفق إلى الرسغ: <b>الساعد</b>. وبعد الرسغ: <b>اليد</b>.')}
+    <div class="row" style="justify-content:center;align-items:center;gap:18px"><img src="img/s05-arm-parts.webp" alt="" style="height:340px;border-radius:18px"><div style="display:flex;flex-direction:column;gap:44px;font-family:var(--display);font-size:1.3rem"><span style="color:#E05A47">■ العضد<br><small style="font-size:.8rem;color:var(--muted)">من الكتف إلى المرفق</small></span><span style="color:#1E8F82">■ الساعد<br><small style="font-size:.8rem;color:var(--muted)">من المرفق إلى الرسغ</small></span><span style="color:#C9961A">■ اليد<br><small style="font-size:.8rem;color:var(--muted)">بعد الرسغ</small></span></div></div>
+    ${sayNar('جرّب{|ي} الآن على جسمك{|ِ}: المس{|ي} عضدك{|ِ}، ثم ساعدك{|ِ}، ثم يدك{|ِ}. وقل{|ي} الأسماء بصوت عالٍ.')}</div>`; },
+  after(){ speak(tx('الذراع ليست جزءاً واحداً. اثنِ ذراعك من المنتصف: المكان الذي ينثني هو المرفق. وحرّك كفك لأعلى ولأسفل: المكان الذي يتحرك عنده هو الرسغ. من الكتف إلى المرفق: العضد. من المرفق إلى الرسغ: الساعد. وبعد الرسغ: اليد.')); } },
+
+/* 4 — تدريب: المس ما أسمّيه */
+{ id:'find', render(){ need(); return `<div class="scene"><h2 id="ask">لمّاح يقول: المس{|ي} <span id="target" style="color:var(--coral-d)">…</span></h2>${bodyMap({side:'front'})}<div class="fb" id="fb"></div><p class="note" id="cnt"></p></div>`; },
+  after(){ const seq=['forearm_r','abdomen','neck','thigh','hand_r']; let i=0, firstTry=true; const set=()=>{ $('#target').textContent=REGIONS[seq[i]].ar; $('#cnt').textContent=`${i+1} من ${seq.length}`; speak('المس '+REGIONS[seq[i]].ar); $$('.hot').forEach(h=>h.classList.remove('want')); };
+    set(); $$('.hot').forEach(h=>h.onclick=()=>{ const right = h.dataset.ar===REGIONS[seq[i]].ar; if(i===0 && firstTry){ mark('U01.L01.P1', right); firstTry=false; }
+      if(right){ h.classList.add('lit'); h.querySelector('.label').removeAttribute('hidden'); $('#fb').className='fb ok'; $('#fb').textContent='صحيح!'; i++; if(i>=seq.length){ award(); $('#ask').textContent='أنت{|ِ} الآن تعرف{|ين} الخريطة!'; $('#ask').textContent=tx($('#ask').textContent); ok(); speak('ممتاز، أنت تعرف الخريطة.'); } else setTimeout(set,700); }
+      else { $('#fb').className='fb bad'; $('#fb').textContent=tx('هذا '+h.dataset.ar+'. ابحث{|ي} عن '+REGIONS[seq[i]].ar); document.querySelector(`.hot[data-id="${seq[i]}"]`).classList.add('want'); }
+    }); } },
+
+/* 5 — البطن ليست المعدة */
+{ id:'belly', render(){ ok(); return `<div class="scene">${scenePic('s06-belly')}
+    <p class="note" style="text-align:center">البطن من الأمام: الكبد في يمين الجسم (يسار الصورة)، والمعدة في يساره، والأمعاء تحتهما.</p>
+    ${sayBuddy('سامي قال: «بطني تؤلمني». هل قال أين بالضبط؟ لا! <b>البطن منطقة كبيرة</b> فيها المعدة والأمعاء والكبد وغيرها. فحين تقول{|ين} «بطني» فأنت{|ِ} تسمّي <b>منطقة</b>، لا عضواً واحداً.')}
+    ${sayNar('فكّر{|ي}: المعدة عضو واحد في أعلى البطن، مائل إلى اليسار قليلاً. البطن أكبر من المعدة بكثير.')}</div>`; },
+  after(){ speak(tx('سامي قال: بطني تؤلمني. هل قال أين بالضبط؟ لا. البطن منطقة كبيرة فيها المعدة والأمعاء والكبد. حين تقول بطني فأنت تسمي منطقة لا عضواً واحداً.')); } },
+
+/* 6 — تحقق: البطن = المعدة؟ */
+{ id:'q_belly', render(){ need(); return `<div class="scene">${choice({id:'U01.L01.P2', prompt:'قال زميل{ك|تكِ}: «المعدة هي البطن كلها». ما رأيك{|ِ}؟', options:['صحيح، الكلمتان بمعنى واحد','خطأ: البطن منطقة، والمعدة عضو واحد داخلها','خطأ: المعدة في الصدر'], answer:1, why:'البطن منطقة فيها أعضاء كثيرة؛ المعدة واحد منها.'})}</div>`; }, after(){ speak(tx('قال زميلك: المعدة هي البطن كلها. ما رأيك؟')); } },
+
+/* 7 — الاتجاهات */
+{ id:'dirs', render(){ ok(); return `<div class="scene">${scenePic('s07-directions-'+(g()?'girl':'boy'))}
+    ${sayBuddy('الطبيب يحتاج أيضاً إلى <b>اتجاهات</b>: أعلى أم أسفل؟ أمام أم خلف؟ يمين أم يسار؟ الرأس <b>أعلى</b> العنق. الصدر <b>أمام</b> والظهر <b>خلف</b>.')}
+    ${sayNar('انظر{|ي} إلى السوار الأحمر: هو في <b>اليد اليمنى</b> في الصورتين. من الأمام يظهر على يسار الصورة، ومن الخلف على يمينها — لأن اليمين يمين <b>صاحب الجسم</b>، لا يمين الصورة.')}</div>`; },
+  after(){ speak(tx('الطبيب يحتاج أيضاً إلى اتجاهات: أعلى أم أسفل؟ أمام أم خلف؟ يمين أم يسار؟ الرأس أعلى العنق. الصدر أمام والظهر خلف. انظر إلى السوار الأحمر: هو في اليد اليمنى في الصورتين، لأن اليمين يمين صاحب الجسم لا يمين الصورة.')); } },
+
+/* 7ب — يمين من؟ */
+{ id:'rl', render(){ ok(); return `<div class="scene">${scenePic('s08-handshake')}
+    ${sayNar('يمين سامي هو يمينه <b>هو</b>، لا يمينك{|ِ} أنت{|ِ}. حين يقف أمامك{|ِ} شخص يكون يمينه على يسارك{|ِ}.')}
+    ${sayNar('جرّب{|ي} الآن: صافح{|ي} شخصاً أمامك{|ِ}. يدك{|ِ} اليمنى تلقى يده اليمنى، وهما متقابلتان لا متطابقتان.')}</div>`; },
+  after(){ speak(tx('يمين سامي هو يمينه هو، لا يمينك أنت. حين يقف أمامك شخص يكون يمينه على يسارك. جرّب: صافح شخصاً أمامك؛ يدك اليمنى تلقى يده اليمنى.')); } },
+
+/* 8 — تحقق: اتجاه */
+{ id:'q_dir', render(){ need(); return `<div class="scene">${choice({id:'U01.L01.P3', prompt:'الطبيبة تقول لأم سامي: «ضعي يدكِ على الجانب الأيمن من بطن سامي». الأم تقف أمام سامي وتواجهه. أين تضع يدها؟', options:['على يمين سامي نفسه — وهو يقع على يسارها هي','على يمينها هي','لا فرق؛ اليمين واحد للجميع'], answer:0, why:'اليمين واليسار دائماً بالنسبة إلى صاحب الجسم. ومن يواجهك يكون يمينه على يسارك.'})}</div>`; }, after(){ speak(tx('الطبيبة تقول لأم سامي: ضعي يدك على الجانب الأيمن من بطن سامي. الأم تقف أمام سامي وتواجهه. أين تضع يدها؟')); } },
+
+/* 9أ — كلمتان جديدتان: الطول والباع */
+{ id:'words', render(){ ok(); return `<div class="scene">${scenePic('s09-measure-'+(g()?'girl':'boy'))}
+    <h2>كلمتان جديدتان</h2>
+    <div class="card"><b style="color:var(--coral-d);font-family:var(--display);font-size:1.2rem">الطول</b>: المسافة من أسفل قدميك{|ِ} إلى أعلى رأسك{|ِ} وأنت{|ِ} واقف{|ة}. في الصورة: العلامة على الحائط فوق الرأس.</div>
+    <div class="card"><b style="color:var(--teal-d);font-family:var(--display);font-size:1.2rem">الباع</b>: افتح{|ي} ذراعيك{|ِ} جانباً كالطائر. المسافة من طرف أصابع اليد اليمنى إلى طرف أصابع اليد اليسرى هي <b>الباع</b>. في الصورة: الشريط الأصفر.</div>
+    ${sayBuddy('سؤالنا في التجربة: هل باعك{|ِ} يساوي طولك{|ِ}؟ لا تخمّن{|ي}… قس{|ي}!')}</div>`; },
+  after(){ speak(tx('كلمتان جديدتان. الطول: المسافة من أسفل قدميك إلى أعلى رأسك وأنت واقف. الباع: افتح ذراعيك جانباً كالطائر؛ المسافة من طرف أصابع اليد إلى طرف أصابع اليد الأخرى هي الباع. سؤالنا: هل باعك يساوي طولك؟ لا تخمن، قس!')); } },
+
+/* 9 — التجربة: الطول والباع */
+{ id:'measure', render(){ need(); const m=store.get('measure',{}); return `<div class="scene"><div class="row" style="justify-content:center">${buddy(110,'think')}</div><h2>تجربة: هل باعك{|ِ} يساوي طولك{|ِ}؟</h2>
+    ${sayBuddy('خذ{|ي} شريط قياس أو خيطاً ومسطرة، واطلب{|ي} مساعدة بالغ. أولاً: قس{|ي} <b>طولك{|ِ}</b> واقفاً{|ةً} بظهرك{|ِ} إلى الحائط. ثانياً: افتح{|ي} ذراعيك{|ِ} وقس{|ي} <b>باعك{|ِ}</b>. اكتب{|ي} الرقمين هنا بالسنتيمتر.')}
+    <div class="measure"><label>طولي (سم)</label><input type="number" id="h" value="${m.h||''}" min="80" max="200"></div>
+    <div class="measure"><label>باعي (سم)</label><input type="number" id="s" value="${m.s||''}" min="80" max="200"></div>
+    <div id="bars" style="margin:10px 0"></div><div class="fb" id="fb"></div>
+    <p class="note">لا نقارن بين الأطفال؛ كل واحد يقارن طوله بباعه هو.</p></div>`; },
+  after(){ const upd=()=>{ const h=+$('#h').value, s=+$('#s').value; if(h>50&&s>50){ store.set('measure',{h,s}); const mx=Math.max(h,s); $('#bars').innerHTML=`<div class="note">الطول</div><div class="mbar" style="width:${h/mx*100}%"></div><div class="note">الباع</div><div class="mbar b" style="width:${s/mx*100}%"></div>`; const d=Math.abs(h-s); $('#fb').className='fb ok'; $('#fb').textContent = d<=5 ? `الفرق ${d} سم فقط! الباع يقارب الطول عند أغلب الناس.` : `الفرق ${d} سم. عند أغلب الناس الفرق صغير، وبعض الناس يختلفون — وهذا طبيعي.`; if(!done){ award(); ok(); } } }; $('#h').oninput=upd; $('#s').oninput=upd; upd(); speak(tx('خذ شريط قياس وقس طولك، ثم مدّ ذراعيك وقس الباع. هل الرقمان متقاربان؟')); } },
+
+/* 10 — الرسم نموذج */
+{ id:'model', render(){ ok(); return `<div class="scene">${scenePic('s10-model-hand')}
+    ${sayBuddy('انظر{|ي} إلى هذه اليد المرسومة: الأصابع ملوّنة بألوان مختلفة! هل أصابعك{|ِ} هكذا؟ طبعاً لا. الرسم <b>نموذج</b>: يلوّن ليميّز، ويكبّر ليوضح، ويحذف ليبسّط.')}
+    ${sayNar('كل رسم في هذا المنهاج نموذج. نسأله دائماً سؤالين: <b>ماذا يُظهر؟</b> و<b>ماذا يخفي؟</b>')}</div>`; },
+  after(){ speak(tx('انظر إلى هذه اليد المرسومة: الأصابع ملونة بألوان مختلفة. هل أصابعك هكذا؟ طبعاً لا. الرسم نموذج: يلون ليميز، ويكبر ليوضح، ويحذف ليبسط.')); } },
+
+/* 11 — تحقق النموذج */
+{ id:'q_model', render(){ need(); return `<div class="scene">${scenePic('s11-bones-book')}${choice({id:'U01.L01.C2', prompt:'لماذا تُرسم العظام في كتب الأطفال بيضاء ناصعة ومنفصلة؟', options:['لأنها بيضاء ومنفصلة فعلاً','لتُرى بوضوح؛ الرسم نموذج','خطأ في الرسم'], answer:1, why:'في الجسم تغطيها أنسجة ولونها عاجي؛ الرسم يبسّط ليوضح.'})}</div>`; }, after(){ speak(tx('لماذا ترسم العظام في كتب الأطفال بيضاء ناصعة ومنفصلة؟')); } },
+
+/* 12 — تحقق: مكان على وضعية مختلفة */
+{ id:'q_pose', render(){ need(); return `<div class="scene"><h2>هذه صورتك{|ِ} من <b>الخلف</b>. المس{|ي} <span style="color:var(--coral-d)">الظهر</span>.</h2>${bodyMap({side:'back', size:170})}<div class="fb" id="fb"></div></div>`; },
+  after(){ let first=true; $$('.hot').forEach(h=>h.onclick=()=>{ const right=h.dataset.id==='back'; if(first){ mark('U01.L01.C1',right); first=false; } if(right){ h.classList.add('lit'); h.querySelector('.label').removeAttribute('hidden'); $('#fb').className='fb ok'; $('#fb').textContent='صحيح! الظهر هو الجهة الخلفية من الجسم، خلف الصدر والبطن.'; award(); ok(); speak('صحيح'); } else { $('#fb').className='fb bad'; $('#fb').textContent='هذا '+h.dataset.ar+'. الظهر خلف الصدر والبطن.'; } }); speak(tx('هذه صورتك من الخلف. المس الظهر.')); } },
+
+/* 13 — تحقق مفتوح: صف الأذن */
+{ id:'q_open', render(){ need(); const v=store.get('open_C3',''); return `<div class="scene">${scenePic('s13-ear-doctor')}<h2>الآن أنت{|ِ} الطبيب{|ة}. صف{|ي} مكان <b>الأذن</b> بجملة فيها اتجاهان مختلفان.</h2>
+    ${sayBuddy('مثال على اتجاهين: «أعلى» و«جانب». لا تقل{|ي} «هنا»!')}
+    <textarea id="ans" placeholder="الأذن في…">${v}</textarea><p class="note">يقرؤها ولي أمرك{|ِ} أو معلمك{|ِ} ويقيّمها. يمكنك{|ِ} أيضاً أن تقولها بصوتك{|ِ}.</p></div>`; },
+  after(){ $('#ans').oninput=e=>{ store.set('open_C3',e.target.value); mark('U01.L01.C3', false, {text:e.target.value, answered:true}); progress['U01.L01.C3'].hints=0; store.set('progress',progress); if(e.target.value.trim().length>8) ok(); }; if(store.get('open_C3','').length>8) ok(); speak(tx('الآن أنت الطبيب. صف مكان الأذن بجملة فيها اتجاهان مختلفان.')); } },
+
+/* 14 — كيف عرفنا: البغدادي */
+{ id:'history', render(){ ok(); return `<div class="scene">${scenePic('s14-baghdadi')}
+    <h2>كيف عرفنا؟ قصة طبيب فحص بنفسه</h2>
+    ${sayNar('قبل أكثر من ثمانمئة سنة، في القاهرة، كانت الكتب تقول إن عظم الفك السفلي عظمان. لكن الطبيب <b>عبد اللطيف البغدادي</b> نظر بعينيه في أكثر من ألفي جمجمة… فوجده <b>عظماً واحداً</b>. فقال: ما رأيته بعيني أصدق مما في الكتاب.')}
+    ${sayBuddy('وهذا منهجنا من أول درس: ننظر ونصف بدقة، ونقول «لا أعرف بعد» حين لا نعرف.')}</div>`; },
+  after(){ speak(tx('قبل أكثر من ثمانمئة سنة في القاهرة كانت الكتب تقول إن عظم الفك السفلي عظمان. لكن الطبيب عبد اللطيف البغدادي نظر بعينيه في أكثر من ألفي جمجمة فوجده عظماً واحداً. ما رأيته بعيني أصدق مما في الكتاب.')); } },
+
+/* 15 — الآية */
+{ id:'verse', render(){ ok(); const V=QURAN['17:36']; const txt=V&&V.smart ? V : null;
+  return `<div class="scene"><div class="verse"><div class="lead">قال الله تعالى:</div>
+    ${txt ? `<div class="txt quran">${mushaf(txt,null)}</div>` : `<div class="txt quran" style="color:var(--muted);font-size:1.1rem">[نص الآية يُعرض من مصحف المدينة بعد إدخاله في quran/verses.json]</div>`}
+    <div class="ref">[سورة ${V?V.surah_ar:'الإسراء'}: الآية ${V?V.ayah:36}]</div>
+    <div class="mean"><b>ما معناها لنا اليوم؟</b> لا نقول شيئاً لا نعرفه. حين لا نعرف نقول: «لا أعرف بعد»، ثم ننظر ونقيس. وما نسمعه ونراه ونفكر فيه سنُسأل عنه.</div></div>
+    ${sayBuddy('البغدادي لم يقل ما لم يره. وأنت{|ِ} أيضاً: حين يسألك{|ِ} الطبيب «أين الألم؟» تصف{|ين} ما تحسّ{|ين} به فعلاً.')}</div>`; },
+  after(){ speak('قال الله تعالى: ولا تقف ما ليس لك به علم، إن السمع والبصر والفؤاد كل أولئك كان عنه مسؤولا. سورة الإسراء، الآية ستة وثلاثون. معناها لنا اليوم: لا نقول شيئاً لا نعرفه.'); } },
+
+/* 16 — في حياتي */
+{ id:'life', render(){ ok(); return `<div class="scene">${scenePic('s16-life-phone-'+(g()?'girl':'boy'))}<h2>في حياتي</h2>
+    <div class="card"><b>الموقف:</b> أتصل بطبيب لأصف ألماً.<br><b>ما أفعله:</b> أسمّي المنطقة والاتجاه بدقة بدل «هنا».<br><b>لماذا؟</b> الطبيب لا يرى ما أحسّه؛ هو يعتمد على كلامي. كلمة «هنا» تضيع، و«أسفل البطن من اليمين» تصل. الله رزقني لساناً ينقل ما في جسمي، فأستعمله بدقة ليساعدني من يريد مساعدتي.</div>
+    ${scenePic('s17-friends-heights')}
+    <div class="card"><b>الموقف:</b> صديقي أقصر مني أو أطول.<br><b>ما أفعله:</b> لا أسخر ولا أتباهى.<br><b>لماذا؟</b> الناس يختلفون في الطول والشكل، والله لا ينظر إلى الصور بل إلى القلوب والأعمال.</div>
+    <div class="verse" style="margin-top:10px"><div class="lead">قال رسول الله ﷺ:</div><div class="txt" style="font-size:1.25rem">«إن الله لا ينظر إلى صوركم وأموالكم، ولكن ينظر إلى قلوبكم وأعمالكم»</div><div class="ref">رواه مسلم (2564) — حديث صحيح</div></div></div>`; },
+  after(){ speak(tx('في حياتي. حين أتصل بطبيب أسمي المنطقة والاتجاه بدقة بدل هنا، لأن الطبيب لا يرى ما أحسه. وصديقي الأقصر أو الأطول لا أسخر منه، فالله لا ينظر إلى الصور بل إلى القلوب والأعمال.')); } },
+
+/* 17 — دفتري: ارسم من الذاكرة */
+{ id:'draw', render(){ ok(); return `<div class="scene"><h2>دفتري: ارسم{|ي} جسماً من الذاكرة وسمِّ{|ي} أجزاءه</h2>${scenePic('s18-notebook')}
+    <canvas id="cv" width="500" height="520"></canvas>
+    <div class="row" style="margin-top:8px"><button class="opt" style="width:auto;margin:0" id="clr">🧽 امسح</button><span class="note">ثم على الورق: اكتب{|ي} الأسماء الإحدى عشرة بجوار الرسم.</span></div></div>`; },
+  after(){ const cv=$('#cv'), c=cv.getContext('2d'); const saved=store.get('drawing',null); if(saved){ const im=new Image(); im.onload=()=>c.drawImage(im,0,0); im.src=saved; } let dr=false; const pos=e=>{ const r=cv.getBoundingClientRect(); const t=e.touches?e.touches[0]:e; return [(t.clientX-r.left)*cv.width/r.width,(t.clientY-r.top)*cv.height/r.height]; };
+    const st=e=>{dr=true;const[x,y]=pos(e);c.beginPath();c.moveTo(x,y);e.preventDefault()}, mv=e=>{if(!dr)return;const[x,y]=pos(e);c.lineWidth=5;c.lineCap='round';c.strokeStyle='#2A2422';c.lineTo(x,y);c.stroke();e.preventDefault()}, en=()=>{ if(dr){dr=false; store.set('drawing',cv.toDataURL()); } };
+    cv.onmousedown=st;cv.onmousemove=mv;cv.onmouseup=en;cv.onmouseleave=en;cv.ontouchstart=st;cv.ontouchmove=mv;cv.ontouchend=en; $('#clr').onclick=()=>{c.clearRect(0,0,cv.width,cv.height); store.set('drawing',null)}; speak(tx('ارسم جسماً من الذاكرة وسمّ أجزاءه.')); } },
+
+/* 17ب — مصطلحات الدرس بثلاث لغات */
+{ id:'glossary', render(){ ok(); return `<div class="scene"><div class="row" style="justify-content:center">${buddy(100,'happy')}</div><h2>كلمات تعلمتها اليوم — بثلاث لغات</h2>
+    <p class="note">المس{|ي} الكلمة لتسمعها. 🇪🇬 عربي · 🇬🇧 English · 🇨🇳 中文 (مبسّطة + بينين)</p>
+    ${TERMS.map(t=>`<div class="card" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;text-align:center;padding:10px">
+      <button class="opt" style="margin:0;padding:10px 6px;text-align:center;font-family:var(--display);font-size:1.15rem" data-say="ar" data-k="${t.id}">${t.ar}</button>
+      <button class="opt" style="margin:0;padding:10px 6px;text-align:center" data-say="en" data-k="${t.id}" dir="ltr">${t.en}</button>
+      <button class="opt" style="margin:0;padding:8px 6px;text-align:center;line-height:1.3" data-say="zh" data-k="${t.id}" dir="ltr"><span style="font-size:1.3rem">${t.zh}</span><br><small style="color:var(--muted)">${t.py}</small></button></div>`).join('')}
+    <p class="note">ولي الأمر أو المعلم يستطيع تسجيل هذه الكلمات بصوته؛ وحتى ذلك يقرؤها القارئ الآلي.</p></div>`; },
+  after(){ $$('[data-say]').forEach(b=>b.onclick=()=>{ const t=TERMS.find(x=>x.id===b.dataset.k); const lang=b.dataset.say; sayTerm(t,lang); b.classList.add('ok'); setTimeout(()=>b.classList.remove('ok'),600); }); speak(tx('كلمات تعلمتها اليوم بثلاث لغات. المس الكلمة لتسمعها.')); } },
+
+/* 18 — الختام */
+{ id:'end', render(){ ok(); const okc=LESSON.check_ids.filter(i=>progress[i]&&(progress[i].ok||progress[i].answered)).length; store.set('finished',true); if(!store.get('finishedAt',null)) store.set('finishedAt',Date.now());
+  return `<div class="scene" style="text-align:center"><img src="img/s19-badge.webp" alt="" style="width:200px;margin:8px auto;display:block;animation:spin 1.2s ease"><h1>أنهيت{|ِ} مهمة الطبيب الصغير!</h1>
+    <p class="say">الآن حين يسأل الطبيب «أين الألم؟» تعرف{|ين} الجواب: اسم المنطقة والاتجاه. ${stars} نجمة · ${okc} من ${LESSON.check_ids.length} مهام محلولة.</p>
+    <div class="row" style="justify-content:center">${buddy(120,'party')}</div>${sayBuddy('بعد ثلاثة أيام سأعود إليك{|ِ} بثلاثة أسئلة سريعة، لنرى ما بقي في الذاكرة. وفي الدرس القادم: <b>كيف نعرف؟</b> سنقيس سرعة يدك{|ِ}!')}
+    <div class="row" style="justify-content:center;margin-top:14px"><button class="opt" style="width:auto" id="goHome">🏠 خريطتي</button><button class="opt" style="width:auto;background:var(--teal);color:#fff" id="goNext">الدرس التالي ←</button></div></div>`; },
+  after(){ confetti(); $('#goHome').onclick=()=>location.href=LESSON.home; $('#goNext').onclick=()=>location.href=LESSON.next; speak(tx('أنهيت مهمة الطبيب الصغير! الآن حين يسأل الطبيب أين الألم تعرف الجواب.')); } },
+];
+
+boot();
+</script>
+</body>
+</html>

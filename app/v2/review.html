@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="color-scheme" content="light only">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="state.js"></script>
+<script src="build-info.js"></script>
+<title>لولي الأمر والمعلم</title>
+<link rel="stylesheet" href="fonts/app-fonts.css">
+<link rel="stylesheet" href="engine.css">
+<style>
+main{padding-bottom:40px}
+.sec{background:var(--card);border-radius:22px;padding:14px 16px;margin:12px 0;box-shadow:0 3px 0 var(--line)}
+.sec h2{color:var(--teal-d);margin-top:0}
+table{width:100%;border-collapse:collapse;font-size:.95rem} td,th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:right} th{color:var(--muted);font-weight:500}
+.ok{color:var(--ok)} .bad{color:var(--bad)}
+.ans{background:#FFF9EC;border-radius:14px;padding:10px 12px;margin:6px 0;white-space:pre-wrap}
+.model{color:var(--muted);font-size:.9rem}
+.rub{display:flex;gap:6px;margin:6px 0}
+.rub button{flex:1;background:#fff;border:2px solid var(--line);border-radius:12px;padding:8px 4px;font-size:.9rem;line-height:1.3}
+.rub button[aria-pressed=true]{border-color:var(--teal);background:#E6F7F4}
+.note{color:var(--muted);font-size:.9rem}
+img.draw{width:100%;background:#fff;border:2px solid var(--line);border-radius:16px}
+.sum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.sum div{background:#FFF9EC;border-radius:14px;padding:8px} .sum b{display:block;font-family:var(--display);font-size:1.5rem;color:var(--coral-d)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.tabs button{background:#fff;border:2px solid var(--line);border-radius:999px;padding:6px 14px;font-family:var(--display)}
+.tabs button[aria-pressed=true]{border-color:var(--teal);background:#E6F7F4}
+header{position:static}
+details.les{background:var(--card);border-radius:18px;margin:8px 0;box-shadow:0 3px 0 var(--line)}
+details.les>summary{list-style:none;cursor:pointer;padding:12px 14px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+details.les>summary::-webkit-details-marker{display:none}
+details.les>summary b{flex:1 1 100%;font-family:var(--display);font-size:1.05rem}
+details.les .in{padding:0 14px 14px}
+.pill{display:inline-block;border-radius:999px;padding:2px 10px;font-size:.9rem;background:#F1EEE6}
+.pill.ok{background:#DFF3E4;color:#155A2A} .pill.bad{background:#FDE3DF;color:#8A2416} .pill.wait{background:#FFF1C7;color:#5A4300}
+.sec h3{margin:14px 0 6px;font-size:1.05rem}
+.anch{font-size:.85rem;color:var(--muted)}
+@media print{
+  header,.tabs,#guardianGate,.noprint,.rub button[aria-pressed=false],audio{display:none!important}
+  body,#app,.sec,details.les{background:#fff!important;box-shadow:none!important}
+  details.les{border:1px solid #ccc} details.les .in{display:block!important}
+  .rub button{border:0!important;background:none!important;padding:0!important}
+}
+.qbtn{font:inherit;padding:7px 14px;border-radius:10px;border:2px solid var(--line);background:#fff;cursor:pointer;display:inline-block}
+</style>
+</head>
+<body><div id="app">
+<header><a class="home" href="index.html" title="خريطتي"><img src="img/ui-home.webp" alt="" style="width:30px"></a><h1 style="font-size:1.3rem;margin:0">لولي الأمر والمعلم</h1></header>
+<section id="guardianGate" class="sec" hidden><h2>دخول ولي الأمر أو المعلم</h2><div id="gateForm"><p id="guardianHelp"></p><label>الرمز <input type="password" inputmode="numeric" id="guardianPin" maxlength="12" autocomplete="off"></label><label id="confirmLabel">تأكيد الرمز <input type="password" inputmode="numeric" id="guardianConfirm" maxlength="12" autocomplete="off"></label><button id="guardianGo">دخول</button><p id="guardianMsg" role="alert"></p><p class="note">الرمز قفل محلي يمنع الطفل من فتح هذه الشاشة؛ لا يشفّر بيانات الجهاز ولا يحميها من بالغ يستعمل الجهاز.</p><button type="button" class="opt" style="width:auto" id="forgotPin" hidden>نسيت الرمز؟</button><div id="resetBox" hidden><div id="recWay"><p>اكتب <b>رمز الاستعادة</b> الذي ظهر لك حين اخترت الرمز (12 حرفاً ورقماً). يُحذف به رمز الشاشة وحده، ولا يُمس تقدّم الطفل ولا تسجيلاته ولا الدرجات.</p><label>رمز الاستعادة <input type="text" id="recCode" autocomplete="off" maxlength="24" dir="ltr" spellcheck="false" style="font:inherit;padding:6px 10px;letter-spacing:.08em;text-transform:uppercase"></label> <button type="button" id="recGo">احذف الرمز</button></div><div id="waitWay"><p id="waitTxt" class="note"></p><button type="button" id="waitGo">اطلب إعادة التعيين</button></div><button type="button" id="resetCancel">إلغاء</button><p id="resetMsg" role="alert"></p></div></div><div id="recoveryBox" hidden><h3>رمز الاستعادة</h3><p>اكتبه على ورقة واحفظه بعيداً عن الطفل. يُطلب إن نسيت رمز الشاشة، و<b>لن يظهر مرة أخرى</b>.</p><p id="recShow" dir="ltr" style="font-size:1.6rem;letter-spacing:.12em;text-align:center;font-family:ui-monospace,Menlo,Consolas,monospace;margin:10px 0"></p><label><input type="checkbox" id="recDone"> كتبتُه وحفظته</label> <button type="button" id="recCont" disabled>متابعة</button></div><a href="index.html">العودة للحسابات</a></section><main id="main" hidden><div class="tabs" id="tabs"></div><div id="body"></div></main>
+</div>
+<script src="review-data.js"></script>
+<script>
+const G = (k, d) => {
+  try {
+    const v = Atlas.storage.getItem(k);
+    return v ? JSON.parse(v) : d
+  } catch (e) {
+    return d
+  }
+};
+const S = (k, v) => {
+  try {
+    Atlas.storage.setItem(k, JSON.stringify(v));
+    return true
+  } catch {
+    Atlas.error('لم يُحفظ التقييم؛ تحقق من مساحة الجهاز');
+    return false
+  }
+};
+const profile = G('atlas:profile', null);
+if (!profile) location.replace('index.html');
+/* سلالم عامة؛ وحين يكتب الدرس مراسيه الخاصة (assessment.rubrics) تظهر هي */
+const RUB = {
+  R1: ['لا يذكر الفكرة أو يذكر تصوراً خاطئاً', 'الفكرة صحيحة غير مكتملة أو بلا سبب', 'الفكرة صحيحة كاملة بلغته مع السبب أو المثال'],
+  R2: ['لا يذكر حداً للنموذج', 'يذكر حداً عاماً', 'يذكر حداً محدداً ويفرّق بين ما يُظهره النموذج وما لا يُظهره'],
+  R3: ['رسم غير مكتمل أو تسميات خاطئة', 'رسم صحيح مع نقص في التسمية', 'رسم وتسميات صحيحة كاملة'],
+  R4: ['لا سؤال أو سؤال أُجيب عنه', 'سؤال صحيح بلا تحديد', 'سؤال محدد الصياغة'],
+};
+/* علامات التذكير والتأنيث في نصوص الدروس تُحلّ بجنس الطفل قبل العرض */
+const gx = s => String(s ?? '').replace(/\{([^|{}]*)\|([^{}]*)\}/g, (_, m, f) => (profile?.gender === 'f' ? f : m));
+addEventListener('beforeprint', () => document.querySelectorAll('details.les').forEach(d => d.open = true));
+const esc = s => String(s ?? '').replace(/[<>&"']/g, c => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&#39;' }[c]));
+const num = x => Number.isFinite(+x) ? +x : 0;
+const OPENISH = new Set(['true_false_why', 'explain_open', 'fix_model', 'compare']);
+const EXTRA = {
+  'U01.L01'() {
+    const m = G('atlas:U01.L01:measure', null);
+    return m && Number.isFinite(+m.h) && Number.isFinite(+m.s) ?
+      `<p>قياس الطفل: الطول <b>${esc(m.h)}</b> سم، الباع <b>${esc(m.s)}</b> سم (الفرق ${Math.abs(+m.h - +m.s)} سم).</p>` :
+      '<p class="note">لم يُسجَّل قياس الطول والباع بعد.</p>';
+  },
+  'U01.L02'() {
+    const r = G('atlas:U01.L02:readings', null), med = G('atlas:U01.L02:median', null), rt = G('atlas:U01.L02:rt', null);
+    return Array.isArray(r) && Number.isFinite(+med) && med !== null ?
+      `<p>قراءات المسطرة: ${esc(r.join('، '))} سم ← الرقم الأوسط <b>${esc(med)}</b> سم ≈ <b>${Number.isFinite(+rt) ? (+rt).toFixed(2) : '—'}</b> ثانية.</p>` :
+      '<p class="note">لم تُسجَّل قراءات المسطرة بعد.</p>';
+  }
+};
+const units = [...new Set(REVIEW.map(l => l.unit))];
+let cur = location.hash.replace('#', '');
+if (!units.includes(cur)) cur = units[0];
+let evidenceMap = {};
+const signature = v => Atlas.signature(v);
+const fmtDate = t => { try { return new Date(t).toLocaleString('ar', { dateStyle: 'medium', timeStyle: 'short' }); } catch { return String(t); } };
+/* رمز الاستعادة يُعرض مرة واحدة: بعد اختيار رمز جديد، أو أول فتح لحساب من قبل 1.3.0، أو طلب رمز جديد */
+function showRecovery(code) {
+  const $id = (x) => document.getElementById(x);
+  $id('main').hidden = true;
+  $id('guardianGate').hidden = false;
+  $id('gateForm').hidden = true;
+  $id('recoveryBox').hidden = false;
+  $id('recShow').textContent = code;
+  $id('recDone').checked = false;
+  $id('recCont').disabled = true;
+  $id('recDone').onchange = () => { $id('recCont').disabled = !$id('recDone').checked; };
+  $id('recCont').onclick = () => { $id('recShow').textContent = ''; $id('recoveryBox').hidden = true; $id('gateForm').hidden = false; render(); };
+}
+function showGuardian() {
+  const $id = (x) => document.getElementById(x);
+  $id('main').hidden = true;
+  $id('guardianGate').hidden = false;
+  if (!$id('recoveryBox').hidden) return; /* رمز استعادة معروض لم يؤكد ولي الأمر كتابته: لا يُخفى */
+  $id('gateForm').hidden = false;
+  $id('resetBox').hidden = true;
+  const setup = !Atlas.hasPin();
+  const req = setup ? null : Atlas.resetRequest();
+  $id('guardianHelp').textContent = setup ?
+    'اختر رمزًا من 4 إلى 12 رقمًا واحفظه. سيظهر لك بعده رمز استعادة تكتبه على ورقة.' :
+    (req ? '⚠ طُلبت إعادة تعيين الرمز في ' + fmtDate(req.at) + '. إن لم تطلبها فأدخل رمزك الآن فيُلغى الطلب. ' : '') + 'أدخل الرمز لعرض نتائج الطفل وتسجيلاته';
+  $id('confirmLabel').hidden = !setup;
+  $id('forgotPin').hidden = setup;
+
+  $id('guardianGo').onclick = async () => {
+    const b = $id('guardianGo');
+    b.disabled = true;
+    try {
+      const pin = $id('guardianPin').value;
+      let code = null;
+      if (setup) {
+        if (pin !== $id('guardianConfirm').value) throw new Error('الرمزان غير متطابقين');
+        code = (await Atlas.setPin(pin))?.recovery || null;
+      } else {
+        await Atlas.unlock(pin);
+        code = await Atlas.ensureRecovery(); /* حساب من قبل 1.3.0 بلا رمز استعادة: يُنشأ له الآن */
+      }
+      $id('guardianPin').value = '';
+      $id('guardianConfirm').value = '';
+      $id('guardianMsg').textContent = '';
+      if (code) showRecovery(code); else render();
+    } catch (e) {
+      $id('guardianMsg').textContent = e.message;
+    } finally {
+      b.disabled = false;
+    }
+  };
+
+  /* «نسيت الرمز؟» (المراجعة 20، ن-1): رمز الاستعادة المكتوب على ورقة، لا سؤال يحلّه الطفل. ومن لا رمز استعادة له
+     أو ضاع منه يطلب إعادة التعيين: تُتاح بعد 3 أيام، ويظهر الطلب في صفحة الحسابات، وفتح الشاشة بالرمز يلغيه. */
+  const waitView = () => {
+    const r = Atlas.resetRequest(), t = $id('waitTxt'), b = $id('waitGo');
+    b.hidden = false;
+    if (!r) {
+      t.textContent = (Atlas.hasRecovery() ? 'ضاع رمز الاستعادة أيضاً؟ ' : 'لا رمز استعادة لهذا الحساب، لأنه أُنشئ قبل أن نضيفه. ') +
+        'اطلب إعادة التعيين: تُتاح بعد 3 أيام، ويظهر الطلب في صفحة الحسابات طوال المدة، وفتح هذه الشاشة بالرمز يلغيه.';
+      b.textContent = 'اطلب إعادة التعيين';
+      b.onclick = () => { try { Atlas.requestReset(); $id('resetMsg').textContent = ''; waitView(); } catch (e) { $id('resetMsg').textContent = e.message; } };
+    } else if (!r.ready) {
+      t.textContent = 'طُلبت إعادة التعيين في ' + fmtDate(r.at) + '، وتُتاح في ' + fmtDate(r.due) + '.';
+      b.hidden = true;
+    } else {
+      t.textContent = 'انقضت مدة الطلب: يمكنك الآن حذف الرمز واختيار رمز جديد.';
+      b.textContent = 'احذف الرمز الآن';
+      b.onclick = () => { try { Atlas.completeReset(); $id('guardianMsg').textContent = 'حُذف الرمز. اختر رمزًا جديدًا.'; showGuardian(); } catch (e) { $id('resetMsg').textContent = e.message; } };
+    }
+  };
+  $id('forgotPin').onclick = () => {
+    $id('recWay').hidden = !Atlas.hasRecovery();
+    $id('resetMsg').textContent = '';
+    waitView();
+    $id('resetBox').hidden = false;
+  };
+  $id('resetCancel').onclick = () => {
+    $id('resetBox').hidden = true;
+  };
+  $id('recGo').onclick = async () => {
+    const b = $id('recGo');
+    b.disabled = true;
+    try {
+      await Atlas.recoverPin($id('recCode').value);
+      $id('recCode').value = '';
+      $id('guardianMsg').textContent = 'حُذف الرمز. اختر رمزًا جديدًا، وسيظهر لك رمز استعادة جديد.';
+      showGuardian();
+    } catch (e) {
+      $id('resetMsg').textContent = e.message;
+    } finally {
+      b.disabled = false;
+    }
+  };
+}
+
+/* ===== حساب نتائج درس واحد (لا يرمي: البيانات التالفة تُعرض «غير مقروءة» دون أن تُسقط الشاشة) ===== */
+function lessonData(L) {
+  const lvl = G(`atlas:${L.id}:level`, 'A') === 'B' ? 'B' : 'A';
+  const mine = x => lvl === 'B' || x.level !== 'B';
+  const pr = G(`atlas:${L.id}:progress`, {}) || {};
+  const tp = G(`atlas:${L.test}:progress`, {}) || {};
+  const fin = G(`atlas:${L.id}:finished`, false) === true;
+  const started = fin || Object.keys(pr).length > 0 || G(`atlas:${L.id}:scene`, 0) > 0 || !!G(`atlas:${L.id}:drawing`, null) ||
+    Atlas.storage.keys().some(k => k.startsWith(`atlas:${L.id}:open_`) || k.startsWith(`atlas:${L.test}:`));
+  const closed = L.closed.filter(mine);
+  const okFirst = closed.filter(c => pr[c.id]?.firstAttempt === true).length;
+  const ans = closed.filter(c => pr[c.id]).length;
+  const checks = L.checks.filter(c => mine(c) && !c.open);
+  const chkOk = checks.filter(c => pr[c.id]?.firstAttempt === true).length;
+  const chkAns = checks.filter(c => pr[c.id]).length;
+  const tItems = L.testItems.filter(mine).filter(i => !i.open && !i.tf);
+  const tf = L.testItems.filter(mine).filter(i => i.tf);
+  const tClosed = [...tItems, ...tf];
+  const tOk = tClosed.filter(i => tp[i.id]?.firstAttempt === true).length;
+  const tAns = tClosed.filter(i => tp[i.id]).length;
+  const recall = G(`atlas:${L.test}:recall`, null);
+  const attempts = G(`atlas:${L.id}:attempts`, []);
+  return { lvl, mine, pr, tp, fin, started, closed, okFirst, ans, checks, chkOk, chkAns, tClosed, tOk, tAns, recall, attempts };
+}
+
+function rubricButtons(key, val, labels) {
+  return `<div class="rub">${[0, 1, 2].map(n => `<button data-k="${esc(key)}" data-n="${n}" aria-pressed="${val === n}">${n} — ${esc(labels[n] || '')}</button>`).join('')}</div>`;
+}
+
+/* متى أُعيد تعيين رمز ولي الأمر لهذا الحساب («نسيت الرمز»)؛ يظهر لولي الأمر حتى لا يمر اعتماد بعده دون أن يراه */
+function pinResetAt() {
+  try { return Atlas.profiles().find(p => p.id === profile?.id)?.pinResetAt || null; } catch { return null; }
+}
+/* خيارات الفرضية في درس القلب التجريبي: يجب أن تطابق HYP في scenes/U03.L01.js (يتحقق منه اختبار) */
+const HYPO = ['لأن الجسم احتاج شيئاً أكثر', 'لأن القلب تعب', 'لأنني تنفست أسرع', 'لا أعرف بعد'];
+const QURAN = /*__QURAN__*/{"17:36":{"surah_ar":"الإسراء","surah_no":17,"ayah":36,"page":285,"smart":"               ","ayah_mark":"","emlaey":"ولا تقف ما ليس لك به علم إن السمع والبصر والفؤاد كل أولئك كان عنه مسئولا","text":"وَلَا تَقْفُ مَا لَيْسَ لَكَ بِهِۦ عِلْمٌ ۚ إِنَّ ٱلسَّمْعَ وَٱلْبَصَرَ وَٱلْفُؤَادَ كُلُّ أُو۟لَـٰٓئِكَ كَانَ عَنْهُ مَسْـُٔولًۭا","source":"مجمع الملك فهد — KFGQPC Hafs Smart v8 (2022) للعرض؛ Tanzil Uthmani v1.1 للبحث والقراءة الآلية","checked_by":"","checked_on":"","qpc2":{"page":285,"glyphs":"ﲾ ﲿ ﳀ ﳁ ﳂ ﳃ ﳄ ﳅ ﳆ ﳇ ﳈ ﳉ ﳊ ﳋ ﳌ ﳍ ﳎ ﳏ","words":[0,1,2,3,4,5,6,8,9,10,11,12,13,14,15,16]}},"49:13":{"surah_ar":"الحجرات","surah_no":49,"ayah":13,"page":517,"smart":"                   ","ayah_mark":"","emlaey":"ياأيها الناس إنا خلقناكم من ذكر وأنثى وجعلناكم شعوبا وقبائل لتعارفوا إن أكرمكم عند الله أتقاكم إن الله عليم خبير","text":"يَـٰٓأَيُّهَا ٱلنَّاسُ إِنَّا خَلَقْنَـٰكُم مِّن ذَكَرٍۢ وَأُنثَىٰ وَجَعَلْنَـٰكُمْ شُعُوبًۭا وَقَبَآئِلَ لِتَعَارَفُوٓا۟ ۚ إِنَّ أَكْرَمَكُمْ عِندَ ٱللَّهِ أَتْقَىٰكُمْ ۚ إِنَّ ٱللَّهَ عَلِيمٌ خَبِيرٌۭ","source":"مجمع الملك فهد — KFGQPC Hafs Smart v8 (2022) للعرض؛ Tanzil Uthmani v1.1 للبحث والقراءة الآلية","checked_by":"","checked_on":"","qpc2":{"page":517,"glyphs":"ﱥ ﱦ ﱧ ﱨ ﱩ ﱪ ﱫ ﱬ ﱭ ﱮ ﱯ ﱰ ﱱ ﱲ ﱳ ﱴ ﱵ ﱶ ﱷ ﱸ ﱹ ﱺ ﱻ","words":[0,1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,18,19,20,21]}},"30:22":{"surah_ar":"الروم","surah_no":30,"ayah":22,"page":406,"smart":"            ","ayah_mark":"","emlaey":"ومن آياته خلق السموات والأرض واختلاف ألسنتكم وألوانكم إن في ذلك لآيات للعالمين","text":"وَمِنْ ءَايَـٰتِهِۦ خَلْقُ ٱلسَّمَـٰوَٰتِ وَٱلْأَرْضِ وَٱخْتِلَـٰفُ أَلْسِنَتِكُمْ وَأَلْوَٰنِكُمْ ۚ إِنَّ فِى ذَٰلِكَ لَـَٔايَـٰتٍۢ لِّلْعَـٰلِمِينَ","source":"مجمع الملك فهد — KFGQPC Hafs Smart v8 (2022) للعرض؛ Tanzil Uthmani v1.1 للبحث والقراءة الآلية","checked_by":"","checked_on":"","qpc2":{"page":406,"glyphs":"ﲏ ﲐ ﲑ ﲒ ﲓ ﲔ ﲕ ﲖ ﲗ ﲘ ﲙ ﲚ ﲛ ﲜ ﲝ","words":[0,1,2,3,4,5,6,7,9,10,11,12,13]}},"49:6":{"surah_ar":"الحجرات","surah_no":49,"ayah":6,"page":516,"smart":"                ","ayah_mark":"","emlaey":"ياأيها الذين آمنوا إن جاءكم فاسق بنبإ فتبينوا أن تصيبوا قوما بجهالة فتصبحوا على ما فعلتم نادمين","text":"يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوٓا۟ إِن جَآءَكُمْ فَاسِقٌۢ بِنَبَإٍۢ فَتَبَيَّنُوٓا۟ أَن تُصِيبُوا۟ قَوْمًۢا بِجَهَـٰلَةٍۢ فَتُصْبِحُوا۟ عَلَىٰ مَا فَعَلْتُمْ نَـٰدِمِينَ","source":"مجمع الملك فهد — KFGQPC Hafs Smart v8 (2022) للعرض؛ Tanzil Uthmani v1.1 للبحث والقراءة الآلية","checked_by":"","checked_on":"","qpc2":{"page":516,"glyphs":"ﱏ ﱐ ﱑ ﱒ ﱓ ﱔ ﱕ ﱖ ﱗ ﱘ ﱙ ﱚ ﱛ ﱜ ﱝ ﱞ ﱟ ﱠ","words":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]}},"95:4":{"surah_ar":"التين","surah_no":95,"ayah":4,"page":597,"smart":"     ","ayah_mark":"","emlaey":"لقد خلقنا الإنسان في أحسن تقويم","text":"لَقَدْ خَلَقْنَا ٱلْإِنسَـٰنَ فِىٓ أَحْسَنِ تَقْوِيمٍۢ","source":"مجمع الملك فهد — KFGQPC Hafs Smart v8 (2022) للعرض؛ Tanzil Uthmani v1.1 للبحث والقراءة الآلية","checked_by":"","checked_on":"","qpc2":{"page":597,"glyphs":"ﱥ ﱦ ﱧ ﱨ ﱩ ﱪ ﱫ","words":[0,1,2,3,4,5]}},"67:2":{"surah_ar":"الملك","surah_no":67,"ayah":2,"page":562,"smart":"          ","ayah_mark":"","emlaey":"الذي خلق الموت والحياة ليبلوكم أيكم أحسن عملا وهو العزيز الغفور","text":"ٱلَّذِى خَلَقَ ٱلْمَوْتَ وَٱلْحَيَوٰةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًۭا ۚ وَهُوَ ٱلْعَزِيزُ ٱلْغَفُورُ","source":"مجمع الملك فهد — KFGQPC Hafs Smart v8 (2022) للعرض؛ Tanzil Uthmani v1.1 للبحث والقراءة الآلية","checked_by":"","checked_on":"","qpc2":{"page":562,"glyphs":"ﱋ ﱌ ﱍ ﱎ ﱏ ﱐ ﱑ ﱒ ﱓ ﱔ ﱕ ﱖ ﱗ","words":[0,1,2,3,4,5,6,7,9,10,11]}},"5:32":{"surah_ar":"المائدة","surah_no":5,"ayah":32,"page":113,"smart":"                                       ","ayah_mark":"","emlaey":"من أجل ذلك كتبنا على بني إسرائيل أنه من قتل نفسا بغير نفس أو فساد في الأرض فكأنما قتل الناس جميعا ومن أحياها فكأنما أحيا الناس جميعا ولقد جاءتهم رسلنا بالبينات ثم إن كثيرا منهم بعد ذلك في الأرض لمسرفون","text":"مِنْ أَجْلِ ذَٰلِكَ كَتَبْنَا عَلَىٰ بَنِىٓ إِسْرَٰٓءِيلَ أَنَّهُۥ مَن قَتَلَ نَفْسًۢا بِغَيْرِ نَفْسٍ أَوْ فَسَادٍۢ فِى ٱلْأَرْضِ فَكَأَنَّمَا قَتَلَ ٱلنَّاسَ جَمِيعًۭا وَمَنْ أَحْيَاهَا فَكَأَنَّمَآ أَحْيَا ٱلنَّاسَ جَمِيعًۭا ۚ وَلَقَدْ جَآءَتْهُمْ رُسُلُنَا بِٱلْبَيِّنَـٰتِ ثُمَّ إِنَّ كَثِيرًۭا مِّنْهُم بَعْدَ ذَٰلِكَ فِى ٱلْأَرْضِ لَمُسْرِفُونَ","source":"مجمع الملك فهد — KFGQPC Hafs Smart v8 (2022) للعرض؛ Tanzil Uthmani v1.1 للبحث والقراءة الآلية","checked_by":"","checked_on":"","qpc2":{"page":113,"glyphs":"ﱁ ﱂ ﱃ ﱄ ﱅ ﱆ ﱇ ﱈ ﱉ ﱊ ﱋ ﱌ ﱍ ﱎ ﱏ ﱐ ﱑ ﱒ ﱓ ﱔ ﱕ ﱖ ﱗ ﱘ ﱙ ﱚ ﱛ ﱜ ﱝ ﱞ ﱟ ﱠ ﱡ ﱢ ﱣ ﱤ ﱥ ﱦ ﱧ ﱨ ﱩ ﱪ","words":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,28,29,30,31,32,33,34,35,36,37,38,39,40]}},"51:21":{"surah_ar":"الذاريات","surah_no":51,"ayah":21,"page":521,"smart":"   ","ayah_mark":"","emlaey":"وفي أنفسكم أفلا تبصرون","text":"وَفِىٓ أَنفُسِكُمْ ۚ أَفَلَا تُبْصِرُونَ","source":"مجمع الملك فهد — KFGQPC Hafs Smart v8 (2022) للعرض؛ Tanzil Uthmani v1.1 للبحث والقراءة الآلية","checked_by":"","checked_on":"","qpc2":{"page":521,"glyphs":"ﲒ ﲓ ﲔ ﲕ ﲖ ﲗ","words":[0,1,3,4]}},"49:11":{"surah_ar":"الحجرات","surah_no":49,"ayah":11,"page":516,"smart":"                                      ","ayah_mark":"","emlaey":"ياأيها الذين آمنوا لا يسخر قوم من قوم عسى أن يكونوا خيرا منهم ولا نساء من نساء عسى أن يكن خيرا منهن ولا تلمزوا أنفسكم ولا تنابزوا بالألقاب بئس الاسم الفسوق بعد الإيمان ومن لم يتب فأولئك هم الظالمون","text":"يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ لَا يَسْخَرْ قَوْمٌۭ مِّن قَوْمٍ عَسَىٰٓ أَن يَكُونُوا۟ خَيْرًۭا مِّنْهُمْ وَلَا نِسَآءٌۭ مِّن نِّسَآءٍ عَسَىٰٓ أَن يَكُنَّ خَيْرًۭا مِّنْهُنَّ ۖ وَلَا تَلْمِزُوٓا۟ أَنفُسَكُمْ وَلَا تَنَابَزُوا۟ بِٱلْأَلْقَـٰبِ ۖ بِئْسَ ٱلِٱسْمُ ٱلْفُسُوقُ بَعْدَ ٱلْإِيمَـٰنِ ۚ وَمَن لَّمْ يَتُبْ فَأُو۟لَـٰٓئِكَ هُمُ ٱلظَّـٰلِمُونَ","source":"مجمع الملك فهد — KFGQPC Hafs Smart v8 (2022) للعرض؛ Tanzil Uthmani v1.1 للبحث والقراءة الآلية","checked_by":"","checked_on":"","qpc2":{"page":516,"glyphs":"ﲷ ﲸ ﲹ ﲺ ﲻ ﲼ ﲽ ﲾ ﲿ ﳀ ﳁ ﳂ ﳃ ﳄ ﳅ ﳆ ﳇ ﳈ ﳉ ﳊ ﳋ ﳌ ﳍ ﳎ ﳏ ﳐ ﳑ ﳒ ﳓ ﳔ ﳕ ﳖ ﳗ ﳘ ﳙ ﳚ ﳛ ﳜ ﳝ ﳞ ﳟ ﳠ ﳡ","words":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,23,24,25,26,27,28,30,31,32,33,34,36,37,38,39,40,41]}},"11:61":{"surah_ar":"هود","surah_no":11,"ayah":61,"page":228,"smart":"                          ","ayah_mark":"","emlaey":"وإلى ثمود أخاهم صالحا قال ياقوم اعبدوا الله ما لكم من إله غيره هو أنشأكم من الأرض واستعمركم فيها فاستغفروه ثم توبوا إليه إن ربي قريب مجيب","text":"۞ وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَـٰلِحًۭا ۚ قَالَ يَـٰقَوْمِ ٱعْبُدُوا۟ ٱللَّهَ مَا لَكُم مِّنْ إِلَـٰهٍ غَيْرُهُۥ ۖ هُوَ أَنشَأَكُم مِّنَ ٱلْأَرْضِ وَٱسْتَعْمَرَكُمْ فِيهَا فَٱسْتَغْفِرُوهُ ثُمَّ تُوبُوٓا۟ إِلَيْهِ ۚ إِنَّ رَبِّى قَرِيبٌۭ مُّجِيبٌۭ","source":"مجمع الملك فهد — KFGQPC Hafs Smart v8 (2022) للعرض؛ Tanzil Uthmani v1.1 للبحث والقراءة الآلية","checked_by":"","checked_on":"","qpc2":{"page":228,"glyphs":"ﲺ ﲻ ﲼ ﲽ ﲾ ﲿ ﳀ ﳁ ﳂ ﳃ ﳄ ﳅ ﳆ ﳇ ﳈ ﳉ ﳊ ﳋ ﳌ ﳍ ﳎ ﳏ ﳐ ﳑ ﳒ ﳓ ﳔ ﳕ ﳖ ﳗ ﳘ ﳙ","words":[1,2,3,4,6,7,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,24,25,27,28,29,30]}},"16:18":{"surah_ar":"النحل","surah_no":16,"ayah":18,"page":269,"smart":"         ","ayah_mark":"","emlaey":"وإن تعدوا نعمة الله لا تحصوها إن الله لغفور رحيم","text":"وَإِن تَعُدُّوا۟ نِعْمَةَ ٱللَّهِ لَا تُحْصُوهَآ ۗ إِنَّ ٱللَّهَ لَغَفُورٌۭ رَّحِيمٌۭ","source":"مجمع الملك فهد — KFGQPC Hafs Smart v8 (2022) للعرض؛ Tanzil Uthmani v1.1 للبحث والقراءة الآلية","checked_by":"","checked_on":"","qpc2":{"page":269,"glyphs":"ﱜ ﱝ ﱞ ﱟ ﱠ ﱡ ﱢ ﱣ ﱤ ﱥ ﱦ ﱧ","words":[0,1,2,3,4,5,7,8,9,10]}},"3:191":{"surah_ar":"آل عمران","surah_no":3,"ayah":191,"page":75,"smart":"                    ","ayah_mark":"","emlaey":"الذين يذكرون الله قياما وقعودا وعلى جنوبهم ويتفكرون في خلق السموات والأرض ربنا ما خلقت هذا باطلا سبحانك فقنا عذاب النار","text":"ٱلَّذِينَ يَذْكُرُونَ ٱللَّهَ قِيَـٰمًۭا وَقُعُودًۭا وَعَلَىٰ جُنُوبِهِمْ وَيَتَفَكَّرُونَ فِى خَلْقِ ٱلسَّمَـٰوَٰتِ وَٱلْأَرْضِ رَبَّنَا مَا خَلَقْتَ هَـٰذَا بَـٰطِلًۭا سُبْحَـٰنَكَ فَقِنَا عَذَابَ ٱلنَّارِ","source":"مجمع الملك فهد — KFGQPC Hafs Smart v8 (2022) للعرض؛ Tanzil Uthmani v1.1 للبحث والقراءة الآلية","checked_by":"","checked_on":"","qpc2":{"page":75,"glyphs":"ﲅ ﲆ ﲇ ﲈ ﲉ ﲊ ﲋ ﲌ ﲍ ﲎ ﲏ ﲐ ﲑ ﲒ ﲓ ﲔ ﲕ ﲖ ﲗ ﲘ ﲙ ﲚ","words":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]}},"2:172":{"surah_ar":"البقرة","surah_no":2,"ayah":172,"page":26,"smart":"             ","ayah_mark":"","emlaey":"ياأيها الذين آمنوا كلوا من طيبات ما رزقناكم واشكروا لله إن كنتم إياه تعبدون","text":"يَـٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ كُلُوا۟ مِن طَيِّبَـٰتِ مَا رَزَقْنَـٰكُمْ وَٱشْكُرُوا۟ لِلَّهِ إِن كُنتُمْ إِيَّاهُ تَعْبُدُونَ","source":"مجمع الملك فهد — KFGQPC Hafs Smart v8 (2022) للعرض؛ Tanzil Uthmani v1.1 للبحث والقراءة الآلية","checked_by":"","checked_on":"","qpc2":{"page":26,"glyphs":"ﱭ ﱮ ﱯ ﱰ ﱱ ﱲ ﱳ ﱴ ﱵ ﱶ ﱷ ﱸ ﱹ ﱺ ﱻ","words":[0,1,2,3,4,5,6,7,8,9,10,11,12,13]}},"7:31":{"surah_ar":"الأعراف","surah_no":7,"ayah":31,"page":154,"smart":"              ","ayah_mark":"","emlaey":"يابني آدم خذوا زينتكم عند كل مسجد وكلوا واشربوا ولا تسرفوا إنه لا يحب المسرفين","text":"۞ يَـٰبَنِىٓ ءَادَمَ خُذُوا۟ زِينَتَكُمْ عِندَ كُلِّ مَسْجِدٍۢ وَكُلُوا۟ وَٱشْرَبُوا۟ وَلَا تُسْرِفُوٓا۟ ۚ إِنَّهُۥ لَا يُحِبُّ ٱلْمُسْرِفِينَ","source":"مجمع الملك فهد — KFGQPC Hafs Smart v8 (2022) للعرض؛ Tanzil Uthmani v1.1 للبحث والقراءة الآلية","checked_by":"","checked_on":"","qpc2":{"page":154,"glyphs":"ﱁ ﱂ ﱃ ﱄ ﱅ ﱆ ﱇ ﱈ ﱉ ﱊ ﱋ ﱌ ﱍ ﱎ ﱏ ﱐ ﱑ ﱒ","words":[1,2,3,4,5,6,7,8,9,10,11,13,14,15,16]}},"80:24":{"surah_ar":"عبس","surah_no":80,"ayah":24,"page":585,"smart":"   ","ayah_mark":"","emlaey":"فلينظر الإنسان إلى طعامه","text":"فَلْيَنظُرِ ٱلْإِنسَـٰنُ إِلَىٰ طَعَامِهِۦٓ","source":"مجمع الملك فهد — KFGQPC Hafs Smart v8 (2022) للعرض؛ Tanzil Uthmani v1.1 للبحث والقراءة الآلية","checked_by":"","checked_on":"","qpc2":{"page":585,"glyphs":"ﲢ ﲣ ﲤ ﲥ ﲦ","words":[0,1,2,3]}}};
+/* تلاوة الآيات: رفع ملف أو تسجيل لكل آية في المنهج. لا قارئ آلي للقرآن */
+let qRec = null, qPlay = null;
+async function renderQuran() {
+  if (!document.getElementById('quranList') || !window.QuranAudio) return;
+  const msg = t => { const m = document.getElementById('quranMsg'); if (m) m.textContent = t || ''; };
+  const keys = Object.keys(QURAN).sort((a, b) => { const [s1, a1] = a.split(':').map(Number), [s2, a2] = b.split(':').map(Number); return s1 - s2 || a1 - a2; });
+  const st = {}; await Promise.all(keys.map(async k => { st[k] = (await QuranAudio.parent(k)) ? 'parent' : (await QuranAudio.shipped(k)) ? 'app' : ''; }));
+  const box = document.getElementById('quranList'); if (!box) return; /* الشاشة قد تُعاد رسمها أثناء الانتظار: نكتب في العنصر الحالي لا القديم */
+  box.innerHTML = keys.map(k => { const v = QURAN[k];
+    /* الآية تُعرض كاملة من السجل أو لا تُعرض: لا اقتطاع */
+    return `<div class="qrow" data-k="${esc(k)}" style="border-top:1px solid var(--line);padding:10px 0"><b>سورة ${esc(v.surah_ar)}: الآية ${num(v.ayah)}</b><div class="quran-plain" lang="ar" style="margin:6px 0">﴿${esc(v.emlaey || '')}﴾</div>
+      <span class="${st[k] ? 'ok' : 'note'}">${st[k] === 'parent' ? '✔ تلاوة رفعتَها' : st[k] === 'app' ? '✔ تلاوة مرفقة بالتطبيق' : 'بلا تلاوة'}</span>
+      <div class="row" style="margin-top:6px;gap:8px;flex-wrap:wrap"><label class="qbtn">رفع ملف صوتي<input type="file" accept="audio/*" data-up hidden></label><button class="qbtn" data-rec>${qRec && qRec.k === k ? '■ أوقف التسجيل' : '● سجّل'}</button>${st[k] ? '<button class="qbtn" data-play>▶ استمع</button>' : ''}${st[k] === 'parent' ? '<button class="qbtn" data-del>حذف ما رفعتَه</button>' : ''}</div></div>`; }).join('') || '<p class="note">لا آيات في السجل.</p>';
+  const guard = () => { if (Atlas.guardianUnlocked()) return true; showGuardian(); return false; };
+  box.querySelectorAll('.qrow').forEach(row => { const k = row.dataset.k;
+    row.querySelector('[data-up]').onchange = async e => { const f = e.target.files[0]; if (!f || !guard()) return; try { await QuranAudio.put(k, f); msg(''); } catch (err) { msg(err.message); } renderQuran(); };
+    row.querySelector('[data-rec]').onclick = async () => { if (!guard()) return;
+      if (qRec) { const r = qRec; if (r.k !== k) return msg('أوقف التسجيل الجاري أولاً.'); r.rec.stop(); return; }
+      try { if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder === 'undefined') throw new Error('التسجيل غير متاح على هذا الجهاز؛ ارفع ملفاً صوتياً.');
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true }); const mime = ['audio/webm;codecs=opus', 'audio/mp4', 'audio/ogg;codecs=opus'].find(m => MediaRecorder.isTypeSupported(m));
+        const rec = mime ? new MediaRecorder(stream, { mimeType: mime }) : new MediaRecorder(stream), chunks = [];
+        rec.ondataavailable = ev => { if (ev.data.size) chunks.push(ev.data); };
+        rec.onstop = async () => { stream.getTracks().forEach(t => t.stop()); qRec = null; try { await QuranAudio.put(k, new Blob(chunks, { type: (rec.mimeType || 'audio/webm').split(';')[0] })); msg(''); } catch (err) { msg(err.message); } renderQuran(); };
+        qRec = { k, rec }; rec.start(); msg(''); renderQuran();
+      } catch (err) { qRec = null; msg(err.message || 'تعذّر التسجيل.'); } };
+    const pb = row.querySelector('[data-play]'); if (pb) pb.onclick = async () => { if (qPlay) { qPlay.pause(); const same = qPlay.dataset.k === k; qPlay = null; if (same) return; } const s = await QuranAudio.source(k); if (!s) return; const a = new Audio(s.url); a.dataset.k = k; qPlay = a; a.onended = () => { if (qPlay === a) qPlay = null; }; a.onerror = () => { if (qPlay === a) qPlay = null; msg('تعذّر تشغيل الملف.'); }; a.play().catch(() => msg('تعذّر تشغيل الملف.')); };
+    const db = row.querySelector('[data-del]'); if (db) db.onclick = async () => { if (!guard()) return; await QuranAudio.remove(k); renderQuran(); };
+  });
+}
+/* مرات رجوع ساعة الجهاز (Atlas.clockEvents) تُقرأ مرة لكل رسم */
+let clockBack = [];
+function render() {
+  if (!profile) return;
+  try { clockBack = Atlas.clockEvents(); } catch { clockBack = []; }
+  if (!Atlas.guardianUnlocked()) {
+    showGuardian();
+    return
+  }
+  document.getElementById('main').hidden = false;
+  document.getElementById('guardianGate').hidden = true;
+  evidenceMap = {};
+  document.getElementById('tabs').innerHTML = units.map(u =>
+    `<button data-u="${u}" aria-pressed="${u===cur}">${esc(REVIEW.find(l=>l.unit===u).unitTitle)}</button>`).join('');
+  document.querySelectorAll('#tabs button').forEach(b => b.onclick = () => {
+    cur = b.dataset.u;
+    location.hash = cur;
+    render();
+  });
+  const LS = REVIEW.filter(l => l.unit === cur);
+  const rub = G(`atlas:${cur}:rubric`, {}) || {};
+  let pending = 0, gSum = 0, gMax = 0;
+  const score = (key, v) => {
+    evidenceMap[key] = signature(v);
+    const e = rub[key];
+    const val = e && typeof e === 'object' && e.signature === evidenceMap[key] && [0, 1, 2].includes(e.score) ? e.score : null;
+    if (v === null || v === undefined || v === '') return null;
+    if (val === null) pending++; else { gSum += val; gMax += 2; }
+    return val;
+  };
+  /* تقييم الطفل نفسه بعد المقارنة بالإجابة النموذجية (البند 38) */
+  const SELF_TXT = ['قال إنه لم يذكرها', 'قال إنه ذكر بعضها', 'قال إنه ذكرها كلها'];
+  const openBlock = (key, q, ans, model, labels, extra = '', self = null) => {
+    const val = score(key, ans);
+    const sv = Number.isInteger(self) && self >= 0 && self <= 2 ? `<span class="pill">بعد مقارنة إجابته بالنموذج ${SELF_TXT[self]}</span>` : '';
+    return `<div style="margin-top:12px"><b>${esc(q)}</b> ${extra}<div class="ans">${ans ? esc(ans) : '<span class="note">لم يُجب بعد</span>'}</div>${model ? `<div class="model">إجابة نموذجية: ${esc(model)}</div>` : ''}${sv}${ans ? rubricButtons(key, val, labels) : ''}</div>`;
+  };
+  const rows = [], notStarted = [];
+  let sumOk = 0, sumN = 0, sumAns = 0, finN = 0, testOk = 0, testN = 0, testAns = 0;
+  for (const L of LS) {
+    let html;
+    try {
+      const D = lessonData(L);
+      if (!D.started) { notStarted.push(L.title); continue; }
+      if (D.fin) finN++;
+      sumOk += D.okFirst; sumN += D.closed.length; sumAns += D.ans;
+      const anch = c => (L.anchors[c] && L.anchors[c].some(Boolean)) ? L.anchors[c] : (RUB[c] || RUB.R1);
+      const m = D.checks.length ? D.chkOk / D.checks.length : 1;
+      const p0 = pending;
+      let body = '';
+      // الأسئلة المغلقة: الخطأ فقط بالتفصيل (الصواب يُعدّ)
+      const wrong = D.closed.filter(c => D.pr[c.id] && D.pr[c.id].firstAttempt === false);
+      { /* درس التجربة قبل الشرح: توقّع الطفل قبل القياس وفرضيته قبل الشرح (لا يُصوَّبان؛ هما مادة حوار) */
+        const pv = G(`atlas:${L.id}:predict`, null), hv = G(`atlas:${L.id}:hypo`, null), pu = G(`atlas:${L.id}:pulse`, null), palt = G(`atlas:${L.id}:pulseAlt`, false) === true;
+        if (Number.isInteger(pv) || Number.isInteger(hv)) body += `<h3>قبل الشرح: توقّعه وفرضيته</h3><p>توقّعه قبل القياس: <b>${Number.isInteger(pv) && L.hookOptions && L.hookOptions[pv] ? '«' + esc(L.hookOptions[pv]) + '»' : '—'}</b>${pu && typeof pu === 'object' && Number.isFinite(+pu.rest) && Number.isFinite(+pu.move) ? ` — ${palt ? 'لم يجد نبضه فأكمل بأرقام مرجعية (حاوِلا القياس معاً في وقت آخر)' : 'ما قاسه'}: راحة ${num(pu.rest)}، بعد الحركة ${num(pu.move)}${Number.isFinite(+pu.recover) ? '، بعد الراحة ' + num(pu.recover) : ''}` : ''}</p><p>فرضيته في السبب: <b>${Number.isInteger(hv) && HYPO[hv] ? '«' + esc(HYPO[hv]) + '»' : '—'}</b></p><p class="note">لا صواب ولا خطأ هنا. اسأله: هل تغيّر رأيك بعد الشرح؟ ولماذا؟</p>`;
+      }
+      /* «لا أخطاء» لا تُقال عن أسئلة لم يُجب عنها: يُذكر عدد ما أجاب عنه أولاً */
+      body += `<h3>أسئلة الدرس: أجاب عن ${D.ans} من ${D.closed.length}، والصحيح من أول محاولة ${D.okFirst}</h3>` +
+        (!D.ans ? '<p class="note">لم يُجب عن أي سؤال بعد.</p>' : wrong.length ? `<table><tr><th>أخطأ فيه أول مرة</th><th>ثم</th></tr>${wrong.map(c => `<tr><td>${esc(c.label)}</td><td>${(D.pr[c.id].ok || D.pr[c.id].solved) ? 'أصاب بعدها' : (D.pr[c.id].revealed ? 'طلب رؤية الصواب' : '—')}</td></tr>`).join('')}</table>` : '<p class="note">لا أخطاء في المحاولة الأولى.</p>');
+      if (D.attempts.length) body += `<p class="note">أعاد أسئلة «أتحقق» ${D.attempts.length} مرة؛ النتائج السابقة: ${D.attempts.map(a => num(a.ok) + '/' + num(a.n)).join('، ')}.</p>`;
+      body += EXTRA[L.id] ? EXTRA[L.id]() : '';
+      const lim = G(`atlas:${L.id}:limitAns`, '');
+      if (typeof lim === 'string' && lim.trim()) body += openBlock(L.id + '.limit', 'سؤال حدود النموذج', lim, '', anch('R2'));
+      for (const o of L.open.filter(D.mine)) {
+        const txt = G(`atlas:${L.id}:${o.key}`, '');
+        const pk = D.pr[o.id];
+        const tag = o.graded && pk ? (pk.ok ? '<span class="pill ok">اختار الصواب</span>' : '<span class="pill bad">اختار الخطأ</span>') : '';
+        body += openBlock(o.id, o.q, typeof txt === 'string' ? txt : '', o.model, anch(o.rubric), tag, pk && pk.self);
+      }
+      const d = G(`atlas:${L.id}:drawing`, null);
+      const img = d ? Atlas.imageSource(d) : '';
+      const dv = score(L.id + '.draw', img || null);
+      body += `<div style="margin-top:12px"><b>دفتري: ${esc(gx(L.drawTitle))}…</b>${img ? `<img class="draw" src="${img}" alt="">${rubricButtons(L.id + '.draw', dv, anch('R3-notebook'))}` : '<p class="note">لم يرسم على الشاشة (أو رسم على الورق — قيّم الورقة).</p>'}</div>`;
+      // اختبار الدرس
+      const tf = G(`atlas:${L.test}:finished`, false) === true;
+      if (tf || D.tAns) {
+        testOk += D.tOk; testN += D.tClosed.length; testAns += D.tAns;
+        const tw = D.tClosed.filter(i => D.tp[i.id] && D.tp[i.id].firstAttempt === false);
+        body += `<h3>اختبار الدرس: ${D.tOk} من ${D.tClosed.length} من أول محاولة${D.tAns < D.tClosed.length ? ` (أجاب عن ${D.tAns})` : ''}</h3>` + (tw.length ? `<ul>${tw.map(i => `<li>${esc(i.label)}</li>`).join('')}</ul>` : '');
+        /* المحاولة الثانية ببنود بديلة لما أخطأ فيه (البند 43): تُعرض ولا تغيّر نتيجة الاختبار */
+        const s2 = G(`atlas:${L.test}:score2`, null);
+        if (s2 && typeof s2 === 'object' && Number.isFinite(+s2.n) && +s2.n > 0) body += `<p class="note">المحاولة الثانية بأسئلة بديلة لما أخطأ فيه: أصاب ${num(s2.ok)} من ${num(s2.n)} من أول مرة. المعتمد نتيجة المحاولة الأولى.</p>`;
+        for (const i of [...L.testItems.filter(D.mine).filter(i => i.open || i.tf), ...L.transfer.filter(D.mine)]) {
+          const t = G(`atlas:${L.test}:open_${i.id}`, '');
+          body += openBlock(i.id, (L.transfer.includes(i) ? '🌍 نقل: ' : '') + i.label, typeof t === 'string' ? t : '', i.model, anch(i.rubric), '', D.tp[i.id] && D.tp[i.id].self);
+        }
+      } else if (D.fin) body += `<p class="note">لم يُجرِ اختبار الدرس بعد (<a href="${L.test}.html">افتحه</a>).</p>`;
+      // عودة الذاكرة
+      if (D.recall) {
+        const RN = ['الأولى', 'الثانية', 'الثالثة'], rounds = [D.recall, G(`atlas:${L.test}:recall2`, null), G(`atlas:${L.test}:recall3`, null)];
+        const last = rounds.reduce((a, r, i) => r ? i : a, 0);
+        rounds.forEach((r, i) => {
+          if (!r) return;
+          /* سُجّلت والساعة متقدمة: تاريخها بعد لحظة اكتُشف فيها رجوع الساعة، أو في المستقبل (ن-6) */
+          const odd = num(r.at) > Date.now() + 3600000 || clockBack.some(e => num(r.at) > e.at);
+          body += `<h3>🧠 عودة الذاكرة ${RN[i]}: ${num(r.ok)} من ${num(r.n)} بعد ${esc(Atlas.days(r.days))}${r.at ? ' <span class="note">(' + esc(new Date(num(r.at)).toLocaleDateString('ar')) + ')</span>' : ''}</h3>${odd ? '<p class="bad">⚠ سُجّلت هذه العودة وساعة الجهاز متقدمة، فقد لا تكون بعد المدة الحقيقية.</p>' : ''}`;
+          if (i < last && typeof r.text === 'string' && r.text.trim()) body += `<p class="note">ما كتبه حينها: ${esc(r.text)}</p>`;
+        });
+        const fr = G(`atlas:${L.test}:open_${L.id}.FR`, '');
+        if (typeof fr === 'string' && fr.trim()) body += openBlock(L.id + '.FR', 'ما تذكّره بكلماته (آخر عودة)', fr, '', RUB.R1);
+      }
+      const waiting = pending - p0;
+      html = `<details class="les"${waiting ? ' open' : ''}><summary><b>${esc(L.title)}</b>
+        ${D.fin ? '<span class="pill ok">مكتمل</span>' : '<span class="pill">لم يكتمل</span>'}
+        ${D.checks.length < 4 ? `<span class="pill" title="الحكم بالإتقان يلزمه أربعة بنود مغلقة على الأقل">أتحقق: ${D.chkOk}/${D.checks.length} — بنود أقل من أن يُحكم بها؛ اعتمد على إجاباته المفتوحة</span>` : D.chkAns < D.checks.length ? `<span class="pill">أتحقق: أجاب عن ${D.chkAns} من ${D.checks.length} — لا حكم قبل أن يُكملها</span>` : `<span class="pill ${m >= 0.8 ? 'ok' : 'bad'}">أتحقق: ${D.chkOk}/${D.checks.length}${m >= 0.8 ? ' — متقن' : ' — دون 80%'}</span>`}
+        ${D.tClosed.length && (tf || D.tAns) ? `<span class="pill">اختبار: ${D.tOk}/${D.tClosed.length}</span>` : ''}
+        ${D.recall ? `<span class="pill">ذاكرة: ${num(D.recall.ok)}/${num(D.recall.n)}</span>` : ''}
+        ${waiting ? `<span class="pill wait">${waiting} تنتظر تقييمك</span>` : ''}
+        <span class="note">المستوى ${D.lvl === 'B' ? 'ب' : 'أ'}</span></summary><div class="in">${body}</div></details>`;
+    } catch (e) {
+      html = `<div class="sec"><h2>${esc(L.title)}</h2><p class="bad">تعذّرت قراءة بيانات هذا الدرس (${esc(e.message)}). بقية الدروس تُعرض كما هي.</p></div>`;
+    }
+    rows.push(html);
+  }
+  const ded = G(`atlas:${cur}.unit:ded`, null);
+  const ap = G(`atlas:${cur}.unit:approval`, null);
+  const apOk = !!(ap && ap.ok && ded && ap.sig === signature(ded));
+  const dedHtml = ded && (ded.audio || ded.text) ?
+    `<p>الفكرة: <b>${esc(ded.title || (Number.isInteger(ded.idea) ? 'رقم ' + (ded.idea + 1) : '—'))}</b> — إلى: <b>${esc(ded.who || '—')}</b></p>${ded.plan ? `<div class="ans">${esc(ded.plan)}</div>` : ''}${ded.audio && Atlas.audioSource(ded.audio) ? `<audio controls src="${Atlas.audioSource(ded.audio)}" style="width:100%"></audio>` : ''}${ded.text ? `<div class="ans">${esc(ded.text)}</div>` : ''}
+     <p class="note">اسأل الطفل: هل علّمتها فعلاً؟ ماذا قال من علّمته؟ هذا هو الاختبار الحقيقي.</p>
+     ${apOk ? '<p class="ok">✔ اعتمدتَ هذا الإهداء، وهو في «مكتبة إهداءاتي».</p>' + (ap.reset ? '<p class="note">⚠ اعتُمد بعد إعادة تعيين الرمز (' + esc(new Date(ap.reset).toLocaleDateString('ar')) + '). إن لم تكن أنت من أعاد الرمز فألغِ الاعتماد واستمع إلى الإهداء.</p>' : '') + '<button class="opt noprint" style="width:auto" id="unapprove">إلغاء الاعتماد</button>' : `${ap && ap.ok ? '<p class="note">تغيّر الإهداء بعد اعتمادك؛ استمع إليه من جديد.</p>' : ''}${ap && ap.imported && !ap.ok ? '<p class="note">⚠ اعتُمد هذا الإهداء في نسخة احتياطية أو على جهاز آخر. الاعتماد لا ينتقل مع النسخة: استمع إليه ثم اعتمده هنا.</p>' : ''}<button class="opt noprint" style="width:auto;background:var(--teal);color:#fff" id="approve">✔ أعتمد هذا الإهداء</button>`}` :
+    '<p class="note">لم يُسجَّل الإهداء بعد.</p>';
+  /* النسبة من الأسئلة التي أجاب عنها، لا من كل أسئلة الدروس المفتوحة */
+  const pct = sumAns ? Math.round(sumOk / sumAns * 100) + '%' : '—';
+  const rs = pinResetAt();
+  const cb = clockBack;
+  const me = (() => { try { return Atlas.profiles().find(p => p.id === profile?.id) || {}; } catch { return {}; } })();
+  let html = `${cb.length ? `<div class="sec" role="alert"><p><b>⚠ رجعت ساعة الجهاز إلى الوراء ${esc(Atlas.times(cb.length))}</b> (آخرها في ${esc(new Date(cb[cb.length - 1].at).toLocaleString('ar'))}، وكانت تشير إلى ${esc(new Date(cb[cb.length - 1].from).toLocaleString('ar'))}). تقديم الساعة يفتح «عودة الذاكرة» قبل وقتها؛ العودات المسجّلة والساعة متقدمة معلَّمة بـ⚠.</p></div>` : ''}${rs ? `<div class="sec" role="alert"><p><b>⚠ أُعيد تعيين رمز ولي الأمر لهذا الحساب في ${esc(new Date(rs).toLocaleString('ar'))}.</b> إن لم تكن أنت من فعل ذلك فراجع ما اعتُمد بعده، وغيّر الرمز.</p></div>` : ''}${me.restoredAt ? `<p class="note">هذا الحساب مستعاد من نسخة احتياطية في ${esc(new Date(me.restoredAt).toLocaleDateString('ar'))}: النتائج المعروضة من النسخة، والاعتمادات فيها تحتاج اعتمادك من جديد.</p>` : ''}<div class="sec"><h2>${esc(profile.name)} — ${esc(LS[0].unitTitle)}</h2>
+    <p class="note">هذه الشاشة لك أنت لا للطفل. المغلقة تُصحَّح آلياً والمعتبر <b>المحاولة الأولى</b>. المفتوحة والرسم تقيّمها أنت بالسلّم 0 / 1 / 2. افتح أي درس لترى التفاصيل.</p>
+    <div class="sum"><div><b>${finN}/${LS.length}</b>دروس مكتملة</div><div><b>${pct}</b>صواب من أول محاولة (${sumOk} من ${sumAns} أجاب عنها${sumAns < sumN ? '؛ بقي ' + (sumN - sumAns) : ''})</div><div><b>${testAns ? Math.round(testOk / testAns * 100) + '%' : '—'}</b>اختبارات الدروس${testAns ? ` (${testOk} من ${testAns})` : ''}</div><div><b>${gMax ? (gSum + '/' + gMax) : '—'}</b>تقييماتك للمفتوحة</div><div><b>${pending}</b>تنتظر تقييمك</div><div><b>${LS.reduce((a, l) => a + num(G(`atlas:${l.id}:stars`, 0)), 0)}</b>⭐ نجوم</div></div></div>`;
+  html += rows.join('');
+  if (notStarted.length) html += `<p class="note">لم يبدأ بعد: ${notStarted.map(esc).join('، ')}.</p>`;
+  html += `<div class="sec"><h2>إهداء الوحدة</h2>${dedHtml}</div>
+  <div class="sec noprint"><h2>ملاحظاتك للمراجعة الميدانية</h2><textarea id="notes" style="width:100%;min-height:90px" placeholder="ما الذي أربك الطفل؟ ما الذي أحبه؟ كم استغرق؟">${esc(G(`atlas:${cur}:notes`,''))}</textarea><div class="row" style="margin-top:8px"><button class="opt" style="width:auto" id="exp">⬇ تقرير مقروء (دون التسجيلات)</button><button class="opt" style="width:auto" id="print">🖨 طباعة</button><button class="opt" id="backup">نسخة كاملة للطفل الحالي</button><button class="opt" id="restore">استعادة نسخة</button><button class="opt" id="lockGuardian">قفل شاشة ولي الأمر</button><button class="opt" style="width:auto" id="newRec">رمز استعادة جديد</button><input type="file" id="backupFile" accept=".json,application/json" hidden><p id="backupMsg" role="status"></p><p class="note" id="usage"></p><button class="opt" style="width:auto" id="rescueAll">نسخة لكل أطفال الجهاز</button><p class="note">نسخة كل الأطفال تحتاج رمزاً يفتح حسابات كل الأطفال المحمية.</p></div></div>`;
+  html += `<div class="sec noprint"><details id="quranBox"><summary><b>تلاوة الآيات</b></summary>
+    <p class="note">التطبيق لا يقرأ القرآن بالقارئ الآلي. الآية تُتلى فقط من تسجيل تسجّله هنا أو ملف صوتي ترفعه (أو ملف يحزمه المطوّر مع التطبيق). التلاوة تُحفظ لهذا الجهاز كله، لكل الأطفال، ولا تدخل في النسخ الاحتياطية. ما لا تلاوة له يُعرض مكتوباً بلا صوت.</p>
+    <p class="note"><b>التلاوة المرفقة بالتطبيق:</b> الشيخ محمد صدّيق المنشاوي (مرتّل)، ملفات آيةً آية من everyayah.com. ما ترفعه أنت لآية يُقدَّم على المرفق.</p>
+    <div id="quranList"></div><p id="quranMsg" role="alert" class="bad"></p></details></div>`;
+  html += `<div class="sec noprint"><details id="voiceBox"><summary><b>صوت المعلق (حزم الاستوديو)</b></summary>
+    <p class="note">النصوص يقرؤها القارئ الآلي حتى تُسجَّل بصوت بشري. المعلق يسجّلها في «استوديو جسم الإنسان» ويصدّر «حزمة صوت» (ملف zip)، فتستوردها هنا. كل تسجيل مربوط بنصه: لا يُسمع إلا عليه، وإن تغيّر النص عاد القارئ الآلي. الصوت المستورد للجهاز كله، لكل الأطفال، ولا يدخل في النسخ الاحتياطية. لا آيات فيه: التلاوة في قسم «تلاوة الآيات».</p>
+    <p id="voiceCount" class="note"></p>
+    <div class="row" style="gap:8px;flex-wrap:wrap"><button class="opt" style="width:auto" id="voiceImport">استيراد حزمة صوت</button><button class="opt" style="width:auto" id="voiceClear">حذف كل الصوت المستورد</button><input type="file" id="voiceFile" accept=".zip,application/zip" hidden></div>
+    <p id="voiceMsg" role="status"></p></details></div>`;
+  html += `<div class="sec noprint"><details id="updBox"><summary><b>تحديث المحتوى (حزمة تحديث موقّعة)</b></summary>
+    <p class="note">التصحيحات التي تمرّ على الفحوص ويعتمدها المطوّر تصلك «حزمة تحديث» (ملف zip موقّع)، فتستوردها هنا بلا إنترنت وبلا تثبيت نسخة جديدة. لا يقبلها التطبيق إلا موقّعة من المطوّر ومبنية على هذه النسخة نفسها. تقدّم الأطفال وتسجيلاتهم لا تتأثر.</p>
+    <p id="updInfo" class="note"></p>
+    <div class="row" style="gap:8px;flex-wrap:wrap"><button class="opt" style="width:auto" id="updImport">استيراد حزمة تحديث</button><button class="opt" style="width:auto" id="updClear" hidden>العودة إلى المحتوى الأصلي</button><input type="file" id="updFile" accept=".zip,application/zip" hidden></div>
+    <p id="updMsg" role="status"></p></details></div>`;
+  // عن التطبيق (المراجعة 20، القرار 3): نوع البناء وبصمة المحتوى؛ المسودة توسم «مسودة غير معتمدة»
+  const BI = window.BUILD_INFO || {};
+  const KINDS = { dev: 'نسخة تطوير (من المستودع)', draft: 'مسودة غير معتمدة', release: 'إصدار معتمد' };
+  html += `<div class="sec" id="about"><h2>عن التطبيق</h2>
+    <p><b id="buildKind">${esc(KINDS[BI.kind] || 'نوع البناء غير معروف')}</b>${BI.kind === 'draft' ? ' — محتوى لم يعتمده المراجعان العلمي والشرعي بعد؛ للتجربة في البيت لا للنشر.' : ''}</p>
+    <p class="note">الإصدار ${esc(BI.version || '—')} · بصمة المحتوى <span dir="ltr" id="buildHash">${esc(BI.content || '—')}</span>${BI.commit ? ` · <span dir="ltr">${esc(BI.commit)}</span>` : ''}${BI.built ? ` · بُني في ${esc(BI.built)}` : ''}<br>البصمة نفسها على غلاف كتاب المعلم ودفتري الطالب والطالبة: إن اختلفت فالكتاب والتطبيق من نسختين مختلفتين.</p>
+    <p class="note" id="credits"><b>المصادر:</b> النص القرآني من مجمع الملك فهد لطباعة المصحف الشريف بخط صفحات مصحف المدينة، الإصدار الثاني (QPC V2؛ رموز الآيات من مكتبة QUL)، وKFGQPC Hafs Smart احتياطاً، ونص Tanzil (<span dir="ltr">tanzil.net</span>) بلا تعديل؛ التلاوة المرفقة للشيخ محمد صدّيق المنشاوي من <span dir="ltr">everyayah.com</span> (إذن إعادة نشرها قيد التحقق)؛ الخطوط Baloo Bhaijaan 2 وIBM Plex Sans Arabic وNoto Sans SC برخصة SIL OFL؛ بعض الرسوم التشريحية مقتبسة ومعدّلة من Servier Medical Art برخصة CC BY 4.0؛ والمحتوى التعليمي © فراس. <a href="licenses.html">المصادر والرخص كاملة</a></p></div>`;
+  html += `<div class="sec noprint"><details><summary><b>حذف حساب ${esc(profile.name)}</b></summary>
+    <p>يُنقل هذا الحساب إلى «المحذوفات» في صفحة الحسابات، ومعه كل ما حُفظ له: التقدم والإجابات والتسجيلات والرسوم. يُسترجع منها برمزك خلال <b>30 يوماً</b>، ثم يُحذف نهائياً.</p>
+    <label>اكتب اسم الطفل للتأكيد: <input id="delName" autocomplete="off" style="font:inherit;padding:8px 10px;border:2px solid var(--line);border-radius:10px"></label>
+    <button id="delGo" style="font:inherit;padding:8px 16px;border-radius:10px;background:#A8322A;color:#fff;margin-inline-start:8px">انقل الحساب إلى المحذوفات</button>
+    <p id="delMsg" role="alert" class="bad"></p></details></div>`;
+  document.getElementById('body').innerHTML = html;
+  renderQuran();
+  document.getElementById('delGo').onclick = async () => {
+    const m = document.getElementById('delMsg');
+    if (!Atlas.guardianUnlocked()) return showGuardian();
+    try { await Atlas.remove(document.getElementById('delName').value); location.replace('index.html'); }
+    catch (e) { m.textContent = e.message; }
+  };
+  document.querySelectorAll('.rub button').forEach(b => b.onclick = () => {
+    if (!Atlas.guardianUnlocked()) { showGuardian(); return; }
+    const r = G(`atlas:${cur}:rubric`, {}) || {};
+    r[b.dataset.k] = { score: +b.dataset.n, signature: evidenceMap[b.dataset.k] };
+    S(`atlas:${cur}:rubric`, r);
+    const open = [...document.querySelectorAll('details.les')].map(d => d.open);
+    render();
+    document.querySelectorAll('details.les').forEach((d, i) => d.open = !!open[i]);
+  });
+  const apb = document.getElementById('approve'), unb = document.getElementById('unapprove');
+  if (apb) apb.onclick = () => { if (!Atlas.guardianUnlocked()) return showGuardian(); if (S(`atlas:${cur}.unit:approval`, { ok: true, at: Date.now(), sig: signature(ded), ...(pinResetAt() ? { reset: pinResetAt() } : {}) })) render(); };
+  if (unb) unb.onclick = () => { if (!Atlas.guardianUnlocked()) return showGuardian(); if (S(`atlas:${cur}.unit:approval`, null)) render(); };
+  document.getElementById('notes').oninput = e => S(`atlas:${cur}:notes`, e.target.value);
+  document.getElementById('print').onclick = () => {
+    if (!Atlas.guardianUnlocked()) return showGuardian();
+    document.querySelectorAll('details.les').forEach(d => d.open = true);
+    print();
+  };
+  document.getElementById('lockGuardian').onclick = () => { Atlas.lock(); showGuardian() };
+  /* نقرتان: الأولى تنبّه إلى أن الرمز الجديد يُبطل القديم */
+  document.getElementById('newRec').onclick = async (e) => {
+    const b = e.currentTarget;
+    if (!Atlas.guardianUnlocked()) return showGuardian();
+    if (!b.dataset.sure) { b.dataset.sure = '1'; b.textContent = 'اضغط مرة أخرى للتأكيد: يُبطل الرمز القديم'; setTimeout(() => { delete b.dataset.sure; b.textContent = 'رمز استعادة جديد'; }, 6000); return; }
+    try { showRecovery(await Atlas.newRecovery()); } catch (err) { document.getElementById('backupMsg').textContent = err.message; }
+  };
+  /* مغادرة الشاشة تقفلها: لا تبقى مفتوحة ربع ساعة لمن يمسك الجهاز بعد ولي الأمر */
+  window.addEventListener('pagehide', () => Atlas.lock());
+  {
+    const u = Atlas.usage();
+    const mb = n => (n / 1048576).toFixed(1);
+    const base = 'التخزين الأساسي (التقدم والإجابات): ' + Math.round(u.ratio * 100) + '% (هذا الطفل ' + mb(u.mine) + ' من ' + mb(u.quota) + ' مليون محرف).';
+    document.getElementById('usage').textContent = base;
+    /* صور لم تُحمَّل على هذا الجهاز (يسجّلها lesson-runtime.js)، وفحص كامل عند الطلب */
+    {
+      const box = document.createElement('p'); box.className = 'note noprint'; box.id = 'imgDiag';
+      let failed = []; try { failed = JSON.parse(localStorage.getItem('hb-diag-img') || '[]'); } catch {}
+      const say = t => { box.firstChild.textContent = t + ' '; };
+      box.append(document.createTextNode(''), Object.assign(document.createElement('button'), { type: 'button', textContent: 'فحص صور التطبيق', className: 'mini' }));
+      say(failed.length ? 'صور لم تُعرض على هذا الجهاز: ' + failed.join('، ') + '.' : 'لم تُسجَّل صور متعذّرة على هذا الجهاز.');
+      box.lastChild.onclick = async () => {
+        const names = typeof IMG_ALL === 'undefined' ? [] : IMG_ALL; let bad = [], n = 0; say('جارٍ الفحص…');
+        for (const name of names) { await new Promise(res => { const im = new Image(); im.onload = () => res(); im.onerror = () => { bad.push(name); res(); }; im.src = 'img/' + name + '.webp'; }); n++; }
+        try { localStorage.setItem('hb-diag-img', JSON.stringify(bad.slice(-60))); } catch {}
+        say(bad.length ? 'فُحصت ' + n + ' صورة؛ تعذّر تحميل ' + bad.length + ': ' + bad.join('، ') + '.' : 'فُحصت ' + n + ' صورة وكلها سليمة على هذا الجهاز.');
+      };
+      document.getElementById('usage').after(box);
+    }
+    Atlas.mediaUsage().then(m => {
+      if (!m) return;
+      document.getElementById('usage').textContent = base + (m.store ? ' التسجيلات والرسوم في مخزن الجهاز: ' + mb(m.used || 0) + ' ميغابايت' + (m.quota ? ' من نحو ' + Math.round(m.quota / 1073741824 * 10) / 10 + ' غيغابايت متاحة.' : '.') : ' مخزن الوسائط غير متاح في هذا المتصفح؛ التسجيلات تُحفظ في التخزين الأساسي.') + (u.ratio >= 0.7 ? ' المساحة الأساسية تقترب من الامتلاء: صدّر نسخة كاملة.' : '');
+    }).catch(() => {});
+    document.getElementById('rescueAll').onclick = async () => {
+      try {
+        await Atlas.rescueDownload();
+        document.getElementById('backupMsg').textContent = 'نُزّلت نسخة لكل أطفال الجهاز؛ تُستعاد من «استعادة نسخة».';
+      } catch (e) {
+        document.getElementById('backupMsg').textContent = e.message;
+      }
+    };
+  }
+  document.getElementById('backup').onclick = async () => {
+    try {
+      Atlas.download('atlas-backup-' + profile.name + '.json', await Atlas.backup());
+      document.getElementById('backupMsg').textContent = window.AndroidApp ? 'اختر مكان حفظ النسخة في النافذة التي فُتحت (خارج التطبيق، مثل «التنزيلات» أو بطاقة الذاكرة).' : 'أُعدت النسخة الكاملة؛ احفظها خارج هذا الجهاز'
+    } catch (e) {
+      document.getElementById('backupMsg').textContent = e.message
+    }
+  };
+  /* حزمة التحديث الموقّعة: يثبّتها الغلاف (UpdatePack.java في أندرويد، update.js في ويندوز) */
+  const AA = window.AndroidApp && typeof window.AndroidApp.installUpdate === 'function' ? window.AndroidApp : null, HD = window.HBDesktop || null;
+  const uMsg = t => { const m = document.getElementById('updMsg'); if (m) m.textContent = t; };
+  const uInfo = async () => {
+    const el = document.getElementById('updInfo'); if (!el) return;
+    if (!AA && !HD) { el.textContent = 'يُستورد التحديث في تطبيق أندرويد أو ويندوز.'; document.getElementById('updImport').disabled = true; return; }
+    let i = null; try { i = AA ? JSON.parse(AA.updateInfo()) : await HD.updateInfo(); } catch { i = null; }
+    const u = i && i.update;
+    el.textContent = u ? `مثبّت: تحديث المحتوى ${u.content} (${u.app}، ${String(u.created).slice(0, 10)}، ${u.files} ملفاً) فوق محتوى النسخة ${i.shipped}.` : `المحتوى الأصلي لهذه النسخة${i && i.shipped ? ' (' + i.shipped + ')' : ''}، بلا تحديث.`;
+    document.getElementById('updClear').hidden = !u;
+  };
+  uInfo();
+  document.getElementById('updImport').onclick = () => { if (vGuard()) document.getElementById('updFile').click(); };
+  document.getElementById('updFile').onchange = async e => {
+    const f = e.target.files[0]; e.target.value = ''; if (!f) return;
+    uMsg('جارٍ التحقق من التوقيع والتثبيت…');
+    try {
+      const buf = await f.arrayBuffer(); let r;
+      if (AA) { let b = ''; const u8 = new Uint8Array(buf); for (let i = 0; i < u8.length; i += 32768) b += String.fromCharCode.apply(null, u8.subarray(i, i + 32768)); r = JSON.parse(AA.installUpdate(btoa(b))); }
+      else r = await HD.installUpdate(new Uint8Array(buf));
+      if (!r.ok) { uMsg('لم يُثبَّت: ' + r.error); return; }
+      uMsg(`ثُبّت تحديث المحتوى ${r.info.content} (${r.info.files} ملفاً). يُعاد فتح التطبيق…`);
+      setTimeout(() => { location.href = 'index.html'; }, 1500);
+    } catch (err) { uMsg('لم يُثبَّت: ' + (err && err.message || err)); }
+  };
+  document.getElementById('updClear').onclick = async () => { if (!vGuard()) return; if (!confirm('إزالة التحديث والعودة إلى المحتوى الأصلي لهذه النسخة؟')) return; try { if (AA) AA.clearUpdate(); else await HD.clearUpdate(); } catch { /* لا شيء */ } location.href = 'index.html'; };
+
+  /* حزم صوت المعلق (VoicePack في state.js) */
+  const vGuard = () => { if (Atlas.guardianUnlocked()) return true; showGuardian(); return false; };
+  const vMsg = t => { const m = document.getElementById('voiceMsg'); if (m) m.textContent = t; };
+  const vCount = () => { const c = document.getElementById('voiceCount'); if (c && window.VoicePack) VoicePack.ready.then(() => { c.textContent = VoicePack.count() ? `تسجيلات مستوردة على هذا الجهاز: ${VoicePack.count()}.` : 'لا تسجيلات مستوردة بعد.'; }); };
+  vCount();
+  document.getElementById('voiceImport').onclick = () => { if (vGuard()) document.getElementById('voiceFile').click(); };
+  document.getElementById('voiceFile').onchange = async e => {
+    const f = e.target.files[0]; e.target.value = ''; if (!f || !window.VoicePack) return;
+    vMsg('جارٍ الاستيراد…');
+    try { const r = await VoicePack.importPack(f); vMsg(`استُورد ${r.added + r.replaced} تسجيلاً (${r.added} جديداً، ${r.replaced} حلّ محل تسجيل سابق)${r.skipped ? `، وتُرك ${r.skipped} لا يصلح` : ''}. الدروس: ${r.lessons.join('، ') || '—'}.`); }
+    catch (err) { vMsg('لم تُستورد الحزمة: ' + err.message); }
+    vCount();
+  };
+  document.getElementById('voiceClear').onclick = async () => { if (!vGuard() || !window.VoicePack) return; if (!confirm('حذف كل الصوت المستورد من هذا الجهاز؟ يعود القارئ الآلي حتى تستورد حزمة من جديد.')) return; try { await VoicePack.clear(); vMsg('حُذف الصوت المستورد.'); } catch (err) { vMsg(err.message); } vCount(); };
+  document.getElementById('restore').onclick = () => document.getElementById('backupFile').click();
+  document.getElementById('backupFile').onchange = async e => {
+    try {
+      if (!Atlas.guardianUnlocked()) throw new Error('افتح شاشة ولي الأمر');
+      const f = e.target.files[0];
+      if (!f) return;
+      if (f.size > 30 * 1024 * 1024) throw new Error('ملف كبير جدًا');
+      await Atlas.restore(await f.text());
+      location.href = 'index.html'
+    } catch (err) {
+      document.getElementById('backupMsg').textContent = err.message
+    } finally {
+      e.target.value = ''
+    }
+  };
+  /* تقرير مقروء: صفحة HTML بسيطة تُفتح في أي متصفح وتُطبع، دون تسجيلات أو رسوم */
+  document.getElementById('exp').onclick = () => {
+    if (!Atlas.guardianUnlocked()) return showGuardian();
+    const out = [];
+    for (const u of units) {
+      out.push(`<h2>${esc(REVIEW.find(l => l.unit === u).unitTitle)}</h2>`);
+      for (const L of REVIEW.filter(l => l.unit === u)) {
+        try {
+          const D = lessonData(L);
+          if (!D.started) continue;
+          out.push(`<h3>${esc(L.title)}</h3><ul><li>${D.fin ? 'مكتمل' : 'لم يكتمل'} · المستوى ${D.lvl === 'B' ? 'ب' : 'أ'}</li><li>أسئلة الدرس: أجاب عن ${D.ans} من ${D.closed.length}، والصحيح من أول محاولة ${D.okFirst}</li><li>أسئلة «أتحقق»: ${D.chkOk} من ${D.checks.length}${D.chkAns < D.checks.length ? ` (أجاب عن ${D.chkAns})` : ''}</li>${D.tClosed.length && D.tAns ? `<li>اختبار الدرس: ${D.tOk} من ${D.tClosed.length}${D.tAns < D.tClosed.length ? ` (أجاب عن ${D.tAns})` : ''}</li>` : ''}${[D.recall, G(`atlas:${L.test}:recall2`, null), G(`atlas:${L.test}:recall3`, null)].map((r, i) => r && typeof r === 'object' ? `<li>عودة الذاكرة ${['الأولى', 'الثانية', 'الثالثة'][i]}: ${num(r.ok)} من ${num(r.n)} بعد ${esc(Atlas.days(r.days))}</li>` : '').join('')}</ul>`);
+          for (const o of L.open.filter(D.mine)) {
+            const t = G(`atlas:${L.id}:${o.key}`, '');
+            if (typeof t === 'string' && t.trim()) out.push(`<p><b>${esc(o.q)}</b><br>${esc(t)}</p>`);
+          }
+        } catch {}
+      }
+      const n = G(`atlas:${u}:notes`, '');
+      if (typeof n === 'string' && n.trim()) out.push(`<p><b>ملاحظات ولي الأمر:</b> ${esc(n)}</p>`);
+    }
+    const doc = `<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><title>تقرير ${esc(profile.name)}</title><style>body{font-family:system-ui,sans-serif;max-width:760px;margin:24px auto;padding:0 16px;line-height:1.7}h2{border-bottom:2px solid #ccc}</style><h1>تقرير ${esc(profile.name)}</h1><p>${new Date().toLocaleDateString('ar-EG')}</p>${out.join('')}</html>`;
+    Atlas.download('تقرير-' + profile.name + '.html', doc, 'text/html');
+  };
+}
+/* أندرويد: نتيجة الحفظ تصل بعد أن يختار ولي الأمر المكان (MainActivity → hb-saved) */
+window.addEventListener('hb-saved', (e) => { const m = document.getElementById('backupMsg'); if (m) m.textContent = e.detail && e.detail.ok ? 'حُفظ الملف في المكان الذي اخترته.' : 'لم يُحفظ الملف.'; });
+Atlas.ready.then(render, render);
+setInterval(() => {
+  if (profile && !Atlas.guardianUnlocked() && !document.getElementById('main').hidden) showGuardian()
+}, 30000);
+</script></body></html>

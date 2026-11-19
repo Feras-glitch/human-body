@@ -1,0 +1,303 @@
+{
+  "lesson": "common",
+  "count": 45,
+  "words": 199,
+  "items": [
+    {
+      "key": "praise.m",
+      "gender": "m",
+      "hash": "f1a3a0c4e3",
+      "file": "common/praise.m.f1a3a0c4e3.mp3",
+      "text": "أحسنت!"
+    },
+    {
+      "key": "praise.f",
+      "gender": "f",
+      "hash": "c374bdc8b7",
+      "file": "common/praise.f.c374bdc8b7.mp3",
+      "text": "أحسنتِ!"
+    },
+    {
+      "key": "right_now",
+      "hash": "f89211d186",
+      "file": "common/right_now.f89211d186.mp3",
+      "text": "صحيح الآن."
+    },
+    {
+      "key": "answer_is",
+      "hash": "af9a2eec3f",
+      "file": "common/answer_is.af9a2eec3f.mp3",
+      "text": "الصواب:"
+    },
+    {
+      "key": "not_this",
+      "hash": "d06f4ce823",
+      "file": "common/not_this.d06f4ce823.mp3",
+      "text": "ليس هذا."
+    },
+    {
+      "key": "think_again.m",
+      "gender": "m",
+      "hash": "f9b037657a",
+      "file": "common/think_again.m.f9b037657a.mp3",
+      "text": "فكّر مرة أخرى."
+    },
+    {
+      "key": "think_again.f",
+      "gender": "f",
+      "hash": "2aa5d37c5d",
+      "file": "common/think_again.f.2aa5d37c5d.mp3",
+      "text": "فكّري مرة أخرى."
+    },
+    {
+      "key": "hint",
+      "hash": "e6578ea502",
+      "file": "common/hint.e6578ea502.mp3",
+      "text": "تلميح:"
+    },
+    {
+      "key": "look_rest.m",
+      "gender": "m",
+      "hash": "4f9bcf0576",
+      "file": "common/look_rest.m.4f9bcf0576.mp3",
+      "text": "انظر إلى ما بقي من خيارات."
+    },
+    {
+      "key": "look_rest.f",
+      "gender": "f",
+      "hash": "e0300558ee",
+      "file": "common/look_rest.f.e0300558ee.mp3",
+      "text": "انظري إلى ما بقي من خيارات."
+    },
+    {
+      "key": "seq_shown",
+      "hash": "2192f4d25f",
+      "file": "common/seq_shown.2192f4d25f.mp3",
+      "text": "الترتيب الصحيح."
+    },
+    {
+      "key": "seq_right",
+      "hash": "f291a5a6cc",
+      "file": "common/seq_right.f291a5a6cc.mp3",
+      "text": "ترتيب صحيح!"
+    },
+    {
+      "key": "seq_right_now",
+      "hash": "b16756ce65",
+      "file": "common/seq_right_now.b16756ce65.mp3",
+      "text": "الترتيب صحيح الآن."
+    },
+    {
+      "key": "seq_wrong",
+      "hash": "706fedeaa6",
+      "file": "common/seq_wrong.706fedeaa6.mp3",
+      "text": "ليس هذا الترتيب."
+    },
+    {
+      "key": "try_again.m",
+      "gender": "m",
+      "hash": "2154191041",
+      "file": "common/try_again.m.2154191041.mp3",
+      "text": "جرّب من جديد."
+    },
+    {
+      "key": "try_again.f",
+      "gender": "f",
+      "hash": "352396d012",
+      "file": "common/try_again.f.352396d012.mp3",
+      "text": "جرّبي من جديد."
+    },
+    {
+      "key": "not_here",
+      "hash": "18cd60a563",
+      "file": "common/not_here.18cd60a563.mp3",
+      "text": "ليس هنا."
+    },
+    {
+      "key": "try_place.m",
+      "gender": "m",
+      "hash": "c47a967828",
+      "file": "common/try_place.m.c47a967828.mp3",
+      "text": "جرّب مكاناً آخر."
+    },
+    {
+      "key": "try_place.f",
+      "gender": "f",
+      "hash": "67accfb248",
+      "file": "common/try_place.f.67accfb248.mp3",
+      "text": "جرّبي مكاناً آخر."
+    },
+    {
+      "key": "predict_nice",
+      "hash": "c42effbe01",
+      "file": "common/predict_nice.c42effbe01.mp3",
+      "text": "توقّع جميل. لنكتشف الجواب معاً في هذا الدرس."
+    },
+    {
+      "key": "terms_intro",
+      "hash": "c38e5cdb48",
+      "file": "common/terms_intro.c38e5cdb48.mp3",
+      "text": "كلمات مهمة في هذا الدرس:"
+    },
+    {
+      "key": "terms_known",
+      "hash": "732f6a2d1f",
+      "file": "common/terms_known.732f6a2d1f.mp3",
+      "text": "كل كلمات الدرس عرفناها في موضعها."
+    },
+    {
+      "key": "experiment",
+      "hash": "6f4e4506e9",
+      "file": "common/experiment.6f4e4506e9.mp3",
+      "text": "تجربة:"
+    },
+    {
+      "key": "error_intro.m",
+      "gender": "m",
+      "hash": "e923ed2aea",
+      "file": "common/error_intro.m.e923ed2aea.mp3",
+      "text": "لماح رسم وأخطأ. أين الخطأ؟ فكّر ثم اضغط «أرني الصواب»."
+    },
+    {
+      "key": "error_intro.f",
+      "gender": "f",
+      "hash": "c9501d1484",
+      "file": "common/error_intro.f.c9501d1484.mp3",
+      "text": "لماح رسم وأخطأ. أين الخطأ؟ فكّري ثم اضغطي «أرني الصواب»."
+    },
+    {
+      "key": "life_intro",
+      "hash": "21f55c8ef0",
+      "file": "common/life_intro.21f55c8ef0.mp3",
+      "text": "في حياتي."
+    },
+    {
+      "key": "why_q",
+      "hash": "8fdc03f71f",
+      "file": "common/why_q.8fdc03f71f.mp3",
+      "text": "لماذا؟"
+    },
+    {
+      "key": "trilingual.m",
+      "gender": "m",
+      "hash": "0e119d887c",
+      "file": "common/trilingual.m.0e119d887c.mp3",
+      "text": "كلمات تعلمتها اليوم بثلاث لغات."
+    },
+    {
+      "key": "trilingual.f",
+      "gender": "f",
+      "hash": "de53517de9",
+      "file": "common/trilingual.f.de53517de9.mp3",
+      "text": "كلمات تعلمتِها اليوم بثلاث لغات."
+    },
+    {
+      "key": "finished.m",
+      "gender": "m",
+      "hash": "751f001795",
+      "file": "common/finished.m.751f001795.mp3",
+      "text": "أنهيت"
+    },
+    {
+      "key": "finished.f",
+      "gender": "f",
+      "hash": "a9307f8166",
+      "file": "common/finished.f.a9307f8166.mp3",
+      "text": "أنهيتِ"
+    },
+    {
+      "key": "meaning_q",
+      "hash": "647432734d",
+      "file": "common/meaning_q.647432734d.mp3",
+      "text": "ما معناها لنا اليوم؟"
+    },
+    {
+      "key": "prophet_said",
+      "hash": "4f56ce0f41",
+      "file": "common/prophet_said.4f56ce0f41.mp3",
+      "text": "قال رسول الله ﷺ:"
+    },
+    {
+      "key": "test_intro.m",
+      "gender": "m",
+      "hash": "363936b26f",
+      "file": "common/test_intro.m.363936b26f.mp3",
+      "text": "اختبار قصير. أجب وحدك، والمحاولة الأولى هي التي تُحسب."
+    },
+    {
+      "key": "test_intro.f",
+      "gender": "f",
+      "hash": "69392f59f2",
+      "file": "common/test_intro.f.69392f59f2.mp3",
+      "text": "اختبار قصير. أجيبي وحدكِ، والمحاولة الأولى هي التي تُحسب."
+    },
+    {
+      "key": "test_locked.m",
+      "gender": "m",
+      "hash": "02b3de459d",
+      "file": "common/test_locked.m.02b3de459d.mp3",
+      "text": "يُفتح هذا الاختبار بعد أن تنهي الدرس."
+    },
+    {
+      "key": "test_locked.f",
+      "gender": "f",
+      "hash": "d52b61bbf7",
+      "file": "common/test_locked.f.d52b61bbf7.mp3",
+      "text": "يُفتح هذا الاختبار بعد أن تنهين الدرس."
+    },
+    {
+      "key": "retry_intro.m",
+      "gender": "m",
+      "hash": "69012f1d04",
+      "file": "common/retry_intro.m.69012f1d04.mp3",
+      "text": "محاولة ثانية بأسئلة جديدة عمّا أخطأت فيه."
+    },
+    {
+      "key": "retry_intro.f",
+      "gender": "f",
+      "hash": "48c15e5ce2",
+      "file": "common/retry_intro.f.48c15e5ce2.mp3",
+      "text": "محاولة ثانية بأسئلة جديدة عمّا أخطأتِ فيه."
+    },
+    {
+      "key": "recall_intro.m",
+      "gender": "m",
+      "hash": "1b817cb4c9",
+      "file": "common/recall_intro.m.1b817cb4c9.mp3",
+      "text": "عودة الذاكرة. أجب دون أن تفتح الدرس."
+    },
+    {
+      "key": "recall_intro.f",
+      "gender": "f",
+      "hash": "09d195d199",
+      "file": "common/recall_intro.f.09d195d199.mp3",
+      "text": "عودة الذاكرة. أجيبي دون أن تفتحي الدرس."
+    },
+    {
+      "key": "transfer",
+      "hash": "30dbd40a00",
+      "file": "common/transfer.30dbd40a00.mp3",
+      "text": "🌍 سؤال من عالم آخر:"
+    },
+    {
+      "key": "recall_free_a.m",
+      "gender": "m",
+      "hash": "99e64a8d89",
+      "file": "common/recall_free_a.m.99e64a8d89.mp3",
+      "text": "دون أن تفتح الدرس: اكتب ثلاثة أشياء تتذكرها من"
+    },
+    {
+      "key": "recall_free_a.f",
+      "gender": "f",
+      "hash": "5fdbba3382",
+      "file": "common/recall_free_a.f.5fdbba3382.mp3",
+      "text": "دون أن تفتحي الدرس: اكتبي ثلاثة أشياء تتذكرينها من"
+    },
+    {
+      "key": "recall_free_b",
+      "hash": "4ef217847f",
+      "file": "common/recall_free_b.4ef217847f.mp3",
+      "text": "ولماذا هي مهمة."
+    }
+  ]
+}

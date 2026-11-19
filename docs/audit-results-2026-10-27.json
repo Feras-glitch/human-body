@@ -1,0 +1,773 @@
+{
+  "date": "2026-10-27",
+  "tests": {
+    "tests": "✔ legacy migration retains originals and isolates two children (3343.765305ms)\n✔ full backup preserves audio, drawing and grades and rejects tampering (726.46182ms)\n✔ quota failure rolls back import without a partial account (841.379369ms)\n✔ guardian gate rejects incorrect PIN and handles unknown unit hash (3204.120005ms)\n✔ editing an answer invalidates its manual grade (2198.967075ms)\n✔ saved open answers and dedication inputs remain literal text (2121.001962ms)\n✔ repeated clicks cannot inflate delayed recall score (6597.982005ms)\n✔ late microphone permission and scene timers cannot leak after navigation (2320.722029ms)\n✔ recording persists audio and releases the microphone on navigation (2367.675868ms)\nRENDERED 2688\n✔ all 21 lessons render every scene for both genders and levels (31518.070447ms)\n✔ account picker creates edits and switches accounts through UI (3189.000819ms)\n✔ invalid data shapes are rejected despite a valid checksum (489.404158ms)\n✔ cell diagram stays colored and supports Enter selection (1305.876443ms)\n✔ reopening a question does not replace an incorrect first attempt (4.648602ms)\n✔ a correct first attempt survives later incorrect attempts (7.002769ms)\n✔ editing an open answer still persists its latest text (4.169206ms)\n✔ legacy incorrect progress is preserved (1.634583ms)\n✔ typing an explanation before choosing does not count as a graded attempt (1.664875ms)\n✔ profile names render as literal text, including replacement tokens (14.383987ms)\nℹ tests 19\nℹ suites 0\nℹ pass 19\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 62491.134659\n",
+    "validation": "\nالدرس U01.L01 — جسمي على الخريطة: أجزاء ومناطق ونموذج\nobjectives=4  facts=7  concepts=5  misconceptions=4  practice=5  check=5  assessment=12  delayed=3  transfer=2  sources=6\n  ⚠ faith.opening: لم يعتمده مراجع شرعي بعد — لا يُنشر\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\n\nالدرس U01.L02 — كيف نعرف؟ ألاحظ وأصف وأقيس\nobjectives=4  facts=6  concepts=4  misconceptions=3  practice=4  check=4  assessment=12  delayed=3  transfer=2  sources=9\n  ⚠ faith.opening: لم يعتمده مراجع شرعي بعد — لا يُنشر\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\n\nالدرس U02.L01 — الهيكل: دعم وحماية وعظم حي\nobjectives=4  facts=9  concepts=5  misconceptions=6  practice=4  check=5  assessment=12  delayed=3  transfer=2  sources=6\n  ⚠ faith.opening: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 1 تحذير\n\nالدرس U02.L02 — المفاصل: حيث تلتقي العظام\nobjectives=5  facts=9  concepts=5  misconceptions=3  practice=4  check=5  assessment=15  delayed=3  transfer=3  sources=10\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 1 تحذير\n\nالدرس U02.L03 — العضلات تسحب ولا تدفع\nobjectives=4  facts=7  concepts=4  misconceptions=3  practice=4  check=4  assessment=12  delayed=3  transfer=2  sources=7\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 1 تحذير\n\nالدرس U02.L04 — قضية الوحدة: أبني ذراعاً تتحرك\nobjectives=4  facts=3  concepts=1  misconceptions=3  practice=2  check=3  assessment=12  delayed=3  transfer=2  sources=2\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 1 تحذير\n\nالدرس U03.L01 — القلب: مضخة لا تتوقف\nobjectives=7  facts=15  concepts=7  misconceptions=6  practice=5  check=7  assessment=21  delayed=3  transfer=3  sources=10\n  ⚠ faith.opening: لم يعتمده مراجع شرعي بعد — لا يُنشر\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\n\nالدرس U03.L02 — طرق الدم: شرايين وأوردة وشعيرات\nobjectives=5  facts=13  concepts=5  misconceptions=4  practice=5  check=5  assessment=15  delayed=3  transfer=3  sources=8\n\nPASS — 0 خطأ، 0 تحذير\n\nالدرس U03.L03 — ماذا في الدم؟ فريق النقل والدفاع والإصلاح\nobjectives=5  facts=10  concepts=5  misconceptions=4  practice=5  check=5  assessment=15  delayed=3  transfer=3  sources=10\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 1 تحذير\n\nالدرس U03.L04 — قضية الوحدة: أفحص نموذج الدورة الدموية\nobjectives=5  facts=4  concepts=1  misconceptions=5  practice=2  check=3  assessment=15  delayed=3  transfer=2  sources=4\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 1 تحذير\n\nالدرس U04.L01 — التنفس: كيف يدخل الهواء ويخرج؟\nobjectives=6  facts=8  concepts=5  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=7\n  ⚠ faith.opening: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 1 تحذير\n\nالدرس U04.L02 — الرئتان من الداخل: من الهواء إلى الدم\nobjectives=6  facts=8  concepts=5  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=6\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 1 تحذير\n\nالدرس U04.L03 — قضية الوحدة: الهواء الذي أتنفسه\nobjectives=5  facts=6  concepts=3  misconceptions=4  practice=3  check=4  assessment=15  delayed=3  transfer=2  sources=8\n  ⚠ faith.closing: تعارض تخريج يحتاج المراجع الشرعي\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\n\nالدرس U05.L01 — الخلية: اللبنة الحية التي لا تراها\nobjectives=6  facts=8  concepts=6  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=6\n  ⚠ faith.opening: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 1 تحذير\n\nالدرس U05.L02 — الطاقة: لماذا تحتاج الخلية الأكسجين؟\nobjectives=6  facts=7  concepts=4  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=8\n\nPASS — 0 خطأ، 0 تحذير\n\nالدرس U05.L03 — قضية الوحدة: من لقمة الخبز إلى القفزة\nobjectives=6  facts=6  concepts=2  misconceptions=5  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=7\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 1 تحذير\n\nالدرس U06.L01 — الفم: أول محطة في الطريق\nobjectives=6  facts=9  concepts=4  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=7\n  ⚠ المصدر S7: مقابلة الصفحات لم تكتمل\n  ⚠ faith.opening: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\n\nالدرس U06.L02 — الطريق: المريء والمعدة\nobjectives=6  facts=8  concepts=4  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=4\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 1 تحذير\n\nالدرس U06.L03 — الأعضاء المساعدة: الكبد والبنكرياس والمرارة\nobjectives=6  facts=8  concepts=4  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=5\n  ⚠ المصدر S3: مقابلة الصفحات لم تكتمل\n  ⚠ المصدر S5: مقابلة الصفحات لم تكتمل\n\nPASS — 0 خطأ، 2 تحذير\n\nالدرس U06.L04 — الامتصاص ونهاية الطريق\nobjectives=6  facts=8  concepts=4  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=5\n\nPASS — 0 خطأ، 0 تحذير\n\nالدرس U06.L05 — سكان الأمعاء، وقضية الوحدة: كيف صار الخبز سكراً؟\nobjectives=6  facts=8  concepts=4  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=9\n  ⚠ المصدر S7: مقابلة الصفحات لم تكتمل\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\n",
+    "terms": "U01.L01 — ✔ سليم\nU01.L02 — ✔ سليم\nU02.L01 — ✔ سليم\nU02.L02 — ✔ سليم\nU02.L03 — ✔ سليم\nU02.L04 — ✔ سليم\nU03.L01 — ✔ سليم\nU03.L02 — ✔ سليم\nU03.L03 — ✔ سليم\nU03.L04 — ✔ سليم\nU04.L01 — ✔ سليم\nU04.L02 — ✔ سليم\nU04.L03 — ✔ سليم\nU05.L01 — ✔ سليم\nU05.L02 — ✔ سليم\nU05.L03 — ✔ سليم\nU06.L01 — ✔ سليم\nU06.L02 — ✔ سليم\nU06.L03 — ✔ سليم\nU06.L04 — ✔ سليم\nU06.L05 — ✔ سليم\n",
+    "release": "\nالدرس U01.L01 — جسمي على الخريطة: أجزاء ومناطق ونموذج\nobjectives=4  facts=7  concepts=5  misconceptions=4  practice=5  check=5  assessment=12  delayed=3  transfer=2  sources=6\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.opening: لم يعتمده مراجع شرعي بعد — لا يُنشر\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 3 تحذير\nRELEASE BLOCKED\n\nالدرس U01.L02 — كيف نعرف؟ ألاحظ وأصف وأقيس\nobjectives=4  facts=6  concepts=4  misconceptions=3  practice=4  check=4  assessment=12  delayed=3  transfer=2  sources=9\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.opening: لم يعتمده مراجع شرعي بعد — لا يُنشر\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 3 تحذير\nRELEASE BLOCKED\n\nالدرس U02.L01 — الهيكل: دعم وحماية وعظم حي\nobjectives=4  facts=9  concepts=5  misconceptions=6  practice=4  check=5  assessment=12  delayed=3  transfer=2  sources=6\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.opening: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\nRELEASE BLOCKED\n\nالدرس U02.L02 — المفاصل: حيث تلتقي العظام\nobjectives=5  facts=9  concepts=5  misconceptions=3  practice=4  check=5  assessment=15  delayed=3  transfer=3  sources=10\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\nRELEASE BLOCKED\n\nالدرس U02.L03 — العضلات تسحب ولا تدفع\nobjectives=4  facts=7  concepts=4  misconceptions=3  practice=4  check=4  assessment=12  delayed=3  transfer=2  sources=7\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\nRELEASE BLOCKED\n\nالدرس U02.L04 — قضية الوحدة: أبني ذراعاً تتحرك\nobjectives=4  facts=3  concepts=1  misconceptions=3  practice=2  check=3  assessment=12  delayed=3  transfer=2  sources=2\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\nRELEASE BLOCKED\n\nالدرس U03.L01 — القلب: مضخة لا تتوقف\nobjectives=7  facts=15  concepts=7  misconceptions=6  practice=5  check=7  assessment=21  delayed=3  transfer=3  sources=10\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.opening: لم يعتمده مراجع شرعي بعد — لا يُنشر\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 3 تحذير\nRELEASE BLOCKED\n\nالدرس U03.L02 — طرق الدم: شرايين وأوردة وشعيرات\nobjectives=5  facts=13  concepts=5  misconceptions=4  practice=5  check=5  assessment=15  delayed=3  transfer=3  sources=8\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n\nPASS — 0 خطأ، 1 تحذير\nRELEASE BLOCKED\n\nالدرس U03.L03 — ماذا في الدم؟ فريق النقل والدفاع والإصلاح\nobjectives=5  facts=10  concepts=5  misconceptions=4  practice=5  check=5  assessment=15  delayed=3  transfer=3  sources=10\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\nRELEASE BLOCKED\n\nالدرس U03.L04 — قضية الوحدة: أفحص نموذج الدورة الدموية\nobjectives=5  facts=4  concepts=1  misconceptions=5  practice=2  check=3  assessment=15  delayed=3  transfer=2  sources=4\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\nRELEASE BLOCKED\n\nالدرس U04.L01 — التنفس: كيف يدخل الهواء ويخرج؟\nobjectives=6  facts=8  concepts=5  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=7\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.opening: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\nRELEASE BLOCKED\n\nالدرس U04.L02 — الرئتان من الداخل: من الهواء إلى الدم\nobjectives=6  facts=8  concepts=5  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=6\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\nRELEASE BLOCKED\n\nالدرس U04.L03 — قضية الوحدة: الهواء الذي أتنفسه\nobjectives=5  facts=6  concepts=3  misconceptions=4  practice=3  check=4  assessment=15  delayed=3  transfer=2  sources=8\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.closing: تعارض تخريج يحتاج المراجع الشرعي\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 3 تحذير\nRELEASE BLOCKED\n\nالدرس U05.L01 — الخلية: اللبنة الحية التي لا تراها\nobjectives=6  facts=8  concepts=6  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=6\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.opening: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\nRELEASE BLOCKED\n\nالدرس U05.L02 — الطاقة: لماذا تحتاج الخلية الأكسجين؟\nobjectives=6  facts=7  concepts=4  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=8\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n\nPASS — 0 خطأ، 1 تحذير\nRELEASE BLOCKED\n\nالدرس U05.L03 — قضية الوحدة: من لقمة الخبز إلى القفزة\nobjectives=6  facts=6  concepts=2  misconceptions=5  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=7\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\nRELEASE BLOCKED\n\nالدرس U06.L01 — الفم: أول محطة في الطريق\nobjectives=6  facts=9  concepts=4  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=7\n  ⚠ المصدر S7: مقابلة الصفحات لم تكتمل\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.opening: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 3 تحذير\nRELEASE BLOCKED\n\nالدرس U06.L02 — الطريق: المريء والمعدة\nobjectives=6  facts=8  concepts=4  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=4\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 2 تحذير\nRELEASE BLOCKED\n\nالدرس U06.L03 — الأعضاء المساعدة: الكبد والبنكرياس والمرارة\nobjectives=6  facts=8  concepts=4  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=5\n  ⚠ المصدر S3: مقابلة الصفحات لم تكتمل\n  ⚠ المصدر S5: مقابلة الصفحات لم تكتمل\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n\nPASS — 0 خطأ، 3 تحذير\nRELEASE BLOCKED\n\nالدرس U06.L04 — الامتصاص ونهاية الطريق\nobjectives=6  facts=8  concepts=4  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=5\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n\nPASS — 0 خطأ، 1 تحذير\nRELEASE BLOCKED\n\nالدرس U06.L05 — سكان الأمعاء، وقضية الوحدة: كيف صار الخبز سكراً؟\nobjectives=6  facts=8  concepts=4  misconceptions=4  practice=5  check=7  assessment=18  delayed=3  transfer=2  sources=9\n  ⚠ المصدر S7: مقابلة الصفحات لم تكتمل\n  ⚠ لا اعتماد علمي بشري باسم المراجع\n  ⚠ faith.closing: لم يعتمده مراجع شرعي بعد — لا يُنشر\n\nPASS — 0 خطأ، 3 تحذير\nRELEASE BLOCKED\n"
+  },
+  "walk": [
+    {
+      "id": "U05.L01",
+      "gender": "m",
+      "level": "B",
+      "scenes": 35,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U05.L01",
+      "gender": "f",
+      "level": "B",
+      "scenes": 35,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U05.L02",
+      "gender": "m",
+      "level": "B",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U05.L02",
+      "gender": "f",
+      "level": "B",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U05.L03",
+      "gender": "m",
+      "level": "B",
+      "scenes": 31,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U05.L03",
+      "gender": "f",
+      "level": "B",
+      "scenes": 31,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L01",
+      "gender": "m",
+      "level": "B",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L01",
+      "gender": "f",
+      "level": "B",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L02",
+      "gender": "m",
+      "level": "B",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L02",
+      "gender": "f",
+      "level": "B",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L03",
+      "gender": "m",
+      "level": "B",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L03",
+      "gender": "f",
+      "level": "B",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L04",
+      "gender": "m",
+      "level": "B",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L04",
+      "gender": "f",
+      "level": "B",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L05",
+      "gender": "m",
+      "level": "B",
+      "scenes": 35,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L05",
+      "gender": "f",
+      "level": "B",
+      "scenes": 35,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U03.L01",
+      "gender": "m",
+      "level": "A",
+      "scenes": 38,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U03.L01",
+      "gender": "f",
+      "level": "A",
+      "scenes": 38,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U03.L02",
+      "gender": "m",
+      "level": "A",
+      "scenes": 31,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U03.L02",
+      "gender": "f",
+      "level": "A",
+      "scenes": 31,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U03.L03",
+      "gender": "m",
+      "level": "A",
+      "scenes": 33,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U03.L03",
+      "gender": "f",
+      "level": "A",
+      "scenes": 33,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U03.L04",
+      "gender": "m",
+      "level": "A",
+      "scenes": 25,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U03.L04",
+      "gender": "f",
+      "level": "A",
+      "scenes": 25,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U04.L01",
+      "gender": "m",
+      "level": "A",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U04.L01",
+      "gender": "f",
+      "level": "A",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U04.L02",
+      "gender": "m",
+      "level": "A",
+      "scenes": 35,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U04.L02",
+      "gender": "f",
+      "level": "A",
+      "scenes": 35,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U04.L03",
+      "gender": "m",
+      "level": "A",
+      "scenes": 28,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U04.L03",
+      "gender": "f",
+      "level": "A",
+      "scenes": 28,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U03.L01",
+      "gender": "m",
+      "level": "B",
+      "scenes": 38,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U03.L01",
+      "gender": "f",
+      "level": "B",
+      "scenes": 38,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U03.L02",
+      "gender": "m",
+      "level": "B",
+      "scenes": 31,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U03.L02",
+      "gender": "f",
+      "level": "B",
+      "scenes": 31,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U03.L03",
+      "gender": "m",
+      "level": "B",
+      "scenes": 33,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U03.L03",
+      "gender": "f",
+      "level": "B",
+      "scenes": 33,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U03.L04",
+      "gender": "m",
+      "level": "B",
+      "scenes": 25,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U03.L04",
+      "gender": "f",
+      "level": "B",
+      "scenes": 25,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U04.L01",
+      "gender": "m",
+      "level": "B",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U04.L01",
+      "gender": "f",
+      "level": "B",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U04.L02",
+      "gender": "m",
+      "level": "B",
+      "scenes": 35,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U04.L02",
+      "gender": "f",
+      "level": "B",
+      "scenes": 35,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U04.L03",
+      "gender": "m",
+      "level": "B",
+      "scenes": 28,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U04.L03",
+      "gender": "f",
+      "level": "B",
+      "scenes": 28,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U01.L01",
+      "gender": "m",
+      "level": "B",
+      "scenes": 31,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U01.L01",
+      "gender": "f",
+      "level": "B",
+      "scenes": 31,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U01.L02",
+      "gender": "m",
+      "level": "B",
+      "scenes": 27,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U01.L02",
+      "gender": "f",
+      "level": "B",
+      "scenes": 27,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U02.L01",
+      "gender": "m",
+      "level": "B",
+      "scenes": 33,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U02.L01",
+      "gender": "f",
+      "level": "B",
+      "scenes": 33,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U02.L02",
+      "gender": "m",
+      "level": "B",
+      "scenes": 32,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U02.L02",
+      "gender": "f",
+      "level": "B",
+      "scenes": 32,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U02.L03",
+      "gender": "m",
+      "level": "B",
+      "scenes": 29,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U02.L03",
+      "gender": "f",
+      "level": "B",
+      "scenes": 29,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U02.L04",
+      "gender": "m",
+      "level": "B",
+      "scenes": 25,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U02.L04",
+      "gender": "f",
+      "level": "B",
+      "scenes": 25,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U05.L01",
+      "gender": "m",
+      "level": "A",
+      "scenes": 35,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U05.L01",
+      "gender": "f",
+      "level": "A",
+      "scenes": 35,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U05.L02",
+      "gender": "m",
+      "level": "A",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U05.L02",
+      "gender": "f",
+      "level": "A",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U05.L03",
+      "gender": "m",
+      "level": "A",
+      "scenes": 31,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U05.L03",
+      "gender": "f",
+      "level": "A",
+      "scenes": 31,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L01",
+      "gender": "m",
+      "level": "A",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L01",
+      "gender": "f",
+      "level": "A",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L02",
+      "gender": "m",
+      "level": "A",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L02",
+      "gender": "f",
+      "level": "A",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L03",
+      "gender": "m",
+      "level": "A",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L03",
+      "gender": "f",
+      "level": "A",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L04",
+      "gender": "m",
+      "level": "A",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L04",
+      "gender": "f",
+      "level": "A",
+      "scenes": 34,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L05",
+      "gender": "m",
+      "level": "A",
+      "scenes": 35,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U06.L05",
+      "gender": "f",
+      "level": "A",
+      "scenes": 35,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U01.L01",
+      "gender": "m",
+      "level": "A",
+      "scenes": 31,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U01.L01",
+      "gender": "f",
+      "level": "A",
+      "scenes": 31,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U01.L02",
+      "gender": "m",
+      "level": "A",
+      "scenes": 27,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U01.L02",
+      "gender": "f",
+      "level": "A",
+      "scenes": 27,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U02.L01",
+      "gender": "m",
+      "level": "A",
+      "scenes": 33,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U02.L01",
+      "gender": "f",
+      "level": "A",
+      "scenes": 33,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U02.L02",
+      "gender": "m",
+      "level": "A",
+      "scenes": 32,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U02.L02",
+      "gender": "f",
+      "level": "A",
+      "scenes": 32,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U02.L03",
+      "gender": "m",
+      "level": "A",
+      "scenes": 29,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U02.L03",
+      "gender": "f",
+      "level": "A",
+      "scenes": 29,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U02.L04",
+      "gender": "m",
+      "level": "A",
+      "scenes": 25,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    },
+    {
+      "id": "U02.L04",
+      "gender": "f",
+      "level": "A",
+      "scenes": 25,
+      "finished": "true",
+      "stuck": null,
+      "errors": []
+    }
+  ],
+  "limits": [
+    "Microphone mocked in regression tests",
+    "Fast walk advances browser clock",
+    "Native packages not built or run",
+    "Full human scientific and faith review pending"
+  ]
+}

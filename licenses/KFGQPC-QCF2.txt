@@ -1,0 +1,27 @@
+KFGQPC Mushaf al-Madinah page fonts, second edition (QPC V2 / QCF2), shipped with the app to draw every verse:
+one font per Mushaf page that holds a verse of the curriculum (app/v2/fonts/qcf2/QCF2NNN.ttf, NNN = page number;
+the list and SHA-256 of each file are in app/v2/fonts/qcf2/SHA256SUMS.txt). Each word, stop mark and verse number
+is one glyph of its page font.
+
+Publisher: King Fahd Glorious Quran Printing Complex (KFGQPC), AlMadinah AlMunawwarah, Kingdom of Saudi Arabia,
+published for free download at http://qurancomplex.gov.sa/TTF/ . The files here were copied unmodified from the
+GitHub mirror https://github.com/mustafa0x/qpc-fonts (commit 8a4f39d, folder mushaf-v2/).
+
+The font files carry no license text. Their name table, copied verbatim (identical in every page font apart from
+the page number NNN):
+  ID 0 (copyright):  Test Font, KFGQPC
+  ID 1 (family):     QCF2NNN
+  ID 2 (subfamily):  Regular
+  ID 3 (unique ID):  KFGQPC QCF2NNN
+  ID 4 (full name):  QCF2NNN
+  ID 5 (version):    KFGQPC TEST
+  ID 6 (PostScript): QCF2NNN
+  ID 7 (trademark):  Test Font, KFGQPC
+
+The mirror refers to KFGQPC's copyright page (http://dm.qurancomplex.gov.sa/copyright-2/), which could not be
+opened from the build environment, and the Quranic Universal Library states that it has no copyright information
+for this font. Until KFGQPC's terms for these files are confirmed, they are used on the same terms as KFGQPC's other
+fonts (KFGQPC-fonts.txt): free of cost, no sale, no modification.
+
+Glyph codes of each verse (which glyph of the page font draws which word): "QPC V2 Glyphs - Ayah by Ayah" from the
+Quranic Universal Library (QUL, https://qul.tarteel.ai, Tarteel AI), kept unmodified in quran/qpc2/.

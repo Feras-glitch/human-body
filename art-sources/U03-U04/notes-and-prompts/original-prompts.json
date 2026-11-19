@@ -1,0 +1,447 @@
+[
+  {
+    "name": "U03.L01-title-boy.webp",
+    "prompt": "Title scene: the hero (reference) has just stopped running in a sunny schoolyard, slightly out of breath, cheeks flushed, one hand pressed flat on the middle of the chest, eyes wide with curiosity. A soft translucent glow inside the chest hints at a real anatomical fist-shaped heart with small motion lines around it. Lammah the magnifying-glass mascot hovers beside the hero holding a tiny stopwatch with hands but no digits. Low wall and a tree in the background, warm afternoon light.",
+    "accuracy": "اليد في **منتصف الصدر** لا على اليسار؛ القلب الملمَّح شكله تشريحي بحجم قبضة، لا ❤؛ لا أرقام على الساعة."
+  },
+  {
+    "name": "U03.L01-title-girl.webp",
+    "prompt": "Title scene: the hero (reference) has just stopped running in a sunny schoolyard, slightly out of breath, cheeks flushed, one hand pressed flat on the middle of the chest, eyes wide with curiosity. A soft translucent glow inside the chest hints at a real anatomical fist-shaped heart with small motion lines around it. Lammah the magnifying-glass mascot hovers beside the hero holding a tiny stopwatch with hands but no digits. Low wall and a tree in the background, warm afternoon light.",
+    "accuracy": "اليد في **منتصف الصدر** لا على اليسار؛ القلب الملمَّح شكله تشريحي بحجم قبضة، لا ❤؛ لا أرقام على الساعة."
+  },
+  {
+    "name": "U03.L01-E1.webp",
+    "prompt": "Explanation scene: the hero (boy) standing facing us, torso drawn see-through like a soft atlas illustration: the rib cage in pale cream protecting the chest, the flat breastbone in the center, two pink lungs left and right, and between them, behind the breastbone, a real anatomical heart (cone-shaped fist, tip pointing down and a little toward the viewer's right) sitting in the middle and tilted slightly to the child's left. The hero holds up his own closed fist beside the chest at the same size as the heart. Lammah points at the fist and then at the heart with a happy \"same size\" gesture. Clean cream background.",
+    "accuracy": "القلب **بين الرئتين خلف عظم القص**، ثلثاه إلى يسار الطفل (يمين الصورة)؛ **بحجم قبضة الطفل نفسها** لا أكبر؛ لا ❤؛ الأضلاع تحيط به."
+  },
+  {
+    "name": "U03.L01-E2.webp",
+    "prompt": "Two vertically stacked panels on cream background. TOP panel: a big friendly anatomical heart squeezed tight and slightly smaller, its muscular wall thick and dense, bright arrows pushing blood OUT through the two big vessels at its top; beside it the hero's hand squeezing a red sponge ball so water-like streams squirt out. BOTTOM panel: the same heart relaxed and a little bigger, soft arrows showing blood flowing INTO it from the top vessels; beside it the same hand opening and the sponge swelling back. A small curved arrow between the panels suggests the cycle repeats.",
+    "accuracy": "القلب **عضلة مجوّفة**: الجدار سميك والداخل فراغ يمتلئ ويفرغ؛ في الانقباض يخرج الدم من **الأعلى** (الأوعية الكبيرة) لا من الطرف السفلي؛ لا ❤؛ الدم أحمر."
+  },
+  {
+    "name": "U03.L01-E3.webp",
+    "prompt": "Full-body front view of the hero (boy) drawn see-through, with a simplified loop of blood vessels: thick red tubes leaving the top of the real anatomical heart and branching toward the head, both arms and both legs, then thinner dark-red tubes returning from the same places back to the heart. Along the outgoing tubes tiny bright bubbles (oxygen) and little golden grain-like dots (food) travel outward; along the returning tubes small grey dots (waste) travel back. Lammah stands at the hero's foot following one bubble with his eyes. No lungs emphasized, no labels.",
+    "accuracy": "الأوعية **حلقة**: خروج وعودة إلى القلب؛ البضائع رموز صورية (فقاقيع، حبيبات، نقاط رمادية) **بلا حروف**؛ العائد **أحمر داكن** لا أزرق؛ القلب تشريحي في المنتصف."
+  },
+  {
+    "name": "U03.L01-E4.webp",
+    "prompt": "Close-up: the hero's left forearm resting palm-up on a table, the right hand's index and middle fingers (NOT the thumb) pressing gently on the inner wrist just below the base of the thumb. A round see-through inset on the wrist shows, under the skin, a red artery with a soft wave bulge traveling along it like a tiny pulse ripple. Lammah peeks from the side with a listening expression and a small ripple symbol above his head (drawn as curved lines, no text). Calm cream background.",
+    "accuracy": "الإصبعان **السبابة والوسطى** على باطن الرسغ تحت قاعدة الإبهام؛ الشريان **أحمر** تحت الجلد مع موجة دفعة واحدة؛ لا عنق في الصورة (الأطفال يعدّون من الرسغ فقط)."
+  },
+  {
+    "name": "U03.L01-E5.webp",
+    "prompt": "Two vertically stacked panels. TOP panel: side by side, a flat red ❤ symbol drawn with chalk on a small blackboard on the left, and on the right a realistic-but-cartoon anatomical heart: a cone-shaped fist, broad top with vessels, tip pointing down, soft pink-red muscle; a little equals-sign-free gap between them with Lammah shrugging in the middle. BOTTOM panel: the hero (boy) startled by a bursting balloon, head drawn see-through with a glowing brain, a THICK arrow going from the brain down a line through the neck to the real heart in the chest, and a THIN arrow going back up from the heart to the brain; the heart has fast motion lines.",
+    "accuracy": "هذه إحدى الصورتين الوحيدتين التي يُسمح فيها بـ❤ **للمقارنة فقط**؛ الشكل الحقيقي **قبضة مخروطية طرفها للأسفل**؛ السهم العريض **من الدماغ إلى القلب** (أمر) والرفيع من القلب إلى الدماغ (خبر)؛ الدماغ هو الذي يتوهّج، لا القلب."
+  },
+  {
+    "name": "U03.L01-E6.webp",
+    "prompt": "Large cutaway diagram of the heart filling the frame, drawn as a friendly atlas illustration: the heart sliced open to show FOUR hollow rooms: two small rooms at the top (atria) and two large rooms at the bottom (ventricles), with a solid muscular wall between the left and right halves. The lower-right room (the heart's left ventricle, on the viewer's right) has a visibly thicker wall. Small one-way flap doors (valves) sit between each upper and lower room and at the two exits at the top, drawn as little swinging gates opening in one direction. Soft red tones only, gentle arrows from top rooms to bottom rooms and out the top. Lammah tiny in a corner cupping his ear.",
+    "accuracy": "**أربع حجرات**: أذينان صغيران أعلى، بطينان كبيران أسفل؛ الحاجز بين الجانبين **صلب بلا ثقوب**؛ الصمامات بوابات **تنفتح في اتجاه واحد**؛ جدار البطين الأيسر (يمين الصورة) **أسمك**؛ الدم يدخل من الأعلى ويخرج من الأعلى."
+  },
+  {
+    "name": "U03.L01-E7.webp",
+    "prompt": "Diagram on cream background: a cutaway heart in the center with its two halves clearly separated by a solid wall. The heart's RIGHT half (on the viewer's left) is tinted a muted blue-violet and sends a tube up to two pink lungs drawn close above the heart; from the lungs, bright red tubes return into the heart's LEFT half (viewer's right), which is tinted bright red and has a clearly thicker muscular wall, and sends one big arched tube out toward the rest of the body (edge of frame). Both lower rooms are squeezing at the same instant (matching motion lines on both). Lammah holds up a small paint palette with a red blob and a blue blob, winking, to hint that the blue is just paint.",
+    "accuracy": "الأزرق هنا **ترميز مسموح** (النص يقوله صراحةً) ويُفضَّل مُخفَّفاً بنفسجياً لا أزرق صافياً؛ الجانب الأيمن إلى **الرئتين القريبتين**، الأيسر إلى الجسم وجداره **أثخن**؛ البطينان ينقبضان **معاً**؛ الحاجز صلب."
+  },
+  {
+    "name": "U03.L01-E8.webp",
+    "prompt": "The hero (boy) running fast across the frame in a park, drawn see-through: calf and thigh muscles glowing warm orange with little puffs of effort, the real heart in mid-chest beating with strong motion lines, lungs pink and expanded. Tubes run from the lungs INTO the heart, then from the heart down through the body to the leg muscles, where tiny bright bubbles (oxygen) hop off into the muscles and little grey dots (waste) hop on. There is NO tube from the lungs directly to the legs. Lammah runs alongside out of breath. Blue sky, grass.",
+    "accuracy": "**لا يوجد أي اتصال مباشر بين الرئة والساق**؛ المسار رئة ← قلب ← أوعية ← عضلة؛ العضلات هي المتوهّجة (تطلب)، والقلب يسرّع؛ الدم أحمر."
+  },
+  {
+    "name": "U03.L01-exp.webp",
+    "prompt": "Two vertically stacked panels. TOP: the hero (boy) sitting calmly on a chair in a classroom, left forearm on his lap palm up, right index and middle fingers on the inner wrist, eyes on a round wall clock with hands and tick marks but no numerals; Lammah beside him holding a pencil and an open notebook with three empty boxes drawn in it (no writing). BOTTOM: the same hero doing small light jumps in place beside the chair, happy, hair bouncing, Lammah counting on his stubby fingers. Cream wall, bright window.",
+    "accuracy": "الإصبعان السبابة والوسطى على **الرسغ** لا الإبهام ولا العنق؛ الساعة **بلا أرقام**؛ الدفتر **بلا كتابة**؛ القفز خفيف لا ركض تحدٍّ."
+  },
+  {
+    "name": "U03.L01-letter.webp",
+    "prompt": "Character portrait: a friendly anatomical heart with a face (big round eyes, warm smile), fist-sized, standing proudly in the middle of a soft silhouette of a child's chest drawn in pale lines; it flexes one small arm like a muscle and holds a tiny calendar-free clock with hands. On a low shelf in the corner, a dusty flat ❤ cardboard cutout leans turned away, half in shadow. Above the heart a faint thin line rises toward a softly glowing brain in the silhouette's head. Warm cream background.",
+    "accuracy": "الشخصية بشكل **القلب الحقيقي**؛ رمز ❤ يظهر مُهمَلاً للمقارنة فقط (هذه الصورة الثانية والأخيرة المسموح فيها به)؛ الموضع منتصف الصدر؛ الدماغ هو المتصل بالقرار؛ لا ❤ على جسم الشخصية."
+  },
+  {
+    "name": "U03.L01-hist1.webp",
+    "prompt": "Historical scene, Cairo around the year 1242: a Muslim physician scholar (Ibn al-Nafis) in a long dark robe and white turban sits on cushions at a low wooden desk inside a stone-arched room of a medieval hospital, pointed arches and a mashrabiya window letting in warm light. He holds a reed pen over a parchment on which a simple drawn heart shows a thick SOLID wall between its two halves; beside it an old thick manuscript lies open. He looks thoughtful and confident. Ceramic inkwell, oil lamp, a few bound books on a shelf.",
+    "accuracy": "الحاجز في رسمه **صلب بلا ثقوب**؛ أدوات العصر فقط: قلم قصب، محبرة، مخطوطات، مصباح زيت؛ **لا مجهر ولا سمّاعة ولا نظارات حديثة**؛ لا تشريح ولا دم؛ لبس ومعمار القرن 13 بالقاهرة."
+  },
+  {
+    "name": "U03.L01-hist2.webp",
+    "prompt": "Historical scene, England 1628: a 17th-century physician (William Harvey) with a pointed grey beard, long dark hair, black doublet and wide white lace collar, standing at a wooden table in a wood-paneled room with leaded windows. On the table: a cardboard-colored drawing of a heart with a closed loop of vessels drawn around a human outline, a small brass balance scale, a pewter measuring cup, and a quill with ink. He gestures with one hand along the loop, explaining to two attentive students in similar period clothes. Candles, no modern tools.",
+    "accuracy": "الدم **حلقة مغلقة** في رسمه؛ أدوات الحساب (ميزان، كوب قياس) لا مجهر (لم يرَ الشعيرات)؛ لبس إنجلترا 1628؛ لا دم ولا تشريح ظاهر؛ القلب في الرسم تشريحي."
+  },
+  {
+    "name": "U03.L01-life.webp",
+    "prompt": "Home hallway scene: the hero (boy) stands behind a half-open door, hands raised as if about to jump out, but his face has changed to a thoughtful pause with one finger on his chin. In the hallway his little brother (about 5, striped t-shirt) walks by with a toy, unaware and happy. Above the hero a round thought bubble shows a small picture: the same little brother frightened, hand clutched to his chest, a tiny racing heart with fast motion lines. Lammah behind the door gently shakes his head. Warm evening light.",
+    "accuracy": "البطل **لم يُخِف** الصغير بعد؛ فقاعة التفكير **صورة فقط بلا كلام**؛ القلب في الفقاعة تشريحي صغير لا ❤؛ الصغير في الواقع مطمئن."
+  },
+  {
+    "name": "U03.L02-title-boy.webp",
+    "prompt": "Title scene: the hero (reference) sits at a sunny table holding the back of one hand up close to the face, puzzled; faint bluish-grey veins show under the brown skin of the hand. Lammah floats right over the hand, his sky-blue lens acting as a window: inside the lens the same vein is seen under the skin as a tube full of DARK RED blood. A big soft question mark shape made of light hangs above. Warm cream room.",
+    "accuracy": "الأوردة على الجلد **مزرقّة باهتة**، وداخل العدسة الدم **أحمر داكن** صريحاً؛ لا أزرق داخل الوريد؛ اليد طبيعية بلا جرح."
+  },
+  {
+    "name": "U03.L02-title-girl.webp",
+    "prompt": "Title scene: the hero (reference) sits at a sunny table holding the back of one hand up close to the face, puzzled; faint bluish-grey veins show under the brown skin of the hand. Lammah floats right over the hand, his sky-blue lens acting as a window: inside the lens the same vein is seen under the skin as a tube full of DARK RED blood. A big soft question mark shape made of light hangs above. Warm cream room.",
+    "accuracy": "الأوردة على الجلد **مزرقّة باهتة**، وداخل العدسة الدم **أحمر داكن** صريحاً؛ لا أزرق داخل الوريد؛ اليد طبيعية بلا جرح."
+  },
+  {
+    "name": "U03.L02-E1.webp",
+    "prompt": "Front view of the hero (boy) drawn see-through: a real anatomical heart in mid-chest with one big arched red tube (the aorta) rising from its top and branching into thick bright-red tubes toward the head, both arms, the belly and both legs; bold arrows along every tube point AWAY from the heart. Tube walls drawn clearly thick. No returning tubes in this picture. Lammah stands beside the leg pointing in the direction of the arrows. Cream background.",
+    "accuracy": "الأسهم كلها **بعيداً عن القلب**؛ الشرايين **سميكة الجدار** حمراء فاتحة؛ القلب تشريحي في المنتصف؛ لا أوردة في هذه الصورة."
+  },
+  {
+    "name": "U03.L02-E2.webp",
+    "prompt": "Zoom-in diagram in three vertically stacked magnification circles connected by dotted lines. TOP circle: a thick red artery with a visibly thick wall. MIDDLE circle: it branches into several thinner red tubes with thinner walls. BOTTOM, largest circle: a single capillary so narrow that red blood cells (red biconcave discs) pass through in single file; its wall is ONE layer of pale flat cells; tiny bright bubbles and golden grains leave the capillary into soft purple body cells around it, while small grey dots enter the capillary from the cells. Beside the bottom circle, a single black hair strand drawn thicker than the capillary for comparison. Lammah holds the bottom circle like a lens.",
+    "accuracy": "جدار الشعيرة **طبقة واحدة** من الخلايا؛ الكريّات تمر **واحدة واحدة**؛ التبادل يحدث **في الشعيرة فقط** لا في الشريان العلوي؛ الشعيرة **أرفع من الشعرة**؛ لا حروف على الفقاقيع."
+  },
+  {
+    "name": "U03.L02-E3.webp",
+    "prompt": "Diagram of one closed loop on cream background, shaped like a tall ring: on the left side of the ring a thick bright-red artery leaves a small anatomical heart at the top and runs down; at the bottom it splits into a fine mesh of hair-thin capillaries weaving through a patch of soft purple cells; on the right side the mesh gathers into progressively bigger dark-red veins with thinner walls that climb back up into the heart. Arrows run down the artery, through the mesh, and up the vein, back to the heart. Lammah walks along the loop like a path.",
+    "accuracy": "**حلقة مغلقة** تبدأ وتنتهي عند القلب؛ الوريد **أحمر داكن** (لا أزرق هنا، هذه ليست صورة الترميز) وجداره أرقّ؛ الشعيرات شبكة بين الاثنين."
+  },
+  {
+    "name": "U03.L02-E4.webp",
+    "prompt": "Two vertically stacked panels. TOP: the back of a child's hand with bluish-looking veins under brown skin, lit by a window. BOTTOM: a cutaway side view of the same skin as layered cake: the skin layers on top, a vein below filled with DARK RED blood. From a small sun above, two kinds of light rays fall: blue rays that bounce off the skin surface and return upward before reaching the vein, and red rays that go deeper, reach the vein and are swallowed by the dark blood (they fade out inside it). Lammah points with a tiny flashlight.",
+    "accuracy": "الدم داخل الوريد **أحمر داكن**؛ الأشعة الزرقاء **ترتد من سطح الجلد**، الحمراء **تنفذ وتُبتلَع** في الوريد؛ لا أزرق داخل الوريد نفسه؛ لا كلمات على الأشعة."
+  },
+  {
+    "name": "U03.L02-E5.webp",
+    "prompt": "Diagram: a cutaway heart in the lower center with two pink lungs right above it. From the heart's right half (viewer's left, tinted muted blue-violet) a tube rises to both lungs; inside the lungs the tube splits into a fine capillary mesh where the color changes from blue-violet to bright red as tiny bubbles enter; bright red tubes come back down into the heart's left half (viewer's right). This short loop is drawn bold and saturated; the rest of the body (a faint outline below) is greyed out and unused. Small grey dots leave the blood in the lungs.",
+    "accuracy": "هذه صورة **ترميز مسموح**: الأزرق للدم القليل الأكسجين ذاهباً إلى الرئة؛ تغيّر اللون **داخل شعيرات الرئة** فقط؛ الحلقة القصيرة: يمين القلب ← رئتين ← يسار القلب؛ الحاجز بين الجانبين صلب."
+  },
+  {
+    "name": "U03.L02-E6.webp",
+    "prompt": "Diagram of both loops at once as a figure-eight around a cutaway heart in the middle of a faint full-body outline: the SHORT upper loop to the lungs and the LONG lower loop to the whole body. From the heart's left half a big arched bright-red aorta goes out to head and limbs and down into capillary meshes in muscles; dark-tinted (blue-violet coded) veins gather into two large trunks returning to the heart's right half. Both lower rooms of the heart are squeezing at the same instant, with matching motion lines and two simultaneous pulse-bursts: one toward the lungs, one toward the body. Lammah claps both hands together to show \"together\".",
+    "accuracy": "**الحلقتان تدوران معاً**: نبضة واحدة = دفعتان؛ البطينان مضغوطان في اللحظة نفسها؛ الأزرق ترميز مسموح هنا؛ التبادل عند **الشعيرات** في طرفي الحلقتين فقط؛ العائد من الجسم يصل إلى **يمين** القلب."
+  },
+  {
+    "name": "U03.L02-E7.webp",
+    "prompt": "Three vertically stacked panels on cream. TOP: cross-section of an artery as a thick ring with layered muscular, elastic wall; a bulge wave travels along it with the wall stretched then springing back (two phases side by side). MIDDLE: cross-section of a leg vein with a thin wall and two little one-way flap valves inside, blood (dark red) climbing upward; the surrounding calf muscle squeezes the vein from both sides like a hand squeezing a toothpaste tube. BOTTOM: the heart with its two top vessels: one bright red going to the body, one tinted blue-violet going to the lungs, both drawn with the same thick artery wall; Lammah holds up an arrow sign (plain arrow, no text) meaning \"direction\".",
+    "accuracy": "جدار الشريان **سميك مرن**، جدار الوريد رقيق مع **صمامات باتجاه واحد**؛ الدم في الوريد **أحمر داكن** (مشهد شبه واقعي، لا أزرق)؛ في اللوحة السفلية الشريان الرئوي **شريان بجدار سميك** مع ترميز أزرق مسموح لأنه يحمل دماً قليل الأكسجين."
+  },
+  {
+    "name": "U03.L02-exp.webp",
+    "prompt": "Three vertically stacked panels with the hero (boy) on a chair. TOP: arm hanging down relaxed beside the chair, veins on the back of the hand gently raised and visible. MIDDLE: the same arm raised straight above the head, the back of the hand smooth with veins barely visible. BOTTOM: close-up of the hand resting on the knee, the other hand's fingertip pressing on a visible vein and sliding toward the fingers (motion arrow), a short emptied pale segment of the vein behind the fingertip. Lammah observes with a notebook (empty pages).",
+    "accuracy": "الأوردة تبرز حين **تتدلى** اليد وتختفي حين **تُرفع**؛ الأوردة مزرقّة باهتة على الجلد فقط؛ ضغط خفيف بإصبع واحد، **لا رباط حول الذراع**؛ لا دم ظاهر."
+  },
+  {
+    "name": "U03.L02-letter.webp",
+    "prompt": "Character portrait: a capillary as a cute, very thin, slightly curvy transparent tube character with a small face at one end, modest but proud, its wall drawn as a single row of tiny pale cells. Red biconcave disc cells pass through it one at a time in a neat line, each dropping a tiny bright bubble to the soft purple body cells hugging the tube, and picking up a small grey dot. Behind it a big thick-walled red artery character puffs out its chest with a boastful face but gives nothing to the cells. A single hair strand lies beside the capillary, thicker than it.",
+    "accuracy": "الشعيرة **أرفع من الشعرة** وجدارها **طبقة واحدة**؛ الكريّات **في طابور واحدة واحدة**؛ الشريان الكبير **لا يسلّم شيئاً** (جداره مغلق سميك)؛ الكريّات أقراص مقعّرة بلا نواة."
+  },
+  {
+    "name": "U03.L02-hist1.webp",
+    "prompt": "Historical scene, England 1628: William Harvey (pointed grey beard, black doublet, wide white lace collar) stands beside a seated volunteer in simple 17th-century clothes whose sleeve is rolled up. A soft cloth band is tied around the volunteer's upper arm, and the veins below it on the forearm stand out. Harvey presses one finger on a forearm vein near the wrist and slides another finger toward the hand, students in period dress leaning in to watch. Wooden room, leaded window, a quill and papers on a side table. No cutting, no blood.",
+    "accuracy": "الرباط **قماش ناعم** غير مؤلم؛ الوريد يُفرَّغ باتجاه الأصابع ويمتلئ من جهتها لا من جهة القلب (الإصبع القريب من الرسغ ثابت)؛ لا مجهر ولا جروح ولا دم؛ لبس 1628."
+  },
+  {
+    "name": "U03.L02-hist2.webp",
+    "prompt": "Historical scene, Bologna 1661: an Italian scholar (Marcello Malpighi) with long dark hair, black scholar's gown and plain white collar, seated at a wooden table by candlelight, eye at an early compound microscope: a tall tube on a simple tripod stand made of brass and leather. On the stage a small green frog sits calmly. A round inset at the top of the picture shows what he sees through the lens: a fine network of hair-thin capillaries with tiny red discs flowing through them. Stone walls, a shelf of books, no electric light.",
+    "accuracy": "المجهر **مبكّر**: أنبوب على حامل ثلاثي بسيط، بعدسة واحدة للعين (لا عدستين) ولا معدن لمّاع حديث؛ الضفدع **سالم** جالس؛ الشعيرات في العدسة شبكة والكريّات حمراء؛ لبس إيطاليا القرن 17؛ شمعة لا كهرباء."
+  },
+  {
+    "name": "U03.L02-life.webp",
+    "prompt": "Living-room scene: the hero (boy) sits close beside his grandfather on a sofa; the grandfather (white beard, grey galabeya, kind wrinkled face) rests his hand on his knee, and the back of his hand shows raised bluish-grey veins. The hero gently holds the grandfather's hand with both hands, looking at him warmly, not pointing. A tea tray on a small table, Lammah on the armrest smiling softly. Warm evening light.",
+    "accuracy": "الأوردة بارزة **مزرقّة باهتة على الجلد** (لا أزرق صريح)؛ البطل **لا يشير ولا يضحك**؛ يد الجد طبيعية بلا جرح؛ لا دم."
+  },
+  {
+    "name": "U03.L03-title-boy.webp",
+    "prompt": "Title scene: the hero (reference) sits on a low garden wall looking closely at a tiny scratch on one fingertip where a small dry brownish scab has already formed; no dripping blood. Lammah hovers over the finger, and inside his sky-blue lens we see a close-up of the scratch's edge with dozens of tiny pale irregular fragments (platelets) gathered into a plug. The hero's expression is curious, not hurt. Sunny garden, cream tones.",
+    "accuracy": "الجرح **خدش صغير بقشرة** جافة، **لا نزف**؛ الصفائح شظايا صغيرة غير منتظمة متلاصقة، لا خلايا مستديرة؛ لا وجه ألم."
+  },
+  {
+    "name": "U03.L03-title-girl.webp",
+    "prompt": "Title scene: the hero (reference) sits on a low garden wall looking closely at a tiny scratch on one fingertip where a small dry brownish scab has already formed; no dripping blood. Lammah hovers over the finger, and inside his sky-blue lens we see a close-up of the scratch's edge with dozens of tiny pale irregular fragments (platelets) gathered into a plug. The hero's expression is curious, not hurt. Sunny garden, cream tones.",
+    "accuracy": "الجرح **خدش صغير بقشرة** جافة، **لا نزف**؛ الصفائح شظايا صغيرة غير منتظمة متلاصقة، لا خلايا مستديرة؛ لا وجه ألم."
+  },
+  {
+    "name": "U03.L03-E1.webp",
+    "prompt": "Lab scene on a clean cream counter: a small round centrifuge machine with its lid open (no screens, no digits). In front of it, two tall glass test tubes side by side: the LEFT one filled with uniform dark red liquid; the RIGHT one separated into layers: a pale yellow transparent liquid filling the upper half, a very thin whitish line, and a dense dark-red layer at the bottom. Lammah in a tiny lab coat looks amazed at the yellow layer, pointing. Soft shadows, no text on tubes.",
+    "accuracy": "البلازما **أصفر فاتح شفاف** في الأعلى؛ الخلايا الحمراء **في القاع**؛ خط أبيض رفيع جداً بينهما؛ لا أرقام ولا ملصقات على الأنبوبين."
+  },
+  {
+    "name": "U03.L03-E2.webp",
+    "prompt": "Microscopic view inside a capillary: dozens of bright red blood cells shaped like smooth round discs dimpled in the center on both sides (biconcave), no nucleus, some seen edge-on like thin dumbbell shapes, flowing in one direction. Two scenes in soft round insets at top and bottom: top inset in a pink lung mesh, cells catching tiny bright bubbles and turning brighter red; bottom inset in a warm orange muscle, cells releasing the bubbles and turning a darker red. A single drop of blood drawn at the corner, overflowing with countless tiny discs. Lammah rides one disc like a boat.",
+    "accuracy": "الكريّات **أقراص مقعّرة الوجهين بلا نواة** حمراء؛ تمسك الأكسجين في **الرئة** وتتركه في **العضلة**؛ اللون يتغير **فاتح ← داكن فقط**، لا أزرق؛ لا حروف على الفقاقيع."
+  },
+  {
+    "name": "U03.L03-E3.webp",
+    "prompt": "Microscopic scene inside the blood: among many small red biconcave discs, two or three noticeably bigger pale translucent cells (white blood cells) with a soft purple lobed nucleus inside. One white cell is wrapping itself gently around a small green rod-shaped microbe like a blob of jelly swallowing a bean; another white cell touches a blue dotted microbe with its surface as if feeling its shape. No weapons, no helmets, no angry faces: the cells have calm, blank, neutral expressions or no faces at all. Soft plasma-yellow background.",
+    "accuracy": "الخلايا البيضاء **أكبر وأقل عدداً** بكثير، لها **نواة**؛ تبتلع أو تتعرف **بآليات**، لا جيش ولا أسلحة ولا تعابير هجومية؛ الميكروبات صغيرة غير مخيفة."
+  },
+  {
+    "name": "U03.L03-E4.webp",
+    "prompt": "Two vertically stacked panels. TOP: a child's finger with a tiny shallow scratch and a small dry scab, Lammah's lens aimed at it. BOTTOM, inside the lens: a cutaway of a small blood vessel under the skin with a tiny tear in its wall; many small pale irregular fragments (platelets, like little chips and shards) rush to the tear, stick to its edges and to each other, forming a bumpy plug that stops the red discs from leaving; above the vessel, where the skin surface is, the top of the plug has dried into a brown crust. Soft, tidy, no dripping.",
+    "accuracy": "الصفائح **شظايا غير منتظمة أصغر من الكريّات**، تلتصق بحافة التمزق **وببعضها**؛ لا نزف خارج الوعاء إلا بقعة صغيرة؛ القشرة **من جفاف السدّ** فوق الجلد؛ لا نواة للصفائح."
+  },
+  {
+    "name": "U03.L03-E5.webp",
+    "prompt": "Diagram: a large thigh bone drawn in cutaway along its length, its hard pale outer shell opened to reveal a soft spongy reddish tissue inside (bone marrow). From the marrow, like a busy friendly factory conveyor, newly made cells pour out into a vessel: many red biconcave discs, a few larger pale white cells with purple nuclei, and showers of tiny platelet fragments. In the far background a small faint anatomical heart sits quietly with nothing coming out of it except its vessels. Lammah wears a tiny hard hat and points at the marrow.",
+    "accuracy": "**مصنع الدم داخل العظم** (النخاع الطري الأحمر)؛ القلب في الخلفية **لا يصنع شيئاً**؛ ثلاثة أنواع تخرج: أقراص حمراء، خلايا بيضاء أكبر بنواة، شظايا صفائح؛ لا حروف."
+  },
+  {
+    "name": "U03.L03-E6.webp",
+    "prompt": "Four equal panels stacked vertically from top to bottom, each a close-up of the same torn vessel edge under the skin. PANEL 1 (top): a few pale irregular platelet fragments landing on the tear's edge and sticking. PANEL 2: ripple-like rings spreading from them and more fragments arriving from the flow. PANEL 3: a mesh of fine pale threads woven over the plug like a fishing net, trapping fragments and red discs inside it. PANEL 4 (bottom): the top of the plug dried into a brown crust at the skin surface, and underneath it fresh pink skin cells quietly rebuilding. Lammah peeks in panel 4 holding up a hand as \"do not pick\". No numbers on panels.",
+    "accuracy": "الترتيب **من الأعلى إلى الأسفل** بلا أرقام؛ الشبكة خيوط دقيقة **تمسك الصفائح والكريّات**؛ القشرة فوق والجلد يُبنى **تحتها**؛ الصفائح شظايا لا خلايا مستديرة؛ لا دم خارج الوعاء."
+  },
+  {
+    "name": "U03.L03-E7.webp",
+    "prompt": "One friendly red blood cell (biconcave disc with a tiny face) followed along a tall loop diagram inside a faint body outline: at the top in a pink lung mesh it picks up bright bubbles and glows BRIGHT red; it passes through a small anatomical heart; it travels down an artery to a capillary inside a warm orange calf muscle, drops the bubbles and turns DARK red; it returns up a vein to the heart and up to the lungs again. A ring of small clock-face ticks (no numerals) around the loop suggests one minute.",
+    "accuracy": "لون الكريّة **أحمر فاتح ← أحمر داكن ← فاتح**، **لا أزرق أبداً**؛ التبادل في **موضعين فقط** (رئة، عضلة)؛ تمرّ بالقلب في الطريقين؛ القرص مقعّر بلا نواة."
+  },
+  {
+    "name": "U03.L03-exp.webp",
+    "prompt": "Kitchen-table experiment: a tall clear glass more than half full of pale yellow juice. The hero (boy) pours a handful of small red lentils from his palm into the glass, where they sink and tint the whole glass red; beside the glass on the table lie two white chickpeas and a tiny pinch of semolina on a spoon, ready to be added. Lammah sits on the table edge holding an empty notebook open. Warm light, no real blood anywhere, no labels.",
+    "accuracy": "العصير **أصفر فاتح**؛ العدس كثير جداً، الحمص **حبّة أو اثنتان فقط**، السميد رشّة؛ **لا دم حقيقياً** ولا أدوات طبية؛ الدفتر بلا كتابة."
+  },
+  {
+    "name": "U03.L03-letter.webp",
+    "prompt": "Character portrait: a single red blood cell as a cheerful biconcave disc with a small face, carrying a bundle of bright bubbles on its back like a backpack, riding the current of a vessel. Behind it along the path, a small anatomical heart gives a push, and ahead a glowing muscle waits with open \"shelves\" for the bubbles. In the far background a cutaway bone with soft red marrow releases a stream of identical new discs. The cell looks content, not thinking, just carrying.",
+    "accuracy": "القرص **مقعّر الوجهين بلا نواة**؛ لا تعبير قرار أو تفكير؛ القلب **يدفع** فقط؛ النخاع في الخلفية **يصنع**؛ الفقاقيع بلا حروف؛ اللون أحمر."
+  },
+  {
+    "name": "U03.L03-hist1.webp",
+    "prompt": "Historical scene, Dutch Republic late 1600s: two men in 17th-century Dutch clothing (dark coats, white collars, one with long curly hair, one with a flat cap) by a tall window in a brick-walled study. One (Antoni van Leeuwenhoek) holds a tiny flat brass plate with a pinhead lens up to his eye against the window light, a small pin holding a sample in front of it; the other (Jan Swammerdam), younger, sits at a table with a simple single-lens magnifier and a notebook with small drawn circles. A round inset shows what the lens reveals: many small red discs. Wooden floor, Delft-blue tiles on the wall.",
+    "accuracy": "مجهر ليفينهوك **لوح نحاسي صغير بعدسة دقيقة يُرفَع إلى العين**، لا أنبوب حديث؛ الكريّات في العدسة **أقراص حمراء**؛ لبس هولندا القرن 17؛ لا كهرباء؛ لا نصوص في الدفتر."
+  },
+  {
+    "name": "U03.L03-hist2.webp",
+    "prompt": "Historical scene, a medieval Islamic hospital (bimaristan) courtyard, around the 12th century: pointed stone arches around a sunlit courtyard with a small fountain and trees. Under the arcades, physicians in long robes and turbans gently examine patients resting on low beds, patients of different ages and skin tones treated alike; a scribe sits with a scroll and reed pen recording; young students with manuscripts listen to a teacher pointing at a drawing of the body; shelves of ceramic jars and bundles of dried herbs. Calm, dignified, warm. No praying, no modern equipment.",
+    "accuracy": "معمار ومرضى وأطباء **القرن 9–13**: أقواس، نافورة، جرار خزفية، أعشاب، مخطوطات؛ **لا سمّاعة ولا معطف أبيض ولا سرير معدني**؛ المرضى متنوعون ويُعالَجون سواء؛ **لا مشهد ديني**؛ لا دم."
+  },
+  {
+    "name": "U03.L03-life.webp",
+    "prompt": "Schoolyard scene: a classmate (boy in a yellow shirt) sits on the ground with a scraped knee, a little shaken; the hero (boy) kneels beside him pressing a clean folded white cloth firmly on the knee with both hands, calm and focused, looking at him kindly. In the background a girl runs toward a teacher who is already walking over. No phones anywhere, no one laughing. Only a small red mark peeks from the cloth edge. Sunny, reassuring.",
+    "accuracy": "الدم **بقعة صغيرة** فقط تحت القماش، لا نزف؛ الضغط **بقماش نظيف**؛ بالغ قادم؛ **لا هواتف ولا سخرية**؛ لا وجوه مذعورة."
+  },
+  {
+    "name": "U03.L04-title-boy.webp",
+    "prompt": "Title scene: the hero (reference) wearing a detective's cap and a small cape over the usual clothes stands before a large chart on a wooden easel, holding Lammah by the handle like a real magnifying glass and peering at the chart with a serious inspector's squint. The chart is seen at a steep angle and in soft blur: only a faint human outline with a few vague tubes is suggested, no readable details. Several blank small sticky notes dot the chart. A big soft question mark of light floats above. Classroom, bright.",
+    "accuracy": "الرسم على اللوحة **ضبابي ومائل** حتى لا تُقرأ فيه أخطاء ولا صواب؛ الملاحظات اللاصقة **فارغة**؛ لمّاح مستعمل كعدسة؛ لا كتابة."
+  },
+  {
+    "name": "U03.L04-title-girl.webp",
+    "prompt": "Title scene: the hero (reference) wearing a detective's cap and a small cape over the usual clothes stands before a large chart on a wooden easel, holding Lammah by the handle like a real magnifying glass and peering at the chart with a serious inspector's squint. The chart is seen at a steep angle and in soft blur: only a faint human outline with a few vague tubes is suggested, no readable details. Several blank small sticky notes dot the chart. A big soft question mark of light floats above. Classroom, bright.",
+    "accuracy": "الرسم على اللوحة **ضبابي ومائل** حتى لا تُقرأ فيه أخطاء ولا صواب؛ الملاحظات اللاصقة **فارغة**؛ لمّاح مستعمل كعدسة؛ لا كتابة."
+  },
+  {
+    "name": "U03.L04-E1.webp",
+    "prompt": "The hero (boy) as inspector stands beside a neat pinboard with three pinned picture-cards in a row, each a small clean correct diagram with no text: card one, a chest with an anatomical heart in the middle slightly left; card two, a loop of thick artery, capillary mesh and thinner vein; card three, a cutaway bone with marrow releasing red discs, white cells and platelet fragments. The hero taps his temple with one finger with a confident smile; Lammah holds a small blank clipboard. Cream wall, soft light.",
+    "accuracy": "البطاقات الثلاث **صحيحة** (قلب في المنتصف مائل يساراً، حلقة شريان–شعيرة–وريد، نخاع يصنع الدم)؛ لا كلمات على البطاقات؛ القلب تشريحي."
+  },
+  {
+    "name": "U03.L04-E2.webp",
+    "prompt": "Tall loop diagram inside a faint full-body outline of a child, followed by one friendly red disc cell with a tiny face, drawn at seven stations along the path: in the pink lung mesh picking up bright bubbles (bright red); entering the heart's left half (viewer's right); traveling down a thick bright-red artery; inside a hair-thin capillary in the orange calf muscle dropping bubbles (now dark red); climbing a thinner dark-red vein; entering the heart's right half (viewer's left); rising back to the lungs. Exactly two stations are circled with a soft glow: the lung mesh and the muscle capillary. No numbers.",
+    "accuracy": "**التبادل في موضعين فقط** (رئة، عضلة) هما المتوهّجان؛ الترتيب رئة ← يسار القلب ← شريان ← شعيرة ← وريد ← يمين القلب ← رئة؛ الكريّة **أحمر فاتح/داكن**، لا أزرق؛ الوريد هنا أحمر داكن (لا ترميز)."
+  },
+  {
+    "name": "U03.L04-E3.webp",
+    "prompt": "Two vertically stacked comparison panels. TOP: a simple cartoon fish outline with a small two-room heart and ONE single loop of blood: heart → gills (where bubbles enter) → body → back to the heart. BOTTOM: a simple child outline with the real four-room heart and TWO loops drawn as a figure-eight: a short loop to the lungs and a long loop to the body; the heart's left lower room (viewer's right) has a clearly thicker wall than the right lower room. Lammah stands between the panels, finger on chin, thinking.",
+    "accuracy": "السمكة **حلقة واحدة وقلب بحجرتين**؛ الإنسان **حلقتان وأربع حجرات**؛ جدار البطين الأيسر **أسمك** ظاهراً؛ الدم القليل الأكسجين في الحلقتين البشرية أحمر داكن أو ترميز أزرق مخفَّف (مسموح لأن المشهد مخطط)؛ لا كتابة."
+  },
+  {
+    "name": "U03.L04-exp.webp",
+    "prompt": "Home scene at a kitchen table: the hero (boy) explains to his father (short beard, casual shirt) using an open notebook with a child-style pencil drawing: a body outline with a heart in mid-chest and a loop of vessels; the hero points at the drawing with the pencil, mouth open mid-explanation, hands animated. The father listens with raised eyebrows and a curious finger lifted, about to ask a question; an empty speech bubble floats above him. A small sand hourglass stands on the table. Lammah sits on the notebook's edge. No text in the notebook.",
+    "accuracy": "رسم الدفتر **طفولي لكن صحيح**: قلب في منتصف الصدر بشكل تشريحي بسيط، لا ❤؛ **لا كلمات** في الدفتر ولا في فقاعة الكلام؛ ساعة رملية لا رقمية."
+  },
+  {
+    "name": "U03.L04-letter.webp",
+    "prompt": "Character portrait: a classroom wall-poster of the circulation drawn as a living character: a framed paper diagram with a friendly face peeking from the top corner. On the poster: a child outline, a heart, only about ten vessels, capillaries drawn as thick visible tubes, half the vessels tinted blue-violet and half red, everything perfectly still. Lammah hovers over one blue vessel and inside his lens the same vessel appears dark red and full of flowing discs; a small corner inset shows a real dense network of thousands of hair-thin vessels. The poster looks honest and slightly bashful.",
+    "accuracy": "الأزرق هنا **ترميز مسموح** لأن الرسالة تشرحه؛ عدسة لمّاح تُظهر **الأحمر الحقيقي والحركة**؛ الملصق واضح أنه **ورقة مرسومة** لا جسم حقيقي؛ القلب على الملصق تشريحي في المنتصف؛ لا كتابة على الملصق."
+  },
+  {
+    "name": "U03.L04-hist1.webp",
+    "prompt": "Triptych of three tall arched panels side by side, each in its own era, connected by one flowing ribbon drawn as a blood vessel loop passing behind all three. LEFT panel, Cairo around 1242: Ibn al-Nafis in dark robe and white turban at a low desk pointing to a drawn heart with a solid middle wall, stone arch and oil lamp. MIDDLE panel, England 1628: William Harvey in black doublet and white lace collar beside a volunteer's banded forearm, a balance scale on the table. RIGHT panel, Bologna 1661: Malpighi at an early tripod microscope with a frog, candlelight, a round inset of tiny capillaries. The ribbon becomes complete only in the third panel.",
+    "accuracy": "**ثلاثة أعصر مفصولة** لا يلتقون في غرفة واحدة؛ أدوات كل عصر فقط (قلم قصب/ميزان وقماش/مجهر مبكّر)؛ الترتيب من اليسار إلى اليمين زمنياً ويُقبل العكس إن كان متناسقاً؛ لا دم ولا تشريح؛ لا كتابة."
+  },
+  {
+    "name": "U03.L04-life.webp",
+    "prompt": "Living-room floor scene: the hero (boy) sits cross-legged with his little brother (about 5, striped t-shirt) who points at the hero's chest asking with wide eyes; the hero smiles and draws on a sheet of paper on the floor a simple heart in the middle of a chest outline with crayon, while gently placing the little brother's fist on his own mid-chest to show the size and place. A small shrug and a thought bubble with a tiny question mark above the hero hint at \"I don't know yet\" for one part. Lammah lies on his side on the carpet watching. Warm light.",
+    "accuracy": "رسم الكرايون **قلب تشريحي بسيط في المنتصف**، لا ❤؛ القبضة على **منتصف الصدر**؛ فقاعة التفكير **علامة استفهام فقط بلا كلمات**؛ لا كتابة على الورقة."
+  },
+  {
+    "name": "U04.L01-title-boy.webp",
+    "prompt": "Title scene: the hero (reference) sitting cross-legged on a sunny rug, one hand flat on the belly, eyes closed in a calm deep breath, belly gently rounded; a faint see-through window on the chest shows two pink lungs and a red dome-shaped muscle beneath them. Lammah floats beside holding a tiny feather that drifts on the exhaled breath. Warm living room, soft morning light.",
+    "accuracy": "الحجاب الحاجز **قبّة حمراء تحت الرئتين** يفصل الصدر عن البطن؛ لا عضلات على الرئتين؛ اليد على البطن لا الصدر."
+  },
+  {
+    "name": "U04.L01-title-girl.webp",
+    "prompt": "Title scene: the hero (reference) sitting cross-legged on a sunny rug, one hand flat on the belly, eyes closed in a calm deep breath, belly gently rounded; a faint see-through window on the chest shows two pink lungs and a red dome-shaped muscle beneath them. Lammah floats beside holding a tiny feather that drifts on the exhaled breath. Warm living room, soft morning light.",
+    "accuracy": "الحجاب الحاجز **قبّة حمراء تحت الرئتين** يفصل الصدر عن البطن؛ لا عضلات على الرئتين؛ اليد على البطن لا الصدر."
+  },
+  {
+    "name": "U04.L01-E1.webp",
+    "prompt": "Educational scene: the hero (boy) standing front view with a see-through chest showing the rib cage and, inside it, two spongy pink lungs on either side of a realistic cone-shaped heart tilted slightly to the hero's left; the left lung visibly a bit smaller to make room for the heart. Lammah points at the lungs with a happy face. Cream background.",
+    "accuracy": "**الرئة اليسرى (يمين الصورة) أصغر قليلاً**؛ القلب مخروطي في المنتصف مائل يساراً، لا ❤؛ الرئتان ورديّتان إسفنجيتا الملمس لا كيسين أملسين."
+  },
+  {
+    "name": "U04.L01-E2.webp",
+    "prompt": "Educational diagram, child's head and chest in profile, see-through: air path drawn as a soft blue ribbon entering the nose (nostril area lined with tiny hairs and a glistening lining), passing behind the mouth, down through the voice box in the neck, into the windpipe (a tube with pale C-shaped cartilage rings), splitting into two bronchial tubes, each branching into finer and finer tubes inside the pink lungs like an upside-down tree, ending in tiny grape-like clusters. Lammah touching the front of his own neck.",
+    "accuracy": "القصبة بحلقات غضروفية **على شكل C** (مفتوحة من الخلف)؛ التفرع شجرة مقلوبة تنتهي بعناقيد؛ لسان المزمار غطاء صغير فوق الحنجرة؛ لا طريق من الأنف إلى المعدة."
+  },
+  {
+    "name": "U04.L01-E3.webp",
+    "prompt": "Two-panel educational diagram of the torso, front view, see-through. LEFT panel \"breathing in\": the red dome-shaped diaphragm muscle flattened downward, rib cage lifted up and out, lungs expanded larger, belly pushed slightly forward, a blue arrow of air flowing in through the nose. RIGHT panel \"breathing out\": diaphragm relaxed back into a high dome, ribs lowered, lungs smaller, belly flat, arrow of air flowing out. Lammah between the panels mimicking a deep breath. No text.",
+    "accuracy": "في الشهيق: **الحجاب الحاجز ينزل ويستوي، الأضلاع ترتفع وتتسع، البطن إلى الأمام**؛ في الزفير العكس. الرئتان تتبعان ولا تحرّكان (لا عضلات عليهما)."
+  },
+  {
+    "name": "U04.L01-E4.webp",
+    "prompt": "Educational close-up of the relaxed phase only: the torso see-through with the diaphragm as a high red dome under the lungs, rib muscles relaxed, lungs deflated to a smaller size, a gentle arrow of warm air leaving through the nose and mouth; calm face of the hero (boy) in profile. Soft cream background, quiet mood.",
+    "accuracy": "الزفير الهادئ بلا جهد: لا عضلات بطن منقبضة؛ القبّة عالية؛ لا «دفع» مرسوم للهواء إلى الرئتين."
+  },
+  {
+    "name": "U04.L01-E5.webp",
+    "prompt": "Scene: the hero (boy) running across a sunny schoolyard with cheeks slightly flushed, mouth open for air; a see-through window on the chest shows the lungs large and the heart with small motion lines; a second small window on the thigh shows a muscle with tiny green circles (oxygen) arriving through a red vessel and tiny grey circles (carbon dioxide) leaving through a darker vessel. Lammah running alongside with a stopwatch.",
+    "accuracy": "الأكسجين يصل العضلة **عبر وعاء دموي** لا بأنبوب من الرئة؛ الوعاء العائد أحمر داكن لا أزرق؛ القلب والرئتان يعملان معاً في الصورة نفسها."
+  },
+  {
+    "name": "U04.L01-E6.webp",
+    "prompt": "Educational scene (level B): the hero (boy) asleep peacefully in bed at night, chest gently rising; a soft glowing line runs from a small highlighted area at the base of the brain (brain stem) down to the chest muscles; two tiny gauge-like dials float near the neck vessels (one green, one grey) representing sensors, no numbers or text. Lammah asleep on the pillow with a nightcap.",
+    "accuracy": "مركز التنفس **في أسفل الدماغ (جذع الدماغ)** لا في مقدمته؛ الحسّاسات قرب أوعية العنق وفي الدماغ؛ الطفل نائم ويتنفس — الفكرة أن التنفس تلقائي."
+  },
+  {
+    "name": "U04.L01-E7.webp",
+    "prompt": "Educational diagram, two side-by-side close-ups: LEFT: a short section of the windpipe showing pale C-shaped cartilage rings holding the tube open, the open side of each C at the back; RIGHT: a lung in cross-section surrounded by a thin double membrane (two layers) with a glistening slippery fluid between them, the lung sliding smoothly against the chest wall. Lammah with a magnifying lens over the rings.",
+    "accuracy": "حلقات **C** لا حلقات مغلقة؛ الغشاء **طبقتان** بينهما سائل زلق رقيق جداً (لا فراغ هوائي كبير)."
+  },
+  {
+    "name": "U04.L01-exp.webp",
+    "prompt": "Experiment scene, 2×2 cards: (1) the hero (boy) seated calmly with a hand on the belly, eyes on a small clock; (2) the hero jumping lightly in place; (3) the hero seated again counting with a hand on the belly; (4) a clear plastic bottle with the bottom cut off, a small red balloon fixed inside its neck and a yellow stretched balloon membrane over the open bottom, a child's hand pulling the membrane down while the small balloon inflates. Lammah in the center with a tiny clipboard with blank lines.",
+    "accuracy": "في النموذج: **سحب الغشاء السفلي → ينتفخ البالون الداخلي**؛ الفوهة مفتوحة للهواء؛ لا يد تنفخ في البالون."
+  },
+  {
+    "name": "U04.L01-letter.webp",
+    "prompt": "Character portrait of a friendly diaphragm: a wide red dome-shaped muscle like a trampoline stretched under two pink lungs, given a gentle smiling face on its surface and tiny arms; above it the lungs rest like two clouds; below it a soft belly. Motion lines show the dome moving down and up. Cream background.",
+    "accuracy": "قبّة عريضة **تحت** الرئتين، تفصل الصدر عن البطن؛ لا عضلات على الرئتين نفسيهما."
+  },
+  {
+    "name": "U04.L01-hist1.webp",
+    "prompt": "Historical scene, Paris late 1700s: a slim man in an 18th-century powdered wig and dark coat (Antoine Lavoisier) in a laboratory with brass balances, glass bell jars and a large insulated double-walled container packed with ice; inside a glass bell jar a small guinea pig sits calmly; a second man in shirtsleeves breathes through a glass tube connected to a vessel while Lavoisier notes readings on paper. Candlelight, wooden benches, period instruments only.",
+    "accuracy": "المسعر الجليدي والموازين والأجراس الزجاجية **أدوات القرن الثامن عشر**؛ لا أجهزة كهربائية؛ الحيوان حيّ ومرتاح لا مؤذى."
+  },
+  {
+    "name": "U04.L01-life.webp",
+    "prompt": "Two panels: LEFT: in a classroom a boy sits at a desk holding a small blue inhaler to his mouth, calm; beside him the hero (boy) stands kindly with a hand on his shoulder, while two other children in the background cover their mouths laughing — drawn small and faded. RIGHT: at a swimming pool edge, a group of children dare each other holding their breath with puffed cheeks; the hero shakes his head and points to a ball game instead, Lammah waving a tiny red flag.",
+    "accuracy": "البخاخ أزرق صغير بشكله المعتاد؛ لا طفل مزرقّ أو في خطر؛ مشهد المسبح على الحافة لا تحت الماء."
+  },
+  {
+    "name": "U04.L02-title-boy.webp",
+    "prompt": "Title scene: the hero (reference) holding the back of one hand close to the mouth and exhaling, a soft visible warm mist on the hand; behind the hero a large round magnifying-lens shape (Lammah's lens) reveals a close-up of pink grape-like air sacs wrapped in fine red vessels. Lammah peeks from behind the lens with wide curious eyes. Warm cream background.",
+    "accuracy": "الحويصلات عناقيد **داخل عدسة تكبير** (إشارة إلى أنها لا تُرى بالعين)؛ الشعيرات حمراء دقيقة تلفّ الحويصلة."
+  },
+  {
+    "name": "U04.L02-title-girl.webp",
+    "prompt": "Title scene: the hero (reference) holding the back of one hand close to the mouth and exhaling, a soft visible warm mist on the hand; behind the hero a large round magnifying-lens shape (Lammah's lens) reveals a close-up of pink grape-like air sacs wrapped in fine red vessels. Lammah peeks from behind the lens with wide curious eyes. Warm cream background.",
+    "accuracy": "الحويصلات عناقيد **داخل عدسة تكبير** (إشارة إلى أنها لا تُرى بالعين)؛ الشعيرات حمراء دقيقة تلفّ الحويصلة."
+  },
+  {
+    "name": "U04.L02-E1.webp",
+    "prompt": "Educational zoom sequence in three stacked panels: TOP: both lungs pink and spongy with the branching tubes; MIDDLE: a close-up of the finest tubes ending in clusters of tiny sacs like bunches of grapes; BOTTOM: a single sac greatly enlarged, thin-walled, wrapped in a net of fine red capillaries. A dotted circle links each panel to the next. Lammah with his lens on the bottom panel.",
+    "accuracy": "**ثلاث درجات تكبير** واضحة؛ الحويصلة الواحدة جدارها رقيق جداً؛ الشعيرات شبكة حول الحويصلة لا داخلها."
+  },
+  {
+    "name": "U04.L02-E2.webp",
+    "prompt": "Educational diagram of one enlarged air sac next to one capillary, in cross-section: the sac on top filled with pale air, the capillary below carrying small red disc-shaped blood cells; between them two very thin layers. Small green dots (oxygen) cross from the air down into the blood and attach to the red cells; small grey dots (carbon dioxide) cross from the blood up into the air. Arrows only, no text. Lammah pointing at the thin wall.",
+    "accuracy": "الأكسجين **من الهواء إلى الدم**، ثاني أكسيد الكربون **من الدم إلى الهواء**؛ الكريّات أقراص حمراء مقعّرة؛ الجدار **طبقتان رقيقتان**؛ الدم أحمر لا أزرق."
+  },
+  {
+    "name": "U04.L02-E3.webp",
+    "prompt": "Educational full-body diagram of the hero (boy), front view, see-through: a path drawn with small green dots travels from the lungs to the left side of the heart (realistic cone-shaped heart), out through the large artery, down a leg vessel to a small window in the calf muscle where the green dots leave into the muscle and grey dots enter; then a darker red vessel returns up to the right side of the heart and back to the lungs. Lammah running his finger along the path.",
+    "accuracy": "**لا أنبوب من الرئة إلى العضلة**؛ المسار عبر القلب والأوعية؛ الوعاء العائد **أحمر داكن** لا أزرق؛ القلب بشكله الحقيقي."
+  },
+  {
+    "name": "U04.L02-E4.webp",
+    "prompt": "Scene: the hero (boy) in a winter jacket on a cold morning street breathing out a visible white puff of breath; a small inset shows a cold hand-mirror held near the mouth fogging with tiny water droplets. Lammah with a scarf, his lens fogged too.",
+    "accuracy": "الضباب **قطرات ماء** (بخار يتكثف)؛ لا دخان ولا ألوان؛ الجو بارد (شتاء)."
+  },
+  {
+    "name": "U04.L02-E5.webp",
+    "prompt": "Educational diagram (level B): one red blood cell shown twice — LEFT in a lung capillary, bright red, with small green oxygen dots attaching to it; RIGHT in a muscle capillary, dark red, releasing the green dots into the muscle. Between them a long curved vessel. Inside each cell a faint symbol of a molecule with four small iron-colored spots (hemoglobin) — no text. Lammah comparing the two with a surprised face.",
+    "accuracy": "الكريّة **حمراء فاتحة في الرئة وداكنة في العضلة — لا زرقاء أبداً**؛ قرص مقعّر بلا نواة."
+  },
+  {
+    "name": "U04.L02-E6.webp",
+    "prompt": "Educational comparison (level B): LEFT: two big smooth balloons labeled only by shape (no text) representing lungs as empty bags; RIGHT: the same volume made of thousands of tiny clustered sacs; below, a visual of a folded towel versus a spread-out towel on a line. A soft grey cloud of smoke drifts toward a cluster on the far right where a few sacs are darkened and torn. Lammah holding up a flat open hand next to a closed fist.",
+    "accuracy": "الفكرة: **السطح أوسع بكثير في الأكياس الصغيرة**؛ الدخان رمادي يؤذي الحويصلات (تغميق وتمزق) — بلا سيجارة قرب الطفل."
+  },
+  {
+    "name": "U04.L02-exp.webp",
+    "prompt": "Experiment scene, 2×2 cards: (1) the hero (boy) holding a small cold hand-mirror near the mouth, mirror fogged; (2) the hero blowing one calm breath into a small balloon; (3) the hero blowing a deep breath into a second balloon, visibly bigger, with a ruler lying beside both balloons; (4) the hero speaking a long sentence in one breath, small counting marks on a notebook page (tally marks only, no letters). Lammah with a tiny clipboard.",
+    "accuracy": "البالونان بحجمين مختلفين واضحين؛ لا تبادل أدوات بين أطفال (طفل واحد)."
+  },
+  {
+    "name": "U04.L02-letter.webp",
+    "prompt": "Character portrait of a single friendly air sac: a tiny translucent pink balloon-like sac with a gentle face, wrapped in a delicate net of fine red vessels like a hairnet, tiny arms; around it faint thousands of identical sacs fading into the distance; a wisp of grey smoke in the far corner it leans away from. Cream background.",
+    "accuracy": "شفافة رقيقة؛ **شبكة الشعيرات على سطحها**؛ الدخان بعيد وصغير."
+  },
+  {
+    "name": "U04.L02-hist1.webp",
+    "prompt": "Historical scene, Cairo around 1242: the physician Ibn al-Nafis in a long dark robe and white turban at a low desk in a stone-arched hospital room, writing with a reed pen on a manuscript that shows a simple drawn heart with a solid wall between its halves and two tubes going up toward the lungs; an oil lamp, inkwell and bound books. Thoughtful, calm.",
+    "accuracy": "الحاجز **صلب بلا ثقوب**؛ أدوات العصر فقط (قلم قصب، محبرة، مخطوط)؛ لا مجهر ولا عدسات."
+  },
+  {
+    "name": "U04.L02-hist2.webp",
+    "prompt": "Historical scene, Bologna 1661: a man in 17th-century Italian dress with shoulder-length hair (Marcello Malpighi) bending over a simple early microscope — a small brass tube on a stand — by a window; on the stage a thin piece of frog lung; a round inset shows what he sees: tiny air sacs with fine vessels running between them. Wooden table, candle, a small frog drawn respectfully in a dish nearby.",
+    "accuracy": "مجهر **بسيط مبكر** (أنبوب نحاسي صغير)؛ رئة ضفدع؛ الحويصلات والشعيرات في الفقاعة."
+  },
+  {
+    "name": "U04.L02-life.webp",
+    "prompt": "Two panels: LEFT: a family living room where a relative smokes near an open window at the far side; the hero (boy) politely opens a balcony door and gestures kindly, a younger sibling with him; grey smoke stays far from the children's faces. RIGHT: the hero sneezing into the inside of his elbow in a schoolyard while a friend nearby nods and copies the gesture.",
+    "accuracy": "**لا دخان على وجوه الأطفال**؛ التعبير مهذب لا توبيخ؛ العطاس **في باطن المرفق** لا الكف."
+  },
+  {
+    "name": "U04.L03-title-boy.webp",
+    "prompt": "Title scene: the hero (reference) shaking out an old rug on a balcony, a cloud of dust puffing up, the hero mid-cough with one hand on the chest and the other hand's elbow raised toward the mouth; Lammah behind a tiny shield with a sneezing face. Bright afternoon light, blue sky.",
+    "accuracy": "الغبار سحابة بنّية فاتحة؛ السعال في **المرفق**؛ لا دخان."
+  },
+  {
+    "name": "U04.L03-title-girl.webp",
+    "prompt": "Title scene: the hero (reference) shaking out an old rug on a balcony, a cloud of dust puffing up, the hero mid-cough with one hand on the chest and the other hand's elbow raised toward the mouth; Lammah behind a tiny shield with a sneezing face. Bright afternoon light, blue sky.",
+    "accuracy": "الغبار سحابة بنّية فاتحة؛ السعال في **المرفق**؛ لا دخان."
+  },
+  {
+    "name": "U04.L03-E1.webp",
+    "prompt": "Educational close-up of the inside of the nose and windpipe in cross-section: the lining glistening with a thin sticky layer, tiny dust specks stuck in it, and a carpet of fine hair-like cilia all leaning the same way like a brush sweeping the layer upward and out; a few tiny green microbe dots caught in the mucus. Lammah with a tiny broom.",
+    "accuracy": "الأهداب **كلها تميل في اتجاه واحد (إلى الأعلى/الخارج)**؛ المخاط طبقة لامعة لا كتلة؛ الميكروبات صغيرة غير مخيفة."
+  },
+  {
+    "name": "U04.L03-E2.webp",
+    "prompt": "Educational diagram, child's head and chest in profile, see-through: a big cloud of dust in the airway, a small highlighted sensor spot on the airway wall glowing, a thin glowing line from it up to the base of the brain, and from the brain down to the chest and belly muscles; the mouth open with a strong burst of air (motion lines) blowing the dust out. Lammah covering his lens-face with his arm.",
+    "accuracy": "المسار: **حسّاس في المجرى → جذع الدماغ → عضلات التنفس → دفعة هواء**؛ لا طريق من الرئة إلى المعدة."
+  },
+  {
+    "name": "U04.L03-E3.webp",
+    "prompt": "Educational comparison in two stacked panels: TOP: a clean airway lining with lively cilia sweeping and a thin mucus layer carrying specks out; BOTTOM: the same airway after grey smoke: cilia flattened and still, mucus piled up thick, a few small tubes narrowed, and in a side inset a cluster of air sacs with some torn and darkened. A waterpipe (hookah) shown faded in the corner with a red \"no\" circle made of a simple ring only (no text).",
+    "accuracy": "الأهداب **مشلولة مسطّحة** تحت الدخان؛ الحويصلات متمزقة في الإطار؛ الشيشة بعيدة ومخفّفة، لا أحد يدخّنها في الصورة."
+  },
+  {
+    "name": "U04.L03-E4.webp",
+    "prompt": "Scene: a family sitting room; an adult relative sits at the far end with faint grey smoke near him; the hero (boy) stands by a window he has just opened, gesturing politely with an open palm, a younger sibling holding the hero's hand; the children are far from the smoke, fresh air drawn as soft blue swirls coming through the window. Respectful, calm faces.",
+    "accuracy": "**لا دخان على وجوه الأطفال**؛ البطل مهذب لا غاضب؛ النافذة مفتوحة والهواء النظيف أزرق فاتح."
+  },
+  {
+    "name": "U04.L03-E5.webp",
+    "prompt": "Educational network diagram (level B): the hero (boy) running up a staircase; three see-through windows connected by glowing lines in a loop: the lungs, the realistic heart, a calf muscle, and a small highlighted spot at the base of the brain in the center sending lines to both the lungs and the heart at once. No arrows of air going to the muscle directly. Lammah at the top of the stairs with a stopwatch.",
+    "accuracy": "**الدماغ يأمر الرئة والقلب معاً**؛ لا أنبوب هواء إلى العضلة؛ القلب بشكله الحقيقي."
+  },
+  {
+    "name": "U04.L03-exp.webp",
+    "prompt": "Scene, 2×2 cards: (1) the hero (boy) walking through a home with a small notebook, ticking at an open sunny window; (2) the hero gently opening a window in a dusty room; (3) the hero demonstrating a sneeze into the inside of the elbow to a younger sibling who copies him; (4) two pairs of hands washing with soap under a tap. Lammah with a tiny clipboard.",
+    "accuracy": "العطاس **في باطن المرفق**؛ لا دخان في البطاقات؛ غسل اليدين بالصابون."
+  },
+  {
+    "name": "U04.L03-letter.webp",
+    "prompt": "Character portrait of a friendly nose: a soft cartoon nose shape standing like a gatekeeper in front of two small pink lungs, wearing a tiny doorman's cap, holding a small broom (cilia) and a sponge (mucus); dust specks bouncing off it; a far small wisp of smoke it turns away from. Cream background.",
+    "accuracy": "الأنف **بوّاب أمام الرئتين**؛ المكنسة والإسفنجة رمزان للأهداب والمخاط؛ الدخان بعيد."
+  },
+  {
+    "name": "U04.L03-hist1.webp",
+    "prompt": "Historical-science scene, mid-20th century: a team of researchers (men and women in 1950s–1970s clothing, white coats) in an office with filing cabinets, stacks of paper forms, a large wall chart with two simple rising lines (no text or numbers), one researcher interviewing a family at a kitchen table in an inset. Calm, serious, documentary mood.",
+    "accuracy": "لا أسماء ولا أرقام؛ الفكرة **تتبّع أعداد كبيرة من الناس سنوات ومقارنة عادلة**؛ لا تدخين في الصورة."
+  },
+  {
+    "name": "U04.L03-life.webp",
+    "prompt": "Two panels: LEFT: a family gathering where an adult with a waterpipe sits on a far balcony seen through a doorway; inside, the hero (boy) leads two younger children into another room with toys, smiling, speaking politely toward the balcony. RIGHT: the hero at home in bed with a cold, tissue box beside him, sneezing into his elbow, a school bag left by the door.",
+    "accuracy": "الشيشة **بعيدة على الشرفة** خارج الغرفة؛ لا دخان قرب الأطفال؛ المريض يبقى في البيت."
+  }
+]

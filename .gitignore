@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store
+*.zip
+dist/
+playwright-report/
+test-results/
+packaging/android/signing/*.jks
+packaging/android/signing/keystore.properties
+build/.pdf-test-*/
+studio/data.js

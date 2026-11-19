@@ -1,0 +1,159 @@
+@font-face{font-family:'KFGQPC Hafs Smart';src:url('fonts/HafsSmart_08.ttf') format('truetype');font-display:block}
+.quran{font-family:'KFGQPC Hafs Smart';font-size:1.8rem;line-height:2.1;direction:rtl;unicode-bidi:bidi-override;word-spacing:.08em}
+.quran mark{background:#FFE9A8;border-radius:6px;padding:0 3px}
+/* خط مصحف المدينة، الإصدار الثاني (QPC V2): رموزه مرسومة لسطر المصحف، فتُكبَّر لتقارب حجم Hafs Smart */
+.quran .qcf2{font-size:1.18em;line-height:1.9;word-spacing:0;white-space:normal;font-weight:400;font-synthesis:none}
+/* ===== رحلة الدرس: شاشة لكل فكرة، زر واحد كبير، رفيق مرسوم. أسلوب كرتوني دافئ. ===== */
+:root{
+  --bg:#FFF6E3; --card:#FFFFFF; --ink:#2A2422; --muted:#7A6E66; --line:#F0E3CF;
+  --coral:#FF6B57; --coral-d:#E04F3C; --teal:#2BB3A3; --teal-d:#1E8F82; --sun:#FFC93C; --sky:#BFE7FF; --grass:#9BD77A;
+  --skin:#F6C9A3; --skin-d:#E0A77C; --hair:#4A2E1E; --shirt:#4FB0E6; --ok:#2E9E5B; --bad:#D9483B;
+  --display:"Baloo Bhaijaan 2","IBM Plex Sans Arabic","Noto Sans SC",system-ui,sans-serif; --body:"IBM Plex Sans Arabic","Noto Sans SC",system-ui,sans-serif;
+}
+[hidden]{display:none!important}
+*{box-sizing:border-box} html,body{height:100%} html{color-scheme:light}
+body{margin:0;background:var(--bg) url(img/bg-clinic.webp) center top/cover no-repeat fixed;color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0;border-radius:18px;color:var(--ink);-webkit-text-fill-color:currentColor}
+.back,.spk,.home{color:var(--ink)} .next{color:#fff!important}
+textarea,input,select{color:var(--ink);background:var(--card);color-scheme:light}
+.fb{color:var(--ink)} .fb.ok{color:#1E6B3A} .fb.bad{color:#A8322A}
+/* ===== الإطار ===== */
+#app{min-height:100%;display:flex;flex-direction:column;max-width:560px;margin:0 auto}
+header{display:flex;align-items:center;gap:10px;padding:10px 14px;position:sticky;top:0;background:rgba(255,246,227,.9);z-index:5}
+.home{width:46px;height:46px;border-radius:50%;background:var(--card);box-shadow:0 2px 0 var(--line);font-size:22px;display:grid;place-items:center}
+.bar{flex:1;height:14px;background:var(--line);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--grass));transition:width .4s;border-radius:999px}
+.stars{font-size:14px;color:var(--muted);font-family:var(--display);white-space:nowrap}
+main{flex:1;padding:6px 16px 108px;display:flex;flex-direction:column;background:rgba(255,246,227,.86);border-radius:26px 26px 0 0}
+.scene{animation:pop .35s ease}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.artw{position:relative;display:block}
+.artw::after{content:'🔍';position:absolute;bottom:6px;left:6px;font-size:15px;line-height:1;padding:6px;border-radius:50%;background:rgba(255,255,255,.85);box-shadow:0 1px 0 var(--line);pointer-events:none}
+.art{width:100%;height:46vh;max-height:560px;display:block;margin:0 auto;object-fit:contain;border-radius:22px;cursor:zoom-in}
+.pics{display:flex;gap:8px;justify-content:center}.pics .artw{flex:1 1 0;min-width:0}.pics .art{height:36vh}
+.zoom{position:fixed;inset:0;z-index:20;background:rgba(40,30,20,.92);display:grid;place-items:center;padding:10px;cursor:zoom-out}
+.zoom img{max-width:100%;max-height:100%;object-fit:contain;border-radius:14px;background:#FFF9EC}
+.zoom button{position:absolute;top:10px;inset-inline-end:10px;width:48px;height:48px;border-radius:50%;font-size:22px;background:#fff;color:#222}
+h1{font-family:var(--display);font-size:1.9rem;line-height:1.25;margin:10px 0 4px;color:var(--coral-d)}
+h2{font-family:var(--display);font-size:1.45rem;line-height:1.3;margin:8px 0 4px}
+p{margin:6px 0}
+.say{position:relative;background:var(--card);border-radius:22px;padding:14px 16px;box-shadow:0 3px 0 var(--line);font-size:1.12rem;margin:8px 0}
+.say.buddy{border:2px solid var(--sun)}
+.say .who{font-family:var(--display);color:var(--teal-d);font-size:.95rem;display:block;margin-bottom:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.opt{display:block;width:100%;text-align:right;background:var(--card);padding:14px 16px;margin:8px 0;border-radius:18px;box-shadow:0 3px 0 var(--line);font-size:1.08rem;border:2px solid transparent;transition:transform .1s}
+.opt:active{transform:scale(.98)}
+.opt.ok{border-color:var(--ok);background:#E8F7EC}
+.opt.bad{border-color:var(--bad);background:#FDECEA}
+.opt.dim{opacity:.8;background:#F7F1E6;color:var(--muted)}
+.chip{display:inline-block;background:var(--sun);color:#3A2A00;font-family:var(--display);padding:6px 14px;border-radius:999px;font-size:1rem;box-shadow:0 2px 0 #D9A623}
+.chip.off{background:var(--line);color:var(--muted);box-shadow:none}
+.chip.done{background:var(--grass);color:#123;box-shadow:0 2px 0 #6FB15A}
+.note{color:var(--muted);font-size:.95rem}
+.fb{font-family:var(--display);font-size:1.15rem;margin:8px 0;min-height:1.6em}
+.fb.ok{color:var(--ok)} .fb.bad{color:var(--bad)}
+textarea,input[type=number],input[type=text]{width:100%;font:inherit;font-size:1.05rem;padding:12px;border:2px solid var(--line);border-radius:16px;background:var(--card);color:var(--ink)}
+input[type=number]{width:7em;text-align:center;font-family:var(--display);font-size:1.4rem}
+.verse{background:#FFFBEF url(img/s15-verse-frame.webp) center/100% 100% no-repeat;border-radius:16px;padding:48px 40px;text-align:center}
+.verse .lead{font-family:var(--display);color:var(--teal-d);font-size:1.05rem}
+.verse .txt{font-size:1.5rem;line-height:2;font-weight:600;margin:8px 0}
+.verse .ref{color:var(--muted);font-family:var(--display)}
+.verse .mean{text-align:right;margin-top:10px;font-size:1.05rem}
+.card{background:var(--card);border-radius:22px;padding:14px 16px;box-shadow:0 3px 0 var(--line);margin:8px 0}
+canvas{background:#fff;border:2px dashed var(--line);border-radius:18px;touch-action:none;width:100%}
+/* ===== الزر السفلي ===== */
+footer{position:fixed;bottom:0;left:0;right:0;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:var(--bg);box-shadow:0 -4px 12px rgba(74,58,40,.10);z-index:5}
+.fwrap{max-width:560px;margin:0 auto;display:flex;gap:10px;align-items:center}
+.next{flex:1;background:var(--coral);color:#fff;font-family:var(--display);font-size:1.5rem;padding:14px 18px;border-radius:22px;box-shadow:0 5px 0 var(--coral-d);transition:transform .08s}
+.next:active{transform:translateY(3px);box-shadow:0 2px 0 var(--coral-d)}
+.next[disabled]{background:#D8CFC3;box-shadow:0 5px 0 #BDB3A6;color:#5E554B}
+/* النشاط المطلوب تحت الشاشة: إشارة تنزل بالطفل إليه */
+.cue{position:absolute;top:-46px;left:50%;transform:translateX(-50%);background:var(--teal-d);color:#fff;font-family:var(--display);font-size:1rem;padding:8px 18px;border-radius:999px;box-shadow:0 3px 0 rgba(0,0,0,.18);white-space:nowrap;animation:cue 1.3s ease-in-out infinite}
+.cue[hidden]{display:none}
+@keyframes cue{50%{transform:translate(-50%,5px)}}
+.back,.spk{width:54px;height:54px;border-radius:50%;background:var(--card);box-shadow:0 3px 0 var(--line);font-size:22px;display:grid;place-items:center}
+/* ===== الرسم التفاعلي للجسم ===== */
+.body-wrap{position:relative}
+.hot{cursor:pointer;outline:none}
+.hot .zone{fill:rgba(255,201,60,.10);stroke:rgba(217,166,35,.55);stroke-width:3;stroke-dasharray:10 8;transition:fill .2s;vector-effect:non-scaling-stroke}
+.hot.lit .zone{stroke-dasharray:none}
+.tagbox{vector-effect:non-scaling-stroke}
+.hot:hover .zone,.hot:focus .zone{fill:rgba(255,201,60,.35)}
+.hot.lit .zone{fill:rgba(43,179,163,.10);stroke:var(--teal);stroke-width:3;stroke-dasharray:none}
+.hot.want .zone{animation:blink 1s infinite}
+@keyframes blink{50%{fill:rgba(255,107,87,.35)}}
+.tag{font-family:var(--display);font-size:15px;fill:var(--ink);paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round;pointer-events:none}
+.tagbox{fill:#fff;stroke:var(--teal);stroke-width:2;rx:8}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:9}
+.confetti i{position:absolute;width:10px;height:14px;top:-20px;animation:fall 1.6s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.2}}
+.badge{display:grid;place-items:center;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE28A,var(--sun));box-shadow:0 8px 0 #D9A623;font-size:76px;margin:12px auto;animation:spin 1.2s ease}
+@keyframes spin{from{transform:scale(.3) rotate(-30deg)}60%{transform:scale(1.1)}to{transform:none}}
+.wiggle{animation:wig .6s ease infinite alternate}
+@keyframes wig{from{transform:rotate(-4deg)}to{transform:rotate(4deg)}}
+.lvl{display:flex;gap:10px}
+.lvl button{flex:1;padding:14px;border-radius:18px;background:var(--card);box-shadow:0 3px 0 var(--line);font-family:var(--display);font-size:1.15rem}
+.lvl button[aria-pressed=true]{background:var(--teal);color:#fff;box-shadow:0 3px 0 var(--teal-d)}
+.measure{display:flex;gap:10px;align-items:center;justify-content:space-between;background:var(--card);border-radius:18px;padding:10px 14px;margin:8px 0;box-shadow:0 3px 0 var(--line)}
+.mbar{height:18px;border-radius:999px;background:var(--teal);transition:width .5s}
+.mbar.b{background:var(--coral)}
+.pulse-dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--coral);animation:beat .9s infinite}
+@keyframes beat{50%{transform:scale(1.5)}}
+/* مكان صورة لم تُولَّد بعد */
+.ph{background:repeating-linear-gradient(45deg,#FFF3D6,#FFF3D6 10px,#FFE9B8 10px,#FFE9B8 20px);border-radius:22px;padding:18px;text-align:center;color:#8A6D1F;font-family:var(--display);min-height:110px;display:grid;place-items:center;margin:4px 0}
+.hint{background:#FFF3D6;border-radius:12px;padding:8px 12px}
+.opt.sel{outline:3px solid var(--sun);outline-offset:2px}
+
+
+.cell-map .zone{stroke-dasharray:none;fill:rgba(255,255,255,0);stroke:none}
+.cell-map .hot:hover .zone,.cell-map .hot:focus .zone{fill:rgba(255,255,255,.28)}
+.cell-map .hot.lit .zone{fill:rgba(22,128,65,.10);stroke:#168041;stroke-width:4}
+.cell-map .hot.want .zone{fill:rgba(255,201,60,.5);stroke:#D9A623;stroke-width:4}
+
+/* ===== الإتاحة (مراجعة 2026-11-05): تباين 4.5:1 على الأقل للنص الأبيض والرسائل، أهداف لمس أوسع، تركيز ظاهر، احترام تقليل الحركة ===== */
+:root{--coral:#C2412F;--coral-d:#9E3324;--teal:#1F7F74;--teal-d:#155E56;--ok:#1E6B3A;--bad:#A8322A;--muted:#5F544D}
+.note{font-size:1rem}
+.opt[disabled]{opacity:.55;cursor:default}
+.opt.picked{border-color:var(--teal);background:#E6F3F1}
+.opt.reveal{background:#FFF3D6;text-align:center;font-family:var(--display)}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:12px}
+.tts-note{background:#FFF1C7;color:#4A3500;border-radius:16px;padding:10px 14px;margin:8px;font-size:1rem;line-height:1.5}
+.tts-note button{flex:none;display:inline-block;padding:4px 12px;margin-inline-start:8px;font-size:1rem}
+/* على الهاتف: الصورة أصغر في المشاهد التي فيها مهمة، فتبقى المهمة ظاهرة دون تمرير طويل */
+@media (max-width:520px){.scene:has(.opt,.hot,input,textarea,canvas,[data-start]) img.art{height:32vh}}
+@media (orientation:landscape) and (max-height:480px){img.art{height:82vh}.pics .art{height:70vh}
+  /* هاتف بالعرض: الشريطان يأخذان نصف الشاشة إن ثبتا؛ يصيران جزءاً من الصفحة */
+  header{position:static;padding:4px 14px}footer{position:static;padding:8px 16px;box-shadow:none;background:none}main{padding-bottom:10px}
+  .next{font-size:1.15rem;padding:8px 14px}.back,.spk{width:44px;height:44px}.cue{display:none}#main svg{max-height:78vh}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.confetti{display:none}}
+.quran-plain{font-family:'Amiri Quran','Amiri','Traditional Arabic','IBM Plex Sans Arabic',serif;font-size:1.6rem;line-height:2.1;direction:rtl}
+
+.pad-tools{gap:8px;align-items:center;margin-top:8px}.pad-tools .sw{width:44px;height:44px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px var(--line);padding:0}.pad-tools .on{box-shadow:0 0 0 4px var(--teal)}.pad-tools .tool{width:auto;margin:0;padding:8px 12px}.pad-tools .tool:disabled{opacity:.45}
+.artw+.artw,.artw:has(+.artw){display:inline-block;width:49%;vertical-align:top}.artw+.artw .art,.artw:has(+.artw) .art{height:36vh}
+/* زر 🔊 داخل كل خيار: الأيقونة من CSS فلا تدخل نص الخيار، ومساحة لمس كافية */
+/* السماعة في هامش الخيار عند حافته، لا في وسطه: لمسة الطفل على الخيار تختاره، ولمسة السماعة تقرؤه */
+.has-say{position:relative;padding-inline-start:52px !important;min-width:112px}
+.optrow{position:relative;min-width:0}
+.has-say svg,.has-say img{max-width:100%;height:auto}
+.say1{position:absolute;z-index:1;inset-inline-start:7px;top:50%;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0;border:0;border-radius:50%;background:rgba(43,179,163,.14);cursor:pointer}
+.say1:focus-visible{outline:3px solid var(--teal-d);outline-offset:2px}
+.say1::before{content:'🔊';font-size:1rem;line-height:1}
+.optrow:has(> .opt:disabled) > .say1{opacity:.45}
+/* بطاقة المفهوم: المصطلح الإنجليزي بجانب العربي ومعه زر نطقه */
+.term-en{font-family:var(--display);font-size:1.02rem;color:#2A4D7A;margin-inline-start:6px}
+.say-en{display:inline-flex;align-items:center;justify-content:center;min-width:38px;min-height:38px;border-radius:50%;border:0;background:rgba(43,77,122,.12);cursor:pointer;margin-inline-start:4px;vertical-align:middle;font-size:1rem}
+/* سطر الراوي الطويل يبتعد عن زخرفة زاويتي الإطار */
+.verse .lead{margin:0 26px}
+/* بطاقة حديث من السجل: الراوي ثم المتن كاملاً ثم المصدر والدرجة */
+.hadith{background:#FFFBEF;border:1px solid #EADFC0;border-radius:14px;padding:12px 14px;margin:10px 0;text-align:center}
+.hadith .lead{font-family:var(--display);color:var(--teal-d);font-size:.95rem}
+.hadith .txt{font-size:1.12rem;line-height:1.95;font-weight:600;margin:6px 0}
+.hadith .ref{color:var(--muted);font-family:var(--display);font-size:.88rem}
+.card .verse.vcard{padding:30px 22px;margin:10px 0}
+.hadith .lead{margin:0}
+.card .verse.vcard .txt{font-size:1.35rem}
+/* الإجابة المفتوحة بعد المقارنة بالنموذج: النص مقفل، والنموذج ظاهر للمقارنة */
+textarea.locked{background:#F3F6F6;color:var(--ink)}
+.scene .model{background:#E6F7F4;border-radius:12px;padding:10px 12px;margin:8px 0;line-height:1.8}
+/* المسرد على شاشة 320 بكسل: الكلمة الطويلة تنكسر داخل خانتها ولا تدفع الصفحة إلى العرض (المراجعة 20، ن-14) */
+.gloss .opt{min-width:0;overflow-wrap:anywhere;hyphens:auto}

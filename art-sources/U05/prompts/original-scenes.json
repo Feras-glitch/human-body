@@ -1,0 +1,197 @@
+[
+  {
+    "name": "U05.L01-title-boy.webp",
+    "prompt": "Title scene: the hero (reference) looking through a large brass-and-black student microscope on a wooden table, one eye to the eyepiece, mouth open in wonder; beside the microscope a glass slide and a small onion. A big round \"lens view\" circle floats above showing a mosaic of tiny translucent cells packed like bricks, each with a small purple oval in the middle. Lammah perches on the microscope arm. Warm study light.",
+    "accuracy": "في دائرة العدسة: **خلايا متلاصقة كالطوب** كل منها بنواة بيضوية بنفسجية واحدة؛ لا وجوه على الخلايا؛ المجهر مدرسي بسيط."
+  },
+  {
+    "name": "U05.L01-title-girl.webp",
+    "prompt": "Title scene: the hero (reference) looking through a large brass-and-black student microscope on a wooden table, one eye to the eyepiece, mouth open in wonder; beside the microscope a glass slide and a small onion. A big round \"lens view\" circle floats above showing a mosaic of tiny translucent cells packed like bricks, each with a small purple oval in the middle. Lammah perches on the microscope arm. Warm study light.",
+    "accuracy": "في دائرة العدسة: **خلايا متلاصقة كالطوب** كل منها بنواة بيضوية بنفسجية واحدة؛ لا وجوه على الخلايا؛ المجهر مدرسي بسيط."
+  },
+  {
+    "name": "U05.L01-E1.webp",
+    "prompt": "Educational zoom sequence, four round frames descending the page connected by a dotted line: (1) the hero (boy) standing full body; (2) a close-up patch of the skin of the arm; (3) that skin magnified into a neat wall of tiny rectangular cells; (4) one single cell huge: a thin tan outline (membrane), pale blue jelly inside, a purple oval nucleus in the center, a few small orange bean-shaped bodies. Lammah holding a magnifying glass at the top frame. No text.",
+    "accuracy": "التدرّج من الجسم إلى الخلية الواحدة؛ الخلية **بلا وجه**؛ النواة واحدة في الوسط؛ الميتوكوندريا **عدة** حبات برتقالية صغيرة."
+  },
+  {
+    "name": "U05.L01-E2.webp",
+    "prompt": "Educational diagram: one animal cell drawn large inside a round magnifying frame, soft rounded irregular shape; a thin tan double outline for the membrane with a few tiny gaps letting small dots in and out; pale blue jelly filling; a large purple oval nucleus slightly off-center with a darker spot inside; four or five orange bean-shaped mitochondria scattered in the jelly. Lammah outside the frame pointing with a stick. Cream background.",
+    "accuracy": "الغشاء **رقيق** مع نقاط تعبر (يقرر ما يدخل ويخرج)؛ النواة لا تلمس الغشاء؛ لا جدار خلوي سميك (ليست نباتية)."
+  },
+  {
+    "name": "U05.L01-E3.webp",
+    "prompt": "Educational diagram, four specialized cells side by side at the same scale frame, each in its own soft circle: (1) a red biconcave disc red blood cell with no nucleus; (2) a long thin muscle cell with faint stripes; (3) a nerve cell with a star-shaped body and long branching arms; (4) a flat tile-like skin cell. Each has the same pale membrane style. Lammah in the corner comparing them with a tiny ruler.",
+    "accuracy": "الكريّة الحمراء **بلا نواة** ومقعّرة؛ الخلية العصبية بأذرع متفرعة؛ العضلية طويلة مخطّطة؛ الجلدية مسطحة."
+  },
+  {
+    "name": "U05.L01-E4.webp",
+    "prompt": "Scene: a dim 1665 London study; a man in a long dark coat and lace collar (Robert Hooke) bends over a small early microscope made of a leather-covered tube on a wooden stand, with an oil lamp and a glass globe focusing light onto a thin slice of cork on a pin; on the desk a large drawing of the cork slice showing a honeycomb of tiny empty boxes. Lammah in a tiny period hat. No text.",
+    "accuracy": "المجهر **أنبوب جلدي مع مصباح وكرة زجاجية** (القرن 17)؛ العينة **فلّين** لا جلد؛ الرسم خلايا **فارغة كخلية النحل** (جدران نباتية ميتة)."
+  },
+  {
+    "name": "U05.L01-E5.webp",
+    "prompt": "Educational close-up (level B): inside the pale blue jelly of a cell, several orange bean-shaped bodies with wavy inner folds (mitochondria); one is cut open showing the folded inner membrane; soft warm glow around them hints at energy, no flames. Beside it a tiny faded comparison: a muscle cell crowded with many of them versus a skin cell with few. Lammah with a small warm-light lantern.",
+    "accuracy": "**طيّات داخلية** في الميتوكوندريا؛ وهج دافئ **بلا لهب**؛ العضلة فيها كثير والجلد قليل."
+  },
+  {
+    "name": "U05.L01-E6.webp",
+    "prompt": "Educational ladder diagram (level B), five steps rising from bottom to top: a single muscle cell → a bundle of many muscle cells forming a tissue → a whole realistic cone-shaped heart (organ) → the heart with vessels reaching through a faint body outline (system) → the hero (boy) full body smiling. Arrows between steps. Lammah climbing the ladder. No text.",
+    "accuracy": "القلب بشكله الحقيقي لا ❤؛ النسيج **خلايا متشابهة متجمعة**؛ الترتيب من الأصغر إلى الأكبر."
+  },
+  {
+    "name": "U05.L01-exp.webp",
+    "prompt": "Experiment scene, 2×2 cards: (1) a clear zip bag filled with pale yellow jelly on a kitchen table; (2) a child's hands placing one large green grape into the jelly center and sprinkling a few grains of rice; (3) the hero (boy) peeling a thin transparent film from an onion scale and laying it on a glass slide with a drop of water; (4) a round lens view of the onion skin showing neat brick-like boxes each with a small dot. Lammah with a tiny clipboard.",
+    "accuracy": "الكيس = الغشاء، الجيلي = السيتوبلازم، العنبة = النواة، الأرز = الميتوكوندريا؛ خلايا البصل **مستطيلة متراصة** بنقطة واحدة."
+  },
+  {
+    "name": "U05.L01-letter.webp",
+    "prompt": "Character portrait: a single friendly cell with a soft rounded shape, thin tan membrane, pale blue jelly, a purple oval nucleus given a gentle smiling face, and several orange bean-shaped mitochondria; it holds a tiny envelope with one small arm drawn from the membrane. Warm glow, cream background.",
+    "accuracy": "هذه الصورة **الوحيدة** التي يُسمح فيها بوجه (رسالة العضو)؛ الوجه على النواة؛ الميتوكوندريا عدة."
+  },
+  {
+    "name": "U05.L01-hist1.webp",
+    "prompt": "Historical scene, Delft 1674: a Dutch draper (Antony van Leeuwenhoek) in a plain brown coat and white collar holds a tiny brass plate microscope—a small flat metal rectangle with a single bead lens and a pin—up to the daylight of a window, squinting through it; on the table a drop of pond water in a small glass tube and his hand-ground lenses. Lammah peeking at the water drop.",
+    "accuracy": "المجهر **لوح نحاسي صغير بعدسة واحدة** يُرفع إلى الضوء، لا مجهر أنبوبي؛ عينة ماء بركة."
+  },
+  {
+    "name": "U05.L01-hist2.webp",
+    "prompt": "Educational diagram: two round lens views side by side: LEFT a 17th-century style ink drawing of cork cells as empty honeycomb boxes; RIGHT a modern bright view of living cells with nuclei and small organelles. A faded dotted arrow from left to right. Lammah holding both a quill and a modern microscope slide. No text.",
+    "accuracy": "اليسار **فارغ** (جدران نباتية ميتة)؛ اليمين خلايا حية **بنواة** وأجزاء — ما لم يعرفه هوك."
+  },
+  {
+    "name": "U05.L01-life.webp",
+    "prompt": "Two panels: LEFT: the hero (boy) with a small scraped knee showing a dry brown scab, hands kept away from it, a faint see-through circle beneath the scab showing new pale cells filling the gap; RIGHT: the hero shrugging kindly to a younger brother who asked a question, both smiling, a thought bubble above the hero with many tiny dots fading into \"…\" without any digits. Lammah nodding.",
+    "accuracy": "القشرة **لا تُنزع** (اليدان بعيدتان)؛ تحتها خلايا جديدة؛ **لا أرقام** في الفقاعة."
+  },
+  {
+    "name": "U05.L02-title-boy.webp",
+    "prompt": "Title scene: the hero (reference) mid-jump in a sunny yard, cheeks flushed, with a see-through window on the thigh showing a glowing muscle cell; inside it small orange bean-shaped mitochondria give off a soft warm glow (no flames). In the corner a small candle under an upturned glass jar with a shrinking flame. Lammah flying beside with a tiny thermometer-free hand on his forehead gesture.",
+    "accuracy": "الوهج **دافئ بلا لهب** داخل الخلية؛ الشمعة **خارج** الجسم كتشبيه؛ لا دخان."
+  },
+  {
+    "name": "U05.L02-title-girl.webp",
+    "prompt": "Title scene: the hero (reference) mid-jump in a sunny yard, cheeks flushed, with a see-through window on the thigh showing a glowing muscle cell; inside it small orange bean-shaped mitochondria give off a soft warm glow (no flames). In the corner a small candle under an upturned glass jar with a shrinking flame. Lammah flying beside with a tiny thermometer-free hand on his forehead gesture.",
+    "accuracy": "الوهج **دافئ بلا لهب** داخل الخلية؛ الشمعة **خارج** الجسم كتشبيه؛ لا دخان."
+  },
+  {
+    "name": "U05.L02-E1.webp",
+    "prompt": "Educational scene: a breakfast plate with bread, rice and fruit on the left; a soft golden path of tiny sugar cubes/dots travels from the plate into a faint body outline of the hero (boy), down into the belly region, then into a red vessel and along it toward a highlighted single cell at the arm. Lammah pushing a tiny cart of sugar dots. No text.",
+    "accuracy": "السكر **يركب الدم** من البطن (الأمعاء) إلى الخلية؛ لا يذهب إلى الرئة."
+  },
+  {
+    "name": "U05.L02-E2.webp",
+    "prompt": "Educational diagram: one large mitochondrion drawn like a soft orange bean with inner folds, in the center of the page; on the left two small inputs arrive—a golden sugar cube and a green oxygen bubble; on the right three outputs leave—a soft warm glow/sparkle (energy), a grey carbon dioxide bubble, and a tiny blue water drop. Thin arrows. Lammah as a little gatekeeper at the entrance. No text.",
+    "accuracy": "**مدخلان** (سكر + أكسجين)، **ثلاثة مخرجات** (طاقة، CO₂، ماء)؛ لا لهب؛ الألوان: سكر ذهبي، أكسجين أخضر، CO₂ رمادي، ماء أزرق."
+  },
+  {
+    "name": "U05.L02-E3.webp",
+    "prompt": "Educational comparison, two panels: LEFT a small lit candle with a visible flame, a thin wisp of smoke and wavy heat lines, tiny grey and blue bubbles rising; RIGHT a cell with mitochondria giving a calm warm glow, tiny grey and blue bubbles leaving, gentle heat lines, **no flame and no smoke**. A small staircase icon with many tiny steps sits beside the cell, and a single big jump arrow sits beside the candle. Lammah in the middle with one hand warm, pointing.",
+    "accuracy": "الشمعة **لهب ودخان**؛ الخلية **بلا لهب ولا دخان**؛ الدرج بجانب الخلية (خطوات صغيرة) والقفزة بجانب الشمعة."
+  },
+  {
+    "name": "U05.L02-E4.webp",
+    "prompt": "Educational full-body loop diagram: the hero (boy) see-through: a golden sugar path from the belly into vessels; a green oxygen path from the lungs into vessels; both red vessels meet at the heart and run down to a highlighted cell in the thigh; from the cell a darker red vessel returns up to the right side of the heart and to the lungs where grey bubbles exit through the nose. Arrows form one closed loop. Lammah tracing the loop with a finger. No text.",
+    "accuracy": "**حلقة مغلقة**: طعام ورئة → قلب → خلية → عودة → رئة → زفير؛ العائد أحمر داكن لا أزرق؛ لا أنبوب رئة–عضلة."
+  },
+  {
+    "name": "U05.L02-E5.webp",
+    "prompt": "Scene: the hero (boy) running fast on a track, flushed cheeks, a few sweat drops, mouth open; three small see-through windows: lungs large and active, heart with motion lines, a thigh muscle cell glowing warmly with busy mitochondria. All three windows connected by faint lines to a small highlighted spot at the base of the brain. Lammah running with a tiny stopwatch.",
+    "accuracy": "الثلاثة **معاً** في اللحظة نفسها؛ مركز الأمر **في أسفل الدماغ**؛ عرق قليل ووجه مورّد لا مرهق."
+  },
+  {
+    "name": "U05.L02-E6.webp",
+    "prompt": "Educational close-up (level B): inside a cell, a mitochondrion releasing a stream of tiny glowing coin-like discs (energy coins) that float toward three small icons: a contracting muscle fiber, a half-built cell wall with tiny bricks, and a nerve cell sending a small spark along its arm. Soft warm glow, no flames. Lammah catching one coin. No text.",
+    "accuracy": "«العملات» **تُنفَق** في ثلاثة أعمال: انقباض، بناء، إشارة؛ تُصنع في الميتوكوندريا."
+  },
+  {
+    "name": "U05.L02-E7.webp",
+    "prompt": "Scene (level B): the hero (boy) asleep peacefully at night under a blanket; see-through windows show the heart gently beating, the lungs rising, the brain softly glowing, and a small patch of skin with new cells building; a soft warm aura around the whole body. Lammah asleep on the pillow with a nightcap. Quiet blue night room.",
+    "accuracy": "الجسم يعمل ويحتاج طاقة **في النوم**: قلب، تنفس، دماغ، بناء، دفء."
+  },
+  {
+    "name": "U05.L02-exp.webp",
+    "prompt": "Experiment scene, 2×2 cards: (1) an adult's hands lowering an upturned glass jar over a small lit candle on a plate, children watching from a safe distance; (2) the same jar with the flame shrunk to a tiny blue dot, plenty of wax still left; (3) the hero (boy) jumping in place; (4) the hero touching his own warm forehead and cheeks with both palms, a few sweat drops, Lammah holding a tiny clipboard.",
+    "accuracy": "الشمعة **بيد بالغ**؛ الأطفال بعيدون؛ الشمع ما زال كثيراً عند الانطفاء؛ لا مقياس حرارة رقمي بأرقام."
+  },
+  {
+    "name": "U05.L02-letter.webp",
+    "prompt": "Character portrait: a friendly orange bean-shaped mitochondrion with wavy inner folds, a gentle smiling face, tiny arms holding a golden sugar cube in one hand and a green oxygen bubble in the other, a soft warm glow around it and a few tiny grey bubbles drifting off. Pale blue jelly background hinting it sits inside a cell.",
+    "accuracy": "**لا لهب**؛ سكر + أكسجين في اليدين؛ CO₂ يخرج؛ الوجه مسموح هنا فقط."
+  },
+  {
+    "name": "U05.L02-hist1.webp",
+    "prompt": "Historical scene, Paris 1780s: Antoine Lavoisier in a powdered wig beside his assistant who breathes through a glass tube into a vessel, while Lavoisier compares two glass bell jars—one with a small burning candle, one with a calm guinea pig—over an ice-packed double-walled container; brass balances and notebooks around. Candlelight. No modern instruments.",
+    "accuracy": "**شمعة وحيوان** تحت جرسين متقابلين (التشبيه بالاحتراق)؛ المسعر الجليدي؛ الحيوان مرتاح."
+  },
+  {
+    "name": "U05.L02-life.webp",
+    "prompt": "Two panels: LEFT: a morning kitchen, the hero (boy) with a school bag quickly taking a small piece of bread and a banana in hand while glancing at a clock, mother smiling; RIGHT: the hero sitting with an older brother at a table, calmly talking, the brother pushing a plate away; the hero gently pushes it back a little and points toward a doctor's door icon on the wall, Lammah nodding.",
+    "accuracy": "الفطور **ولو صغيراً**؛ لا ميزان ولا أرقام وزن؛ لا سخرية بالأجسام؛ إشارة إلى الطبيب والأهل."
+  },
+  {
+    "name": "U05.L03-title-boy.webp",
+    "prompt": "Title scene like a detective poster: the hero (reference) in a small detective cap holding a magnifying glass, following a dotted trail of golden footprints that starts at a bitten piece of bread on a plate and ends at a chalk outline of a jumping figure on the ground; faint numbered-free station circles along the trail. Lammah with a tiny notebook. Sunny schoolyard.",
+    "accuracy": "**لا أرقام ولا حروف**؛ المسار يبدأ باللقمة وينتهي بالقفزة."
+  },
+  {
+    "name": "U05.L03-title-girl.webp",
+    "prompt": "Title scene like a detective poster: the hero (reference) in a small detective cap holding a magnifying glass, following a dotted trail of golden footprints that starts at a bitten piece of bread on a plate and ends at a chalk outline of a jumping figure on the ground; faint numbered-free station circles along the trail. Lammah with a tiny notebook. Sunny schoolyard.",
+    "accuracy": "**لا أرقام ولا حروف**؛ المسار يبدأ باللقمة وينتهي بالقفزة."
+  },
+  {
+    "name": "U05.L03-E1.webp",
+    "prompt": "Educational scene, station one: the hero (boy) in profile biting bread; a see-through window shows the bite going down the throat into the stomach and then the coiled intestine, where it breaks into tiny golden sugar dots that pass through the intestine wall into a red vessel. Lammah with a small flag at the intestine. No text.",
+    "accuracy": "التفكك **في الأمعاء** (لا في المعدة فقط)؛ السكر يعبر **إلى الدم**."
+  },
+  {
+    "name": "U05.L03-E2.webp",
+    "prompt": "Educational scene, station two: the hero's chest see-through, air entering the nose as a blue ribbon down into pink lungs, zooming to a tiny grape-like sac wrapped in a red capillary where green oxygen bubbles cross into the blood; in the same vessel a few golden sugar dots are already traveling. Lammah on the capillary like a bridge. No text.",
+    "accuracy": "الأكسجين يعبر **في الحويصلة إلى الشعيرة**؛ السكر والأكسجين **معاً في الدم**."
+  },
+  {
+    "name": "U05.L03-E3.webp",
+    "prompt": "Educational scene, station three: a realistic cone-shaped heart in the center with the left side highlighted pushing bright red blood into the large arching aorta, then down a branching artery into the thigh to a hair-thin capillary between muscle cells; golden and green dots riding the blood. Lammah riding a red cell like a boat. No text.",
+    "accuracy": "**يسار القلب** يدفع إلى الأبهر؛ القلب بشكله الحقيقي؛ لا أنبوب من الرئة إلى العضلة."
+  },
+  {
+    "name": "U05.L03-E4.webp",
+    "prompt": "Educational close-up, station four: a capillary (thin red tube) running beside a large muscle cell; golden sugar dots and green oxygen bubbles cross from the capillary into the cell and reach an orange mitochondrion that glows warmly; grey carbon-dioxide bubbles cross back into the capillary; tiny heat waves around the cell. **No flames.** Lammah at the crossing with a tiny stop sign.",
+    "accuracy": "المسارين **يلتقيان في الخلية**؛ CO₂ يعود إلى الشعيرة؛ حرارة لطيفة بلا لهب."
+  },
+  {
+    "name": "U05.L03-E5.webp",
+    "prompt": "Educational scene, station five: the hero's leg see-through mid-jump: the front thigh muscle shortened and bulging, its tendon pulling the shin bone at the knee so the leg straightens; a soft warm glow in the muscle. A faded second small inset shows the back muscle relaxed and long. Lammah cheering. No text.",
+    "accuracy": "العضلة **تقصر وتسحب** عبر الوتر؛ لا تدفع؛ الزوج المقابل مرتخٍ."
+  },
+  {
+    "name": "U05.L03-E6.webp",
+    "prompt": "Educational scene, stations six and seven: from a muscle cell, grey carbon-dioxide bubbles ride a darker red vein up the body to the right side of the heart, on to the lungs, cross into an air sac and leave through the nose as a soft exhale cloud in cool air. Lammah waving goodbye to the bubbles. No text.",
+    "accuracy": "الوريد **أحمر داكن** لا أزرق؛ **يمين القلب**؛ الخروج مع الزفير."
+  },
+  {
+    "name": "U05.L03-E7.webp",
+    "prompt": "Educational diagram (level B): the hero (boy) see-through with a small glowing \"pantry\" patch in the liver and tiny patches in the thigh muscles, each filled with coiled golden chains of sugar dots; a faint clock on the wall; the hero ready to run before breakfast with an empty plate nearby. Lammah opening a tiny pantry door in the liver. No text.",
+    "accuracy": "المخزون **في الكبد والعضلات**؛ لا أرقام؛ الطبق فارغ (قبل الفطور) والطفل يركض بخير."
+  },
+  {
+    "name": "U05.L03-E8.webp",
+    "prompt": "Educational diagram (level B): a chain of five large linked rings running down the page, each ring holding a small icon: bread/intestine, lungs, heart, a cell, a muscle-and-bone joint; one ring is drawn cracked and faded, and the rings after it are also faded; a tiny tired hero figure at the bottom. Lammah examining the cracked ring with a magnifier. No text.",
+    "accuracy": "**السلسلة بقوة أضعف حلقاتها**؛ الحلقة المتعطلة تُضعف ما بعدها."
+  },
+  {
+    "name": "U05.L03-exp.webp",
+    "prompt": "Experiment scene, 2×2 cards: (1) a large sheet of paper with the hero's body outline drawn on it and small round stickers placed at the mouth/belly, chest, heart, thigh, knee; (2) a child's hand drawing with four colored markers—golden, green, grey, orange—paths over the outline; (3) the hero (boy) explaining the drawing to a younger sibling who listens with a finger on the chin; (4) a small checklist card with six empty tick boxes and no words. Lammah with a tiny microphone.",
+    "accuracy": "أربعة ألوان ثابتة (ذهبي سكر، أخضر أكسجين، رمادي CO₂، برتقالي طاقة)؛ **لا كلمات** في قائمة التحقق."
+  },
+  {
+    "name": "U05.L03-letter.webp",
+    "prompt": "Character portrait: a friendly bitten piece of bread with a gentle smiling face and tiny legs, wearing a small travel scarf, holding a tiny suitcase; behind it a faint dotted trail through a soft body silhouette ending at a small jumping figure. Warm cream background.",
+    "accuracy": "الوجه مسموح هنا (رسالة اللقمة)؛ المسار ينتهي بالقفزة؛ لا أرقام."
+  },
+  {
+    "name": "U05.L03-life.webp",
+    "prompt": "Two panels: LEFT: at a kitchen table the hero (boy) draws three simple circles connected by arrows on paper for a younger brother who points curiously at one; RIGHT: a schoolyard, a boy breathing hard with hands on knees after running; two children in the background laughing drawn small and faded; the hero stands beside him kindly offering a ball, Lammah shaking his head at the laughers.",
+    "accuracy": "التفسير **بثلاث دوائر بسيطة**؛ الطفل اللاهث **سليم** غير مزرقّ؛ لا سخرية مقبولة في الصورة."
+  }
+]

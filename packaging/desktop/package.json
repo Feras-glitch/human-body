@@ -1,0 +1,8 @@
+{
+  "name": "human-body-curriculum",
+  "productName": "جسم الإنسان",
+  "version": "1.3.0",
+  "description": "منهاج «جسم الإنسان» للأطفال 8–12 — يعمل بلا إنترنت",
+  "author": "Feras",
+  "main": "main.js"
+}
