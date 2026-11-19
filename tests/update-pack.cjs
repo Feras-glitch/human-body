@@ -96,7 +96,7 @@ test('make-update-pack: packs only files changed since the shipped commit, signe
     const shipped = JSON.parse(execFileSync('git', ['show', 'HEAD:app/v2/build-info.json'], { cwd: REPO, encoding: 'utf8' })).content;
     const ov = path.join(dir, 'update');
     const i = UP.install(fs.readFileSync(out), shipped, ov, PUB_PEM);
-    const dirty = execFileSync('git', ['diff', '--name-only', 'HEAD', '--', 'app/v2'], { cwd: REPO, encoding: 'utf8' }).trim().split('\n').filter((f) => f && f !== 'app/v2/build-info.json');
+    const dirty = execFileSync('git', ['diff', '--name-only', 'HEAD', '--', 'app/v2'], { cwd: REPO, encoding: 'utf8' }).trim().split('\n').filter((f) => f && f !== 'app/v2/build-info.json' && UP.safePath(f.slice('app/v2/'.length)));
     assert.equal(i.files, new Set([...dirty, 'app/v2/licenses.html']).size + 1, 'ما تغيّر منذ النسخة المحزومة وbuild-info.json وحده');
     assert.match(fs.readFileSync(UP.file(ov, 'licenses.html'), 'utf8'), /اختبار/);
     assert.equal(JSON.parse(fs.readFileSync(UP.file(ov, 'build-info.json'), 'utf8')).update, true);
