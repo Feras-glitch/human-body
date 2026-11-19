@@ -1,94 +1,219 @@
 {
   "unit": "U07",
-  "style": "انسخ «وصف الأسلوب الموحّد» من الوثيقة 11 في بداية كل برومبت؛ بلا كتابة ولا أرقام؛ 1024×1536؛ WebP",
+  "style": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.",
   "pending_imagegen": {
     "U07.L01-title-boy.webp": {
-      "prompt": "Title scene: the hero (reference) standing with hands on the waist and thumbs pointing to the lower back, smiling, seen three-quarters from behind; a soft see-through window on the back shows two bean-shaped reddish-brown kidneys just below the lowest ribs on both sides of the spine, the right one slightly lower. Lammah holding a tiny coffee filter like an umbrella. Warm afternoon light.",
-      "accuracy": "الكليتان في الظهر تحت الأضلاع على جانبي العمود الفقري، اليمنى أنزل قليلاً؛ لا شيء في أسفل البطن الأمامي."
+      "lesson": "U07.L01",
+      "refs": [
+        "مرجع-البطل-ولد.png",
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nTitle scene for a lesson about the kidneys. the hero boy (match the attached reference exactly: short dark curly hair, warm brown skin, light-blue t-shirt, dark-blue jeans, blue sneakers) stands three-quarters from behind in a sunny garden, hands on the waist with both thumbs pointing to the lower back, smiling over the shoulder. A soft see-through window on the back shows two bean-shaped reddish-brown kidneys just below the lowest ribs, one on each side of the spine; the kidney on the child's right side sits slightly lower than the left one. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) floats beside, holding a tiny paper coffee filter like an umbrella. Warm afternoon light. MUST: kidneys in the BACK under the lowest ribs on both sides of the spine, each about the size of a fist; nothing drawn in the lower front belly; no blood. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "الكليتان في الظهر تحت آخر الأضلاع على جانبي العمود الفقري، واليمنى أنزل قليلاً؛ لا شيء في أسفل البطن من الأمام."
     },
     "U07.L01-title-girl.webp": {
-      "prompt": "Title scene: the hero (reference) standing with hands on the waist and thumbs pointing to the lower back, smiling, seen three-quarters from behind; a soft see-through window on the back shows two bean-shaped reddish-brown kidneys just below the lowest ribs on both sides of the spine, the right one slightly lower. Lammah holding a tiny coffee filter like an umbrella. Warm afternoon light.",
-      "accuracy": "الكليتان في الظهر تحت الأضلاع على جانبي العمود الفقري، اليمنى أنزل قليلاً؛ لا شيء في أسفل البطن الأمامي."
+      "lesson": "U07.L01",
+      "refs": [
+        "مرجع-البطلة-بنت.png",
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nTitle scene for a lesson about the kidneys. the hero girl (match the attached reference exactly: dark hair in two braids, warm brown skin, pink long-sleeved top, dark-blue jeans, pink sneakers) stands three-quarters from behind in a sunny garden, hands on the waist with both thumbs pointing to the lower back, smiling over the shoulder. A soft see-through window on the back shows two bean-shaped reddish-brown kidneys just below the lowest ribs, one on each side of the spine; the kidney on the child's right side sits slightly lower than the left one. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) floats beside, holding a tiny paper coffee filter like an umbrella. Warm afternoon light. MUST: kidneys in the BACK under the lowest ribs on both sides of the spine, each about the size of a fist; nothing drawn in the lower front belly; no blood. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "كما في غلاف الولد."
     },
     "U07.L01-exp.webp": {
-      "prompt": "Experiment scene, 2×2 cards: (1) the hero (girl) with hands on her waist and thumbs on her lower back; (2) a coffee filter in a funnel over a clear cup, colored water passing through while rice grains stay on top; (3) a plate labeled only by colors holding 100 beans, a child moving them to a second plate; (4) a single bean alone in a small cup. Lammah with a clipboard. No text.",
-      "accuracy": "لا شرب ولا تذوق؛ الأرز فوق المصفاة؛ حبة واحدة في الكوب الأخير."
+      "lesson": "U07.L01",
+      "refs": [
+        "مرجع-البطلة-بنت.png",
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nExperiment page: a 2×2 grid of four rounded cards on a cream background. (1) the hero girl (match the attached reference exactly: dark hair in two braids, warm brown skin, pink long-sleeved top, dark-blue jeans, pink sneakers) with hands on her waist and thumbs on her lower back, smiling. (2) A paper coffee filter in a funnel above a clear glass: colored water drips into the glass while grains of rice stay on top of the filter. (3) A child's hands moving dry white beans from a plate full of beans to a second plate. (4) A single bean alone inside a small clear cup. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) holds a clipboard in a corner. MUST: nobody drinks or tastes anything; the rice stays above the filter; no labels on the plates. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "الأرز فوق المصفاة والماء الملوّن تحتها؛ حبة واحدة في الكوب الأخير؛ لا شرب ولا تذوق."
     },
     "U07.L01-hist1.webp": {
-      "prompt": "Historical scene, Rome, 2nd century: a Greek physician in a toga writing on a scroll at a lamp-lit desk; beside him an anatomical sketch on papyrus of two kidneys with two thin tubes leading down to a bladder, one tube tied with a tiny thread above. No animals shown. Lammah reading over his shoulder. No text.",
-      "accuracy": "لا حيوان ولا دم في الصورة؛ الرسم على الورق وحده."
+      "lesson": "U07.L01",
+      "refs": [
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nHistorical scene, ancient Rome in the 2nd century: a Greek physician with a short beard, in a simple toga, writes on a papyrus scroll at a wooden desk lit by an oil lamp. On the desk lies a simple anatomical sketch on papyrus: two bean-shaped kidneys with two thin tubes running down to a small rounded bladder, one tube tied with a tiny thread. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) reads over his shoulder. MUST: no animals, no blood, no dissection; the sketch on paper is the only anatomy; the papyrus shows only lines and shapes, no writing. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "لا حيوان ولا دم؛ الرسم على الورق وحده."
     },
     "U07.L01-hist2.webp": {
-      "prompt": "Historical scene, a 1920s American physiology laboratory: two scientists in white coats at a brass microscope; one holds an extremely fine glass pipette over a small dish; two small glass vials side by side, one labeled only with a sugar-cube icon, the other plain. Black-and-white photos on the wall. Lammah in a tiny lab coat. No text, no animal visible.",
-      "accuracy": "لا ضفدع ظاهر؛ قارورتان للمقارنة."
+      "lesson": "U07.L01",
+      "refs": [
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nHistorical scene, an American physiology laboratory in the 1920s: two scientists in white lab coats (one tall with round glasses, one younger) at a brass microscope on a wooden bench; one holds an extremely fine glass pipette over a small glass dish; two small glass vials stand side by side in front of them, a tiny sugar cube next to one of them. Framed black-and-white photos on the wall, soft daylight from a window. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) wears a tiny lab coat. MUST: no frog or any animal visible; no labels on the vials. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "لا ضفدع ظاهر؛ قارورتان للمقارنة."
     },
     "U07.L01-letter.webp": {
-      "prompt": "Character portrait: a friendly bean-shaped reddish-brown kidney with a gentle smile, holding a tiny sieve in one hand and a water drop in the other, standing next to its slightly lower twin (faceless). Cream background.",
-      "accuracy": "الوجه على كلية واحدة فقط."
+      "lesson": "U07.L01",
+      "refs": [
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nCharacter portrait for a letter written by an organ: a friendly bean-shaped reddish-brown kidney with a gentle smiling face and small cartoon arms, holding a tiny kitchen sieve in one hand and a clear water drop in the other, standing next to its twin kidney (no face), which sits slightly lower. Plain cream background, soft shadow. MUST: only one kidney has a face; correct bean shape with the inner dent facing the twin. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "الوجه على كلية واحدة؛ شكل حبة الفاصولياء."
     },
     "U07.L01-life.webp": {
-      "prompt": "Two panels: TOP: the hero (girl) sitting beside her grandmother on a sofa at home, giving her a drawing, the grandmother smiling and resting with a blanket; a small bag of medicines on the table, nothing medical or frightening. BOTTOM: the hero (boy) after football in the shade drinking water slowly from a refillable bottle.",
-      "accuracy": "لا أجهزة مخيفة ولا إبر؛ الشرب في الظل على مهل."
+      "lesson": "U07.L01",
+      "refs": [
+        "مرجع-البطل-ولد.png",
+        "مرجع-البطلة-بنت.png",
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nTwo stacked panels. TOP: a cozy living room; the hero girl (match the attached reference exactly: dark hair in two braids, warm brown skin, pink long-sleeved top, dark-blue jeans, pink sneakers) sits beside her grandmother on a sofa and hands her a colorful child's drawing; the grandmother, in a soft headscarf and cardigan, smiles while resting under a light blanket; a small cloth bag of medicines on the side table. BOTTOM: after football in a sunny park, the hero boy (match the attached reference exactly: short dark curly hair, warm brown skin, light-blue t-shirt, dark-blue jeans, blue sneakers) sits in the shade and drinks water slowly from a refillable bottle, a football at his feet. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) waves in a corner. MUST: no hospital machines, no needles, no tubes; calm, warm mood. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "لا أجهزة ولا إبر؛ الجدة مرتاحة مبتسمة."
     },
     "U07.L02-title-boy.webp": {
-      "prompt": "Title scene: the hero (reference) lying on a bed in pajamas reading a book with a small lamp; a soft see-through window on the side of the body shows two kidneys in the back, two thin tubes running down and forward to a small pouch low in the front of the belly, tiny yellow drops moving along the tubes even while lying down. Lammah sleeping on the pillow.",
-      "accuracy": "الحالبان ينزلان من الظهر إلى الأمام؛ المثانة في أسفل البطن من الأمام؛ لا تفصيل تناسلي."
+      "lesson": "U07.L02",
+      "refs": [
+        "مرجع-البطل-ولد.png",
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nTitle scene for a lesson about the path of urine. the hero boy (match the attached reference exactly: short dark curly hair, warm brown skin, light-blue t-shirt, dark-blue jeans, blue sneakers), in pajamas, lies on a bed reading a book under a small lamp. A soft see-through window on the side of the body shows two kidneys high in the back and two thin tubes running down and forward to a small rounded pouch (the bladder) low in the front of the belly, with tiny yellow drops moving along the tubes even while lying down. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) sleeps on the pillow. MUST: kidneys in the back, bladder low in the front inside the pelvis, the tubes connect them; absolutely no genitals or private anatomy; no toilet. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "الحالبان من الظهر إلى المثانة في الأمام؛ بلا أي تفصيل للعورة؛ لا مرحاض."
     },
     "U07.L02-title-girl.webp": {
-      "prompt": "Title scene: the hero (reference) lying on a bed in pajamas reading a book with a small lamp; a soft see-through window on the side of the body shows two kidneys in the back, two thin tubes running down and forward to a small pouch low in the front of the belly, tiny yellow drops moving along the tubes even while lying down. Lammah sleeping on the pillow.",
-      "accuracy": "الحالبان ينزلان من الظهر إلى الأمام؛ المثانة في أسفل البطن من الأمام؛ لا تفصيل تناسلي."
+      "lesson": "U07.L02",
+      "refs": [
+        "مرجع-البطلة-بنت.png",
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nTitle scene for a lesson about the path of urine. the hero girl (match the attached reference exactly: dark hair in two braids, warm brown skin, pink long-sleeved top, dark-blue jeans, pink sneakers), in pajamas, lies on a bed reading a book under a small lamp. A soft see-through window on the side of the body shows two kidneys high in the back and two thin tubes running down and forward to a small rounded pouch (the bladder) low in the front of the belly, with tiny yellow drops moving along the tubes even while lying down. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) sleeps on the pillow. MUST: kidneys in the back, bladder low in the front inside the pelvis, the tubes connect them; absolutely no genitals or private anatomy; no toilet. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "كما في غلاف الولد."
     },
     "U07.L02-E6.webp": {
-      "prompt": "Educational scene (level B): a calm child talking to a parent in a kitchen, the parent listening kindly; in a thought bubble five gentle icons: a flame (burning), a red drop, a thermometer, a clock with repeated arrows, and a side-belly ache symbol. A friendly doctor's office door in the background. No text.",
-      "accuracy": "جو هادئ يشجع على الإخبار؛ لا مستشفى مخيف."
+      "lesson": "U07.L02",
+      "refs": [
+        "مرجع-البطلة-بنت.png",
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nEducational scene: a calm kitchen; the hero girl (match the attached reference exactly: dark hair in two braids, warm brown skin, pink long-sleeved top, dark-blue jeans, pink sneakers) talks to her mother, who kneels to listen with a kind face. Above the girl a soft thought bubble holds five simple icons in a row: a small flame, a red drop, a thermometer, a clock with circular arrows, and a hand on the lower side of the belly. Through the window, a friendly clinic door with a green plus sign. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) nods encouragingly. MUST: reassuring mood, nothing frightening, no hospital scene, no toilet. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "جو مطمئن يشجع على الإخبار؛ أيقونات بلا كتابة."
     },
     "U07.L02-exp.webp": {
-      "prompt": "Experiment scene, 2×2 cards: (1) a long sock held upward with a ping-pong ball inside and hands squeezing behind it; (2) a balloon being filled with water through a small funnel over a tray; (3) a clothes peg closing the balloon neck; (4) four clear cups of yellow-tinted water arranged from light to dark beside a color chart card. Lammah with a clipboard. No text.",
-      "accuracy": "لا بول حقيقي؛ صينية تحت البالون."
+      "lesson": "U07.L02",
+      "refs": [
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nExperiment page: a 2×2 grid of rounded cards. (1) Hands hold a long sock upward with a ping-pong ball inside, squeezing the sock just below the ball so the ball moves up. (2) A balloon being filled with water through a small funnel over a tray. (3) A wooden clothes peg clipping the neck of the water-filled balloon shut. (4) Four clear cups of water tinted from very pale yellow to dark yellow, lined up from light to dark next to a small card of color squares. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) with a clipboard. MUST: everything is water and food coloring; no real urine; no toilet; a tray under the balloon. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "كل السوائل ماء وملوّن؛ صينية تحت البالون."
     },
     "U07.L02-hist1.webp": {
-      "prompt": "Historical scene, Kairouan, 10th century: a physician in North-African dress in a courtyard with horseshoe arches, holding a round glass flask up to the sunlight and writing notes in a book; the square minaret of the Great Mosque of Kairouan in the distance. Lammah holding the inkpot. No text.",
-      "accuracy": "ملابس وعمارة القيروان؛ لا وجه مأخوذ من صورة حقيقية."
+      "lesson": "U07.L02",
+      "refs": [
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nHistorical scene, Kairouan (Tunisia) in the 10th century: a North-African physician in a turban and long robe stands in a courtyard with horseshoe arches, holding a round clear glass flask with a pale yellow liquid up to the sunlight while writing notes in an open book on a stand. In the distance rises the square stone minaret of the Great Mosque of Kairouan. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) holds the inkpot. MUST: a dignified, respectful figure, not a portrait of a real person; the book shows only lines, no writing. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "عمارة القيروان ومئذنتها المربعة؛ لا كتابة."
     },
     "U07.L02-hist2.webp": {
-      "prompt": "Historical scene, Baghdad 9th–10th century: a physician at a bimaristan bedside comparing notes, with two small icons above his head — a kidney with tiny sand grains and a curled intestine — and a balance-like gesture of his hands comparing them. Students taking notes. Lammah on a bookshelf. No text.",
-      "accuracy": "المقارنة بين علامتين؛ لا جراحة ولا دم."
+      "lesson": "U07.L02",
+      "refs": [
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nHistorical scene, a bimaristan (hospital) in Baghdad in the 10th century: a bearded physician in a turban sits by a patient's bed and compares notes with two attentive students; above his head float two small simple icons — a kidney with tiny sand grains beside it, and a curled intestine — while his two open hands make a gentle weighing gesture between them. Arched windows, potted plants, calm light. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) on a bookshelf. MUST: no surgery, no blood; no writing visible. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "مقارنة بين علامتين؛ لا جراحة ولا دم."
     },
     "U07.L02-letter.webp": {
-      "prompt": "Character portrait: a friendly rounded bladder pouch with a gentle smile, sitting calmly in a cozy cradle-like pelvis bowl, two thin tubes coming down to it from above, a small ring at its bottom like a closed door with a tiny key hanging nearby. Cream background.",
-      "accuracy": "لا تفصيل تناسلي؛ الوجه على المثانة وحدها."
+      "lesson": "U07.L02",
+      "refs": [
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nCharacter portrait for a letter written by an organ: a friendly rounded bladder pouch (a soft pale-yellow balloon-like shape) with a gentle smiling face and small arms, sitting calmly inside a cozy bowl-shaped pelvis like a cradle; two thin tubes come down to it from above; at its bottom a small ring like a closed round door, with a tiny golden key hanging beside it. Plain cream background. MUST: no genitals or private anatomy; no toilet; only the bladder has a face. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "لا تفصيل للعورة؛ الوجه على المثانة وحدها."
     },
     "U07.L02-life.webp": {
-      "prompt": "Two panels: TOP: a classroom at break time, the hero (boy) calmly raising a hand while the teacher nods and points to the door. BOTTOM: a bedroom at night, the hero (girl) sitting on the edge of a little brother's bed reading him a story and patting his shoulder, warm lamp light.",
-      "accuracy": "لا فراش مبلل ظاهر ولا مرحاض؛ جو طمأنة."
+      "lesson": "U07.L02",
+      "refs": [
+        "مرجع-البطل-ولد.png",
+        "مرجع-البطلة-بنت.png",
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nTwo stacked panels. TOP: a bright classroom at break time; the hero boy (match the attached reference exactly: short dark curly hair, warm brown skin, light-blue t-shirt, dark-blue jeans, blue sneakers) calmly raises his hand while the kind teacher smiles and points to the open classroom door. BOTTOM: a little brother's bedroom at night with a warm lamp; the hero girl (match the attached reference exactly: dark hair in two braids, warm brown skin, pink long-sleeved top, dark-blue jeans, pink sneakers) sits on the edge of his bed reading him a story and patting his shoulder; he smiles, sleepy. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) peeks from a shelf. MUST: no wet bed or stain shown, no toilet; warm, reassuring mood. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "لا فراش مبلل ولا مرحاض؛ جو طمأنة."
     },
     "U07.L03-title-boy.webp": {
-      "prompt": "Title scene: the hero (reference) standing on a large old-fashioned two-pan balance scale in a sunny park, one pan holding a water bottle and a bowl of fruit, the other a soft cloud of breath and a few sweat drops; the hero drinking from a refillable bottle. Lammah sitting on the balance beam.",
-      "accuracy": "الكفتان متقاربتان؛ لا أرقام على الميزان."
+      "lesson": "U07.L03",
+      "refs": [
+        "مرجع-البطل-ولد.png",
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nTitle scene for a lesson about water in the body. In a sunny park stands a big old-fashioned two-pan balance scale. the hero boy (match the attached reference exactly: short dark curly hair, warm brown skin, light-blue t-shirt, dark-blue jeans, blue sneakers) stands beside it drinking from a refillable water bottle. On one pan: a water bottle and a bowl of watermelon and cucumber; on the other pan: a soft little cloud of breath, a few sweat drops and one small yellow drop. The beam is almost level. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) sits on the middle of the beam, smiling. MUST: no numbers or markings on the scale; no brand logos. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "الكفتان متقاربتان؛ لا أرقام على الميزان؛ لا علامات تجارية."
     },
     "U07.L03-title-girl.webp": {
-      "prompt": "Title scene: the hero (reference) standing on a large old-fashioned two-pan balance scale in a sunny park, one pan holding a water bottle and a bowl of fruit, the other a soft cloud of breath and a few sweat drops; the hero drinking from a refillable bottle. Lammah sitting on the balance beam.",
-      "accuracy": "الكفتان متقاربتان؛ لا أرقام على الميزان."
+      "lesson": "U07.L03",
+      "refs": [
+        "مرجع-البطلة-بنت.png",
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nTitle scene for a lesson about water in the body. In a sunny park stands a big old-fashioned two-pan balance scale. the hero girl (match the attached reference exactly: dark hair in two braids, warm brown skin, pink long-sleeved top, dark-blue jeans, pink sneakers) stands beside it drinking from a refillable water bottle. On one pan: a water bottle and a bowl of watermelon and cucumber; on the other pan: a soft little cloud of breath, a few sweat drops and one small yellow drop. The beam is almost level. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) sits on the middle of the beam, smiling. MUST: no numbers or markings on the scale; no brand logos. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "كما في غلاف الولد."
     },
     "U07.L03-E7.webp": {
-      "prompt": "Historical-style illustration (level B), Padua, early 17th century: a physician sitting on a chair hanging from a large steelyard balance beam in his study, a table with bread, a jug of water and a notebook beside him. Lammah balancing on the beam end. No text.",
-      "accuracy": "رسم أصلي لا نسخة من النقش القديم؛ لا أرقام."
+      "lesson": "U07.L03",
+      "refs": [
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nHistorical-style illustration, Padua (Italy), early 17th century: a physician in a dark robe with a white collar sits on a wooden chair that hangs from a large steelyard balance beam fixed to the ceiling of his study; beside him a small table with bread, a jug of water and a notebook. Shelves of books, a window over red-tiled roofs. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) balances on the end of the beam. MUST: an original drawing, not a copy of the old engraving; no numbers on the balance. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "رسم أصلي لا نسخة من النقش القديم."
     },
     "U07.L03-exp.webp": {
-      "prompt": "Experiment scene, 2×2 cards: (1) the hero (girl) breathing onto a cold spoon that fogs; (2) a hand inside a clear plastic bag held loosely at the wrist by the other hand, tiny droplets on the inside; (3) a measuring cup next to an everyday cup; (4) a simple drinking chart with cup icons and five color dots. Lammah with a clipboard. No text.",
-      "accuracy": "الكيس على اليد فقط ومرخى؛ لا كيس قرب الوجه."
+      "lesson": "U07.L03",
+      "refs": [
+        "مرجع-البطلة-بنت.png",
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nExperiment page: a 2×2 grid of rounded cards. (1) the hero girl (match the attached reference exactly: dark hair in two braids, warm brown skin, pink long-sleeved top, dark-blue jeans, pink sneakers) breathes onto a cold metal spoon that fogs up. (2) A child's hand inside a clear plastic bag, the bag's opening held loosely around the wrist by the other hand, tiny water droplets on the inside of the bag. (3) A kitchen measuring cup next to an ordinary drinking cup. (4) A simple drinking chart drawn as rows of small cup icons with five colored dots beside them. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) with a clipboard. MUST: the bag is only on the hand and loose, never near the face or head; no numbers. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "الكيس على اليد فقط ومرخى؛ لا كيس قرب الوجه."
     },
     "U07.L03-hist1.webp": {
-      "prompt": "Scene, Padua 1614: the physician in a robe writing notes at a desk beside his hanging balance-chair, a stack of daily record pages, a window over red-tiled roofs. Lammah reading the notes. No text.",
-      "accuracy": "أوراق تسجيل كثيرة (سنوات من القياس)."
+      "lesson": "U07.L03",
+      "refs": [
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nScene, Padua in 1614: the same kind of physician in a dark robe sits at a wooden desk writing in a notebook beside his hanging balance-chair; a tall stack of daily record pages sits on the desk, showing years of measurements; a window looks over red-tiled roofs at sunset. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) reads the pages. MUST: pages show only lines, no numbers or writing. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "أوراق كثيرة بلا أرقام."
     },
     "U07.L03-letter.webp": {
-      "prompt": "Character portrait: a friendly clear water droplet with a gentle smile, carrying a tiny golden sugar dot on its back, standing at a crossroads with three signposts shaped as a breath cloud, a sweat drop and a kidney (icons only). Cream background.",
-      "accuracy": "الوجه على القطرة وحدها؛ الإشارات أيقونات بلا كتابة."
+      "lesson": "U07.L03",
+      "refs": [
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nCharacter portrait for a letter written by a water drop: a friendly clear water droplet with a gentle smiling face and small arms, carrying a tiny golden sugar grain on its back like a backpack, standing at a crossroads with three wooden signposts topped by simple icons: a small breath cloud, a sweat drop, and a bean-shaped kidney. Plain cream background. MUST: icons only on the signposts, no words; only the drop has a face. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "الإشارات أيقونات بلا كلمات."
     },
     "U07.L03-life.webp": {
-      "prompt": "Two panels: TOP: the hero (boy) at an open fridge choosing a water bottle with a lemon slice instead of a soda can. BOTTOM: the hero (girl) after playing, drinking water slowly in three sips, holding the cup away from her mouth to breathe between sips.",
-      "accuracy": "لا علامات تجارية؛ الكوب بعيد عن الفم بين الرشفات."
+      "lesson": "U07.L03",
+      "refs": [
+        "مرجع-البطل-ولد.png",
+        "مرجع-البطلة-بنت.png",
+        "مرجع-لماح.png"
+      ],
+      "prompt": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nTwo stacked panels. TOP: a kitchen; the hero boy (match the attached reference exactly: short dark curly hair, warm brown skin, light-blue t-shirt, dark-blue jeans, blue sneakers) stands at an open fridge and chooses a bottle of water with a lemon slice inside it, leaving a can of soda and a juice box on the shelf. BOTTOM: after playing outside, the hero girl (match the attached reference exactly: dark hair in two braids, warm brown skin, pink long-sleeved top, dark-blue jeans, pink sneakers) drinks a glass of water slowly in sips, holding the glass slightly away from her mouth to breathe between sips. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) gives a thumbs-up. MUST: no brand names or logos on cans or boxes; calm mood. No text, no letters, no numbers anywhere in the image.",
+      "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background",
+      "check": "لا علامات تجارية؛ الكوب بعيد عن الفم بين الرشفات."
     }
   },
   "built_svg": [
@@ -110,5 +235,6 @@
     "U07.L03-E4.webp",
     "U07.L03-E5.webp",
     "U07.L03-E6.webp"
-  ]
+  ],
+  "negative": "text, letters, numbers, captions, labels, watermark, logos, realistic photo, horror, creepy, extra fingers, deformed hands, anatomically wrong organs, genitals, toilet, blood, gore, dark background"
 }
