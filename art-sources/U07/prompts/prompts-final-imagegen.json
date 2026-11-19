@@ -1,0 +1,114 @@
+{
+  "unit": "U07",
+  "style": "انسخ «وصف الأسلوب الموحّد» من الوثيقة 11 في بداية كل برومبت؛ بلا كتابة ولا أرقام؛ 1024×1536؛ WebP",
+  "pending_imagegen": {
+    "U07.L01-title-boy.webp": {
+      "prompt": "Title scene: the hero (reference) standing with hands on the waist and thumbs pointing to the lower back, smiling, seen three-quarters from behind; a soft see-through window on the back shows two bean-shaped reddish-brown kidneys just below the lowest ribs on both sides of the spine, the right one slightly lower. Lammah holding a tiny coffee filter like an umbrella. Warm afternoon light.",
+      "accuracy": "الكليتان في الظهر تحت الأضلاع على جانبي العمود الفقري، اليمنى أنزل قليلاً؛ لا شيء في أسفل البطن الأمامي."
+    },
+    "U07.L01-title-girl.webp": {
+      "prompt": "Title scene: the hero (reference) standing with hands on the waist and thumbs pointing to the lower back, smiling, seen three-quarters from behind; a soft see-through window on the back shows two bean-shaped reddish-brown kidneys just below the lowest ribs on both sides of the spine, the right one slightly lower. Lammah holding a tiny coffee filter like an umbrella. Warm afternoon light.",
+      "accuracy": "الكليتان في الظهر تحت الأضلاع على جانبي العمود الفقري، اليمنى أنزل قليلاً؛ لا شيء في أسفل البطن الأمامي."
+    },
+    "U07.L01-exp.webp": {
+      "prompt": "Experiment scene, 2×2 cards: (1) the hero (girl) with hands on her waist and thumbs on her lower back; (2) a coffee filter in a funnel over a clear cup, colored water passing through while rice grains stay on top; (3) a plate labeled only by colors holding 100 beans, a child moving them to a second plate; (4) a single bean alone in a small cup. Lammah with a clipboard. No text.",
+      "accuracy": "لا شرب ولا تذوق؛ الأرز فوق المصفاة؛ حبة واحدة في الكوب الأخير."
+    },
+    "U07.L01-hist1.webp": {
+      "prompt": "Historical scene, Rome, 2nd century: a Greek physician in a toga writing on a scroll at a lamp-lit desk; beside him an anatomical sketch on papyrus of two kidneys with two thin tubes leading down to a bladder, one tube tied with a tiny thread above. No animals shown. Lammah reading over his shoulder. No text.",
+      "accuracy": "لا حيوان ولا دم في الصورة؛ الرسم على الورق وحده."
+    },
+    "U07.L01-hist2.webp": {
+      "prompt": "Historical scene, a 1920s American physiology laboratory: two scientists in white coats at a brass microscope; one holds an extremely fine glass pipette over a small dish; two small glass vials side by side, one labeled only with a sugar-cube icon, the other plain. Black-and-white photos on the wall. Lammah in a tiny lab coat. No text, no animal visible.",
+      "accuracy": "لا ضفدع ظاهر؛ قارورتان للمقارنة."
+    },
+    "U07.L01-letter.webp": {
+      "prompt": "Character portrait: a friendly bean-shaped reddish-brown kidney with a gentle smile, holding a tiny sieve in one hand and a water drop in the other, standing next to its slightly lower twin (faceless). Cream background.",
+      "accuracy": "الوجه على كلية واحدة فقط."
+    },
+    "U07.L01-life.webp": {
+      "prompt": "Two panels: TOP: the hero (girl) sitting beside her grandmother on a sofa at home, giving her a drawing, the grandmother smiling and resting with a blanket; a small bag of medicines on the table, nothing medical or frightening. BOTTOM: the hero (boy) after football in the shade drinking water slowly from a refillable bottle.",
+      "accuracy": "لا أجهزة مخيفة ولا إبر؛ الشرب في الظل على مهل."
+    },
+    "U07.L02-title-boy.webp": {
+      "prompt": "Title scene: the hero (reference) lying on a bed in pajamas reading a book with a small lamp; a soft see-through window on the side of the body shows two kidneys in the back, two thin tubes running down and forward to a small pouch low in the front of the belly, tiny yellow drops moving along the tubes even while lying down. Lammah sleeping on the pillow.",
+      "accuracy": "الحالبان ينزلان من الظهر إلى الأمام؛ المثانة في أسفل البطن من الأمام؛ لا تفصيل تناسلي."
+    },
+    "U07.L02-title-girl.webp": {
+      "prompt": "Title scene: the hero (reference) lying on a bed in pajamas reading a book with a small lamp; a soft see-through window on the side of the body shows two kidneys in the back, two thin tubes running down and forward to a small pouch low in the front of the belly, tiny yellow drops moving along the tubes even while lying down. Lammah sleeping on the pillow.",
+      "accuracy": "الحالبان ينزلان من الظهر إلى الأمام؛ المثانة في أسفل البطن من الأمام؛ لا تفصيل تناسلي."
+    },
+    "U07.L02-E6.webp": {
+      "prompt": "Educational scene (level B): a calm child talking to a parent in a kitchen, the parent listening kindly; in a thought bubble five gentle icons: a flame (burning), a red drop, a thermometer, a clock with repeated arrows, and a side-belly ache symbol. A friendly doctor's office door in the background. No text.",
+      "accuracy": "جو هادئ يشجع على الإخبار؛ لا مستشفى مخيف."
+    },
+    "U07.L02-exp.webp": {
+      "prompt": "Experiment scene, 2×2 cards: (1) a long sock held upward with a ping-pong ball inside and hands squeezing behind it; (2) a balloon being filled with water through a small funnel over a tray; (3) a clothes peg closing the balloon neck; (4) four clear cups of yellow-tinted water arranged from light to dark beside a color chart card. Lammah with a clipboard. No text.",
+      "accuracy": "لا بول حقيقي؛ صينية تحت البالون."
+    },
+    "U07.L02-hist1.webp": {
+      "prompt": "Historical scene, Kairouan, 10th century: a physician in North-African dress in a courtyard with horseshoe arches, holding a round glass flask up to the sunlight and writing notes in a book; the square minaret of the Great Mosque of Kairouan in the distance. Lammah holding the inkpot. No text.",
+      "accuracy": "ملابس وعمارة القيروان؛ لا وجه مأخوذ من صورة حقيقية."
+    },
+    "U07.L02-hist2.webp": {
+      "prompt": "Historical scene, Baghdad 9th–10th century: a physician at a bimaristan bedside comparing notes, with two small icons above his head — a kidney with tiny sand grains and a curled intestine — and a balance-like gesture of his hands comparing them. Students taking notes. Lammah on a bookshelf. No text.",
+      "accuracy": "المقارنة بين علامتين؛ لا جراحة ولا دم."
+    },
+    "U07.L02-letter.webp": {
+      "prompt": "Character portrait: a friendly rounded bladder pouch with a gentle smile, sitting calmly in a cozy cradle-like pelvis bowl, two thin tubes coming down to it from above, a small ring at its bottom like a closed door with a tiny key hanging nearby. Cream background.",
+      "accuracy": "لا تفصيل تناسلي؛ الوجه على المثانة وحدها."
+    },
+    "U07.L02-life.webp": {
+      "prompt": "Two panels: TOP: a classroom at break time, the hero (boy) calmly raising a hand while the teacher nods and points to the door. BOTTOM: a bedroom at night, the hero (girl) sitting on the edge of a little brother's bed reading him a story and patting his shoulder, warm lamp light.",
+      "accuracy": "لا فراش مبلل ظاهر ولا مرحاض؛ جو طمأنة."
+    },
+    "U07.L03-title-boy.webp": {
+      "prompt": "Title scene: the hero (reference) standing on a large old-fashioned two-pan balance scale in a sunny park, one pan holding a water bottle and a bowl of fruit, the other a soft cloud of breath and a few sweat drops; the hero drinking from a refillable bottle. Lammah sitting on the balance beam.",
+      "accuracy": "الكفتان متقاربتان؛ لا أرقام على الميزان."
+    },
+    "U07.L03-title-girl.webp": {
+      "prompt": "Title scene: the hero (reference) standing on a large old-fashioned two-pan balance scale in a sunny park, one pan holding a water bottle and a bowl of fruit, the other a soft cloud of breath and a few sweat drops; the hero drinking from a refillable bottle. Lammah sitting on the balance beam.",
+      "accuracy": "الكفتان متقاربتان؛ لا أرقام على الميزان."
+    },
+    "U07.L03-E7.webp": {
+      "prompt": "Historical-style illustration (level B), Padua, early 17th century: a physician sitting on a chair hanging from a large steelyard balance beam in his study, a table with bread, a jug of water and a notebook beside him. Lammah balancing on the beam end. No text.",
+      "accuracy": "رسم أصلي لا نسخة من النقش القديم؛ لا أرقام."
+    },
+    "U07.L03-exp.webp": {
+      "prompt": "Experiment scene, 2×2 cards: (1) the hero (girl) breathing onto a cold spoon that fogs; (2) a hand inside a clear plastic bag held loosely at the wrist by the other hand, tiny droplets on the inside; (3) a measuring cup next to an everyday cup; (4) a simple drinking chart with cup icons and five color dots. Lammah with a clipboard. No text.",
+      "accuracy": "الكيس على اليد فقط ومرخى؛ لا كيس قرب الوجه."
+    },
+    "U07.L03-hist1.webp": {
+      "prompt": "Scene, Padua 1614: the physician in a robe writing notes at a desk beside his hanging balance-chair, a stack of daily record pages, a window over red-tiled roofs. Lammah reading the notes. No text.",
+      "accuracy": "أوراق تسجيل كثيرة (سنوات من القياس)."
+    },
+    "U07.L03-letter.webp": {
+      "prompt": "Character portrait: a friendly clear water droplet with a gentle smile, carrying a tiny golden sugar dot on its back, standing at a crossroads with three signposts shaped as a breath cloud, a sweat drop and a kidney (icons only). Cream background.",
+      "accuracy": "الوجه على القطرة وحدها؛ الإشارات أيقونات بلا كتابة."
+    },
+    "U07.L03-life.webp": {
+      "prompt": "Two panels: TOP: the hero (boy) at an open fridge choosing a water bottle with a lemon slice instead of a soda can. BOTTOM: the hero (girl) after playing, drinking water slowly in three sips, holding the cup away from her mouth to breathe between sips.",
+      "accuracy": "لا علامات تجارية؛ الكوب بعيد عن الفم بين الرشفات."
+    }
+  },
+  "built_svg": [
+    "U07.L01-E1.webp",
+    "U07.L01-E2.webp",
+    "U07.L01-E3.webp",
+    "U07.L01-E4.webp",
+    "U07.L01-E5.webp",
+    "U07.L01-E6.webp",
+    "U07.L02-E1.webp",
+    "U07.L02-E2.webp",
+    "U07.L02-E3.webp",
+    "U07.L02-E4.webp",
+    "U07.L02-E5.webp",
+    "U07.L02-E7.webp",
+    "U07.L03-E1.webp",
+    "U07.L03-E2.webp",
+    "U07.L03-E3.webp",
+    "U07.L03-E4.webp",
+    "U07.L03-E5.webp",
+    "U07.L03-E6.webp"
+  ]
+}
