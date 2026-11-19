@@ -82,6 +82,7 @@ const ATLAS = {
   left_ventricle:{side:'front',ids:['chest'],show:['head','neck','chest','abdomen','upperarm_r','thigh','thigh_l']},
   abdomen:{side:'front',ids:['abdomen']}, forearm:{side:'front',ids:['forearm_r','forearm_l']},
   lungs:{side:'front',ids:['chest'],show:['head','neck','chest','abdomen','upperarm_r','thigh','thigh_l']}, lungs_back:{side:'back',ids:['back'],show:['b_head','b_neck','back','b_arm_r','b_arm_l','b_legs','b_feet']},
+  kidneys:{side:'back',ids:['back'],show:['b_head','b_neck','back','b_arm_r','b_arm_l','b_legs','b_feet'],q:'حدّد{|ي} موضع الكليتين على رسم الظهر.'},
   nucleus:{cell:true,variant:0,ids:['nucleus']}, membrane:{cell:true,variant:1,ids:['membrane']}, cytoplasm:{cell:true,variant:0,ids:['cytoplasm']}, mitochondria:{cell:true,variant:1,ids:['mitochondria']},
   thigh:{side:'front',ids:['thigh','thigh_l'],show:['head','chest','abdomen','upperarm_r','forearm_r','thigh','thigh_l','leg','leg_l','foot','foot_l'],q:'حدّد{|ي} الفخذ على هذا الرسم.'},
   /* أهداف لا رسم قابلاً للنقر لها بعد في صفحة الاختبار: سؤال اختيار بنص صريح (q) بدل «اضغط على الرسم» */
