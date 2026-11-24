@@ -4,31 +4,35 @@ const E = id => LD.explain.find(e => e.id === id);
 const F = 'font-family="IBM Plex Sans Arabic"';
 const tap = (el, fn) => { el.onclick = fn; el.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fn(); } }; };
 
-/* جسم بسيط من الأمام: رأس فيه الدماغ، وحبل شوكي، وذراع ممدودة نحو الكرة */
-const body = inner => `<svg viewBox="0 0 320 300" role="img" aria-label="طفل يمد يده نحو كرة: العين والدماغ والأعصاب وعضلات اليد" style="width:100%;max-width:340px;display:block;margin:auto;background:#fff;border-radius:18px">
+/* جسم بسيط: رأس فيه الدماغ والعين، وحبل شوكي، وذراع ممدودة نحو الكرة؛ المحطات بطاقات بأسمائها */
+const body = inner => `<svg viewBox="0 0 320 250" role="img" aria-label="طفل يمد يده نحو كرة: العين والدماغ والأعصاب وعضلات اليد" style="width:100%;max-width:360px;display:block;margin:auto;background:#fff;border-radius:18px">
   <circle cx="120" cy="62" r="40" fill="#F1C9A5" stroke="#C99A78" stroke-width="2"/>
-  <path d="M92 48 Q120 18 150 46 Q158 64 140 74 Q120 80 100 72 Q86 62 92 48 Z" fill="#F4B8C4" stroke="#C9788A" stroke-width="2"/>
-  <circle cx="142" cy="74" r="5" fill="#2b2b2b"/>
+  <path d="M88 52 Q96 26 122 26 Q150 28 152 52 Q150 64 136 66 Q118 70 102 66 Q88 62 88 52 Z" fill="#F4B8C4" stroke="#C9788A" stroke-width="2"/>
+  <ellipse cx="150" cy="74" rx="7" ry="5" fill="#fff" stroke="#8a6a55"/><circle cx="153" cy="74" r="3" fill="#2b2b2b"/>
+  <path d="M146 72 Q142 64 136 60" fill="none" stroke="#E2B33C" stroke-width="3" stroke-dasharray="4 3"/>
   <path d="M96 104 L144 104 L156 232 L84 232 Z" fill="#9CC9F0" stroke="#5E8DB8" stroke-width="2"/>
   <line x1="120" y1="80" x2="120" y2="226" stroke="#E2B33C" stroke-width="5" stroke-linecap="round"/>
   <path d="M144 112 L222 120 L268 128" fill="none" stroke="#F1C9A5" stroke-width="16" stroke-linecap="round"/>
   <path d="M122 118 Q170 112 222 118 L262 126" fill="none" stroke="#E2B33C" stroke-width="3" stroke-dasharray="6 4"/>
-  <path d="M146 76 Q150 90 128 92" fill="none" stroke="#E2B33C" stroke-width="3" stroke-dasharray="6 4"/>
-  <circle cx="294" cy="110" r="16" fill="#FF6B57" stroke="#B5402F" stroke-width="2"/><path d="M280 104 Q294 116 308 104" fill="none" stroke="#fff" stroke-width="2"/>
+  <circle cx="296" cy="100" r="15" fill="#FF6B57" stroke="#B5402F" stroke-width="2"/><path d="M283 95 Q296 106 309 95" fill="none" stroke="#fff" stroke-width="2"/>
   ${inner}
 </svg>`;
 const STOPS = [
-  { x: 150, y: 74, ar: 'العين ترى الكرة' },
-  { x: 140, y: 92, ar: 'رسالة في عصب إلى الدماغ' },
-  { x: 116, y: 46, ar: 'الدماغ يقرر: أمسكها!' },
-  { x: 200, y: 116, ar: 'أمر في عصب إلى الذراع' },
-  { x: 262, y: 128, ar: 'عضلات اليد تنقبض' },
+  { x: 214, y: 64, w: 58, ax: 157, ay: 74, ar: 'العين ترى الكرة', lb: 'العين' },
+  { x: 222, y: 24, w: 100, ax: 140, ay: 62, ar: 'رسالة في عصب إلى الدماغ', lb: 'عصب إلى الدماغ' },
+  { x: 50, y: 20, w: 62, ax: 102, ay: 40, ar: 'الدماغ يقرر: أمسكها!', lb: 'الدماغ' },
+  { x: 176, y: 172, w: 96, ax: 196, ay: 119, ar: 'أمر في عصب إلى الذراع', lb: 'عصب في الذراع' },
+  { x: 268, y: 160, w: 82, ax: 254, ay: 127, ar: 'عضلات اليد تنقبض', lb: 'عضلات اليد' },
 ];
+const pill = (s, i) => `<g class="st" data-k="${i}" tabindex="0" role="button" aria-label="${s.ar}" style="cursor:pointer">
+  <line x1="${s.ax}" y1="${s.ay}" x2="${s.x}" y2="${s.y}" stroke="#3E7BB6" stroke-width="1.5"/><circle cx="${s.ax}" cy="${s.ay}" r="3.5" fill="#3E7BB6"/>
+  <rect x="${s.x - s.w / 2}" y="${s.y - 13}" width="${s.w}" height="26" rx="13" fill="#3E7BB6"/>
+  <text class="n" x="${s.x}" y="${s.y + 4.5}" text-anchor="middle" font-size="12.5" font-weight="700" ${F} fill="#fff">${s.lb}</text></g>`;
 const path = { id: 'E2', render() { need(); return `<div class="scene">${sayNar(E('E2').text)}<h2>${tx('الكرة قادمة! اضغط{|ي} محطات الرسالة بالترتيب من أولها إلى آخرها.')}</h2>
-  ${body(STOPS.map((s, i) => `<g class="st" data-k="${i}" tabindex="0" role="button" aria-label="${s.ar}" style="cursor:pointer"><circle cx="${s.x}" cy="${s.y}" r="13" fill="#3E7BB6" opacity=".9"/><text class="n" x="${s.x}" y="${s.y + 4}" text-anchor="middle" font-size="12" font-weight="700" ${F} fill="#fff">؟</text></g>`).join(''))}
+  ${body(STOPS.map(pill).join(''))}
   <ol class="card" id="steps" style="margin:6px 0;padding-inline-start:22px;min-height:20px"></ol><div class="fb" id="fb" role="status" aria-live="polite"></div></div>`; },
   after() { let next = 0; $$('.st').forEach(g => tap(g, () => { const k = +g.dataset.k; if (next >= STOPS.length || k < next) return;
-      if (k === next) { g.querySelector('circle').setAttribute('fill', '#2E9E6A'); g.querySelector('.n').textContent = String(k + 1); $('#steps').insertAdjacentHTML('beforeend', `<li>${tx(STOPS[k].ar)}</li>`); next++;
+      if (k === next) { g.querySelector('rect').setAttribute('fill', '#2E9E6A'); g.querySelector('.n').textContent = (k + 1) + '. ' + STOPS[k].lb; $('#steps').insertAdjacentHTML('beforeend', `<li>${tx(STOPS[k].ar)}</li>`); next++;
         if (next === STOPS.length) { fb('ok', 'هذه رحلة الرسالة: حاسة، ثم عصب إلى الدماغ، ثم قرار، ثم عصب إلى العضلة، ثم حركة. كلها في أقل من ثانية!'); award(); ok(); } else fb('ok', STOPS[k].ar); }
       else { noteMiss(); fb('bad', next === 0 ? 'ابدأ{|ي} من حيث تدخل الرسالة: من العين.' : 'ليس بعد. ما المحطة التي تلي «' + STOPS[next - 1].ar + '»؟'); } }));
     speak(tx(E('E2').text)); } };
