@@ -46,7 +46,7 @@ const ACTS = [
   { k: 'e', t: 'ارتفاع الساق بعد ضربة خفيفة تحت الركبة', r: 0, w: 'منعكس الركبة: يحدث وحده بلا قرار.' },
   { k: 'f', t: 'رفع اليد لأسأل المعلم', r: 1, w: 'قرار: نقرر أن نسأل ثم نرفع اليد.' },
 ];
-const sort = { id: 'E3', render() { need(); return `<div class="scene">${sayNar(E('E3').text)}<h2>${tx('منعكس أم قرار؟ اختر{|ي} لكل حركة.')}</h2>
+const sort = { id: 'E3', render() { need(); return `<div class="scene">${sayNar(E('E3').text)}<h2>${tx('منعكس أم قرار؟ {اختر|اختاري} لكل حركة.')}</h2>
   <div class="card">${ACTS.map(a => `<div style="margin:6px 0"><b>${tx(a.t)}</b><div class="row" style="flex-wrap:wrap">${['منعكس', 'قرار'].map((o, i) => `<button class="opt" style="width:auto" data-q="${a.k}" data-v="${i}">${o}</button>`).join('')}</div></div>`).join('')}
   <div class="fb" id="fb" role="status" aria-live="polite"></div></div></div>`; },
   after() { const r = store.get('rflx', {}); const chk = () => { if (ACTS.every(a => r[a.k] === a.r)) { award(); ok(); } else need(); };
