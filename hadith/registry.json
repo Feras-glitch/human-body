@@ -231,5 +231,17 @@
       "url": "https://hadithprophet.com/Hadith-translation-51995.html",
       "on": "2026-11-19"
     }
+  },
+  "bukhari:5409": {
+    "lead": "عن أبي هريرة رضي الله عنه قال:",
+    "narration": true,
+    "text": "ما عاب النبي ﷺ طعاماً قط، إن اشتهاه أكله، وإن كرهه تركه",
+    "source": "البخاري 5409",
+    "grade": "صحيح (متفق عليه)",
+    "note": "كتاب الأطعمة، باب ما عاب النبي ﷺ طعاماً؛ ورواه مسلم (2064) بلفظ «رسول الله». ومقابلة ثانية: https://hadeethenc.com/ar/browse/hadith/4966",
+    "checked": {
+      "url": "https://en.tohed.com/hadith/bukhari/5409",
+      "on": "2026-11-24"
+    }
   }
 }
