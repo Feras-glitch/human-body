@@ -775,7 +775,8 @@
   const reading = (x) => (typeof x === 'number' && Number.isFinite(x) && x >= 0 && x <= 1000) || (typeof x === 'string' && /^\d{1,4}$/.test(x));
   for (const k of ['pulse', 'breaths']) SCHEMA[k] = (v) => isObj(v) && media(v.audio, 'audio') && Object.keys(v).every((f) => f === 'audio' || reading(v[f]));
   for (const k of ['veins', 'teach', 'teach5', 'air', 'stomx', 'mouthx', 'bilex', 'absx', 'gutx',
-    'heat', 'cellmodel', 'mirror', 'cup', 'survey', 'fill', 'built']) {
+    'heat', 'cellmodel', 'mirror', 'cup', 'survey', 'fill', 'built',
+    'kidx', 'urinx', 'wtrx', 'rflx', 'nrvx', 'eyex', 'sensx', 'fearx', 'calmx', 'sleepx', 'memx']) {
     SCHEMA[k] = (v) => isObj(v) && media(v.audio, 'audio') && plain(v);
   }
 

@@ -22,7 +22,9 @@ test('every verse in the registry has its page glyphs, and exactly its page font
     assert.ok(v.qpc2, `${k}: بلا qpc2`);
     const g = v.qpc2.glyphs.split(' ');
     assert.equal(g.length, v.text.split(' ').length + 1, `${k}: رمز لكل كلمة وعلامة في نص Tanzil، ورقم الآية آخرها`);
-    assert.ok(g.every((t) => [...t].length === 1), `${k}: كل رمز محرف واحد`);
+    // علامة وقف لا رمز لها في صفحتها من بيانات QPC V2 تبقى خانة فارغة (النحل 78: «ۙ» بعد «والأفئدة») — ولا يُقبل الفراغ في غير علامة
+    const tz = v.text.split(' ');
+    assert.ok(g.every((t, i) => [...t].length === 1 || (t === '' && i < tz.length && /^[ۖ-ۭ]+$/.test(tz[i]))), `${k}: كل رمز محرف واحد`);
     assert.equal(v.qpc2.words.length, v.smart.split(' ').length, `${k}: موضع لكل كلمة من النص الذكي`);
     assert.equal(v.qpc2.page, v.page, `${k}: صفحة الخط هي صفحة الآية في المصحف`);
     pages.add(v.qpc2.page);
