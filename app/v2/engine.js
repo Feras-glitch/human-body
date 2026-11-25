@@ -231,8 +231,8 @@ function leaveScene(){sceneVersion++;sceneMiss=false;sceneMarks.clear();sceneTim
 /* إخفاء الصفحة (حوار إذن الميكروفون في أندرويد، أو تبديل التطبيق) يوقف الأصوات فقط: لا يُعاد بناء المشهد
    فلا يضيع نص لم يُحفظ ولا تسجيل جارٍ (المسجّل يحفظ ما سُجّل بنفسه). مغادرة الصفحة فعلاً تنظّف كل شيء. */
 /* الزمن الفعلي: كل 15 ثانية والصفحة ظاهرة والطفل تفاعل في آخر دقيقتين (المراجعة 28، أ3) */
-let lastAct=Date.now(); ['pointerdown','keydown','scroll'].forEach(e=>document.addEventListener(e,()=>{lastAct=Date.now()},{passive:true,capture:true}));
-setInterval(()=>{ try{ if(typeof LESSON==='undefined'||document.hidden||Date.now()-lastAct>120000) return; store.set('activeMs', (+store.get('activeMs',0)||0)+15000); }catch{} },15000);
+let lastAct=Date.now(); if(typeof document!=='undefined'&&document.addEventListener) ['pointerdown','keydown','scroll'].forEach(e=>document.addEventListener(e,()=>{lastAct=Date.now()},{passive:true,capture:true}));
+if(typeof setInterval==='function') setInterval(()=>{ try{ if(typeof LESSON==='undefined'||document.hidden||Date.now()-lastAct>120000) return; store.set('activeMs', (+store.get('activeMs',0)||0)+15000); }catch{} },15000);
 window.addEventListener('pagehide',leaveScene);document.addEventListener('visibilitychange',()=>{if(document.hidden)stopPlayback()});
 /* ============================ المشاهد ============================ */
 const sayBuddy = t => `<div class="say buddy"><span class="who">لمّاح</span>${tx(t)}</div>`;

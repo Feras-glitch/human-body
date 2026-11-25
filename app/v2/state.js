@@ -725,6 +725,8 @@
   const recallRec = (v) => v === null || (isObj(v) && isInt(v.ok, 0, 100) && (v.n === undefined || isInt(v.n, 1, 100)) &&
     isInt(v.days, 0, 100000) && (v.at === undefined || isNum(v.at)) && (v.text === undefined || isStr(v.text)) && plain(v));
   const SCHEMA = {
+    // الزمن الفعلي في الدرس بالمللي ثانية (المراجعة 28، أ3)
+    activeMs: (v) => typeof v === 'number' && Number.isFinite(v) && v >= 0 && v <= 1e9,
     level: (v) => v === 'A' || v === 'B',
     finished: (v) => typeof v === 'boolean',
     exp_done: (v) => typeof v === 'boolean',
@@ -779,8 +781,6 @@
     'kidx', 'urinx', 'wtrx', 'rflx', 'nrvx', 'eyex', 'sensx', 'fearx', 'calmx', 'sleepx', 'memx']) {
     SCHEMA[k] = (v) => isObj(v) && media(v.audio, 'audio') && plain(v);
   }
-  // الزمن الفعلي في الدرس بالمللي ثانية (المراجعة 28، أ3): يُقاس للتجربة الميدانية
-  SCHEMA.activeMs = (v) => typeof v === 'number' && Number.isFinite(v) && v >= 0 && v <= 1e9;
 
   function validState(k, v) {
     const s = k.slice(k.lastIndexOf(':') + 1);
