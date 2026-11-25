@@ -135,7 +135,7 @@ const REVIEW = ids.map(id=>{ const L=all[id]; const items=[...L.flow.practice,..
     checks:L.flow.check.map(i=>({id:i.id,level:i.level||'A',open:kindOf(sceneSrc(id),i)==='open'})),
     closed, open, drawTitle:(L.flow.notebook?.draw||'').slice(0,80), anchors:anchors(L),
     testItems:(A.items||[]).map(titem), transfer:(A.transfer||[]).map(titem), recall:(A.delayed_recall||[]).map(titem),
-    objectives:(L.objectives||[]).map(o=>o.statement), hookOptions:(L.flow.hook?.options||[]).map(plainQ) }; });
+    objectives:(L.objectives||[]).map(o=>o.statement), hookOptions:(L.flow.hook?.options||[]).map(plainQ), dinner:L.dinner||null }; });
 writeFileSync('app/v2/review-data.js', 'const REVIEW = '+JSON.stringify(REVIEW)+';\nconst IMG_ALL = '+JSON.stringify(readdirSync('app/v2/img').filter(f=>f.endsWith('.webp')).map(f=>f.replace('.webp','')))+';\n');
 console.log('scenes:', made, 'دروس مولَّدة؛ review-data:', REVIEW.length);
 

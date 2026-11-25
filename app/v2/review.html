@@ -441,6 +441,9 @@ function render() {
       if (sc && +sc.n && (+sc.ok / +sc.n) < 0.6) rev.push(`<button class="item" data-go="${esc(l.unit)}"><span>اختبار «${esc(l.title)}»<small>${num(sc.ok)} من ${num(sc.n)} من أول محاولة</small></span><b class="bad">${Math.round(+sc.ok / +sc.n * 100)}%</b></button>`);
       const rs3 = [G(`atlas:${l.test}:recall3`, null), G(`atlas:${l.test}:recall2`, null), G(`atlas:${l.test}:recall`, null)].find(Boolean);
       if (rs3 && +rs3.n && (+rs3.ok / +rs3.n) < 0.5) rev.push(`<button class="item" data-go="${esc(l.unit)}"><span>عودة الذاكرة: ${esc(l.title)}<small>${num(rs3.ok)} من ${num(rs3.n)} بعد ${esc(Atlas.days(rs3.days))}</small></span></button>`); }
+    /* اسأله على العشاء (من النموذج ج، قرار 25 نوفمبر): سؤال حوار من آخر درسين أنهاهما */
+    const din = finAll.filter(l => l.dinner && l.dinner.q).slice(-2).reverse();
+    if (din.length) topHtml += `<div class="sec" id="dinner"><h2>${isF ? 'اسألها' : 'اسأله'} على العشاء</h2>${din.map(l => `<div class="box"><small class="note">${esc(l.title)}</small><p style="margin:4px 0;font-size:1.05rem"><b>${esc(gx(l.dinner.q))}</b></p><details><summary class="note">ما ننتظر أن نسمعه</summary><p style="margin:6px 0 0">${esc(gx(l.dinner.listen))}</p></details></div>`).join('')}<p class="note">لا تصحّح فوراً: ${isF ? 'دعها تشرح' : 'دعه يشرح'} بكلماته، ثم ${isF ? 'اسألها' : 'اسأله'}: ${isF ? 'كيف عرفتِ؟' : 'كيف عرفت؟'}</p></div>`;
     topHtml += `<div class="sec"><h2>يحتاج مراجعة ${isF ? 'معها' : 'معه'}</h2>${rev.length ? rev.join('') : `<p class="note">${finAll.length ? 'لا اختبار دون 60% ولا عودة ذاكرة ضعيفة.' : 'يظهر هنا ما يحتاج مراجعة بعد أول اختبار.'}</p>`}</div>`;
   }
   html += rows.join('');

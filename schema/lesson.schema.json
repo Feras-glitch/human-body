@@ -15,7 +15,8 @@
     "experiment",
     "flow",
     "assessment",
-    "sources"
+    "sources",
+    "dinner"
   ],
   "additionalProperties": false,
   "properties": {
@@ -985,6 +986,16 @@
             "type": "string"
           }
         }
+      }
+    },
+    "dinner": {
+      "type": "object",
+      "description": "سؤال حوار لولي الأمر يسأله الطفل في البيت بعد الدرس (بطاقة «اسأله على العشاء» في شاشة ولي الأمر)، وما ينتظر أن يسمعه",
+      "required": ["q", "listen"],
+      "additionalProperties": false,
+      "properties": {
+        "q": { "type": "string", "minLength": 10, "description": "السؤال موجّهاً إلى الطفل، بعلامات {مذكر|مؤنث}" },
+        "listen": { "type": "string", "minLength": 20, "description": "الفكرة التي ينتظر ولي الأمر سماعها" }
       }
     },
     "life_application": {
