@@ -29,7 +29,8 @@ RequestExecutionLevel user
   !error "LIST غير محدد (قائمة الملفات من build-windows.sh)"
 !endif
 
-!define APPNAME "جسم الإنسان"
+!define APPNAME "رحلة داخل جسمي"
+!define OLDNAME "جسم الإنسان"  ; الاسم حتى 1.3.0: تُحذف اختصاراته عند الترقية
 !define EXENAME "HumanBody.exe"
 !define REGKEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\HumanBodyCurriculum"
 
@@ -39,7 +40,7 @@ InstallDir "$LOCALAPPDATA\Programs\HumanBody"
 InstallDirRegKey HKCU "Software\HumanBodyCurriculum" "InstallDir"
 Icon "${SRC}\resources\app\app.ico"
 UninstallIcon "${SRC}\resources\app\app.ico"
-BrandingText "منهاج جسم الإنسان ${VERSION}${LABEL}"
+BrandingText "${APPNAME}: جسم الإنسان للأطفال ${VERSION}${LABEL}"
 ShowInstDetails nevershow
 VIProductVersion "${VERSION}.0"
 VIAddVersionKey "ProductName" "Human Body Curriculum"
@@ -142,6 +143,10 @@ Section "Install"
   File /r "${SRC}\*.*"
   File "/oname=HumanBody.files" "${LIST}"
   WriteUninstaller "$INSTDIR\Uninstall.exe"
+  Delete "$DESKTOP\${OLDNAME}.lnk"
+  Delete "$SMPROGRAMS\${OLDNAME}\${OLDNAME}.lnk"
+  Delete "$SMPROGRAMS\${OLDNAME}\إزالة ${OLDNAME}.lnk"
+  RMDir "$SMPROGRAMS\${OLDNAME}"
   CreateShortCut "$DESKTOP\${APPNAME}.lnk" "$INSTDIR\${EXENAME}" "" "$INSTDIR\resources\app\app.ico" 0
   CreateDirectory "$SMPROGRAMS\${APPNAME}"
   CreateShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" "$INSTDIR\${EXENAME}" "" "$INSTDIR\resources\app\app.ico" 0

@@ -90,7 +90,7 @@ def build(unit, kind, out, stamp):
     parts = []
     title = {'teacher': 'كتاب المعلم', 'student-boy': 'دفتر الأطلس — طالب', 'student-girl': 'دفتر الأطلس — طالبة'}[kind]
     first = json.load(open(sorted(glob.glob(f'lessons/{unit}.L*.json'))[0], encoding='utf-8'))
-    cover = (f"<div class='cover'><h1>الأطلس الحي</h1><div class='motto'>علمٌ يُنتفع به · تعلّم · افهم · طبّق · انشر</div>"
+    cover = (f"<div class='cover'><h1>رحلة داخل جسمي</h1><div class='motto'>جسم الإنسان للأطفال 8–12</div><div class='motto'>علمٌ يُنتفع به · تعلّم · افهم · طبّق · انشر</div>"
              f"<h2>{unit} · {first['unit']['title']}</h2><h3>{title}</h3>"
              f"<div class='meta'>مسودة للمراجعة · الإصدار {stamp['version']} · بصمة المحتوى <span class='fp' dir='ltr'>{stamp['hash']}</span> · {stamp['date']}<br>"
              "النص القرآني برواية حفص بالرسم العثماني من مجمع الملك فهد لطباعة المصحف الشريف بخط صفحات مصحف المدينة، الإصدار الثاني (QPC V2؛ رموز الآيات من مكتبة QUL)، ونص Tanzil (tanzil.net) للبحث · "

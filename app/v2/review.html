@@ -43,12 +43,22 @@ details.les .in{padding:0 14px 14px}
   details.les{border:1px solid #ccc} details.les .in{display:block!important}
   .rub button{border:0!important;background:none!important;padding:0!important}
 }
+/* شاشة ولي الأمر بالنموذج أ (قرار 25 نوفمبر): الخلاصة أولاً، والأدوات التقنية مطوية */
+.topbar{display:flex;justify-content:flex-end;margin:4px 0}
+.bar{height:10px;border-radius:99px;background:var(--line);overflow:hidden;margin:8px 0}.bar i{display:block;height:100%;background:var(--teal)}
+.ustrip{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:5px;margin:4px 0 10px}.ustrip span{height:8px;border-radius:4px;background:var(--line)}.ustrip .d{background:var(--teal)}.ustrip .g{background:#FFC93C}
+.big{font-family:var(--display);font-size:2rem;line-height:1.1}
+.box{background:#FFF9EC;border-radius:14px;padding:10px 12px;margin:8px 0}
+.item{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:start;font:inherit;color:inherit;background:#FFF9EC;border:0;border-radius:14px;padding:10px 12px;margin:6px 0;min-height:48px;cursor:pointer;text-decoration:none}
+.item small{display:block;color:var(--muted)}
+.unitsH{margin:18px 0 4px}
+details.sec>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .qbtn{font:inherit;padding:7px 14px;border-radius:10px;border:2px solid var(--line);background:#fff;cursor:pointer;display:inline-block}
 </style>
 </head>
 <body><div id="app">
 <header><a class="home" href="index.html" title="خريطتي"><img src="img/ui-home.webp" alt="" style="width:30px"></a><h1 style="font-size:1.3rem;margin:0">لولي الأمر والمعلم</h1></header>
-<section id="guardianGate" class="sec" hidden><h2>دخول ولي الأمر أو المعلم</h2><div id="gateForm"><p id="guardianHelp"></p><label>الرمز <input type="password" inputmode="numeric" id="guardianPin" maxlength="12" autocomplete="off"></label><label id="confirmLabel">تأكيد الرمز <input type="password" inputmode="numeric" id="guardianConfirm" maxlength="12" autocomplete="off"></label><button id="guardianGo">دخول</button><p id="guardianMsg" role="alert"></p><p class="note">الرمز قفل محلي يمنع الطفل من فتح هذه الشاشة؛ لا يشفّر بيانات الجهاز ولا يحميها من بالغ يستعمل الجهاز.</p><button type="button" class="opt" style="width:auto" id="forgotPin" hidden>نسيت الرمز؟</button><div id="resetBox" hidden><div id="recWay"><p>اكتب <b>رمز الاستعادة</b> الذي ظهر لك حين اخترت الرمز (12 حرفاً ورقماً). يُحذف به رمز الشاشة وحده، ولا يُمس تقدّم الطفل ولا تسجيلاته ولا الدرجات.</p><label>رمز الاستعادة <input type="text" id="recCode" autocomplete="off" maxlength="24" dir="ltr" spellcheck="false" style="font:inherit;padding:6px 10px;letter-spacing:.08em;text-transform:uppercase"></label> <button type="button" id="recGo">احذف الرمز</button></div><div id="waitWay"><p id="waitTxt" class="note"></p><button type="button" id="waitGo">اطلب إعادة التعيين</button></div><button type="button" id="resetCancel">إلغاء</button><p id="resetMsg" role="alert"></p></div></div><div id="recoveryBox" hidden><h3>رمز الاستعادة</h3><p>اكتبه على ورقة واحفظه بعيداً عن الطفل. يُطلب إن نسيت رمز الشاشة، و<b>لن يظهر مرة أخرى</b>.</p><p id="recShow" dir="ltr" style="font-size:1.6rem;letter-spacing:.12em;text-align:center;font-family:ui-monospace,Menlo,Consolas,monospace;margin:10px 0"></p><label><input type="checkbox" id="recDone"> كتبتُه وحفظته</label> <button type="button" id="recCont" disabled>متابعة</button></div><a href="index.html">العودة للحسابات</a></section><main id="main" hidden><div class="tabs" id="tabs"></div><div id="body"></div></main>
+<section id="guardianGate" class="sec" hidden><h2>دخول ولي الأمر أو المعلم</h2><div id="gateForm"><p id="guardianHelp"></p><label>الرمز <input type="password" inputmode="numeric" id="guardianPin" maxlength="12" autocomplete="off"></label><label id="confirmLabel">تأكيد الرمز <input type="password" inputmode="numeric" id="guardianConfirm" maxlength="12" autocomplete="off"></label><button id="guardianGo">دخول</button><p id="guardianMsg" role="alert"></p><p class="note">الرمز قفل محلي يمنع الطفل من فتح هذه الشاشة؛ لا يشفّر بيانات الجهاز ولا يحميها من بالغ يستعمل الجهاز.</p><button type="button" class="opt" style="width:auto" id="forgotPin" hidden>نسيت الرمز؟</button><div id="resetBox" hidden><div id="recWay"><p>اكتب <b>رمز الاستعادة</b> الذي ظهر لك حين اخترت الرمز (12 حرفاً ورقماً). يُحذف به رمز الشاشة وحده، ولا يُمس تقدّم الطفل ولا تسجيلاته ولا الدرجات.</p><label>رمز الاستعادة <input type="text" id="recCode" autocomplete="off" maxlength="24" dir="ltr" spellcheck="false" style="font:inherit;padding:6px 10px;letter-spacing:.08em;text-transform:uppercase"></label> <button type="button" id="recGo">احذف الرمز</button></div><div id="waitWay"><p id="waitTxt" class="note"></p><button type="button" id="waitGo">اطلب إعادة التعيين</button></div><button type="button" id="resetCancel">إلغاء</button><p id="resetMsg" role="alert"></p></div></div><div id="recoveryBox" hidden><h3>رمز الاستعادة</h3><p>اكتبه على ورقة واحفظه بعيداً عن الطفل. يُطلب إن نسيت رمز الشاشة، و<b>لن يظهر مرة أخرى</b>.</p><p id="recShow" dir="ltr" style="font-size:1.6rem;letter-spacing:.12em;text-align:center;font-family:ui-monospace,Menlo,Consolas,monospace;margin:10px 0"></p><label><input type="checkbox" id="recDone"> كتبتُه وحفظته</label> <button type="button" id="recCont" disabled>متابعة</button></div><a href="index.html">العودة للحسابات</a></section><main id="main" hidden><div id="top"></div><h2 class="unitsH">تفاصيل الوحدات</h2><div class="tabs" id="tabs"></div><div id="body"></div></main>
 </div>
 <script src="review-data.js"></script>
 <script>
@@ -284,8 +294,10 @@ function render() {
     location.hash = cur;
     render();
   });
-  const LS = REVIEW.filter(l => l.unit === cur);
-  const rub = G(`atlas:${cur}:rubric`, {}) || {};
+  /* حساب وحدة واحدة: يُستدعى لكل الوحدات (ليُعرف ما ينتظر التقييم في كلها)، وتُعرض تفاصيل الوحدة المختارة */
+  const unitView = (u) => {
+  const LS = REVIEW.filter(l => l.unit === u);
+  const rub = G(`atlas:${u}:rubric`, {}) || {};
   let pending = 0, gSum = 0, gMax = 0;
   const score = (key, v) => {
     evidenceMap[key] = signature(v);
@@ -380,59 +392,91 @@ function render() {
     }
     rows.push(html);
   }
-  const ded = G(`atlas:${cur}.unit:ded`, null);
-  const ap = G(`atlas:${cur}.unit:approval`, null);
+  const ded = G(`atlas:${u}.unit:ded`, null);
+  const ap = G(`atlas:${u}.unit:approval`, null);
   const apOk = !!(ap && ap.ok && ded && ap.sig === signature(ded));
   const dedHtml = ded && (ded.audio || ded.text) ?
     `<p>الفكرة: <b>${esc(ded.title || (Number.isInteger(ded.idea) ? 'رقم ' + (ded.idea + 1) : '—'))}</b> — إلى: <b>${esc(ded.who || '—')}</b></p>${ded.plan ? `<div class="ans">${esc(ded.plan)}</div>` : ''}${ded.audio && Atlas.audioSource(ded.audio) ? `<audio controls src="${Atlas.audioSource(ded.audio)}" style="width:100%"></audio>` : ''}${ded.text ? `<div class="ans">${esc(ded.text)}</div>` : ''}
      <p class="note">اسأل الطفل: هل علّمتها فعلاً؟ ماذا قال من علّمته؟ هذا هو الاختبار الحقيقي.</p>
      ${apOk ? '<p class="ok">✔ اعتمدتَ هذا الإهداء، وهو في «مكتبة إهداءاتي».</p>' + (ap.reset ? '<p class="note">⚠ اعتُمد بعد إعادة تعيين الرمز (' + esc(new Date(ap.reset).toLocaleDateString('ar')) + '). إن لم تكن أنت من أعاد الرمز فألغِ الاعتماد واستمع إلى الإهداء.</p>' : '') + '<button class="opt noprint" style="width:auto" id="unapprove">إلغاء الاعتماد</button>' : `${ap && ap.ok ? '<p class="note">تغيّر الإهداء بعد اعتمادك؛ استمع إليه من جديد.</p>' : ''}${ap && ap.imported && !ap.ok ? '<p class="note">⚠ اعتُمد هذا الإهداء في نسخة احتياطية أو على جهاز آخر. الاعتماد لا ينتقل مع النسخة: استمع إليه ثم اعتمده هنا.</p>' : ''}<button class="opt noprint" style="width:auto;background:var(--teal);color:#fff" id="approve">✔ أعتمد هذا الإهداء</button>`}` :
     '<p class="note">لم يُسجَّل الإهداء بعد.</p>';
+  return { LS, rows, notStarted, pending, finN, sumOk, sumN, sumAns, testOk, testN, testAns, gSum, gMax, ded, ap, apOk, dedHtml };
+  };
+  const V = {};
+  for (const u of units) { if (u === cur) continue; try { V[u] = unitView(u); } catch { V[u] = null; } }
+  V[cur] = unitView(cur); /* الوحدة المختارة أخيراً، وخطؤها يظهر كما كان */
+  const { LS, rows, notStarted, pending, finN, sumOk, sumN, sumAns, testOk, testN, testAns, gSum, gMax, ded, ap, apOk, dedHtml } = V[cur];
   /* النسبة من الأسئلة التي أجاب عنها، لا من كل أسئلة الدروس المفتوحة */
   const pct = sumAns ? Math.round(sumOk / sumAns * 100) + '%' : '—';
   const rs = pinResetAt();
   const cb = clockBack;
   const me = (() => { try { return Atlas.profiles().find(p => p.id === profile?.id) || {}; } catch { return {}; } })();
-  let html = `${cb.length ? `<div class="sec" role="alert"><p><b>⚠ رجعت ساعة الجهاز إلى الوراء ${esc(Atlas.times(cb.length))}</b> (آخرها في ${esc(new Date(cb[cb.length - 1].at).toLocaleString('ar'))}، وكانت تشير إلى ${esc(new Date(cb[cb.length - 1].from).toLocaleString('ar'))}). تقديم الساعة يفتح «عودة الذاكرة» قبل وقتها؛ العودات المسجّلة والساعة متقدمة معلَّمة بـ⚠.</p></div>` : ''}${rs ? `<div class="sec" role="alert"><p><b>⚠ أُعيد تعيين رمز ولي الأمر لهذا الحساب في ${esc(new Date(rs).toLocaleString('ar'))}.</b> إن لم تكن أنت من فعل ذلك فراجع ما اعتُمد بعده، وغيّر الرمز.</p></div>` : ''}${me.restoredAt ? `<p class="note">هذا الحساب مستعاد من نسخة احتياطية في ${esc(new Date(me.restoredAt).toLocaleDateString('ar'))}: النتائج المعروضة من النسخة، والاعتمادات فيها تحتاج اعتمادك من جديد.</p>` : ''}<div class="sec"><h2>${esc(profile.name)} — ${esc(LS[0].unitTitle)}</h2>
+  const alerts = `${cb.length ? `<div class="sec" role="alert"><p><b>⚠ رجعت ساعة الجهاز إلى الوراء ${esc(Atlas.times(cb.length))}</b> (آخرها في ${esc(new Date(cb[cb.length - 1].at).toLocaleString('ar'))}، وكانت تشير إلى ${esc(new Date(cb[cb.length - 1].from).toLocaleString('ar'))}). تقديم الساعة يفتح «عودة الذاكرة» قبل وقتها؛ العودات المسجّلة والساعة متقدمة معلَّمة بـ⚠.</p></div>` : ''}${rs ? `<div class="sec" role="alert"><p><b>⚠ أُعيد تعيين رمز ولي الأمر لهذا الحساب في ${esc(new Date(rs).toLocaleString('ar'))}.</b> إن لم تكن أنت من فعل ذلك فراجع ما اعتُمد بعده، وغيّر الرمز.</p></div>` : ''}${me.restoredAt ? `<p class="note">هذا الحساب مستعاد من نسخة احتياطية في ${esc(new Date(me.restoredAt).toLocaleDateString('ar'))}: النتائج المعروضة من النسخة، والاعتمادات فيها تحتاج اعتمادك من جديد.</p>` : ''}`;
+  let html = `<div class="sec"><h2>${esc(profile.name)} — ${esc(LS[0].unitTitle)}</h2>
     <p class="note">هذه الشاشة لك أنت لا للطفل. المغلقة تُصحَّح آلياً والمعتبر <b>المحاولة الأولى</b>. المفتوحة والرسم تقيّمها أنت بالسلّم 0 / 1 / 2. افتح أي درس لترى التفاصيل.</p>
     <div class="sum"><div><b>${finN}/${LS.length}</b>دروس مكتملة</div><div><b>${pct}</b>صواب من أول محاولة (${sumOk} من ${sumAns} أجاب عنها${sumAns < sumN ? '؛ بقي ' + (sumN - sumAns) : ''})</div><div><b>${testAns ? Math.round(testOk / testAns * 100) + '%' : '—'}</b>اختبارات الدروس${testAns ? ` (${testOk} من ${testAns})` : ''}</div><div><b>${gMax ? (gSum + '/' + gMax) : '—'}</b>تقييماتك للمفتوحة</div><div><b>${pending}</b>تنتظر تقييمك</div><div><b>${LS.reduce((a, l) => a + num(G(`atlas:${l.id}:stars`, 0)), 0)}</b>⭐ نجوم</div></div></div>`;
-  /* في لمحة: كل الوحدات معاً بلغة الأسرة (المراجعة 28، ب6) */
-  { const all = REVIEW, finAll = all.filter(l => G(`atlas:${l.id}:finished`, false));
-    const weak = all.map(l => ({ l, sc: G(`atlas:${l.test}:score`, null) })).filter(x => x.sc && +x.sc.n && (+x.sc.ok / +x.sc.n) < 0.6);
-    const nextL = all.find(l => !G(`atlas:${l.id}:finished`, false));
-    html = `<div class="sec"><h2>في لمحة: ${esc(profile?.name || '')}</h2><p>أنهى <b>${finAll.length} من ${all.length}</b> درساً.${nextL ? ` الدرس التالي: <b>${esc(nextL.title)}</b>.` : ' أنهى كل الدروس.'}</p>${weak.length ? `<p><b>يحتاج مراجعة</b> (أقل من 60% في اختبار الدرس): ${weak.map(x => esc(x.l.title)).join('، ')}.</p>` : (finAll.length ? '<p>لا درس أقل من 60% في اختباره.</p>' : '')}<p class="note">تحت: تفاصيل الوحدة المختارة، وإجابات الطفل المفتوحة التي تنتظر تقييمك.</p></div>` + html;
+  /* الخلاصة أولاً: أين وصل؟ ما ينتظر تقييمك؟ ما يحتاج مراجعة؟ (النموذج أ، قرار 25 نوفمبر) */
+  let topHtml = '';  /* القفل أولاً، ثم التنبيهات، ثم البطاقات */
+  { const all = REVIEW, isF = profile?.gender === 'f', fin = l => G(`atlas:${l.id}:finished`, false) === true;
+    const finAll = all.filter(fin), nextL = all.find(l => !fin(l));
+    const ms = all.reduce((a, l) => a + num(G(`atlas:${l.id}:activeMs`, 0)), 0), mn = Math.round(ms / 60000), h = Math.floor(mn / 60), m = mn % 60;
+    const dur = n => n === 1 ? 'دقيقة واحدة' : n === 2 ? 'دقيقتان' : n <= 10 ? n + ' دقائق' : n + ' دقيقة';
+    const hrs = n => n === 1 ? 'ساعة' : n === 2 ? 'ساعتان' : n <= 10 ? n + ' ساعات' : n + ' ساعة';
+    const tm = !mn ? 'لم يُقَس بعد' : h ? hrs(h) + (m ? ' و' + dur(m) : '') : dur(m);
+    const strip = units.map(u => { const ls = all.filter(l => l.unit === u), d = ls.filter(fin).length; return `<span class="${d === ls.length ? 'd' : d || ls.some(l => G(`atlas:${l.id}:scene`, 0) > 0) ? 'g' : ''}" title="${esc(ls[0].unitTitle)}"></span>`; }).join('');
+    topHtml += `<div class="topbar noprint"><button class="qbtn" id="lockGuardian">قفل الشاشة</button></div>${alerts}
+      <div class="sec"><h2>أين ${isF ? 'وصلت' : 'وصل'} ${esc(profile?.name || '')}؟</h2>
+      <div class="big">${finAll.length} <span class="note" style="font-size:1rem">من ${all.length} درساً</span></div>
+      <div class="bar" role="img" aria-label="${finAll.length} من ${all.length}"><i style="width:${all.length ? Math.round(finAll.length / all.length * 100) : 0}%"></i></div>
+      <div class="ustrip" style="--n:${units.length}">${strip}</div>
+      ${nextL ? `<a class="item" href="${esc(nextL.id)}.html"><span><small>الدرس التالي</small>${esc(nextL.title)}</span></a>` : `<p class="ok">${isF ? 'أنهت' : 'أنهى'} كل الدروس.</p>`}
+      <div class="box"><small class="note">الزمن الفعلي في الدروس (حين يتفاعل مع الدرس)</small><br><b>${tm}</b></div></div>`;
+    const wait = [];
+    for (const u of units) { const v = V[u]; if (!v) continue; const t = esc(v.LS[0].unitTitle);
+      if (v.pending) wait.push(`<button class="item" data-go="${esc(u)}"><span>${v.pending === 1 ? 'إجابة واحدة' : v.pending === 2 ? 'إجابتان' : v.pending <= 10 ? v.pending + ' إجابات' : v.pending + ' إجابة'} تنتظر تقييمك<small>${t}</small></span><span aria-hidden="true">‹</span></button>`);
+      if (v.ded && (v.ded.audio || v.ded.text) && !v.apOk) wait.push(`<button class="item" data-go="${esc(u)}" data-ded="1"><span>إهداء الوحدة ينتظر اعتمادك<small>${t}</small></span><span aria-hidden="true">‹</span></button>`); }
+    topHtml += `<div class="sec"><h2>ينتظر تقييمك</h2>${wait.length ? wait.join('') : '<p class="note">لا شيء ينتظرك الآن.</p>'}</div>`;
+    const rev = [];
+    for (const l of all) { const sc = G(`atlas:${l.test}:score`, null);
+      if (sc && +sc.n && (+sc.ok / +sc.n) < 0.6) rev.push(`<button class="item" data-go="${esc(l.unit)}"><span>اختبار «${esc(l.title)}»<small>${num(sc.ok)} من ${num(sc.n)} من أول محاولة</small></span><b class="bad">${Math.round(+sc.ok / +sc.n * 100)}%</b></button>`);
+      const rs3 = [G(`atlas:${l.test}:recall3`, null), G(`atlas:${l.test}:recall2`, null), G(`atlas:${l.test}:recall`, null)].find(Boolean);
+      if (rs3 && +rs3.n && (+rs3.ok / +rs3.n) < 0.5) rev.push(`<button class="item" data-go="${esc(l.unit)}"><span>عودة الذاكرة: ${esc(l.title)}<small>${num(rs3.ok)} من ${num(rs3.n)} بعد ${esc(Atlas.days(rs3.days))}</small></span></button>`); }
+    topHtml += `<div class="sec"><h2>يحتاج مراجعة ${isF ? 'معها' : 'معه'}</h2>${rev.length ? rev.join('') : `<p class="note">${finAll.length ? 'لا اختبار دون 60% ولا عودة ذاكرة ضعيفة.' : 'يظهر هنا ما يحتاج مراجعة بعد أول اختبار.'}</p>`}</div>`;
   }
   html += rows.join('');
   if (notStarted.length) html += `<p class="note">لم يبدأ بعد: ${notStarted.map(esc).join('، ')}.</p>`;
-  html += `<div class="sec"><h2>إهداء الوحدة</h2>${dedHtml}</div>
-  <div class="sec noprint"><h2>ملاحظاتك للمراجعة الميدانية</h2><textarea id="notes" style="width:100%;min-height:90px" placeholder="ما الذي أربك الطفل؟ ما الذي أحبه؟ كم استغرق؟">${esc(G(`atlas:${cur}:notes`,''))}</textarea><div class="row" style="margin-top:8px"><button class="opt" style="width:auto" id="exp">⬇ تقرير مقروء (دون التسجيلات)</button><button class="opt" style="width:auto" id="print">🖨 طباعة</button><button class="opt" id="backup">نسخة كاملة للطفل الحالي</button><button class="opt" id="restore">استعادة نسخة</button><button class="opt" id="lockGuardian">قفل شاشة ولي الأمر</button><button class="opt" style="width:auto" id="newRec">رمز استعادة جديد</button><input type="file" id="backupFile" accept=".json,application/json" hidden><p id="backupMsg" role="status"></p><p class="note" id="usage"></p><button class="opt" style="width:auto" id="rescueAll">نسخة لكل أطفال الجهاز</button><p class="note">نسخة كل الأطفال تحتاج رمزاً يفتح حسابات كل الأطفال المحمية.</p></div></div>`;
-  html += `<div class="sec noprint"><details id="quranBox"><summary><b>تلاوة الآيات</b></summary>
+  html += `<div class="sec" id="dedSec"><h2>إهداء الوحدة</h2>${dedHtml}</div>
+  <div class="sec noprint"><h2>ملاحظاتك للمراجعة الميدانية</h2><textarea id="notes" style="width:100%;min-height:90px" placeholder="ما الذي أربك الطفل؟ ما الذي أحبه؟ كم استغرق؟">${esc(G(`atlas:${cur}:notes`,''))}</textarea></div>
+  <details class="sec noprint" id="adv"><summary><b>أدوات متقدمة</b> <span class="note">النسخ الاحتياطي، والرمز، والطباعة، والتلاوات، والصوت، والتحديثات</span></summary><div class="row" style="margin-top:8px"><button class="opt" style="width:auto" id="exp">⬇ تقرير مقروء (دون التسجيلات)</button><button class="opt" style="width:auto" id="print">🖨 طباعة</button><button class="opt" id="backup">نسخة كاملة للطفل الحالي</button><button class="opt" id="restore">استعادة نسخة</button><button class="opt" style="width:auto" id="newRec">رمز استعادة جديد</button><input type="file" id="backupFile" accept=".json,application/json" hidden><p id="backupMsg" role="status"></p><p class="note" id="usage"></p><button class="opt" style="width:auto" id="rescueAll">نسخة لكل أطفال الجهاز</button><p class="note">نسخة كل الأطفال تحتاج رمزاً يفتح حسابات كل الأطفال المحمية.</p></div>`;
+  html += `<div class="noprint"><details id="quranBox"><summary><b>تلاوة الآيات</b></summary>
     <p class="note">التطبيق لا يقرأ القرآن بالقارئ الآلي. الآية تُتلى فقط من تسجيل تسجّله هنا أو ملف صوتي ترفعه (أو ملف يحزمه المطوّر مع التطبيق). التلاوة تُحفظ لهذا الجهاز كله، لكل الأطفال، ولا تدخل في النسخ الاحتياطية. ما لا تلاوة له يُعرض مكتوباً بلا صوت.</p>
     <p class="note"><b>التلاوة المرفقة بالتطبيق:</b> الشيخ محمد صدّيق المنشاوي (مرتّل)، ملفات آيةً آية من everyayah.com. ما ترفعه أنت لآية يُقدَّم على المرفق.</p>
     <div id="quranList"></div><p id="quranMsg" role="alert" class="bad"></p></details></div>`;
-  html += `<div class="sec noprint"><details id="voiceBox"><summary><b>صوت المعلق (حزم الاستوديو)</b></summary>
+  html += `<div class="noprint"><details id="voiceBox"><summary><b>صوت المعلق (حزم الاستوديو)</b></summary>
     <p class="note">النصوص يقرؤها القارئ الآلي حتى تُسجَّل بصوت بشري. المعلق يسجّلها في «استوديو جسم الإنسان» ويصدّر «حزمة صوت» (ملف zip)، فتستوردها هنا. كل تسجيل مربوط بنصه: لا يُسمع إلا عليه، وإن تغيّر النص عاد القارئ الآلي. الصوت المستورد للجهاز كله، لكل الأطفال، ولا يدخل في النسخ الاحتياطية. لا آيات فيه: التلاوة في قسم «تلاوة الآيات».</p>
     <p id="voiceCount" class="note"></p>
     <div class="row" style="gap:8px;flex-wrap:wrap"><button class="opt" style="width:auto" id="voiceImport">استيراد حزمة صوت</button><button class="opt" style="width:auto" id="voiceClear">حذف كل الصوت المستورد</button><input type="file" id="voiceFile" accept=".zip,application/zip" hidden></div>
     <p id="voiceMsg" role="status"></p></details></div>`;
-  html += `<div class="sec noprint"><details id="updBox"><summary><b>تحديث المحتوى (حزمة تحديث موقّعة)</b></summary>
+  html += `<div class="noprint"><details id="updBox"><summary><b>تحديث المحتوى (حزمة تحديث موقّعة)</b></summary>
     <p class="note">التصحيحات التي تمرّ على الفحوص ويعتمدها المطوّر تصلك «حزمة تحديث» (ملف zip موقّع)، فتستوردها هنا بلا إنترنت وبلا تثبيت نسخة جديدة. لا يقبلها التطبيق إلا موقّعة من المطوّر ومبنية على هذه النسخة نفسها. تقدّم الأطفال وتسجيلاتهم لا تتأثر.</p>
     <p id="updInfo" class="note"></p>
     <div class="row" style="gap:8px;flex-wrap:wrap"><button class="opt" style="width:auto" id="updImport">استيراد حزمة تحديث</button><button class="opt" style="width:auto" id="updClear" hidden>العودة إلى المحتوى الأصلي</button><input type="file" id="updFile" accept=".zip,application/zip" hidden></div>
-    <p id="updMsg" role="status"></p></details></div>`;
+    <p id="updMsg" role="status"></p></details></div></details>`;
   // عن التطبيق (المراجعة 20، القرار 3): نوع البناء وبصمة المحتوى؛ المسودة توسم «مسودة غير معتمدة»
   const BI = window.BUILD_INFO || {};
   const KINDS = { dev: 'نسخة تطوير (من المستودع)', draft: 'مسودة غير معتمدة', release: 'إصدار معتمد' };
-  html += `<div class="sec" id="about"><h2>عن التطبيق</h2>
+  html += `<details class="sec" id="about"><summary><b>عن التطبيق</b></summary>
     <p><b id="buildKind">${esc(KINDS[BI.kind] || 'نوع البناء غير معروف')}</b>${BI.kind === 'draft' ? ' — محتوى لم يعتمده المراجعان العلمي والشرعي بعد؛ للتجربة في البيت لا للنشر.' : ''}</p>
     <p class="note">الإصدار ${esc(BI.version || '—')} · بصمة المحتوى <span dir="ltr" id="buildHash">${esc(BI.content || '—')}</span>${BI.commit ? ` · <span dir="ltr">${esc(BI.commit)}</span>` : ''}${BI.built ? ` · بُني في ${esc(BI.built)}` : ''}<br>البصمة نفسها على غلاف كتاب المعلم ودفتري الطالب والطالبة: إن اختلفت فالكتاب والتطبيق من نسختين مختلفتين.</p>
-    <p class="note" id="credits"><b>المصادر:</b> النص القرآني من مجمع الملك فهد لطباعة المصحف الشريف بخط صفحات مصحف المدينة، الإصدار الثاني (QPC V2؛ رموز الآيات من مكتبة QUL)، وKFGQPC Hafs Smart احتياطاً، ونص Tanzil (<span dir="ltr">tanzil.net</span>) بلا تعديل؛ التلاوة المرفقة للشيخ محمد صدّيق المنشاوي من <span dir="ltr">everyayah.com</span> (إذن إعادة نشرها قيد التحقق)؛ الخطوط Baloo Bhaijaan 2 وIBM Plex Sans Arabic وNoto Sans SC برخصة SIL OFL؛ بعض الرسوم التشريحية مقتبسة ومعدّلة من Servier Medical Art برخصة CC BY 4.0؛ والمحتوى التعليمي © فراس. <a href="licenses.html">المصادر والرخص كاملة</a></p></div>`;
+    <p class="note" id="credits"><b>المصادر:</b> النص القرآني من مجمع الملك فهد لطباعة المصحف الشريف بخط صفحات مصحف المدينة، الإصدار الثاني (QPC V2؛ رموز الآيات من مكتبة QUL)، وKFGQPC Hafs Smart احتياطاً، ونص Tanzil (<span dir="ltr">tanzil.net</span>) بلا تعديل؛ التلاوة المرفقة للشيخ محمد صدّيق المنشاوي من <span dir="ltr">everyayah.com</span> (إذن إعادة نشرها قيد التحقق)؛ الخطوط Baloo Bhaijaan 2 وIBM Plex Sans Arabic وNoto Sans SC برخصة SIL OFL؛ بعض الرسوم التشريحية مقتبسة ومعدّلة من Servier Medical Art برخصة CC BY 4.0؛ والمحتوى التعليمي © فراس. <a href="licenses.html">المصادر والرخص كاملة</a></p></details>`;
   html += `<div class="sec noprint"><details><summary><b>حذف حساب ${esc(profile.name)}</b></summary>
     <p>يُنقل هذا الحساب إلى «المحذوفات» في صفحة الحسابات، ومعه كل ما حُفظ له: التقدم والإجابات والتسجيلات والرسوم. يُسترجع منها برمزك خلال <b>30 يوماً</b>، ثم يُحذف نهائياً.</p>
     <label>اكتب اسم الطفل للتأكيد: <input id="delName" autocomplete="off" style="font:inherit;padding:8px 10px;border:2px solid var(--line);border-radius:10px"></label>
     <button id="delGo" style="font:inherit;padding:8px 16px;border-radius:10px;background:#A8322A;color:#fff;margin-inline-start:8px">انقل الحساب إلى المحذوفات</button>
     <p id="delMsg" role="alert" class="bad"></p></details></div>`;
   document.getElementById('body').innerHTML = html;
+  document.getElementById('top').innerHTML = topHtml;
+  document.querySelectorAll('#top [data-go]').forEach(b => b.onclick = () => { cur = b.dataset.go; location.hash = cur; render(); document.getElementById(b.dataset.ded ? 'dedSec' : 'tabs').scrollIntoView({ block: 'start' }); });
   renderQuran();
   document.getElementById('delGo').onclick = async () => {
     const m = document.getElementById('delMsg');
