@@ -59,7 +59,7 @@ for (const s of L.sources || []) if (!s.url || s.url === 'TBD') W(`المصدر 
 for(const s of L.sources||[])if(s.verification_status==='page_comparison_pending')W(`المصدر ${s.id}: مقابلة الصفحات لم تكتمل`);if(release&&!L.version?.science_reviewed_by)W('لا اعتماد علمي بشري باسم المراجع');
 // —— القاعدة 3: التصورات الخاطئة
 for (const m of L.misconceptions || []) {
-  if (!/^M\d{2}$/.test(m.ref || '')) E(`تصور خاطئ بمعرّف غير صالح: ${m.ref}`);
+  if (!/^M\d{2,3}$/.test(m.ref || '')) E(`تصور خاطئ بمعرّف غير صالح: ${m.ref}`);
   if (!itemIds.has(m.diagnostic_item)) E(`التصور ${m.ref} يشير إلى بند تشخيص غير موجود: ${m.diagnostic_item}`);
   if (!m.child_says || !m.teacher_response) E(`التصور ${m.ref} يفتقد child_says أو teacher_response`);
 }
