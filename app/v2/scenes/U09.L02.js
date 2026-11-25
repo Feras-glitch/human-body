@@ -12,7 +12,7 @@ const dial = { id: 'E3', render() { need(); return `<div class="scene">${sayNar(
       <rect x="10" y="56" width="300" height="34" fill="#F6D2B8"/><rect id="derm" x="10" y="90" width="300" height="64" fill="#F7C6C0"/><rect x="10" y="154" width="300" height="30" fill="#FFF3C9"/>
       <path id="vs" d="M10 120 Q80 96 160 120 T310 120" fill="none" stroke="#D9534F" stroke-width="7" stroke-linecap="round"/>
       ${HAIRS.map(x => `<g class="hair" data-x="${x}"><ellipse cx="${x}" cy="140" rx="6" ry="8" fill="#8C5A3C"/><path class="sh" d="M${x} 134 L${x + 30} 34" stroke="#5B3A26" stroke-width="3.5" stroke-linecap="round"/><path class="bump" d="M${x - 14} 56 q14 -14 28 0" fill="#F6D2B8" stroke="#E3B497" opacity="0"/></g>`).join('')}
-      <g id="sw" opacity="0">${[70, 160, 230].map(x => `<path d="M${x} 144 L${x} 58" stroke="#3FA796" stroke-width="2.5"/><circle cx="${x}" cy="146" r="7" fill="none" stroke="#3FA796" stroke-width="2.5"/><path d="M${x} 38 q-6 9 0 13 q6 -4 0 -13 Z" fill="#7FC8F0"/>`).join('')}</g>
+      <g id="swt" opacity="0">${[70, 160, 230].map(x => `<path d="M${x} 144 L${x} 58" stroke="#3FA796" stroke-width="2.5"/><circle cx="${x}" cy="146" r="7" fill="none" stroke="#3FA796" stroke-width="2.5"/><path d="M${x} 38 q-6 9 0 13 q6 -4 0 -13 Z" fill="#7FC8F0"/>`).join('')}</g>
     </g>
   </svg>
   <input type="range" id="heat" min="0" max="100" value="50" style="width:100%" aria-label="حرارة الجو من البرد الشديد إلى الحر الشديد">
@@ -25,7 +25,7 @@ const dial = { id: 'E3', render() { need(); return `<div class="scene">${sayNar(
       $('#vs').setAttribute('stroke-width', cold ? 3 : hot ? 12 : 7); $('#vs').setAttribute('stroke', cold ? '#C4706C' : '#D9534F');
       $('#derm').setAttribute('fill', cold ? '#F5D3CF' : hot ? '#F4AFA8' : '#F7C6C0');
       $$('.hair').forEach(g => { const x = +g.dataset.x; g.querySelector('.sh').setAttribute('d', cold ? `M${x} 134 L${x + 4} 24` : `M${x} 134 L${x + 30} 34`); g.querySelector('.bump').setAttribute('opacity', cold ? 1 : 0); });
-      $('#sw').setAttribute('opacity', hot ? (v > 85 ? 1 : .6) : 0);
+      $('#swt').setAttribute('opacity', hot ? (v > 85 ? 1 : .6) : 0);
       $('#sk').classList.toggle('shiv', v < 15);
       $('#wx').textContent = tx(v < 15 ? 'بارد جداً' : v < 40 ? 'بارد' : v <= 60 ? 'معتدل' : v <= 85 ? 'حار' : 'حار جداً');
       const L = v < 40 ? ['أوعية الجلد تضيق: دم أقل قرب السطح، فيبقى الدفء في الداخل ويبدو الجلد شاحباً.', 'تقف الشعرات ويقشعر الجلد، فيُحبس قليل من الهواء الدافئ.']
