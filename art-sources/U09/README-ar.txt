@@ -4,3 +4,4 @@
 الأسماء مطابقة لما يطلبه التطبيق (app/v2/img). مصادر SVG في sources، وstatus.csv وchecksums.json يُحدَّثان مع كل بناء.
 النقش بـ Chromium (Playwright) بدل Inkscape. لا كتابة ولا أرقام داخل الصور. معاينة بلا كتابة: build_u09.py --preview=<مجلد>.
 الصور الـ49 كلها مثبّتة؛ status.csv وchecksums.json يغطيانها (SVG وimagegen).
+قالب activity/twenty-position-template.svg: هندسة حلقة العشرين لتجربة U09.L04 (لعبة الانتشار)، سلّمه صاحب المشروع مع الصور؛ يصلح للطباعة.
