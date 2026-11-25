@@ -507,7 +507,7 @@
     ],
     "practice": [
       {
-        "id": "U05.L03.P1",
+        "id": "U05.L03.P1", "after": "E6",
         "objective": "U05.L03.O1",
         "type": "sequence",
         "prompt": "رتّب{|ي} محطات اللقمة من الفم إلى القفزة.",

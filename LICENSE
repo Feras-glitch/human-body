@@ -1,0 +1,15 @@
+حقوق المحتوى © فراس — جميع الحقوق محفوظة.
+Copyright © Feras. All rights reserved.
+
+يشمل ذلك نصوص الدروس وأسئلتها وكتب المعلم والصور القصصية والتصميم وشيفرة التطبيق
+في هذا المستودع، ما لم يُذكر غير ذلك في ملف بعينه. لا يجوز نسخها أو نشرها أو تعديلها
+أو استخدامها تجارياً دون إذن مكتوب من صاحب المشروع. إتاحة المستودع للعموم للاطلاع
+والمراجعة فقط، ولا تمنح أي ترخيص ضمني.
+
+This repository is public for viewing and review only. No license is granted to copy,
+redistribute, modify, or use its content or code without written permission.
+
+مكوّنات الطرف الثالث (الخطوط، نص المصحف، التلاوات وما شابه) لها تراخيصها الخاصة،
+وهي في مجلد licenses/ وفي ملف licenses/credits.json، وتسري عليها شروطها هي.
+Third-party components (fonts, Quran text, recitations, etc.) remain under their own
+licenses, listed in licenses/ and licenses/credits.json.

@@ -779,6 +779,8 @@
     'kidx', 'urinx', 'wtrx', 'rflx', 'nrvx', 'eyex', 'sensx', 'fearx', 'calmx', 'sleepx', 'memx']) {
     SCHEMA[k] = (v) => isObj(v) && media(v.audio, 'audio') && plain(v);
   }
+  // الزمن الفعلي في الدرس بالمللي ثانية (المراجعة 28، أ3): يُقاس للتجربة الميدانية
+  SCHEMA.activeMs = (v) => typeof v === 'number' && Number.isFinite(v) && v >= 0 && v <= 1e9;
 
   function validState(k, v) {
     const s = k.slice(k.lastIndexOf(':') + 1);

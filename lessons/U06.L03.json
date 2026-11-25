@@ -522,7 +522,7 @@
     ],
     "practice": [
       {
-        "id": "U06.L03.P1",
+        "id": "U06.L03.P1", "after": "E4",
         "objective": "U06.L03.O1",
         "type": "choose_reason",
         "prompt": "هل يمرّ الطعام بالكبد؟",

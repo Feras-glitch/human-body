@@ -2,7 +2,8 @@
 /* صورة تعذّر تحميلها: يُسجَّل اسمها على الجهاز (خارج بيانات الأطفال) ليراه ولي الأمر في شاشته */
 const PIC = (name, label) => { try{ const k='hb-diag-img', a=JSON.parse(localStorage.getItem(k)||'[]'); if(!a.includes(name)){ a.push(name); localStorage.setItem(k, JSON.stringify(a.slice(-60))); } }catch{} return `<div class="ph" data-pic="${name}">🖼 تعذّر عرض الصورة: ${label||name}</div>`; };
 /* الصورة التوضيحية: ارتفاع ثابت (لا قفزة عند التحميل)، ولمسها يكبّرها ملء الشاشة (engine.js) */
-const pic = (name, label) => `<span class="artw"><img src="img/${name}.webp" alt="" class="art" decoding="async" tabindex="0" role="button" aria-label="تكبير الصورة" onerror="this.parentNode.outerHTML=PIC('${name}','${(label||'').replace(/'/g,'’')}')"></span>`;
+/* صورة خانة لم تُولَّد بعد (ليست في LD.imgs) لا تُعرض أصلاً؛ وإطار «تعذّر عرض الصورة» لصورة موجودة تعذّر فتحها فقط */
+const pic = (name, label) => (typeof LD!=='undefined' && Array.isArray(LD.imgs) && String(name).startsWith(LD.id+'-') && !LD.imgs.includes(name)) ? '' : `<span class="artw"><img src="img/${name}.webp" alt="" class="art" decoding="async" tabindex="0" role="button" aria-label="تكبير الصورة" onerror="this.parentNode.outerHTML=PIC('${name}','${(label||'').replace(/'/g,'’')}')"></span>`;
 const esc = s => String(s||'').replace(/[<>&{}|]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','{':'&#123;','}':'&#125;','|':'&#124;'}[c]));
 const hlText = (t, h) => { t=esc(t); if(!h) return t; const i=t.indexOf(esc(h)); return i<0 ? t : t.slice(0,i)+'<mark>'+esc(h)+'</mark>'+t.slice(i+esc(h).length); };
 const shuffle = a => { a=[...a]; for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
@@ -159,13 +160,15 @@ function buildScenes(LD){
     after(){ $$('.opt').forEach(b=>b.onclick=()=>{ $$('.opt').forEach(x=>x.classList.add('dim')); b.classList.remove('dim'); b.classList.add('ok'); fb('ok',SAY.predict_nice); ok(); }); speak(tx(LD.hook.text)); } });
   /* الشرح + التدريب موزّعاً */
   const E=LD.explain.filter(e=>!(e.level==='B')||true); const P=LD.practice; const introduced=new Set();
-  const nE=E.length, nP=P.length; let pi=0;
+  const nE=E.length, nP=P.length;
   E.forEach((e,k)=>{
     const cards=[]; // التعريف يتم ديناميكياً عند أول ذكر (انظر defineOnFirstMention)
     const lvB = e.level==='B';
-    S.push({ id:e.id, cards, render(){ ok(); if(lvB && level!=='B') return `<div class="scene"><div class="row" style="justify-content:center">${buddy(90,'happy')}</div>${sayBuddy('هذه فكرة للمستوى ب — تستطيع{|ين} قراءتها إن أحببت{|ِ}:')}<div class="say" style="opacity:.85">${tx(e.text)}</div>${cards.map(conceptCard).join('')}</div>`;
+    S.push({ id:e.id, cards, skip: lvB ? ()=>level!=='B' : undefined, render(){ ok(); if(lvB && level!=='B') return `<div class="scene"><div class="row" style="justify-content:center">${buddy(90,'happy')}</div>${sayBuddy('هذه فكرة للمستوى ب — تستطيع{|ين} قراءتها إن أحببت{|ِ}:')}<div class="say" style="opacity:.85">${tx(e.text)}</div>${cards.map(conceptCard).join('')}</div>`;
         return `<div class="scene">${pic(LD.id+'-'+e.id, 'مشهد '+e.id)}${sayNar(e.text)}${cards.map(conceptCard).join('')}</div>`; }, after(){ speak(tx(e.text)); } });
-    while(pi<nP && pi < Math.ceil((k+1)*nP/nE)){ const sc=sceneItem(P[pi]); if(P[pi].level==='B') sc.skip=()=>level!=='B'; S.push(sc); pi++; }
+    /* التدريب بعد مشهده: «after» في المصدر (بعد المشهد الذي يشرح فكرته ومصطلحاته)، وإلا التوزيع بالعدد */
+    P.forEach((p,j)=>{ let k0=0; while(k0<nE-1 && Math.ceil((k0+1)*nP/nE)<=j) k0++; const slot = p.after ? E.findIndex(x=>x.id===p.after) : -1; const at = slot<0 ? k0 : slot;
+      if(at===k){ const sc=sceneItem(p); if(p.level==='B') sc.skip=()=>level!=='B'; S.push(sc); } });
   });
   /* مفاهيم لم تُذكر في الشرح */
   S.push({ id:'concepts_rest', render(){ ok(); const d=store.get('defs',{}); const rest=LD.concepts.filter(c=>!d[c.id]); if(!rest.length) return `<div class="scene"><div class="row" style="justify-content:center">${buddy(100,'happy')}</div>${sayBuddy('كل كلمات الدرس عرفناها في موضعها. ننتقل!')}</div>`; return `<div class="scene"><h2>كلمات مهمة في هذا الدرس</h2>${rest.map(conceptCard).join('')}</div>`; }, after(){ const d=store.get('defs',{}); const rest=LD.concepts.filter(c=>!d[c.id]); speak(rest.length?[SAY.terms_intro, ...rest.flatMap(c=>[c.term.ar+'.', tx(c.card.A)])]:SAY.terms_known); } });
@@ -181,8 +184,11 @@ function buildScenes(LD){
   /* أسئلة المستوى ب تُتخطّى تلقائياً في المستوى أ (لا شاشة «نتخطاه») */
   LD.check.forEach(it=>{ const sc=sceneItem(it); if(it.level==='B') sc.skip=()=>level!=='B'; S.push(sc); });
   /* اكتشف الخطأ */
-  if(LD.find_the_error?.length) S.push({ id:'find_error', render(){ ok(); return `<div class="scene"><div class="row" style="justify-content:center">${buddy(100,'think')}</div><h2>لمّاح رسم… وأخطأ! أين الخطأ؟</h2>${LD.find_the_error.map((f,i)=>`<div class="card"><b>الرسم ${i+1}:</b> ${tx(f.error)}<br><button class="opt" style="width:auto;margin:8px 0 0" data-r="${i}">أرني الصواب</button><div class="fb ok" id="r${i}" hidden>${tx(f.answer)}</div></div>`).join('')}</div>`; },
-    after(){ $$('[data-r]').forEach(b=>b.onclick=()=>{ const d=$('#r'+b.dataset.r); d.hidden=false; speak(d.textContent); }); speak(SAY.error_intro); } });
+  /* «أين الخطأ؟»: يحكم الطفل أولاً أيّ الجملتين صحيحة (المراجعة 28، ب4)، ثم يرى الصواب */
+  if(LD.find_the_error?.length) S.push({ id:'find_error', render(){ need(); return `<div class="scene"><div class="row" style="justify-content:center">${buddy(100,'think')}</div><h2>لمّاح أخطأ في ملاحظاته! في كل واحدة: أيّ الجملتين صحيحة؟</h2>${LD.find_the_error.map((f,i)=>{ const o=[[tx(f.answer),1],[tx(f.error),0]]; if((i+LD.id.length)%2) o.reverse(); return `<div class="card"><b>ملاحظة ${i+1}:</b><div class="row" style="flex-direction:column;align-items:stretch;gap:6px;margin-top:6px">${o.map(([t,v])=>`<button class="opt" style="text-align:start" data-q="fe${i}" data-v="${v}">${t}</button>`).join('')}</div><div class="fb" id="r${i}" hidden></div></div>`; }).join('')}</div>`; },
+    after(){ const done=new Set(); $$('[data-q^="fe"]').forEach(b=>b.onclick=()=>{ const i=+b.dataset.q.slice(2); if(done.has(i)) return; const d=$('#r'+i), f=LD.find_the_error[i];
+      if(b.dataset.v==='1'){ done.add(i); b.classList.add('ok'); $$(`[data-q="fe${i}"]`).forEach(x=>{ if(x!==b) x.classList.add('dim'); }); d.className='fb ok'; d.hidden=false; d.innerHTML=tx('نعم: '+f.answer); speak(d.textContent); if(done.size===LD.find_the_error.length){ award(); ok(); } }
+      else { b.classList.add('bad'); d.className='fb bad'; d.hidden=false; d.innerHTML=tx('هذه ملاحظة لمّاح الخاطئة. {اقرأ|اقرئي} الأخرى.'); speak(d.textContent); } }); speak(SAY.error_intro); } });
   /* أرقام وحجم حقيقي ورسالة العضو والحيوان */
   const nums=[...(LD.numbers||[]),...(LD.true_size||[])]; if(nums.length) S.push({ id:'numbers', render(){ ok(); return `<div class="scene"><h2>🔢 أرقام تدهشك{|ِ}</h2>${nums.map(n=>`<div class="card">${tx(n.text)}</div>`).join('')}${LD.animal?`<h2>🐾 وعند الحيوانات؟</h2><div class="card">${tx(LD.animal.text)}</div>`:''}</div>`; }, after(){ speak(nums.map(n=>tx(n.text))); } });
   if(LD.organ_letter) S.push({ id:'letter', render(){ ok(); return `<div class="scene">${pic(LD.id+'-letter','رسالة من '+LD.organ_letter.from)}<h2>✉️ رسالة من ${tx(LD.organ_letter.from)}</h2><div class="card" style="font-size:1.08rem">${tx(LD.organ_letter.text)}</div></div>`; }, after(){ speak(tx(LD.organ_letter.text)); } });
@@ -208,7 +214,7 @@ function buildScenes(LD){
     after(){ $$('[data-say]').forEach(b=>b.onclick=()=>{ const t=TERMS.find(x=>x.id===b.dataset.k); sayTerm(t,b.dataset.say); b.classList.add('ok'); sceneTimeout(()=>b.classList.remove('ok'),600); }); speak(SAY.trilingual); } });
   /* الختام */
   S.push({ id:'end', resumable:()=>store.get('finished',false)===true, render(){ ok(); const checks=LESSON.check_ids.filter(i=>level==='B'||LESSON.check_levels?.[i]!=='B');const graded=checks.filter(i=>LESSON.check_kinds?.[i]!=='open'); const okc=graded.filter(i=>progress[i]?.firstAttempt===true).length; const opens=checks.length-graded.length; store.set('finished',true); if(!store.get('finishedAt',null)) store.set('finishedAt',Date.now());
-      return `<div class="scene" style="text-align:center"><img src="img/s19-badge.webp" alt="" style="width:180px;margin:8px auto;display:block;animation:spin 1.2s ease"><h1>أنهيت{|ِ} «${LD.title}»!</h1><p class="say">${tx(LD.central_fact||'')} </p><p class="say">⭐ ${stars} نجمة · أصبت{|ِ} من أول محاولة في ${okc} من ${graded.length} أسئلة${opens?` · وكتبت{|ِ} ${opens} إجابات يقرؤها ولي أمرك{|ِ}`:''}.</p><div class="row" style="justify-content:center">${buddy(120,'party')}</div>
+      return `<div class="scene" style="text-align:center"><img src="img/s19-badge.webp" alt="" style="width:180px;margin:8px auto;display:block;animation:spin 1.2s ease"><h1>أنهيت{|ِ} «${LD.title}»!</h1><p class="say">${tx(LD.central_fact||'')} </p><p class="say">⭐ ${arN(stars,AR_N.star)} · أصبت{|ِ} من أول محاولة في ${okc} من ${arN(graded.length,AR_N.q,'obl')}${opens?` · وكتبت{|ِ} ${arN(opens,AR_N.ans,'obl')} يقرؤها ولي أمرك{|ِ}`:''}.</p><div class="row" style="justify-content:center">${buddy(120,'party')}</div>
       <div class="row" style="justify-content:center;margin-top:14px"><button class="opt" style="width:auto;background:var(--teal);color:#fff" id="goHome">🏠 إلى خريطتي</button>${LD.next?`<button class="opt" style="width:auto;background:var(--coral);color:#fff" id="goNext">الدرس التالي ←</button>`:''}</div></div>`; },
     after(){ confetti(); $('#goHome').onclick=()=>location.href=LESSON.home; const n=$('#goNext'); if(n) n.onclick=()=>location.href=LD.next+'.html'; speak([SAY.finished, tx(LD.title+'.'), tx(LD.central_fact||'')]); } });
   return S;

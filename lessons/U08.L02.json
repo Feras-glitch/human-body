@@ -575,7 +575,7 @@
     ],
     "practice": [
       {
-        "id": "U08.L02.P1",
+        "id": "U08.L02.P1", "after": "E2",
         "objective": "U08.L02.O1",
         "type": "choose",
         "prompt": "الدائرة السوداء في وسط العين:",

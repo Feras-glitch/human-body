@@ -20,6 +20,14 @@ for (const k of ['hook','explain','practice','check','notebook','how_we_know'])
   if (!(k in (L.flow || {}))) E(`flow.${k} مفقود`);
 for (const k of ['items','rubrics','delayed_recall','transfer'])
   if (!(k in (L.assessment || {}))) E(`assessment.${k} مفقود`);
+/* التدريب لا يأتي قبل شرح مصطلحه (المراجعة 28، أ1): موضعه «after» أو التوزيع بالعدد كما في lesson-runtime.js */
+{ const Ex=L.flow?.explain||[], Pr=L.flow?.practice||[], nE=Ex.length, nP=Pr.length;
+  const first = m => Ex.findIndex(e => m.some(x => (e.text||'').includes(x)));
+  Pr.forEach((p,j) => { let k0=0; while(k0<nE-1 && Math.ceil((k0+1)*nP/nE)<=j) k0++;
+    let at=k0; if (p.after) { at=Ex.findIndex(e=>e.id===p.after); if (at<0) { E(`${p.id}: after=${p.after} ليس مشهد شرح في الدرس`); return; } }
+    const txt=(p.prompt||'')+' '+(p.options||[]).join(' ');
+    for (const c of L.concepts||[]) { const m=c.term?.match||[c.term?.ar]; if (!m.some(x=>x&&txt.includes(x))) continue; const f=first(m);
+      if (f>at) E(`${p.id}: يذكر «${c.term.ar}» بعد ${Ex[at].id} وهو لا يُشرح إلا في ${Ex[f].id} — أضف "after": "${Ex[f].id}"`); } }); }
 for (const k of ['title','materials','steps','safety','expected','explain'])
   if (!(k in (L.experiment || {}))) E(`experiment.${k} مفقود`);
 

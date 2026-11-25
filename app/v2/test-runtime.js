@@ -26,7 +26,7 @@ function buildTest(LD) {
     ok();
     const n = LD.items.filter(forLevel).length + LD.transfer.filter(forLevel).length;
     return `<div class="scene"><div class="row" style="justify-content:center">${buddy(110, 'happy')}</div><h1>${tx(LD.title)}</h1>
-      ${sayBuddy(`${n} أسئلة قصيرة عمّا {تعلّمته|تعلّمتِه}. {أجب|أجيبي} وحدك{|ِ} ودون أن تفتح{|ي} الدرس: <b>المحاولة الأولى هي التي تُحسب</b>، وبعدها {ترى|ترين} الصواب ولماذا.`)}
+      ${sayBuddy(`${arN(n,AR_N.q)} عمّا {تعلّمته|تعلّمتِه}. {أجب|أجيبي} وحدك{|ِ} ودون أن تفتح{|ي} الدرس: <b>المحاولة الأولى هي التي تُحسب</b>، وبعدها {ترى|ترين} الصواب ولماذا.`)}
       <p class="note">آخر سؤال من نوع جديد: موقف لم يُشرح في الدرس، تطبّق{|ين} عليه ما {فهمته|فهمتِه}.</p></div>`;
   }, after() { speak(lessonDone() ? SAY.test_intro : SAY.test_locked); } });
 
@@ -44,7 +44,7 @@ function buildTest(LD) {
     const pct = sc.n ? Math.round(sc.ok / sc.n * 100) : 100;
     const days = daysSince();
     return `<div class="scene" style="text-align:center"><div class="row" style="justify-content:center">${buddy(120, pct >= 80 ? 'party' : 'think')}</div><h1>انتهى الاختبار</h1>
-      <p class="say">أصبت{|ِ} من أول محاولة في <b>${sc.ok} من ${sc.n}</b> (${pct}%).${sc.open ? ` وكتبت{|ِ} ${sc.open} إجابات يقرؤها ولي أمرك{|ِ}.` : ''}</p>
+      <p class="say">أصبت{|ِ} من أول محاولة في <b>${sc.ok} من ${sc.n}</b> (${pct}%).${sc.open ? ` وكتبت{|ِ} ${arN(sc.open,AR_N.ans,'obl')} يقرؤها ولي أمرك{|ِ}.` : ''}</p>
       ${sayBuddy((pct >= 80 ? 'فهم ثابت. ما أخطأت{|ِ} فيه رأيت{|ِ} صوابه، {فاحفظه|فاحفظيه}.' : 'لا بأس: الأخطاء تخبرنا ماذا نراجع.') + (missed().length ? ' وفي الشاشة التالية محاولة ثانية بأسئلة جديدة عمّا أخطأت{|ِ} فيه، بعد أن {تراجعه|تراجعيه} إن شئت{|ِ}.' : ''))}
       <p class="note">🧠 «عودة الذاكرة» لهذا الدرس ${days >= 3 ? 'متاحة الآن — في الشاشة التالية.' : `تُفتح بعد ${Atlas.days(3 - Math.max(0, days))} من إنهاء الدرس: ما {تتذكره|تتذكرينه} بعد أيام هو ما {تعلّمته|تعلّمتِه} حقاً.`}</p>
       <div class="row" style="justify-content:center;margin-top:12px"><a class="opt" style="width:auto;background:var(--teal);color:#fff" href="index.html">🏠 إلى خريطتي</a><a class="opt" style="width:auto" href="${LD.lesson}.html">↩ إلى الدرس</a></div></div>`;
@@ -52,7 +52,7 @@ function buildTest(LD) {
 
   /* المحاولة الثانية (البند 43): لكل بند مغلق أخطأ فيه الطفل بند بديل عن الهدف نفسه بصياغة جديدة (alt).
      نتيجتها تُحفظ منفصلة (score2)، والمعتمد عند ولي الأمر المحاولة الأولى. */
-  const cnt = n => n === 1 ? 'سؤال واحد' : n === 2 ? 'سؤالين' : n <= 10 ? n + ' أسئلة' : n + ' سؤالاً';
+  const cnt = n => arN(n, AR_N.q, 'obl');
   S.push({ id: 't2gate', noResume: true, skip: () => !missed().length, render() { ok(); const m = missed();
     return `<div class="scene"><div class="row" style="justify-content:center">${buddy(110, 'think')}</div><h2>محاولة ثانية</h2>
       ${sayBuddy(`أخطأت{|ِ} في ${cnt(m.length)}. {راجع|راجعي} فكرتها إن شئت{|ِ}، ثم {أجب|أجيبي} عن أسئلة جديدة عن الأفكار نفسها. نتيجة الاختبار تبقى للمحاولة الأولى؛ وهذه لتعرف{|ي} ما {فهمته|فهمتِه} بعد المراجعة.`)}

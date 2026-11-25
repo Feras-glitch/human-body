@@ -363,6 +363,7 @@
     "practice": [
       {
         "id": "U02.L01.P1",
+        "after": "E2",
         "objective": "U02.L01.O1",
         "type": "choose",
         "prompt": "ماذا يحمي القفص الصدري؟",
@@ -384,6 +385,7 @@
       },
       {
         "id": "U02.L01.P2",
+        "after": "E3",
         "objective": "U02.L01.O2",
         "type": "locate_on_atlas",
         "prompt": "اضغط{|ي} على عظم الفخذ.",

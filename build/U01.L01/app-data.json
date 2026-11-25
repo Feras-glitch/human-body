@@ -348,6 +348,7 @@
     "practice": [
       {
         "id": "U01.L01.P1",
+        "after": "E2",
         "objective": "U01.L01.O1",
         "type": "locate_on_atlas",
         "prompt": "اضغط{|ي} على البطن.",
@@ -379,6 +380,7 @@
       },
       {
         "id": "U01.L01.P3",
+        "after": "E4",
         "objective": "U01.L01.O2",
         "type": "choose",
         "prompt": "أين الركبة بالنسبة إلى القدم؟",
@@ -421,6 +423,7 @@
       },
       {
         "id": "U01.L01.P5",
+        "after": "E6",
         "objective": "U01.L01.O4",
         "type": "choose",
         "prompt": "شخص يواجهك{|ِ} وعلى يده علامة. العلامة تظهر على يسار الصورة. أي يد هي؟",

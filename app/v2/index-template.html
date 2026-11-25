@@ -24,6 +24,7 @@ h1{font-family:var(--display);font-size:1.8rem;margin:4px 0;color:var(--coral-d)
 .big{display:flex;align-items:center;gap:12px;width:100%;background:var(--coral-t);color:#fff;font-family:var(--display);font-size:1.35rem;padding:14px 18px;border-radius:22px;box-shadow:0 5px 0 #8F2E20;text-decoration:none;margin:10px 0}
 .big img{width:54px;height:54px;object-fit:contain;border-radius:12px;background:#fff}
 .unit{background:var(--card);border-radius:22px;padding:12px;box-shadow:0 3px 0 var(--line);margin:10px 0}
+.unit summary{list-style:none;cursor:pointer}.unit summary::-webkit-details-marker{display:none}.unit:not([open]) h3{margin:0}.unit summary h3::after{content:'▾';margin-inline-start:6px;color:var(--muted)}.unit:not([open]) summary h3::after{content:'◂'}
 .unit h3{font-family:var(--display);margin:0 0 8px;font-size:1.15rem;color:var(--teal-t);display:flex;align-items:center;justify-content:space-between}
 .ring{--p:0;width:44px;height:44px;border-radius:50%;background:conic-gradient(var(--grass) calc(var(--p)*1%),var(--line) 0);display:grid;place-items:center;font-size:.75rem;font-family:var(--display)}
 .ring i{width:32px;height:32px;border-radius:50%;background:#fff;display:grid;place-items:center;font-style:normal}
@@ -52,15 +53,17 @@ a.tlink{display:block;margin:-4px 14px 10px;padding:6px 12px;border-radius:0 0 1
 </style>
 </head>
 <body><div id="app">
-<section id="accounts" class="setup" hidden><h1>من سيتعلم اليوم؟</h1><div id="repairBox" class="card" hidden role="alert"><p><b>قائمة الحسابات تالفة.</b> لم يُحذف أي تقدّم أو تسجيل. نزّل نسخة إنقاذ أولاً، ثم أصلح القائمة لتعود كل الحسابات.</p><button class="btn ghost" id="rescueHome">تنزيل نسخة إنقاذ</button> <button class="btn" id="repairAccounts">إصلاح قائمة الحسابات</button></div><div id="resetNotes"></div><div id="accountList"></div><button class="btn" id="newAccount">حساب طفل جديد</button><p><button class="btn ghost" id="restoreHome">استعادة نسخة احتياطية</button></p><p class="note" id="restoreHint" hidden>لاستعادة نسخة احتياطية: افتح حساب أي طفل، ثم «لولي الأمر والمعلم»، ثم «استعادة نسخة».</p><details id="trashBox" class="card" hidden><summary><b>المحذوفات</b> <span id="trashCount"></span></summary><p class="note">الحساب المحذوف يبقى هنا 30 يوماً ببياناته كلها، ثم يُحذف نهائياً. استرجاعه أو حذفه الآن يحتاج رمز ولي أمره.</p><div id="trashList"></div></details><input type="file" id="homeBackupFile" accept=".json,application/json" hidden><p id="accountMsg" role="status"></p></section><section id="setup" class="setup" hidden>
+<section id="accounts" class="setup" hidden><h1>من سيتعلم اليوم؟</h1><p class="note" id="aboutApp" hidden><b>الأطلس الحي</b>: رحلة في جسم الإنسان للأطفال من 8 إلى 12 سنة، بدروس تفاعلية واختبارات قصيرة. يعمل بلا إنترنت، وتُحفظ البيانات على هذا الجهاز وحده. <b>لولي الأمر:</b> أنشئ حساباً لكل طفل، ثم تابعه من «لولي الأمر والمعلم» أسفل صفحته.</p><div id="repairBox" class="card" hidden role="alert"><p><b>قائمة الحسابات تالفة.</b> لم يُحذف أي تقدّم أو تسجيل. نزّل نسخة إنقاذ أولاً، ثم أصلح القائمة لتعود كل الحسابات.</p><button class="btn ghost" id="rescueHome">تنزيل نسخة إنقاذ</button> <button class="btn" id="repairAccounts">إصلاح قائمة الحسابات</button></div><div id="resetNotes"></div><div id="accountList"></div><button class="btn" id="newAccount">حساب طفل جديد</button><p><button class="btn ghost" id="restoreHome">استعادة نسخة احتياطية</button></p><p class="note" id="restoreHint" hidden>لاستعادة نسخة احتياطية: افتح حساب أي طفل، ثم «لولي الأمر والمعلم»، ثم «استعادة نسخة».</p><details id="trashBox" class="card" hidden><summary><b>المحذوفات</b> <span id="trashCount"></span></summary><p class="note">الحساب المحذوف يبقى هنا 30 يوماً ببياناته كلها، ثم يُحذف نهائياً. استرجاعه أو حذفه الآن يحتاج رمز ولي أمره.</p><div id="trashList"></div></details><input type="file" id="homeBackupFile" accept=".json,application/json" hidden><p id="accountMsg" role="status"></p></section><section id="setup" class="setup" hidden>
   <div style="text-align:center"><img src="img/lammah-1.webp" alt="" style="height:120px"></div>
   <h1 style="text-align:center">أهلاً بك في الأطلس الحي</h1>
   <p class="say buddy"><span class="who">لمّاح</span>أنا لمّاح! قبل أن نبدأ رحلتنا داخل جسم الإنسان، عرّفني بنفسك.</p>
   <p style="margin:8px 0 4px;font-family:var(--display)">ما اسمك؟</p>
-  <input type="text" id="nm" maxlength="80" placeholder="اكتب اسمك الأول"><p><label>صورة الطفل (اختيارية) <input type="file" id="photoFile" accept="image/png,image/jpeg,image/webp"></label></p><button class="btn ghost" id="cancelSetup">رجوع للحسابات</button>
+  <input type="text" id="nm" maxlength="80" placeholder="اكتب اسمك الأول" aria-describedby="nmErr"><p class="fb bad" id="nmErr" role="alert" hidden>الاسم مطلوب: اكتب الاسم الأول.</p><p style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span>صورة الطفل (اختيارية)</span><label class="btn ghost" style="margin:0;cursor:pointer">اختيار صورة<input type="file" id="photoFile" accept="image/png,image/jpeg,image/webp" style="position:absolute;width:1px;height:1px;opacity:0;overflow:hidden"></label><span class="note" id="photoName"></span></p>
   <p style="margin:12px 0 4px;font-family:var(--display)">من أنت؟</p>
   <div class="pick"><button data-g="m" aria-pressed="false"><img src="img/hero-boy-1.webp" alt=""><div>ولد</div></button><button data-g="f" aria-pressed="false"><img src="img/hero-girl-1.webp" alt=""><div>بنت</div></button></div>
+  <p class="fb bad" id="gErr" role="alert" hidden>اختيار «ولد» أو «بنت» مطلوب.</p>
   <button class="btn" id="go" style="width:100%;font-size:1.3rem;padding:14px">هيا نبدأ!</button>
+  <p style="text-align:center"><button class="btn ghost" id="cancelSetup">رجوع للحسابات</button></p>
 </section>
 
 <section id="home" hidden>
@@ -115,6 +118,7 @@ function accounts() {
   const fresh = !Atlas.profiles().length;
   $('#restoreHome').hidden = corrupt || !fresh;
   $('#restoreHint').hidden = corrupt || fresh;
+  $('#aboutApp').hidden = !fresh;
   resetNotes();
   trashList();
   $('#rescueHome').onclick = async () => {
@@ -240,6 +244,10 @@ function setup() {
   photoValue = editing ? profile?.photo || '' : '';
   $('#nm').value = editing ? profile?.name || '' : '';
   $('#photoFile').value = '';
+  $('#photoName').textContent = '';
+  $('#nmErr').hidden = true;
+  $('#gErr').hidden = true;
+  $('#nm').oninput = () => { $('#nmErr').hidden = true; };
   $('#cancelSetup').onclick = accounts;
   $('#photoFile').onchange = async e => {
     try {
@@ -255,6 +263,7 @@ function setup() {
       });
       // تُصغَّر الصورة إلى مربع صغير (نحو 10 كيلوبايت): قائمة الحسابات تُقرأ مع كل ضغطة
       photoValue = await Atlas.shrinkPhoto(big);
+      $('#photoName').textContent = '✔ ' + f.name;
     } catch (err) {
       Atlas.error(err.message)
     }
@@ -269,17 +278,20 @@ function setup() {
     b.setAttribute('aria-pressed', String(b.dataset.g === gender));
     b.onclick = () => {
       gender = b.dataset.g;
+      $('#gErr').hidden = true;
+      document.getElementById('atlas-status')?.remove();
       $$('.pick button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
     };
   });
   $('#go').onclick = () => {
     const name = $('#nm').value.trim();
     if (!name) {
+      $('#nmErr').hidden = false;
       $('#nm').focus();
       return;
     }
     if (!gender) {
-      Atlas.error('اختر: ولد أم بنت');
+      $('#gErr').hidden = false;
       $$('.pick button')[0]?.focus();
       return;
     }
@@ -387,9 +399,12 @@ function home() {
     this.src = 'img/lammah-4.webp'
   };
   $('#resumeTxt').textContent = (resume.pct > 0 ? 'أكمل: ' : 'ابدأ: ') + resume.title;
+  /* الوحدة الحالية وما بدأه الطفل مفتوحة، والبقية مطويّة (المراجعة 28، ب2) */
+  const curUnit = (resume && resume.unit) || LESSONS[0].unit;
   $('#units').innerHTML = Object.entries(units).map(([u, d]) => {
     const avg = Math.round(d.items.reduce((a, b) => a + b.pct, 0) / d.items.length);
-    return `<div class="unit"><h3><span>${d.title}</span><span class="ring" style="--p:${avg}"><i>${avg}%</i></span></h3>${d.items.map(l=>{ const sc=g(`atlas:${testOf(l.id)}:score`, null); const test=l.fin?`<a class="tlink" href="${testOf(l.id)}.html">${sc?`📝 الاختبار: ${Number(sc.ok)} من ${Number(sc.n)}`:'📝 اختبار الدرس ينتظرك'}</a>`:''; return `<a class="lesson new" href="${l.id}.html"><img src="${l.img||'img/lammah-2.webp'}" alt="" onerror="this.src='img/lammah-2.webp'"><span class="t"><b>${l.title}</b><small>${l.fin?'✔ أنهيته':(l.pct?l.pct+'% ':'')}</small></span><span class="tag">جاهز</span></a>${test}`; }).join('')}</div>`;
+    const open = u === curUnit || d.items.some(l => l.pct > 0 && !l.fin);
+    return `<details class="unit"${open?' open':''}><summary><h3><span>${d.title}</span><span class="ring" style="--p:${avg}"><i>${avg}%</i></span></h3></summary>${d.items.map(l=>{ const sc=g(`atlas:${testOf(l.id)}:score`, null); const test=l.fin?`<a class="tlink" href="${testOf(l.id)}.html">${sc?`📝 الاختبار: ${Number(sc.ok)} من ${Number(sc.n)}`:'📝 اختبار الدرس ينتظرك'}</a>`:''; return `<a class="lesson new" href="${l.id}.html"><img src="${l.img||'img/lammah-2.webp'}" alt="" onerror="this.src='img/lammah-2.webp'"><span class="t"><b>${l.title}</b><small>${l.fin?'✔ أنهيته':(l.pct?l.pct+'% ':'')}</small></span><span class="tag">${l.fin?'✔':(l.pct?'تابِع':'جديد')}</span></a>${test}`; }).join('')}</details>`;
   }).join('');
   const qs = g('atlas:questions', []);
   const r = () => {
