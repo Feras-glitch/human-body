@@ -396,6 +396,7 @@
     "practice": [
       {
         "id": "U06.L04.P1",
+        "after": "E4",
         "objective": "U06.L04.O1",
         "type": "choose_reason",
         "prompt": "أين يعبر معظم الغذاء إلى الدم؟",
@@ -417,6 +418,7 @@
       },
       {
         "id": "U06.L04.P2",
+        "after": "E3",
         "objective": "U06.L04.O2",
         "type": "choose_reason",
         "prompt": "لماذا أمعاؤك{|ِ} الدقيقة طويلة ومبطّنة بخملات؟",
@@ -438,6 +440,7 @@
       },
       {
         "id": "U06.L04.P3",
+        "after": "E4",
         "objective": "U06.L04.O3",
         "type": "choose_reason",
         "prompt": "ماذا تمتص الأمعاء الغليظة؟",

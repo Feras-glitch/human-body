@@ -38,6 +38,9 @@ const nm = () => profile?.name || 'يا بطل';
 /* نص من الطفل أو من التخزين يُعرض كما هو: تُهرَّب الأقواس والخط العمودي أيضاً فلا تعدّها tx علامة تذكير */
 const htmlText = t => String(t??'').replace(/[&<>"'{}|]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','{':'&#123;','}':'&#125;','|':'&#124;'}[c]));
 const gsub = t => String(t??'').replace(/\{([^{}|]*)\|([^{}]*)\}/g, (m,a,b)=> g()?b:a);
+/* العدد والمعدود: arN(n, AR_N.q, 'obl') — 1 واحد، 2 مثنى (رفع أو نصب وجر)، 3–10 جمع، 0 و11 فما فوق مفرد منصوب أو جمع */
+const AR_N = { q:['سؤال واحد','سؤالان','سؤالين','أسئلة','سؤالاً'], star:['نجمة واحدة','نجمتان','نجمتين','نجوم','نجمة'], ans:['إجابة واحدة','إجابتان','إجابتين','إجابات','إجابة'] };
+const arN = (n, f, c) => { n = +n || 0; const m = n % 100; return n === 0 ? '0 ' + f[3] : n === 1 ? f[0] : n === 2 ? (c === 'obl' ? f[2] : f[1]) : (m >= 3 && m <= 10) ? n + ' ' + f[3] : n + ' ' + f[4]; };
 const tx = t => gsub((t||'').replace(/\{اسم\}/g, () => '<bdi data-raw>'+htmlText(nm())+'</bdi>'));
 /* سطور السلامة: يظهر أهمها في بطاقة التجربة، والبقية في قائمة تُفتح — لا يُخفى سطر سلامة أبداً */
 const safetyMore = (X, n) => { const rest=((X&&X.safety)||[]).slice(n); return rest.length ? `<details class="safety-more" style="margin-top:6px"><summary>${tx('قواعد سلامة أخرى ('+rest.length+') — {اقرأها|اقرئيها} مع ولي أمرك{|ِ}')}</summary><ul style="margin:6px 18px 0;padding:0">${rest.map(r=>`<li>${tx(r)}</li>`).join('')}</ul></details>` : ''; };
@@ -153,7 +156,7 @@ const SAY = {
   seq_shown:'الترتيب الصحيح.', seq_right:'ترتيب صحيح!', seq_right_now:'الترتيب صحيح الآن.', seq_wrong:'ليس هذا الترتيب.', try_again:'جرّب{|ي} من جديد.',
   not_here:'ليس هنا.', try_place:'جرّب{|ي} مكاناً آخر.', predict_nice:'توقّع جميل. لنكتشف الجواب معاً في هذا الدرس.',
   terms_intro:'كلمات مهمة في هذا الدرس:', terms_known:'كل كلمات الدرس عرفناها في موضعها.', experiment:'تجربة:',
-  error_intro:'لماح رسم وأخطأ. أين الخطأ؟ فكّر{|ي} ثم اضغط{|ي} «أرني الصواب».',
+  error_intro:'لمّاح أخطأ في ملاحظاته. في كل ملاحظة جملتان: {اختر|اختاري} الصحيحة.',
   life_intro:'في حياتي.', why_q:'لماذا؟', trilingual:'كلمات {تعلمتها|تعلمتِها} اليوم بثلاث لغات.', finished:'أنهيت{|ِ}',
   meaning_q:'ما معناها لنا اليوم؟', prophet_said:'قال رسول الله ﷺ:',
   test_intro:'اختبار قصير. {أجب|أجيبي} وحدك{|ِ}، والمحاولة الأولى هي التي تُحسب.', test_locked:'يُفتح هذا الاختبار بعد أن {تنهي|تنهين} الدرس.',
@@ -227,6 +230,9 @@ function recordingActive(){return !!document.querySelector('#recBtn.stop')}
 function leaveScene(){sceneVersion++;sceneMiss=false;sceneMarks.clear();sceneTimers.forEach(clearTimeout);sceneTimers.clear();sceneIntervals.forEach(clearInterval);sceneIntervals.clear();sceneFrames.forEach(cancelAnimationFrame);sceneFrames.clear();sceneCleanups.forEach(f=>{try{f()}catch{}});sceneCleanups.clear();stopPlayback()}
 /* إخفاء الصفحة (حوار إذن الميكروفون في أندرويد، أو تبديل التطبيق) يوقف الأصوات فقط: لا يُعاد بناء المشهد
    فلا يضيع نص لم يُحفظ ولا تسجيل جارٍ (المسجّل يحفظ ما سُجّل بنفسه). مغادرة الصفحة فعلاً تنظّف كل شيء. */
+/* الزمن الفعلي: كل 15 ثانية والصفحة ظاهرة والطفل تفاعل في آخر دقيقتين (المراجعة 28، أ3) */
+let lastAct=Date.now(); if(typeof document!=='undefined'&&document.addEventListener) ['pointerdown','keydown','scroll'].forEach(e=>document.addEventListener(e,()=>{lastAct=Date.now()},{passive:true,capture:true}));
+if(typeof setInterval==='function') setInterval(()=>{ try{ if(typeof LESSON==='undefined'||document.hidden||Date.now()-lastAct>120000) return; store.set('activeMs', (+store.get('activeMs',0)||0)+15000); }catch{} },15000);
 window.addEventListener('pagehide',leaveScene);document.addEventListener('visibilitychange',()=>{if(document.hidden)stopPlayback()});
 /* ============================ المشاهد ============================ */
 const sayBuddy = t => `<div class="say buddy"><span class="who">لمّاح</span>${tx(t)}</div>`;
@@ -292,7 +298,7 @@ function choice({id, prompt, options, answer, why, hint, perOption, graded=true}
 
 /* ============================ المحرك ============================ */
 let idx = 0;
-function show(i, dir=1){leaveScene();idx=Math.max(0,Math.min(Number.isFinite(+i)?Math.floor(+i):0,SCENES.length-1));
+function show(i, dir=1){leaveScene();{const cf=document.getElementById('confetti'); if(cf) cf.innerHTML='';}idx=Math.max(0,Math.min(Number.isFinite(+i)?Math.floor(+i):0,SCENES.length-1));
   /* مشهد لا يخص هذا الطفل (سؤال للمستوى ب وهو في المستوى أ): يُتخطّى بدل شاشة فارغة */
   while(SCENES[idx]?.skip?.() && idx+dir>=0 && idx+dir<SCENES.length) idx+=dir;
   /* دخول من رابط جانبي (‎#recall): لا يغيّر موضع الاستئناف */ if(!window.HASH_ENTRY){ store.set('scene',idx); store.set('sceneId',String(SCENES[idx].id)); } const sc=SCENES[idx]; rendering=true; try{ $('#main').innerHTML=tx(sc.render()); } catch(e){ /* مشهد تعطّل: لا يُحبس الطفل فيه عند كل فتح */ console.error(e); rendering=false; if(!window.HASH_ENTRY){ store.set('scene',Math.max(0,idx-1)); store.set('sceneId',String(SCENES[Math.max(0,idx-1)].id)); } $('#main').innerHTML='<div class="scene"><div class="card" role="alert">تعذّر فتح هذه الصفحة من الدرس. عُد خطوة إلى الوراء أو إلى الخريطة، وأخبر أهلك.</div></div>'; $('#backBtn').style.visibility=idx?'visible':'hidden'; return; } finally { rendering=false; }

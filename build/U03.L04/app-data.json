@@ -227,6 +227,7 @@
     "practice": [
       {
         "id": "U03.L04.P1",
+        "after": "E2",
         "objective": "U03.L04.O2",
         "level": "A",
         "type": "sequence",

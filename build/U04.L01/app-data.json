@@ -416,6 +416,7 @@
       },
       {
         "id": "U04.L01.P2",
+        "after": "E3",
         "objective": "U04.L01.O2",
         "type": "sequence",
         "prompt": "رتّب{|ي} ما يحدث في الشهيق.",

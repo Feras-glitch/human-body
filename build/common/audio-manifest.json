@@ -154,16 +154,16 @@
     {
       "key": "error_intro.m",
       "gender": "m",
-      "hash": "e923ed2aea",
-      "file": "common/error_intro.m.e923ed2aea.mp3",
-      "text": "لماح رسم وأخطأ. أين الخطأ؟ فكّر ثم اضغط «أرني الصواب»."
+      "hash": "d2a48f4ded",
+      "file": "common/error_intro.m.d2a48f4ded.mp3",
+      "text": "لمّاح أخطأ في ملاحظاته. في كل ملاحظة جملتان: اختر الصحيحة."
     },
     {
       "key": "error_intro.f",
       "gender": "f",
-      "hash": "c9501d1484",
-      "file": "common/error_intro.f.c9501d1484.mp3",
-      "text": "لماح رسم وأخطأ. أين الخطأ؟ فكّري ثم اضغطي «أرني الصواب»."
+      "hash": "19c6bc59a7",
+      "file": "common/error_intro.f.19c6bc59a7.mp3",
+      "text": "لمّاح أخطأ في ملاحظاته. في كل ملاحظة جملتان: اختاري الصحيحة."
     },
     {
       "key": "life_intro",

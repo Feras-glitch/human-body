@@ -414,6 +414,7 @@
     "practice": [
       {
         "id": "U05.L01.P1",
+        "after": "E2",
         "objective": "U05.L01.O2",
         "type": "locate_on_atlas",
         "prompt": "اضغط{|ي} على النواة في رسم الخلية.",

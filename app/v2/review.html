@@ -368,6 +368,7 @@ function render() {
       }
       const waiting = pending - p0;
       html = `<details class="les"${waiting ? ' open' : ''}><summary><b>${esc(L.title)}</b>
+        ${(() => { const mn = Math.round(num(G(`atlas:${L.id}:activeMs`, 0)) / 60000); return mn ? `<span class="pill" title="الزمن الذي كان فيه الطفل يتفاعل مع الدرس">الزمن الفعلي: ${mn === 1 ? 'دقيقة واحدة' : mn === 2 ? 'دقيقتان' : mn <= 10 ? mn + ' دقائق' : mn + ' دقيقة'}</span>` : ''; })()}
         ${D.fin ? '<span class="pill ok">مكتمل</span>' : '<span class="pill">لم يكتمل</span>'}
         ${D.checks.length < 4 ? `<span class="pill" title="الحكم بالإتقان يلزمه أربعة بنود مغلقة على الأقل">أتحقق: ${D.chkOk}/${D.checks.length} — بنود أقل من أن يُحكم بها؛ اعتمد على إجاباته المفتوحة</span>` : D.chkAns < D.checks.length ? `<span class="pill">أتحقق: أجاب عن ${D.chkAns} من ${D.checks.length} — لا حكم قبل أن يُكملها</span>` : `<span class="pill ${m >= 0.8 ? 'ok' : 'bad'}">أتحقق: ${D.chkOk}/${D.checks.length}${m >= 0.8 ? ' — متقن' : ' — دون 80%'}</span>`}
         ${D.tClosed.length && (tf || D.tAns) ? `<span class="pill">اختبار: ${D.tOk}/${D.tClosed.length}</span>` : ''}
@@ -395,6 +396,12 @@ function render() {
   let html = `${cb.length ? `<div class="sec" role="alert"><p><b>⚠ رجعت ساعة الجهاز إلى الوراء ${esc(Atlas.times(cb.length))}</b> (آخرها في ${esc(new Date(cb[cb.length - 1].at).toLocaleString('ar'))}، وكانت تشير إلى ${esc(new Date(cb[cb.length - 1].from).toLocaleString('ar'))}). تقديم الساعة يفتح «عودة الذاكرة» قبل وقتها؛ العودات المسجّلة والساعة متقدمة معلَّمة بـ⚠.</p></div>` : ''}${rs ? `<div class="sec" role="alert"><p><b>⚠ أُعيد تعيين رمز ولي الأمر لهذا الحساب في ${esc(new Date(rs).toLocaleString('ar'))}.</b> إن لم تكن أنت من فعل ذلك فراجع ما اعتُمد بعده، وغيّر الرمز.</p></div>` : ''}${me.restoredAt ? `<p class="note">هذا الحساب مستعاد من نسخة احتياطية في ${esc(new Date(me.restoredAt).toLocaleDateString('ar'))}: النتائج المعروضة من النسخة، والاعتمادات فيها تحتاج اعتمادك من جديد.</p>` : ''}<div class="sec"><h2>${esc(profile.name)} — ${esc(LS[0].unitTitle)}</h2>
     <p class="note">هذه الشاشة لك أنت لا للطفل. المغلقة تُصحَّح آلياً والمعتبر <b>المحاولة الأولى</b>. المفتوحة والرسم تقيّمها أنت بالسلّم 0 / 1 / 2. افتح أي درس لترى التفاصيل.</p>
     <div class="sum"><div><b>${finN}/${LS.length}</b>دروس مكتملة</div><div><b>${pct}</b>صواب من أول محاولة (${sumOk} من ${sumAns} أجاب عنها${sumAns < sumN ? '؛ بقي ' + (sumN - sumAns) : ''})</div><div><b>${testAns ? Math.round(testOk / testAns * 100) + '%' : '—'}</b>اختبارات الدروس${testAns ? ` (${testOk} من ${testAns})` : ''}</div><div><b>${gMax ? (gSum + '/' + gMax) : '—'}</b>تقييماتك للمفتوحة</div><div><b>${pending}</b>تنتظر تقييمك</div><div><b>${LS.reduce((a, l) => a + num(G(`atlas:${l.id}:stars`, 0)), 0)}</b>⭐ نجوم</div></div></div>`;
+  /* في لمحة: كل الوحدات معاً بلغة الأسرة (المراجعة 28، ب6) */
+  { const all = REVIEW, finAll = all.filter(l => G(`atlas:${l.id}:finished`, false));
+    const weak = all.map(l => ({ l, sc: G(`atlas:${l.test}:score`, null) })).filter(x => x.sc && +x.sc.n && (+x.sc.ok / +x.sc.n) < 0.6);
+    const nextL = all.find(l => !G(`atlas:${l.id}:finished`, false));
+    html = `<div class="sec"><h2>في لمحة: ${esc(profile?.name || '')}</h2><p>أنهى <b>${finAll.length} من ${all.length}</b> درساً.${nextL ? ` الدرس التالي: <b>${esc(nextL.title)}</b>.` : ' أنهى كل الدروس.'}</p>${weak.length ? `<p><b>يحتاج مراجعة</b> (أقل من 60% في اختبار الدرس): ${weak.map(x => esc(x.l.title)).join('، ')}.</p>` : (finAll.length ? '<p>لا درس أقل من 60% في اختباره.</p>' : '')}<p class="note">تحت: تفاصيل الوحدة المختارة، وإجابات الطفل المفتوحة التي تنتظر تقييمك.</p></div>` + html;
+  }
   html += rows.join('');
   if (notStarted.length) html += `<p class="note">لم يبدأ بعد: ${notStarted.map(esc).join('، ')}.</p>`;
   html += `<div class="sec"><h2>إهداء الوحدة</h2>${dedHtml}</div>

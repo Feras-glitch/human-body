@@ -710,7 +710,7 @@
     ],
     "practice": [
       {
-        "id": "U03.L01.P1",
+        "id": "U03.L01.P1", "after": "E3",
         "objective": "U03.L01.O1",
         "level": "A",
         "type": "locate_on_atlas",
@@ -721,7 +721,7 @@
         "feedback_wrong": "تذكّر{|ي}: خلف عظم القص، بين الرئتين. جرّب{|ي} مرة أخرى."
       },
       {
-        "id": "U03.L01.P2",
+        "id": "U03.L01.P2", "after": "E3",
         "objective": "U03.L01.O2",
         "level": "A",
         "type": "choose",
@@ -761,7 +761,7 @@
         }
       },
       {
-        "id": "U03.L01.P4",
+        "id": "U03.L01.P4", "after": "E7",
         "objective": "U03.L01.O5",
         "level": "B",
         "type": "locate_on_atlas",
