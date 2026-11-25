@@ -22,7 +22,7 @@ const isLocalPage=u=>{try{const p=fileURLToPath(u),rel=path.relative(WWW,p);retu
 function createWindow() {
   win = new BrowserWindow({
     width: 1280, height: 860, minWidth: 820, minHeight: 560,
-    title: 'جسم الإنسان', icon: ICON, backgroundColor: '#FFF6E3',
+    title: 'رحلة داخل جسمي', icon: ICON, backgroundColor: '#FFF6E3',
     autoHideMenuBar: true, show: false,
     webPreferences: { contextIsolation: true, sandbox: true, spellcheck: false, preload: path.join(__dirname, 'preload.js') }
   });
@@ -59,8 +59,8 @@ function buildMenu() {
     ]},
     { label: 'مساعدة', submenu: [
       { label: 'عن التطبيق', click: () => { const bi = buildInfo(); dialog.showMessageBox(win, {
-        type: 'info', title: 'جسم الإنسان', buttons: ['حسناً'],
-        message: 'منهاج «جسم الإنسان» للأطفال 8–12' + (bi.kind === 'draft' ? ' — مسودة غير معتمدة' : ''),
+        type: 'info', title: 'رحلة داخل جسمي', buttons: ['حسناً'],
+        message: '«رحلة داخل جسمي»: جسم الإنسان للأطفال 8–12' + (bi.kind === 'draft' ? ' — مسودة غير معتمدة' : ''),
         detail: `${KIND[bi.kind] || 'نوع البناء غير معروف'}\nالإصدار ${app.getVersion()} · بصمة المحتوى ${bi.content || '—'}${bi.commit ? ' · ' + bi.commit : ''}${bi.built ? ' · ' + bi.built : ''} · Electron ${process.versions.electron}\n` +
           `البصمة نفسها على غلاف كتاب المعلم: إن اختلفت فالكتاب والتطبيق من نسختين مختلفتين.\n\nيعمل بلا إنترنت. يُحفظ التقدّم على هذا الجهاز.\n` +
           `المصادر والرخص: «مساعدة» ← «المصادر والرخص».\n\nالنطق الآلي يحتاج صوتاً عربياً في ويندوز:\nالإعدادات ← الوقت واللغة ← الكلام ← إضافة أصوات ← العربية.`

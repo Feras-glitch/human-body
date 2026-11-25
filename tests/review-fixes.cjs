@@ -749,7 +749,7 @@ test('the Quran is never sent to the speech engine: only a parent or developer r
   await page.waitForSelector('#quranList .qrow', { state: 'attached' });
   const rows = await page.locator('#quranList .qrow').count();
   assert.equal(rows, await page.evaluate(() => Object.keys(QURAN).length));
-  await page.evaluate(() => document.getElementById('quranBox').open = true);
+  await page.evaluate(() => { document.getElementById('adv').open = true; document.getElementById('quranBox').open = true; });
   assert.match(await page.locator(`#quranList .qrow[data-k="${key}"]`).innerText(), /تلاوة رفعتَها/);
   await page.locator(`#quranList .qrow[data-k="${key}"] [data-del]`).click();
   await page.waitForFunction((k) => !document.querySelector(`#quranList .qrow[data-k="${k}"] [data-del]`), key);

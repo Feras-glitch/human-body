@@ -849,6 +849,7 @@ test('forgotten guardian PIN can be reset from the gate with the recovery code w
   await page.check('#recDone');
   await page.click('#recCont');
   await page.waitForSelector('#main', { state: 'visible', timeout: 10000 });
+  await page.evaluate(() => { document.getElementById('adv').open = true; }); // الأدوات التقنية مطوية في «أدوات متقدمة» (قرار 25 نوفمبر)
   assert.match(await page.locator('#usage').innerText(), /%/);
   assert.deepEqual(errors, []);
   await context.close();

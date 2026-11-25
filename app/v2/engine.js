@@ -1,4 +1,4 @@
-/* محرّك دروس الأطلس الحي v2 — يُحمَّل بعد تعريف LESSON وTERMS، وقبل تعريف SCENES ثم boot() */
+/* محرّك دروس «رحلة داخل جسمي» v2 — يُحمَّل بعد تعريف LESSON وTERMS، وقبل تعريف SCENES ثم boot() */
 
 /* ============================ البيانات ============================ */
 /* الآية بخط مصحف المدينة، الإصدار الثاني (QPC V2): خط لكل صفحة (fonts/qcf2/)، ورمز لكل كلمة ولكل علامة وقف ولرقم
@@ -240,12 +240,12 @@ const sayNar = t => `<div class="say">${tx(t)}</div>`;
 let done = false;           // هل اكتمل تفاعل المشهد الحالي؟
 let rendering = false;      // ok() أثناء رسم المشهد لا يعني أن الطفل أنجز شيئاً
 function need(){ done=false; $('#nextBtn').disabled=true; cueSoon(); }
-/* إشارة «النشاط في الأسفل»: تظهر حين يكون «التالي» معطّلاً وأول عنصر يُطلب من الطفل تحت الشاشة */
+/* إشارة «النشاط في الأسفل»: حين يكون «التالي» معطّلاً وأول عنصر يُطلب من الطفل تحت الشاشة، تأخذ مكان «التالي» في الشريط نفسه (قرار 25 نوفمبر)؛ و#nextBtn يبقى معطّلاً كما هو */
 const CUE_SEL='.opt:not([disabled]),.hot,.jt,.st,.err,.ring,.cell,.layer,.seg,.mol,.bub,.ch,.stmt,input:not([type=hidden]),textarea,canvas,[data-start]:not([disabled]),[data-tap]:not([disabled]),.scene button:not([disabled])';
 let cueEl=null, cueRaf=0;
 function cueTarget(){ for(const e of $$('#main '+CUE_SEL.split(',').join(',#main '))){ const r=e.getBoundingClientRect(); if(r.width&&r.height) return e; } return null; }
-function updateCue(){ cueRaf=0; const f=document.querySelector('footer .fwrap'); if(!f) return; if(!cueEl){ cueEl=document.createElement('button'); cueEl.className='cue'; cueEl.type='button'; cueEl.textContent='↓ النشاط في الأسفل'; cueEl.hidden=true; f.style.position='relative'; f.appendChild(cueEl); cueEl.onclick=()=>{ const t=cueTarget(); if(t) t.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}); }; }
-  let show_=false; if(!done){ const t=cueTarget(); if(t){ const lim=(document.querySelector('footer')?.getBoundingClientRect().top||innerHeight)-24; show_=t.getBoundingClientRect().top>lim; } } cueEl.hidden=!show_; }
+function updateCue(){ cueRaf=0; const f=document.querySelector('footer .fwrap'); if(!f) return; if(!cueEl){ cueEl=document.createElement('button'); cueEl.className='next cue'; cueEl.type='button'; cueEl.textContent='↓ النشاط في الأسفل'; cueEl.hidden=true; const nb=$('#nextBtn'); if(nb) nb.after(cueEl); else f.appendChild(cueEl); cueEl.onclick=()=>{ const t=cueTarget(); if(t) t.scrollIntoView({block:'center',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}); }; }
+  let show_=false; if(!done){ const t=cueTarget(); if(t){ const lim=(document.querySelector('footer')?.getBoundingClientRect().top||innerHeight)-24; show_=t.getBoundingClientRect().top>lim; } } cueEl.hidden=!show_; f.classList.toggle('cueOn',show_); }
 function cueSoon(){ if(typeof requestAnimationFrame==='undefined'||cueRaf) return; cueRaf=requestAnimationFrame(updateCue); }
 if(typeof addEventListener!=='undefined'){ addEventListener('scroll',cueSoon,{passive:true}); addEventListener('resize',cueSoon); }
 /* المشهد الذي أنجزه الطفل مرة يبقى منجَزاً: الرجوع أو إعادة التحميل لا يغلقان «التالي» من جديد */
