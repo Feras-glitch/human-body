@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="color-scheme" content="light only">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="state.js"></script>
+<title>إهداء الوحدة — النمو والبلوغ والخصوصية والحدود</title>
+<link rel="stylesheet" href="fonts/app-fonts.css">
+<link rel="stylesheet" href="engine.css">
+<style>
+.idea{display:block;width:100%;text-align:right;background:var(--card);border-radius:18px;padding:12px 14px;margin:8px 0;box-shadow:0 3px 0 var(--line);border:3px solid transparent}
+.idea.on{border-color:var(--teal);background:#E6F7F4}
+.idea small{display:block;color:var(--muted)}
+.rec{display:flex;gap:10px;align-items:center;justify-content:center;margin:10px 0}
+.rec button{background:var(--coral);color:#fff;font-family:var(--display);font-size:1.15rem;padding:12px 20px;box-shadow:0 4px 0 var(--coral-d)}
+.rec button.stop{background:var(--ink)} .rec button[disabled]{opacity:.5}
+.cert{background:#fff url(img/s15-verse-frame.webp) center/cover;border-radius:26px;padding:28px 22px;text-align:center;box-shadow:0 6px 0 var(--line)}
+.cert h2{color:var(--coral-d);font-size:1.6rem} .cert .nm{font-family:var(--display);font-size:1.5rem;color:var(--teal-d)}
+.lock{background:#FFF3D6;border-radius:18px;padding:12px 14px;margin:8px 0}
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <button class="home" id="homeBtn" title="خريطتي"><img src="img/ui-home.webp" alt="خريطتي" style="width:30px"></button>
+    <div class="bar"><i id="barFill"></i></div>
+    <span class="stars"><img src="img/ui-star.webp" alt="" style="width:18px;vertical-align:-3px"> <span id="starsTxt">0</span></span>
+  </header>
+  <main id="main"></main>
+  <footer><div class="fwrap">
+    <button class="back" id="backBtn" title="السابق">→</button>
+    <button class="next" id="nextBtn">التالي</button>
+    <button class="spk" id="spkBtn" title="اسمع"><img src="img/ui-speaker.webp" alt="اسمع" style="width:28px"></button>
+  </div></footer>
+</div>
+<div class="confetti" id="confetti"></div>
+<script>
+const LESSON = {
+  id: 'U10.unit',
+  unit: 'U10',
+  title: 'إهداء الوحدة',
+  next: 'index.html',
+  home: 'index.html',
+  check_ids: []
+};
+const UNIT = {"id":"U10","title":"النمو والبلوغ والخصوصية والحدود","lessons":[{"id":"U10.L01","test":"U10.T01","title":"كيف أكبر؟","checks":[{"id":"U10.L01.C1","level":"A","open":true},{"id":"U10.L01.C2","level":"A","open":false},{"id":"U10.L01.C3","level":"A","open":true},{"id":"U10.L01.C4","level":"A","open":false},{"id":"U10.L01.C5","level":"A","open":true},{"id":"U10.L01.C6","level":"A","open":true}]}],"ideas":[{"l":"الدرس 1","t":"انقسام الخلية","s":"الخلية تنسخ ما فيها، ومنه تعليماتها، ثم تنقسم خليتين متماثلتين. هكذا يكبر الجسم ويُصلح نفسه."},{"l":"الدرس 1","t":"صفيحة النمو","s":"طبقة من الغضروف قرب طرفي العظم الطويل عند الأطفال، يُضاف منها عظم جديد فيطول العظم."}]} ;
+const TERMS = [];
+</script>
+<script src="engine.js"></script>
+<script src="recording.js"></script>
+<script>
+/* نص الإهداء يُحفظ بعد توقف الكتابة نصف ثانية، لا مع كل حرف: كائن الإهداء قد يحمل تسجيلاً من عدة
+   ميغابايت، وإعادة كتابته مع كل ضغطة تُبطئ الهاتف. يُحفظ فوراً عند مغادرة المشهد أو إخفاء الصفحة. */
+let textTimer = null, textPatch = null;
+function flushText() {
+  clearTimeout(textTimer);
+  textTimer = null;
+  if (!textPatch) return;
+  const d = store.get('ded', {});
+  Object.assign(d, textPatch);
+  textPatch = null;
+  store.set('ded', d);
+}
+function saveText(patch) {
+  textPatch = Object.assign(textPatch || {}, patch);
+  clearTimeout(textTimer);
+  textTimer = setTimeout(flushText, 500);
+}
+document.addEventListener('visibilitychange', () => { if (document.hidden) flushText(); });
+window.addEventListener('pagehide', flushText);
+const G = (k, d) => {
+  try {
+    const v = Atlas.storage.getItem(k);
+    return v ? JSON.parse(v) : d
+  } catch (e) {
+    return d
+  }
+};
+const FIN = UNIT.lessons.map(l => G(`atlas:${l.id}:finished`, false));
+/* القرار D22: يُفتح الإهداء حين تُنهى كل الدروس ويُتقن كل درس (80% فأكثر من أسئلة «أتحقق» من أول محاولة) */
+const MASTER = UNIT.lessons.map(l => {
+  const lvl = G(`atlas:${l.id}:level`, 'A');
+  const pr = G(`atlas:${l.id}:progress`, {});
+  const ids = l.checks.filter(c => (lvl === 'B' || c.level !== 'B') && !c.open).map(c => c.id);
+  const okc = ids.filter(i => pr[i]?.firstAttempt === true).length;
+  return { n: ids.length, ok: okc, pct: ids.length ? okc / ids.length : 1 };
+});
+const fin1 = FIN.every(Boolean),
+  fin2 = MASTER.every(m => m.pct >= 0.8);
+const IDEAS = UNIT.ideas;
+const approval = () => {
+  const a = G(`atlas:${UNIT.id}.unit:approval`, null);
+  return !!(a && a.ok && a.sig === Atlas.signature(store.get('ded', {})));
+};
+const SCENES = [
+  /* 0 البوابة */
+  {
+    id: 'gate',
+    render() {
+      if (fin1 && fin2) {
+        ok();
+        return `<div class="scene"><div class="row" style="justify-content:center">${buddy(120,'party')}</div><h1>اكتملت الوحدة: ${UNIT.title}!</h1>
+   ${sayBuddy('{اسم}، أنهيت{|ِ} دروس هذه الوحدة كلها. بقي أهم شيء: <b>علمٌ يُنتفع به</b>. العلم الذي لا {تعلّمه|تعلّمينه} لأحد… يبقى في الدفتر. اليوم تهدي{|ن} فكرة واحدة لطفل آخر.')}
+   <div class="card" style="text-align:center;font-family:var(--display);font-size:1.2rem">تعلّم · افهم · طبّق · <b style="color:var(--coral-d)">انشر</b></div></div>`;
+      }
+      need();
+      const row = (l, i) => {
+        if (!FIN[i]) return `<div class="lock">⬜ الدرس ${i+1}: ${l.title} — <a href="${l.id}.html">أكمل{|ي} الدرس</a></div>`;
+        const m = MASTER[i], pct = Math.round(m.pct * 100);
+        return m.pct >= 0.8 ? `<div class="lock" style="background:#E6F7F4">✔ الدرس ${i+1}: ${l.title} — {أتقنته|أتقنتِه} (${m.ok} من ${m.n})</div>`
+          : `<div class="lock">↻ الدرس ${i+1}: ${l.title} — ${m.ok} من ${m.n} (${pct}%). <a href="${l.id}.html#recheck">راجع{|ي} الدرس و{أعد|أعيدي} أسئلة «أتحقق»</a></div>`;
+      };
+      return `<div class="scene"><div class="row" style="justify-content:center">${buddy(110,'think')}</div><h1>إهداء الوحدة</h1>${sayBuddy(fin1 ? 'نُهدي ما أتقنّاه: يُفتح الإهداء حين تصيب{|ين} من أول محاولة في 80% من أسئلة «أتحقق» في كل درس.' : 'يُفتح الإهداء بعد إنهاء دروس الوحدة وإتقانها.')}
+   ${UNIT.lessons.map(row).join('')}</div>`;
+    },
+    noResume: true,
+    after() {
+      speak(tx(fin1 && fin2 ? 'اكتملت الوحدة! بقي أهم شيء: علم ينتفع به. اليوم تهدي فكرة واحدة لطفل آخر.' :
+        'يفتح الإهداء بعد إنهاء دروس الوحدة وإتقانها.'));
+    }
+  },
+  /* 1 اختيار الفكرة */
+  {
+    id: 'pick',
+    render() {
+      const d = store.get('ded', {});
+      if (d.idea != null) ok();
+      else need();
+      return `<div class="scene"><h2>{اختر|اختاري} فكرة واحدة {تهديها|تهدينها}</h2><p class="note">الفكرة التي {فهمتها|فهمتِها} أحسن فهم… هي التي تستطيع{|ين} تعليمها.</p>
+   ${IDEAS.map((x,i)=>`<button class="idea ${d.idea===i?'on':''}" data-i="${i}"><small>${x.l}</small><b>${x.t}</b><small>${x.s}</small></button>`).join('')}</div>`;
+    },
+    after() {
+      $$('.idea').forEach(b => b.onclick = () => {
+        $$('.idea').forEach(x => x.classList.remove('on'));
+        b.classList.add('on');
+        const d = store.get('ded', {});
+        d.idea = +b.dataset.i;
+        d.title = (IDEAS[d.idea] || IDEAS[0]).t;
+        store.set('ded', d);
+        ok();
+        speak((IDEAS[d.idea] || IDEAS[0]).t);
+      });
+      speak(tx('اختر فكرة واحدة تهديها.'));
+    }
+  },
+  /* 2 لمن؟ */
+  {
+    id: 'who',
+    render() {
+      const d = store.get('ded', {});
+      if (d.who) ok();
+      else need();
+      return `<div class="scene"><div class="row" style="justify-content:center">${hero(2,150)}</div><h2>لمن تهدي{|ن} هذه الفكرة؟</h2>
+   ${['أخي أو أختي','صديق في الصف','ابن عمي أو خالتي','أمي أو أبي (أعلّمهم أنا هذه المرة!)'].map(o=>`<button class="opt ${d.who===o?'ok':''}" data-w="${o}">${o}</button>`).join('')}
+   <input type="text" id="other" placeholder="أو اكتب{|ي} اسمه…" value="${d.who&&!['أخي أو أختي','صديق في الصف','ابن عمي أو خالتي','أمي أو أبي (أعلّمهم أنا هذه المرة!)'].includes(d.who)?htmlText(d.who):''}" style="width:100%;font:inherit;padding:12px;border:2px solid var(--line);border-radius:16px;margin-top:8px"></div>`;
+    },
+    after() {
+      const set = w => {
+        const d = store.get('ded', {});
+        d.who = w;
+        store.set('ded', d);
+        ok();
+      };
+      $$('[data-w]').forEach(b => b.onclick = () => {
+        $$('[data-w]').forEach(x => x.classList.remove('ok'));
+        b.classList.add('ok');
+        $('#other').value = '';
+        set(b.dataset.w);
+      });
+      $('#other').oninput = e => {
+        $$('[data-w]').forEach(x => x.classList.remove('ok'));
+        const v = e.target.value.trim();
+        if (v) { saveText({ who: v }); ok(); }
+        else need();
+      };
+      onSceneLeave(flushText);
+      speak(tx('لمن تهدي هذه الفكرة؟'));
+    }
+  },
+  /* 3 حضّر شرحك */
+  {
+    id: 'prep',
+    render() {
+      ok();
+      const d = store.get('ded', {});
+      const x = IDEAS[d.idea] || IDEAS[0];
+      return `<div class="scene"><div class="row" style="justify-content:center">${buddy(100,'think')}</div><h2>كيف تشرح{|ين} «${x.t}»؟</h2>
+   ${sayBuddy('المعلم الجيد لا يحفظ كلاماً؛ يفعل ثلاثة أشياء: <b>1)</b> يبدأ بسؤال أو موقف. <b>2)</b> يشرح بمثال من الحياة أو بتجربة صغيرة. <b>3)</b> يسأل في النهاية: «ماذا فهمت؟»')}
+   <div class="card"><b>فكرتك{|ِ}:</b> ${x.s}</div>
+   <textarea id="plan" placeholder="سأبدأ بـ… ثم أريه… وفي النهاية أسأله…">${htmlText(d.plan||'')}</textarea></div>`;
+    },
+    after() {
+      $('#plan').oninput = e => saveText({ plan: e.target.value });
+      onSceneLeave(flushText);
+      speak(tx('المعلم الجيد يبدأ بسؤال، يشرح بمثال، ثم يسأل: ماذا فهمت؟'));
+    }
+  },
+  /* 4 سجّل شرحك */
+  {
+    id: 'record',
+    render() {
+      const d = store.get('ded', {});
+      if (d.audio || (d.text || '').trim().length > 15) ok();
+      else need();
+      return `<div class="scene"><h2>سجّل{|ي} شرحك{|ِ} بصوتك{|ِ} (دقيقة واحدة)</h2>
+   ${sayNar('تخيّل{|ي} أن <bdi data-raw>'+htmlText(d.who||'صديقك')+'</bdi> أمامك{|ِ} واشرح{|ي} له الفكرة. ثم اذهب{|ي} {وعلّمها|وعلّميها} له فعلاً!')}
+   <div class="rec"><button id="recBtn">🎙 ابدأ التسجيل</button><span id="timer" class="note"></span></div>
+   <audio id="play" controls hidden style="width:100%"></audio>
+   <p class="note" style="text-align:center">لا يعمل الميكروفون؟ اكتب{|ي} شرحك{|ِ} هنا:</p><textarea id="txt" placeholder="اسمع يا… هل تعرف أن…">${htmlText(d.text||'')}</textarea></div>`;
+    },
+    after() {
+      const d = store.get('ded', {});
+      let hasAudio = !!d.audio;
+      if (d.audio) {
+        $('#play').src = d.audio;
+        $('#play').hidden = false;
+      }
+      attachRecorder({
+        button: '#recBtn',
+        player: '#play',
+        timer: '#timer',
+        seconds: 90,
+        onSaved(data) {
+          const d = store.get('ded', {});
+          d.audio = data;
+          d.recordedAt = Date.now();
+          if (!store.set('ded', d)) return false;
+          hasAudio = true;
+          award();
+          ok();
+          return true;
+        }
+      });
+      $('#txt').oninput = e => {
+        saveText({ text: e.target.value });
+        if (hasAudio || e.target.value.trim().length > 15) ok();
+        else need();
+      };
+      onSceneLeave(flushText);
+      speak(tx('سجل شرحك بصوتك: تخيل أن صديقك أمامك واشرح له الفكرة.'));
+    }
+  },
+  /* 5 الشهادة */
+  {
+    id: 'cert',
+    render() {
+      ok();
+      const d = store.get('ded', {});
+      const x = IDEAS[d.idea] || IDEAS[0];
+      if (fin1 && fin2) {
+        store.set('finished', true);
+        if (!store.get('finishedAt', null)) store.set('finishedAt', Date.now());
+      }
+      const ap = approval();
+      return `<div class="scene"><div class="cert"><img src="img/s19-badge.webp" alt="" style="width:120px"><h2>شهادة إهداء</h2><div class="nm">{اسم}</div><p>أتمّ{|ت} وحدة «${UNIT.title}» و{أهدى|أهدت} فكرة <b>«${htmlText(x.t)}»</b> إلى <b data-raw>${htmlText(d.who||'…')}</b>.</p><p style="font-family:var(--display);color:var(--teal-d)">علمٌ يُنتفع به</p>
+   <p class="${ap?'ok':'note'}" style="font-weight:600">${ap?'✔ اعتمده ولي الأمر — في «مكتبة إهداءاتي»':'⏳ ينتظر اعتماد ولي الأمر من شاشة «لولي الأمر والمعلم»'}</p></div>
+   ${sayBuddy('الشهادة تكتمل حين تعلّم{|ين} الفكرة فعلاً. اذهب{|ي} الآن {وعلّمها|وعلّميها}، ثم اسأل{|ي}: «ماذا فهمت؟» — ثم يسمع ولي أمرك{|ِ} تسجيلك{|ِ} ويعتمده. وبعد ثلاثة أيام من كل درس تجد{|ين} في خريطتك{|ِ} «عودة الذاكرة».')}
+   <div class="row" style="justify-content:center;margin-top:12px"><button class="opt" style="width:auto;background:var(--teal);color:#fff" onclick="location.href='index.html'">🏠 إلى خريطتي</button></div></div>`;
+    },
+    noResume: true,
+    after() {
+      confetti();
+      speak(tx('شهادة إهداء. الشهادة تكتمل حين تعلم الفكرة فعلاً. اذهب الآن وعلمها.'));
+    }
+  },
+  /* 6 عودة الذاكرة: لكل درس بعد ثلاثة أيام من إنهائه (في صفحة اختبار الدرس) */
+  {
+    id: 'recall',
+    noResume: true,
+    noBack: true,
+    render() {
+      ok();
+      const RDAYS = [3, 7, 21], RGAP = [0, 3, 7], RKEY = ['recall', 'recall2', 'recall3'], RNAME = ['الأولى', 'الثانية', 'الثالثة'];
+      const rows = UNIT.lessons.map((l, i) => {
+        const done = RKEY.map(k => G(`atlas:${l.test}:${k}`, null)), k = done.findIndex(r => !r);
+        const at = G(`atlas:${l.id}:finishedAt`, null);
+        const days = at ? Math.floor((Date.now() - at) / 864e5) : -1;
+        const got = done.filter(Boolean).map(r => `${Number(r.ok)}/${Number(r.n)}`).join(' ، ');
+        if (k < 0) return `<div class="lock" style="background:#E6F7F4">✔ ${l.title}: اكتملت العودات الثلاث (${got})</div>`;
+        const prev = k ? done[k - 1] : null, since = prev && prev.at ? Math.max(0, (Date.now() - prev.at) / 864e5) : Infinity;
+        const head = got ? `${l.title} (${got})` : l.title;
+        if (days >= RDAYS[k] && since >= RGAP[k]) return `<div class="lock">🧠 ${head} — <a href="${l.test}.html#recall">{ابدأ|ابدئي} العودة ${RNAME[k]}</a></div>`;
+        return `<div class="lock"${got ? ' style="background:#E6F7F4"' : ''}>⏳ ${head} — ${days < 0 ? 'بعد إنهاء الدرس' : 'العودة ' + RNAME[k] + ' تُفتح بعد ' + Atlas.days(Math.max(RDAYS[k] - days, Math.ceil(RGAP[k] - since), 1))}</div>`;
+      }).join('');
+      return `<div class="scene"><div class="row" style="justify-content:center">${buddy(110,'think')}</div><h2>🧠 عودة الذاكرة</h2>${sayBuddy('ثلاث عودات لكل درس: بعد ثلاثة أيام، ثم أسبوع، ثم ثلاثة أسابيع. أسئلة قصيرة دون فتح الدرس، ثم تكتب{|ين} ما {تتذكره|تتذكرينه}. ما نتذكره بعد أيام هو ما تعلّمناه حقاً.')}${rows}</div>`;
+    },
+    after() {
+      speak(tx('عودة الذاكرة: ثلاث عودات لكل درس.'));
+    }
+  },
+];
+if (!(fin1 && fin2)) store.set('scene', 0);
+window.BOOT_HOOK = () => { if (location.hash === '#recall') { window.HASH_ENTRY = true; return SCENES.length - 1; } return !(fin1 && fin2) ? 0 : null; };
+boot();
+</script>
+</body>
+</html>
+
