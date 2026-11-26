@@ -190,10 +190,10 @@
       "مكان آمن للقفز"
     ],
     "steps": [
-      "{اجلس|اجلسي} هادئاً{|ً} دقيقتين، ثم {عُدّ|عُدّي} نبضك{|ِ} 30 ثانية من الرسغ و{اضربه|اضربيه} في 2، و{عُدّ|عُدّي} أنفاسك{|ِ} 30 ثانية و{اضربها|اضربيها} في 2. و{اكتب|اكتبي}: هل جلدك{|ِ} دافئ أم عادي؟",
+      "{اجلس|اجلسي} {هادئاً|هادئةً} دقيقتين، ثم {عُدّ|عُدّي} نبضك{|ِ} 30 ثانية من الرسغ و{اضربه|اضربيه} في 2، و{عُدّ|عُدّي} أنفاسك{|ِ} 30 ثانية و{اضربها|اضربيها} في 2. و{اكتب|اكتبي}: هل جلدك{|ِ} دافئ أم عادي؟",
       "{اقفز|اقفزي} في مكانك{|ِ} أو {اركض|اركضي} في المكان دقيقتين، بإذن الكبار.",
       "فور التوقف {عُدّ|عُدّي} النبض والأنفاس بالطريقة نفسها، و{لاحظ|لاحظي}: هل احمرّ وجهك{|ِ}؟ هل {عرقت|عرقتِ}؟ هل {عطشت|عطشتِ}؟",
-      "{استرح|استريحي} جالساً{|ً} خمس دقائق، ثم {عُدّ|عُدّي} مرة ثالثة.",
+      "{استرح|استريحي} {جالساً|جالسةً} خمس دقائق، ثم {عُدّ|عُدّي} مرة ثالثة.",
       "{اشرب|اشربي} الماء، و{سجّل|سجّلي} في آخر اليوم لون البول وعدد أكواب الماء."
     ],
     "safety": [
@@ -1178,13 +1178,13 @@
     "concept.homeostasis.def": "U11.L01/concept.homeostasis.def.10adf596ad.mp3",
     "experiment.title": "U11.L01/experiment.title.38acbdd234.mp3",
     "experiment.step1.m": "U11.L01/experiment.step1.m.5b284f95b1.mp3",
-    "experiment.step1.f": "U11.L01/experiment.step1.f.7baecaf7ef.mp3",
+    "experiment.step1.f": "U11.L01/experiment.step1.f.ce6130953d.mp3",
     "experiment.step2.m": "U11.L01/experiment.step2.m.e3a7d87f5b.mp3",
     "experiment.step2.f": "U11.L01/experiment.step2.f.e7e57d7cf7.mp3",
     "experiment.step3.m": "U11.L01/experiment.step3.m.145301d282.mp3",
     "experiment.step3.f": "U11.L01/experiment.step3.f.fcace338d4.mp3",
     "experiment.step4.m": "U11.L01/experiment.step4.m.300aab1da0.mp3",
-    "experiment.step4.f": "U11.L01/experiment.step4.f.1b6dfedf13.mp3",
+    "experiment.step4.f": "U11.L01/experiment.step4.f.9adff4497f.mp3",
     "experiment.step5.m": "U11.L01/experiment.step5.m.1609501844.mp3",
     "experiment.step5.f": "U11.L01/experiment.step5.f.182859ec1a.mp3",
     "experiment.safety1": "U11.L01/experiment.safety1.69fcc6da5d.mp3",
@@ -1383,7 +1383,17 @@
     "number.c265ad6c42.f": "U11.L01/number.c265ad6c42.f.d128eec841.mp3",
     "size.cda9262ead.m": "U11.L01/size.cda9262ead.m.9df2db1055.mp3",
     "size.cda9262ead.f": "U11.L01/size.cda9262ead.f.383ac2c93c.mp3",
-    "central_fact": "U11.L01/central_fact.facfbf4f71.mp3"
+    "central_fact": "U11.L01/central_fact.facfbf4f71.mp3",
+    "scene.7b5aad905c": "U11.L01/scene.7b5aad905c.7b5aad905c.mp3",
+    "scene.2cb6af5aa4": "U11.L01/scene.2cb6af5aa4.2cb6af5aa4.mp3",
+    "scene.2ae8ae9c0e": "U11.L01/scene.2ae8ae9c0e.2ae8ae9c0e.mp3",
+    "scene.351a59f808": "U11.L01/scene.351a59f808.351a59f808.mp3",
+    "scene.09af686d09": "U11.L01/scene.09af686d09.09af686d09.mp3",
+    "scene.8cda6ffd73.m": "U11.L01/scene.8cda6ffd73.m.7d7f8faf2a.mp3",
+    "scene.8cda6ffd73.f": "U11.L01/scene.8cda6ffd73.f.6c80fd9479.mp3",
+    "scene.0e378d0e79": "U11.L01/scene.0e378d0e79.0e378d0e79.mp3",
+    "scene.14509d114b.m": "U11.L01/scene.14509d114b.m.e857f663a8.mp3",
+    "scene.14509d114b.f": "U11.L01/scene.14509d114b.f.07252d72bf.mp3"
   },
   "has_gendered_text": true
 }

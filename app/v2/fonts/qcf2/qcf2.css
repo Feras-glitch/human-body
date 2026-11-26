@@ -1,6 +1,7 @@
 /* مولَّد: tools/qpc2_import.py — خط مصحف المدينة، الإصدار الثاني (مجمع الملك فهد)، خط لكل صفحة فيها آية من المنهاج */
 @font-face{font-family:'QCF2_026';src:url('QCF2026.ttf') format('truetype');font-display:block}
 @font-face{font-family:'QCF2_075';src:url('QCF2075.ttf') format('truetype');font-display:block}
+@font-face{font-family:'QCF2_083';src:url('QCF2083.ttf') format('truetype');font-display:block}
 @font-face{font-family:'QCF2_113';src:url('QCF2113.ttf') format('truetype');font-display:block}
 @font-face{font-family:'QCF2_154';src:url('QCF2154.ttf') format('truetype');font-display:block}
 @font-face{font-family:'QCF2_228';src:url('QCF2228.ttf') format('truetype');font-display:block}
