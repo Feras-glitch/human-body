@@ -154,8 +154,10 @@ for (const [k, f] of Object.entries(L.faith || {})) {
 (function(){ let V=null; try{ V=JSON.parse(readFileSync('quran/verses.json','utf8')); }catch(e){ return; }
   const norm=t=>(t||'').replace(/[\u064B-\u0652\u0670\u0640]/g,'').replace(/[^\u0621-\u064A ]/g,' ').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/\s+/g,' ').trim();
   const grams=new Map(); for(const [k,v] of Object.entries(V)){ const w=norm(v.emlaey).split(' '); for(let i=0;i+2<w.length;i++) grams.set(w.slice(i,i+3).join(' '),k); }
-  const walk=(o,path)=>{ if(typeof o==='string'){ const w=norm(o.replace(/﴿[^﴾]*﴾/g,' ').replace(/\{([^|}]*)\|[^}]*\}/g,'$1')).split(' ');
-      for(let i=0;i+2<w.length;i++){ const g=w.slice(i,i+3).join(' '); if(grams.has(g)){ E(`${path}: لفظ من الآية ${grams.get(g)} خارج ﴿ ﴾ («${g}»): اعرض الآية كاملة من السجل أو أحِل إليها بلا لفظها`); break; } }
+  /* الجملة وحدة الفحص: ثلاث كلمات لا تُعدّ لفظاً من آية إن فصلت بينها نهاية جملة («سعلت ثلاث مرات. من قرر…») */
+  const walk=(o,path)=>{ if(typeof o==='string'){ const segs=o.replace(/﴿[^﴾]*﴾/g,' ').replace(/\{([^|}]*)\|[^}]*\}/g,'$1').split(/[.!؟?؛\n]/);
+      seg: for(const sg of segs){ const w=norm(sg).split(' ');
+      for(let i=0;i+2<w.length;i++){ const g=w.slice(i,i+3).join(' '); if(grams.has(g)){ E(`${path}: لفظ من الآية ${grams.get(g)} خارج ﴿ ﴾ («${g}»): اعرض الآية كاملة من السجل أو أحِل إليها بلا لفظها`); break seg; } } }
       /* متن منقول عن النبي ﷺ لا تدخله علامة التذكير والتأنيث */
       if(/(النبي|رسول الله|ﷺ)[^«»]{0,40}«[^»]*\{[^»]*»/.test(o)) E(`${path}: علامة {مذكر|مؤنث} داخل متن حديث بين « »`); }
     else if(Array.isArray(o)) o.forEach((v,i)=>walk(v,`${path}[${i}]`));
