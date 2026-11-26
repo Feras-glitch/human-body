@@ -22,5 +22,73 @@
   "U10.L01-E6.webp": {
     "bytes": 70128,
     "sha256": "1574a14deacb93e0d8a6bce63495965db5b6f608e487cf3d31c57954858d83db"
+  },
+  "U10.L01-exp.webp": {
+    "bytes": 363916,
+    "sha256": "516bc16fb7f3a54d11a3f916ad501ca17ee9c1646cd2ffa5b4bf7e3fba1aabbd"
+  },
+  "U10.L01-hist1.webp": {
+    "bytes": 583064,
+    "sha256": "e6ff3a380df4ccbac7f86b14824618223ee6ef5c0d7f9bbf34afe36220a25e1f"
+  },
+  "U10.L01-letter.webp": {
+    "bytes": 258666,
+    "sha256": "255fefba1df73d70670a9ca2a33ee51e8258ccb01027cc15e027bac5c6e560df"
+  },
+  "U10.L01-life.webp": {
+    "bytes": 555810,
+    "sha256": "3ea8609dab587fb5d4348688660c995b8febe5a59eda4160892377ea4046de48"
+  },
+  "U10.L01-title-boy.webp": {
+    "bytes": 330100,
+    "sha256": "e523f956aab70781e704970e90619665f316ed55b96f5fb30e4dda52c2ee4f2c"
+  },
+  "U10.L01-title-girl.webp": {
+    "bytes": 317830,
+    "sha256": "af4f990707c66591ff85bef966138aa31cf9ae8278e1636d6d02b3d689651f6e"
+  },
+  "U10.L02-E1.webp": {
+    "bytes": 31656,
+    "sha256": "8d371ba310825521e26845b28ce6ef333acd011455d2552f616faa0ada78810f"
+  },
+  "U10.L02-E2.webp": {
+    "bytes": 63866,
+    "sha256": "43d33a0c3b5df32f05f9204b0c1ab147599e9a5dd4adc8900d6cbf3e88d2f423"
+  },
+  "U10.L02-E4.webp": {
+    "bytes": 38802,
+    "sha256": "d4b0e85c750ef80f15aff8095c876953cc069473782c076b51f22948d3395805"
+  },
+  "U10.L02-E5.webp": {
+    "bytes": 19062,
+    "sha256": "a91bcf10295e924df299a692e437f2f3d572d84768d8d895bedf0d73cbb2f101"
+  },
+  "U10.L02-E6.webp": {
+    "bytes": 25734,
+    "sha256": "a94c1eccda606365243a1cd852ffa196e557956da09e98ed138dc27c8bdae7cc"
+  },
+  "U10.L03-E1.webp": {
+    "bytes": 35178,
+    "sha256": "220367cedd09d6e22034013e9bff05f325187ad958ce10941d173327ea002c75"
+  },
+  "U10.L03-E2.webp": {
+    "bytes": 29120,
+    "sha256": "0b4a021b45eefeaa0f55e18dfab7164db653f51f500f7ef247acb0bdb9fbc27e"
+  },
+  "U10.L03-E3.webp": {
+    "bytes": 21694,
+    "sha256": "e27e97d92c0a79caa7513d438e27c677a14c8b00d9526e4343f34c1e26380cc9"
+  },
+  "U10.L03-E4.webp": {
+    "bytes": 25964,
+    "sha256": "d497134c1401ea1c0dfe36b39ced512e9fa75b0f041b2b0eabe45c4aa91d7816"
+  },
+  "U10.L03-E5.webp": {
+    "bytes": 21724,
+    "sha256": "d8266cba81105abc6b93ac808167cbff25f371d8044bfd3209092b33010935e3"
+  },
+  "U10.L03-E6.webp": {
+    "bytes": 22440,
+    "sha256": "fe077dbffdb58b6edfb75286ebc06f80a74279ad9023fa6343ee7e239f74b201"
   }
 }

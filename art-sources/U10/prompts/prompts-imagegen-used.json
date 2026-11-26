@@ -1,0 +1,48 @@
+{
+  "U10.L01-title-boy.webp": {
+    "prompt_used": "Targeted edit of supplied illustration. Change ONLY cream bone inside thighinset to a simplified recognizable FEMUR silhouette: one rounded ballhead on a short angledneck pointing inward toward childcenter (IMAGELEFT), a small raisedtrochanter on outerupperright, gentlycurvedlongshaft and two roundedcondyles atlowerend. Keep TWO thin cyan growthplatebands NEAR ENDS: one nearbaseofupperhead, one justabovelowercondyles, no bandmiddle. Insetsitswhollywithinjeansthigh. Preserve everythingelse. Preserve palette,warmroundedchildrenbookstyle,portrait1024x1536. No text letters digits logos religioussymbols.",
+    "references": [
+      "مرجع-البطل-ولد.png",
+      "مرجع-لماح.png"
+    ],
+    "requested_check": ""
+  },
+  "U10.L01-title-girl.webp": {
+    "prompt_used": "Targeted edit of supplied illustration. Change ONLY cream bone inside thighinset to a simplified recognizable FEMUR silhouette: one rounded ballhead on short angledneck pointing inward toward childcenter(IMAGELEFT), small raisedtrochanter on outerupperright, gentlycurvedlongshaft andtwo roundedcondyles atlowerend. Keep TWO thin cyan growthplatebands NEAR ENDS: one nearbaseofupperhead, one justabovelowercondyles, no bandmiddle. Preserve everythingelse. Preserve palette,warmroundedchildrenbookstyle,portrait1024x1536. No text letters digits logos religioussymbols.",
+    "references": [
+      "مرجع-البطلة-بنت.png",
+      "مرجع-لماح.png"
+    ],
+    "requested_check": ""
+  },
+  "U10.L01-exp.webp": {
+    "prompt_used": "Targeted edit of supplied illustration. Correct ONLY measurementmarks. Top-left morningcard: pencilmark alignswith UNDERSIDE of horizontalbook contactinghead. Top-righteveningcard: show exactlyTWO closelyspacedshortlines onpapertape, uppermorningline just a TINY bit (about6pixels) above lowernewline alignedwithundersideofeveningbook. Newline onlyslightlylower, not a biggap. Bottom-leftcloseup: exactlyTWO shortparallelhorizontalmarks with TINY gapabout10pixels, not currentlargegap. Rulertickmarksonly. Keep childbarefootonfloor, adultbookholdinghands and allotherdetails. Preserve palette,warmroundedchildrenbookstyle,portrait1024x1536. No text letters digits logos religioussymbols.",
+    "references": [
+      "مرجع-البطلة-بنت.png",
+      "مرجع-لماح.png"
+    ],
+    "requested_check": ""
+  },
+  "U10.L01-letter.webp": {
+    "prompt_used": "Targeted edit of supplied illustration. Remove BOTH humanchildren entirely from left. Fill plaincreambackground. Retain ONLY one creamlongbone, bluecartilagebandcharacter nearUPPEREND withlittlecartilagecellblocks, ONE Lammahwithtickonlyruler, moon,pillow,vegetables,ballandwavyletter. Make largebluecharacter a LOW FLAT ROUNDED BAND nearend instead of tallcylindricalhat; no extrapeople. Keep boneface ifalreadythere andwarmstorybookstyle. Preserve palette,warmroundedchildrenbookstyle,portrait1024x1536. No text letters digits logos religioussymbols.",
+    "references": [
+      "مرجع-لماح.png"
+    ],
+    "requested_check": ""
+  },
+  "U10.L01-life.webp": {
+    "prompt_used": "Warm children's picture-book illustration, soft rounded cartoon style for ages 8–12, thick clean outlines, flat colors with gentle soft shading, cheerful warm palette (cream background #FFF6E3, coral #FF6B57, teal #2BB3A3, sunny yellow #FFC93C, sky blue #BFE7FF), friendly expressive faces with big round eyes, Egyptian/Arab children, modest everyday clothes, no text, no letters, no logos, no watermark, high resolution, consistent character design. Vertical portrait image, 1024×1536.\n\nEveryday-life scene in a school morning line-up in the yard: a few boys laugh and point at a short classmate; the hero boy (match the attached reference exactly: short dark curly hair, warm brown skin, light-blue t-shirt, dark-blue jeans, blue sneakers) walks over, stands beside the short classmate with a friendly hand on his shoulder, and speaks calmly to the laughing boys, who start to look sorry; the classmates are of different heights and skin tones. Lammah (match the attached reference: a living magnifying glass with a sky-blue lens face, golden rim, a short wooden handle as its body, thin arms with white cartoon gloves, short legs with teal sneakers) stands between them holding a little heart. MUST: the short classmate is not crying in a humiliating way, just a bit sad and then relieved; nobody is hit or pushed; no text. No text, no letters, no numbers anywhere in the image.",
+    "references": [
+      "مرجع-البطل-ولد.png",
+      "مرجع-لماح.png"
+    ],
+    "requested_check": ""
+  },
+  "U10.L01-hist1.webp": {
+    "prompt_used": "Targeted edit of supplied illustration. Change ONLY openbook/support: physician writes withreedpen on openbook lying almostHORIZONTAL on a thinflatwoodenboard restingonlap. No outwardtiltedbook or slopinglectern facingviewer. Keep quilltipcontactpage andwavyblanklines, physicianlookingatbaby, youngmother,baby,Lammah,courtyardandobjects identical. Preserve palette,warmroundedchildrenbookstyle,portrait1024x1536. No text letters digits logos religioussymbols.",
+    "references": [
+      "مرجع-لماح.png"
+    ],
+    "requested_check": ""
+  }
+}

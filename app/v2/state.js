@@ -780,7 +780,7 @@
   for (const k of ['pulse', 'breaths']) SCHEMA[k] = (v) => isObj(v) && media(v.audio, 'audio') && Object.keys(v).every((f) => f === 'audio' || reading(v[f]));
   for (const k of ['veins', 'teach', 'teach5', 'air', 'stomx', 'mouthx', 'bilex', 'absx', 'gutx',
     'heat', 'cellmodel', 'mirror', 'cup', 'survey', 'fill', 'built',
-    'kidx', 'urinx', 'wtrx', 'rflx', 'nrvx', 'eyex', 'sensx', 'fearx', 'calmx', 'sleepx', 'memx']) {
+    'kidx', 'urinx', 'wtrx', 'rflx', 'nrvx', 'eyex', 'sensx', 'fearx', 'calmx', 'sleepx', 'memx', 'safex']) {
     SCHEMA[k] = (v) => isObj(v) && media(v.audio, 'audio') && plain(v);
   }
 
