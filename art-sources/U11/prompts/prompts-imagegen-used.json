@@ -38,7 +38,7 @@
     "edit_prompt": "Correct this illustration, preserving the girl, her brain cutaway inside her head, Lammah, park, palette and composition. The heart is much too low: DELETE the heart and all glow from the belly. Confine the transparent organ window to UPPER CHEST ONLY. Show two smaller healthy pink lungs flanking a small anatomically shaped conical heart between them, slightly toward the girl's left (viewer's right), within the ribcage and above the waist, not below the lungs or on the abdomen. The entire lower half of her pink shirt must be solid pink normal fabric. Replace giant red neck tube with just a very thin delicate red illustrative connecting line between heart and brain. Replace the distant grey smoky wisp by one extremely faint soft round grey sky cloud partly hidden behind a far tree, no trailing plume. Plain rounded secular rooftops with no minarets, religious symbols or crosses. No text, numbers, letters, cigarettes, smoke or vapor trails. Exactly two normal arms. 1024x1536 portrait."
   },
   {
-    "name": "U11.L03-title-boy.webp",
+    "name": "U11.L04-title-boy.webp",
     "references": [
       "مرجع-البطل-ولد.png",
       "مرجع-لماح.png"
@@ -47,7 +47,7 @@
     "check": "فقاعة رسالة بخطوط متموجة؛ أربع أيقونات (شخص، عدسة، ميزان بمجموعتين، كتب وسماعة)؛ بلا علامات استفهام ولا كتابة."
   },
   {
-    "name": "U11.L03-title-girl.webp",
+    "name": "U11.L04-title-girl.webp",
     "references": [
       "مرجع-البطلة-بنت.png",
       "مرجع-لماح.png"
@@ -126,7 +126,7 @@
     "edit_prompt": "Edit this existing illustration with minimal changes: remove the tiny cross-shaped finial AND the entire thin vertical spike from the tip of the tall clock tower outside the window. Finish its roof as a clean simple triangle with NO cross, pole or finial. Remove any other religious roof ornaments from the distant skyline. Preserve two scientists, Lammah, envelopes, chart, colors and other content. No text, letters, numbers. 1024x1536 portrait."
   },
   {
-    "name": "U11.L03-exp.webp",
+    "name": "U11.L04-exp.webp",
     "references": [
       "مرجع-البطلة-بنت.png",
       "مرجع-لماح.png"
@@ -136,7 +136,7 @@
     "edit_prompt": "Edit ONLY the bottom-left panel of this four-card activity page. It currently has FOUR trays: a green tray, red tray, yellow tray on table, and another yellow tray held by Lammah. There must be exactly THREE trays total: one green, one red, one yellow. REMOVE the yellow tray at the far right of the tabletop in this panel, along with the cards inside it. Keep ONLY the yellow tray held by Lammah, plus the green and red trays on the table. The girl on the right should place her message card into the yellow tray that Lammah holds (adjust her forearm naturally if necessary). Preserve all other panels including five message cards at top left, four icons at top right, blank notebook at bottom right. No text, letters, numbers or question marks. 1024x1536 portrait."
   },
   {
-    "name": "U11.L03-letter.webp",
+    "name": "U11.L04-letter.webp",
     "references": [
       "مرجع-لماح.png"
     ],
@@ -144,7 +144,7 @@
     "check": "الدماغ شخصية لطيفة ومصباح؛ أيقونات العدسة والميزان والكتاب؛ الرسالة بلا كتابة."
   },
   {
-    "name": "U11.L03-life.webp",
+    "name": "U11.L04-life.webp",
     "references": [
       "مرجع-البطلة-بنت.png",
       "مرجع-لماح.png"
@@ -154,7 +154,7 @@
     "edit_prompt": "Correct ONLY the mother's extra arm in this illustration. The central adult woman in the coral headscarf and teal dress currently has THREE arms: two hands holding the phone in her lap plus a raised thumbs-up hand near her chest. REMOVE THE ENTIRE RAISED THUMBS-UP HAND AND ITS FOREARM/SLEEVE (the forearm with cream floral cuff to the right of her chest). Fill that area naturally with her teal dress and the background. She must have exactly TWO arms, BOTH already holding the phone in her lap. Keep her smiling approvingly. Preserve the aunt, girl pointing at doctor's photo with her two normal arms, Lammah, phone magnification bubble, composition, warm colors and all remaining details. No text, letters or numbers. 1024x1536 portrait."
   },
   {
-    "name": "U11.L03-hist1.webp",
+    "name": "U11.L04-hist1.webp",
     "references": [
       "مرجع-لماح.png"
     ],
