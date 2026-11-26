@@ -65,6 +65,7 @@ const PULSE = [150, 125, 110, 102, 98, 95], BR = [40, 32, 27, 24, 22, 21];
 const rec = { id: 'E5', render() { need(); return `<div class="scene">${sayNar(E('E5').text)}<h2>${tx('{توقفت|توقفتِ} عن الجري. {استرح|استريحي} دقيقة بعد دقيقة، و{راقب|راقبي} الأرقام.')}</h2>
   <div class="card" style="text-align:center"><b id="mn"></b><br>${tx('النبض في الدقيقة:')} <b id="pv"></b> — ${tx('الأنفاس في الدقيقة:')} <b id="rv"></b></div>
   <svg viewBox="0 0 320 120" role="img" aria-label="النبض ينزل دقيقة بعد دقيقة" style="width:100%;max-width:340px;display:block;margin:auto;background:#fff;border-radius:18px"><polyline id="pl" fill="none" stroke="#E0607E" stroke-width="4" stroke-linecap="round"/><polyline id="rl" fill="none" stroke="#4FA3B8" stroke-width="4" stroke-linecap="round"/></svg>
+  <div class="note">${tx('أرقام توضيحية لطفل متخيَّل؛ أرقامك{|ِ} {تقيسها|تقيسينها} في التجربة.')}</div>
   <button class="opt" id="go" style="text-align:center">${tx('دقيقة راحة')}</button>
   <div class="fb" id="fb" role="status" aria-live="polite"></div></div>`; },
   after() { let k = 0; const go = $('#go');
