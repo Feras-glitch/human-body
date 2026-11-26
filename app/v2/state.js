@@ -765,6 +765,8 @@
     missed: (v) => isObj(v) && Object.values(v).every((x) => typeof x === 'boolean'),
     questions: (v) => Array.isArray(v) && v.length <= 500 && v.every((q) => isObj(q) && isStr(q.text, 2000) && isStr(q.date, 40)),
     passed: (v) => isObj(v) && Object.values(v).every((x) => x === true),
+    // دروس بإذن ولي الأمر (U10.L02): معرّف الدرس ← وقت الإذن
+    unlocked: (v) => isObj(v) && Object.keys(v).length <= 50 && Object.entries(v).every(([k, t]) => /^U\d{2}\.L\d{2}$/.test(k) && isNum(t)),
     score: (v) => isObj(v) && isInt(v.ok, 0, 1000) && isInt(v.n, 0, 1000) && isNum(v.at),
     // المحاولة الثانية في الاختبار ببنود بديلة لما أخطأ فيه (لا تغيّر score)
     score2: (v) => isObj(v) && isInt(v.ok, 0, 1000) && isInt(v.n, 0, 1000) && isNum(v.at),

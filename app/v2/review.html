@@ -417,18 +417,20 @@ function render() {
     <div class="sum"><div><b>${finN}/${LS.length}</b>دروس مكتملة</div><div><b>${pct}</b>صواب من أول محاولة (${sumOk} من ${sumAns} أجاب عنها${sumAns < sumN ? '؛ بقي ' + (sumN - sumAns) : ''})</div><div><b>${testAns ? Math.round(testOk / testAns * 100) + '%' : '—'}</b>اختبارات الدروس${testAns ? ` (${testOk} من ${testAns})` : ''}</div><div><b>${gMax ? (gSum + '/' + gMax) : '—'}</b>تقييماتك للمفتوحة</div><div><b>${pending}</b>تنتظر تقييمك</div><div><b>${LS.reduce((a, l) => a + num(G(`atlas:${l.id}:stars`, 0)), 0)}</b>⭐ نجوم</div></div></div>`;
   /* الخلاصة أولاً: أين وصل؟ ما ينتظر تقييمك؟ ما يحتاج مراجعة؟ (النموذج أ، قرار 25 نوفمبر) */
   let topHtml = '';  /* القفل أولاً، ثم التنبيهات، ثم البطاقات */
-  { const all = REVIEW, isF = profile?.gender === 'f', fin = l => G(`atlas:${l.id}:finished`, false) === true;
+  { const unl = G('atlas:unlocked', {}) || {}, gatedAll = REVIEW.filter(l => l.gated);
+    const all = REVIEW.filter(l => !l.gated || typeof unl[l.id] === 'number'), isF = profile?.gender === 'f', fin = l => G(`atlas:${l.id}:finished`, false) === true;
     const finAll = all.filter(fin), nextL = all.find(l => !fin(l));
     const ms = all.reduce((a, l) => a + num(G(`atlas:${l.id}:activeMs`, 0)), 0), mn = Math.round(ms / 60000), h = Math.floor(mn / 60), m = mn % 60;
     const dur = n => n === 1 ? 'دقيقة واحدة' : n === 2 ? 'دقيقتان' : n <= 10 ? n + ' دقائق' : n + ' دقيقة';
     const hrs = n => n === 1 ? 'ساعة' : n === 2 ? 'ساعتان' : n <= 10 ? n + ' ساعات' : n + ' ساعة';
     const tm = !mn ? 'لم يُقَس بعد' : h ? hrs(h) + (m ? ' و' + dur(m) : '') : dur(m);
-    const strip = units.map(u => { const ls = all.filter(l => l.unit === u), d = ls.filter(fin).length; return `<span class="${d === ls.length ? 'd' : d || ls.some(l => G(`atlas:${l.id}:scene`, 0) > 0) ? 'g' : ''}" title="${esc(ls[0].unitTitle)}"></span>`; }).join('');
+    const units2 = units.filter(u => all.some(l => l.unit === u));
+    const strip = units2.map(u => { const ls = all.filter(l => l.unit === u), d = ls.filter(fin).length; return `<span class="${d === ls.length ? 'd' : d || ls.some(l => G(`atlas:${l.id}:scene`, 0) > 0) ? 'g' : ''}" title="${esc(ls[0].unitTitle)}"></span>`; }).join('');
     topHtml += `<div class="topbar noprint"><button class="qbtn" id="lockGuardian">قفل الشاشة</button></div>${alerts}
       <div class="sec"><h2>أين ${isF ? 'وصلت' : 'وصل'} ${esc(profile?.name || '')}؟</h2>
       <div class="big">${finAll.length} <span class="note" style="font-size:1rem">من ${all.length} درساً</span></div>
       <div class="bar" role="img" aria-label="${finAll.length} من ${all.length}"><i style="width:${all.length ? Math.round(finAll.length / all.length * 100) : 0}%"></i></div>
-      <div class="ustrip" style="--n:${units.length}">${strip}</div>
+      <div class="ustrip" style="--n:${units2.length}">${strip}</div>
       ${nextL ? `<a class="item" href="${esc(nextL.id)}.html"><span><small>الدرس التالي</small>${esc(nextL.title)}</span></a>` : `<p class="ok">${isF ? 'أنهت' : 'أنهى'} كل الدروس.</p>`}
       <div class="box"><small class="note">الزمن الفعلي في الدروس (حين يتفاعل مع الدرس)</small><br><b>${tm}</b></div></div>`;
     const wait = [];
@@ -436,6 +438,8 @@ function render() {
       if (v.pending) wait.push(`<button class="item" data-go="${esc(u)}"><span>${v.pending === 1 ? 'إجابة واحدة' : v.pending === 2 ? 'إجابتان' : v.pending <= 10 ? v.pending + ' إجابات' : v.pending + ' إجابة'} تنتظر تقييمك<small>${t}</small></span><span aria-hidden="true">‹</span></button>`);
       if (v.ded && (v.ded.audio || v.ded.text) && !v.apOk) wait.push(`<button class="item" data-go="${esc(u)}" data-ded="1"><span>إهداء الوحدة ينتظر اعتمادك<small>${t}</small></span><span aria-hidden="true">‹</span></button>`); }
     topHtml += `<div class="sec"><h2>ينتظر تقييمك</h2>${wait.length ? wait.join('') : '<p class="note">لا شيء ينتظرك الآن.</p>'}</div>`;
+    /* دروس بإذن ولي الأمر (U10.L02): لا تظهر للطفل حتى تأذن هنا؛ الإذن لهذا الطفل وحده */
+    if (gatedAll.length) topHtml += `<div class="sec" id="gates"><h2>دروس بإذنك</h2><p class="note">هذه الدروس لا تظهر ${isF ? 'لابنتك' : 'لابنك'} حتى تأذن بها هنا. الإذن ${isF ? 'لها' : 'له'} وحده، ويمكنك سحبه متى شئت.</p>${gatedAll.map(l => { const on = typeof unl[l.id] === 'number'; return `<div class="box"><b>${esc(l.title)}</b>${l.gateNote ? `<p class="note" style="margin:4px 0">${esc(gx(l.gateNote))}</p>` : ''}<button class="opt" style="width:auto" data-unlock="${esc(l.id)}" aria-pressed="${on}">${on ? '✔ مسموح — اسحب الإذن' : 'اسمح بهذا الدرس'}</button></div>`; }).join('')}</div>`;
     const rev = [];
     for (const l of all) { const sc = G(`atlas:${l.test}:score`, null);
       if (sc && +sc.n && (+sc.ok / +sc.n) < 0.6) rev.push(`<button class="item" data-go="${esc(l.unit)}"><span>اختبار «${esc(l.title)}»<small>${num(sc.ok)} من ${num(sc.n)} من أول محاولة</small></span><b class="bad">${Math.round(+sc.ok / +sc.n * 100)}%</b></button>`);
@@ -479,6 +483,12 @@ function render() {
     <p id="delMsg" role="alert" class="bad"></p></details></div>`;
   document.getElementById('body').innerHTML = html;
   document.getElementById('top').innerHTML = topHtml;
+  document.querySelectorAll('#top [data-unlock]').forEach(b => b.onclick = () => {
+    const id = b.dataset.unlock, u = G('atlas:unlocked', {}) || {};
+    if (typeof u[id] === 'number') delete u[id]; else u[id] = Date.now();
+    try { Atlas.storage.setItem('atlas:unlocked', JSON.stringify(u)); } catch (e) { b.textContent = 'تعذّر الحفظ: ' + e.message; return; }
+    render();
+  });
   document.querySelectorAll('#top [data-go]').forEach(b => b.onclick = () => { cur = b.dataset.go; location.hash = cur; render(); document.getElementById(b.dataset.ded ? 'dedSec' : 'tabs').scrollIntoView({ block: 'start' }); });
   renderQuran();
   document.getElementById('delGo').onclick = async () => {

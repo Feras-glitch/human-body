@@ -316,7 +316,9 @@ function resumeIndex(){ const sid=store.get('sceneId',null); let i=typeof sid===
   if(i<0){ const n=store.get('scene',0); i=(sid==null && Number.isInteger(n) && n>=0 && n<SCENES.length)?n:0; }
   if(SCENES[i]?.resumable && !SCENES[i].resumable()) i=0; return i; }
 /* تبدأ الصفحة بعد تحميل وسائط الطفل (التسجيلات والرسوم) من مخزن الجهاز */
-function boot(){if(!profile){location.replace('index.html');return Promise.resolve();} const go=()=>{ const h=window.BOOT_HOOK?.(); idx=Number.isInteger(h)&&h>=0 ? h : resumeIndex(); show(idx); }; return (window.Atlas?.ready||Promise.resolve()).then(go,go); }
+/* درس بإذن ولي الأمر (visibility: parent_unlock): لا يُفتح إلا إن أذن له ولي الأمر من شاشته */
+function lessonOpen(id){ try{ const u=JSON.parse(Atlas.storage.getItem('atlas:unlocked')||'{}')||{}; return typeof u[id]==='number'; }catch(e){ return false; } }
+function boot(){if(!profile){location.replace('index.html');return Promise.resolve();} if(LESSON.gated && !lessonOpen(LESSON.lesson||LESSON.id)){location.replace('index.html');return Promise.resolve();} const go=()=>{ const h=window.BOOT_HOOK?.(); idx=Number.isInteger(h)&&h>=0 ? h : resumeIndex(); show(idx); }; return (window.Atlas?.ready||Promise.resolve()).then(go,go); }
 
 
 

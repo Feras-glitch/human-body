@@ -1045,6 +1045,15 @@
         }
       },
       "additionalProperties": false
+    },
+    "visibility": {
+      "enum": ["open", "parent_unlock"],
+      "description": "parent_unlock: الدرس لا يظهر ولا يُفتح إلا لطفل أذن له ولي الأمر من شاشته (U10.L02، قرار 19 و26 نوفمبر 2026). الافتراضي open."
+    },
+    "gate_note": {
+      "type": "string",
+      "minLength": 20,
+      "description": "لدرس parent_unlock: ما يقرؤه ولي الأمر في شاشته قبل أن يأذن (محتوى الدرس وما يُنصح به)، بعلامات {مذكر|مؤنث} للطفل"
     }
   },
   "$defs": {

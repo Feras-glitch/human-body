@@ -9,7 +9,7 @@ const ids = readdirSync('lessons').filter(f => f.endsWith('.json')).map(f => f.r
 const list = ids.map(id => {
   const L = JSON.parse(readFileSync(`lessons/${id}.json`, 'utf8'));
   const items = [...L.flow.practice, ...L.flow.check];
-  return { id, title: L.title.ar, unit: L.unit.id, unitTitle: L.unit.title, check_ids: items.map(i => i.id),
+  return { id, title: L.title.ar, unit: L.unit.id, unitTitle: L.unit.title, ...(L.visibility === 'parent_unlock' ? { gated: true } : {}), check_ids: items.map(i => i.id),
     check_levels: Object.fromEntries(items.map(i => [i.id, i.level || 'A'])), v2: true, img: IMG[id] || `img/${id}-title-boy.webp` };
 });
 const tpl = readFileSync('app/v2/index-template.html', 'utf8');
