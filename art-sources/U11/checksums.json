@@ -23,6 +23,30 @@
     "bytes": 35444,
     "sha256": "65774ec3652b3252416f99ab8ffe4cb3c276473d136e9c2dd500bf37bebaf036"
   },
+  "U11.L01-exp.webp": {
+    "bytes": 323188,
+    "sha256": "6f2e6b39eeb8e5ed346ce6e65d6efa15762bbf81b976300e12e2bfa0db958993"
+  },
+  "U11.L01-hist1.webp": {
+    "bytes": 507146,
+    "sha256": "9493bde359d16d580b25365bf214412afe08d562b95bcf34bdef7b4d0c07f18d"
+  },
+  "U11.L01-letter.webp": {
+    "bytes": 421502,
+    "sha256": "5354ed24255d3c9d807aecf0807930422f04ef35e65c2e9cc181363a9422e270"
+  },
+  "U11.L01-life.webp": {
+    "bytes": 627692,
+    "sha256": "279f1fbc46a67e7c58ca65746eeb0d54bc8e491855e06403d3e186d57f43d1f5"
+  },
+  "U11.L01-title-boy.webp": {
+    "bytes": 485236,
+    "sha256": "a4225f4072a50053022f64d6e9a89e4df9fcfd65e7ecc56f3c4cc2fa7a054e51"
+  },
+  "U11.L01-title-girl.webp": {
+    "bytes": 495630,
+    "sha256": "2d3e39776c3ebd0aa67893a9f3bcacbbe609cc9fab72bf2a121ebbfde00e3922"
+  },
   "U11.L02-E1.webp": {
     "bytes": 43446,
     "sha256": "e8ba295c9961ce20d3a4ec65320cfef2a00b59c80cbf2827c344b1c15c5da407"
@@ -47,6 +71,30 @@
     "bytes": 31772,
     "sha256": "be722bcef616d9ba868cc4d70140582ee243b2e3ed9000d4205ce9b37eae2d9b"
   },
+  "U11.L02-exp.webp": {
+    "bytes": 406552,
+    "sha256": "87f10e237833c36a15bdffb1bf676464f0a078d0981dd4dccad71d4646525264"
+  },
+  "U11.L02-hist1.webp": {
+    "bytes": 476478,
+    "sha256": "7e52bd1f21b42367b9a35909690265bb03be131a013ae7f0ef4c8cc813b585c1"
+  },
+  "U11.L02-letter.webp": {
+    "bytes": 408428,
+    "sha256": "de165f60d51eaa65f0541311dc1e9c3892039d1675391bd69bf0428af42fd836"
+  },
+  "U11.L02-life.webp": {
+    "bytes": 595110,
+    "sha256": "5fe9b224fa69322d700bfdae494968a5277e8dd213a3af73312d73e644bd0221"
+  },
+  "U11.L02-title-boy.webp": {
+    "bytes": 482676,
+    "sha256": "e4af9be14a77fc75e4a3990f2d72ffdac9586ee4b0c9d6091dd31cbf5ac24f66"
+  },
+  "U11.L02-title-girl.webp": {
+    "bytes": 529106,
+    "sha256": "09ca09a59feb6934bd727ee2f68aa4a57f63312b5f4143846f8e3c8ad353d829"
+  },
   "U11.L03-E1.webp": {
     "bytes": 35558,
     "sha256": "2de60e978ac7a495a5926e349c38efc407d1de2e9f98910313b104e84ba88bb0"
@@ -70,5 +118,29 @@
   "U11.L03-E6.webp": {
     "bytes": 25932,
     "sha256": "0620e675d1064373defc7cf40f3c3a8433784e5c98380007c4e72362ed92f7ea"
+  },
+  "U11.L03-exp.webp": {
+    "bytes": 424044,
+    "sha256": "63b01b6cb87305895dfc28426ed93c1ab0ceca6b34baf569bd46942f682784ae"
+  },
+  "U11.L03-hist1.webp": {
+    "bytes": 621640,
+    "sha256": "a167624dae45a2257376a1336a0a87297b6fb2461532c0847efca6f32b8790c4"
+  },
+  "U11.L03-letter.webp": {
+    "bytes": 367090,
+    "sha256": "e33b677a87e2b6d02974f64120ffad7f4f11429a771ead39fb2cd070704d9ae5"
+  },
+  "U11.L03-life.webp": {
+    "bytes": 516746,
+    "sha256": "620b38e3a1fac7e4db970dd59fb1385ccefc71aa2380c10d0e5ffd16562defc1"
+  },
+  "U11.L03-title-boy.webp": {
+    "bytes": 450614,
+    "sha256": "9797554bf761e9b1c5444e249bb54cdb51dddde14522131c0c056465bd522a5b"
+  },
+  "U11.L03-title-girl.webp": {
+    "bytes": 478718,
+    "sha256": "9b0a6bb9c5917eccef8417f989b1e59f2d80e830d14c78f81d1dddc73e702380"
   }
 }
