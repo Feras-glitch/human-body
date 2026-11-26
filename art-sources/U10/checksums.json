@@ -67,6 +67,30 @@
     "bytes": 25734,
     "sha256": "a94c1eccda606365243a1cd852ffa196e557956da09e98ed138dc27c8bdae7cc"
   },
+  "U10.L02-exp.webp": {
+    "bytes": 323950,
+    "sha256": "2013b5b37ce9190d993cfedde2f1ba1bf1623439add2d6cea589c90a4cd6ce64"
+  },
+  "U10.L02-hist1.webp": {
+    "bytes": 553586,
+    "sha256": "c2349b7af10c709a69aa9b2b0307689d7ad017f511eb0395c9dc4a7b36f3982d"
+  },
+  "U10.L02-letter.webp": {
+    "bytes": 397244,
+    "sha256": "bba59b4f35b2abf866869057d540829c593dc561be91589e3776070074834880"
+  },
+  "U10.L02-life.webp": {
+    "bytes": 384722,
+    "sha256": "cc5e50e4a20ce577fe70c3511bc98d455367e317a47fe5fbfca09a492507a8d8"
+  },
+  "U10.L02-title-boy.webp": {
+    "bytes": 582626,
+    "sha256": "e3dbb2c77c8f0685b6f5917787a4fe67d33b5d7ae92e4242dac2a9ed13bc4ae3"
+  },
+  "U10.L02-title-girl.webp": {
+    "bytes": 578796,
+    "sha256": "b560f8524a0a195c6f995c8ac7f237e233d5243b1ddc81580527e888262b192b"
+  },
   "U10.L03-E1.webp": {
     "bytes": 35178,
     "sha256": "220367cedd09d6e22034013e9bff05f325187ad958ce10941d173327ea002c75"
@@ -90,5 +114,29 @@
   "U10.L03-E6.webp": {
     "bytes": 22440,
     "sha256": "fe077dbffdb58b6edfb75286ebc06f80a74279ad9023fa6343ee7e239f74b201"
+  },
+  "U10.L03-exp.webp": {
+    "bytes": 418312,
+    "sha256": "4ac913b8e7818067c4523d8ef66ad7e8b51ede0f93b39521710fdfe5bcb552fb"
+  },
+  "U10.L03-hist1.webp": {
+    "bytes": 740828,
+    "sha256": "a2cae863e7e3afa057da292fa95db11eb5d67cc60e9db97582141dc34ba2b83f"
+  },
+  "U10.L03-letter.webp": {
+    "bytes": 353872,
+    "sha256": "52e031601667975db3fed1e45be01db73c3abcc8d032cacd3c91eae875cf4c26"
+  },
+  "U10.L03-life.webp": {
+    "bytes": 455942,
+    "sha256": "82c81b9e7c9cbfb546e05dda04f3cc68eb8ff2bcbd04b95599a9cd88343a97ac"
+  },
+  "U10.L03-title-boy.webp": {
+    "bytes": 380904,
+    "sha256": "e0d4e9638b94836ac8bfd65aac6d319eea446461bd91dc711d5460b89f55e8c8"
+  },
+  "U10.L03-title-girl.webp": {
+    "bytes": 466160,
+    "sha256": "ef0014a5ec8b05773b82834dfb9ac8128179cfd9949f8d82cb30c1116931cb26"
   }
 }
