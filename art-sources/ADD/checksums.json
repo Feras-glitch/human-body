@@ -244,8 +244,8 @@
     "sha256": "69bac3f5144d5024a15ddcdbbd2c81eadbafa141441435eb8c9a0a87dd825069"
   },
   "U09.L05-hist1.webp": {
-    "bytes": 673548,
-    "sha256": "a6bdda17112d4562b0e2e1157213dbf416a3725ff105d0ceba16fc8fd7967260"
+    "bytes": 604454,
+    "sha256": "6d1d6ba88cc9735f5b2729f801462035a519c8aa330c4615ebf8b555748571aa"
   },
   "U09.L05-letter.webp": {
     "bytes": 387664,
@@ -268,8 +268,8 @@
     "sha256": "6247073e8091b3b92a54ab426af891365d39a7eaf01c4f95c7d9b158781bc4d9"
   },
   "U10.L04-hist1.webp": {
-    "bytes": 522514,
-    "sha256": "bb70bfb4d46ab622c7f6746d0710448095eb5cf2fc4fa4fd3fc0a9ba3644b3d9"
+    "bytes": 497970,
+    "sha256": "241d590926a5037e2396b95e4600b9bd2ace1511393b31de4d9c923898071258"
   },
   "U10.L04-letter.webp": {
     "bytes": 344950,
@@ -292,8 +292,8 @@
     "sha256": "0e21ec93999a217f2456760e56a24650ea24545df3f7ff458a7ed1fedf360f91"
   },
   "U10.L05-hist1.webp": {
-    "bytes": 549632,
-    "sha256": "4a31b09481de8aa3452342abc0f81a9d52f5edd2cb109f7112c21bbab0fde8cc"
+    "bytes": 510452,
+    "sha256": "90f5f3c2c6e951ecbc1539ae7ca5d961b36aa1ad84d327399999c1938a18a0bc"
   },
   "U10.L05-letter.webp": {
     "bytes": 401860,
@@ -312,8 +312,8 @@
     "sha256": "73d9b341814eeeec999073f7acb956734cd5925f2dc0e3ecfd203c5410817398"
   },
   "U11.L03-exp.webp": {
-    "bytes": 390016,
-    "sha256": "6cccd87003c7b626224e4fc62b0014cb470aef04d9c979938378250c57fdad69"
+    "bytes": 377186,
+    "sha256": "d85dc0e3b2100a761fb7be6dbb7e841116c94956ebb5893348359d64d9050e6d"
   },
   "U11.L03-hist1.webp": {
     "bytes": 771740,
