@@ -77,6 +77,8 @@ const G = (k, d) => {
     return d
   }
 };
+/* درس بإذن ولي الأمر لا يدخل في الوحدة إلا لطفل أذن له وليّه */
+{ const unl = G('atlas:unlocked', {}) || {}; UNIT.lessons = UNIT.lessons.filter(l => !l.gated || typeof unl[l.id] === 'number'); UNIT.ideas = UNIT.ideas.filter(i => !i.lesson || typeof unl[i.lesson] === 'number'); }
 const FIN = UNIT.lessons.map(l => G(`atlas:${l.id}:finished`, false));
 /* القرار D22: يُفتح الإهداء حين تُنهى كل الدروس ويُتقن كل درس (80% فأكثر من أسئلة «أتحقق» من أول محاولة) */
 const MASTER = UNIT.lessons.map(l => {

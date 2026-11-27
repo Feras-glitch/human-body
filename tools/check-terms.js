@@ -8,7 +8,7 @@ const stem = w => norm(w).replace(/^(ال|بال|وال|فال|كال|لل)/, ''
   for (const id of ids) {
     const L = JSON.parse(fs.readFileSync(`lessons/${id}.json`, 'utf8'));
     const url = 'file://' + path.resolve(`app/v2/${id}.html`); await p.goto(url);
-    await p.evaluate(() => { Atlas.create({name:'نور',gender:'f'}); }); await p.goto(url);
+    await p.evaluate((l) => { Atlas.create({name:'نور',gender:'f'}); Atlas.storage.setItem('atlas:unlocked', JSON.stringify({ [l]: Date.now() })); }, id); await p.goto(url);
     await p.evaluate((u) => { level = 'B'; store.set('level', 'B'); Atlas.storage.setItem(`atlas:${u}.L01:level`, '"B"'); }, L.unit.id);
     const n = await p.evaluate(() => SCENES.length); const scenes = [];
     for (let i = 0; i < n; i++) { await p.evaluate(k => show(k), i); const sid = await p.evaluate(() => SCENES[idx].id); const text = norm(await p.$eval('#main', e => [...e.querySelectorAll('*')].filter(x => !x.closest('[data-def]')).map(x => [...x.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join(' ')).join(' '))); const defs = await p.$$eval('[data-def]', els => els.map(e => e.dataset.def)); scenes.push({ sid, text, defs }); }

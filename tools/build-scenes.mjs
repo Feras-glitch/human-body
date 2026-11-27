@@ -72,11 +72,12 @@ const stripRecall = t => (t||'').replace(/\(بعد [^)]{1,20}\)\s*/,'');
 const testId = id => id.replace(/\.L(\d{2})$/, '.T$1');
 for(const id of ids){ if(HAND.has(id)) continue; const L=all[id]; const unit=L.unit.id;
   const unitIds = ids.filter(i=>i.startsWith(unit+'.')); const k=unitIds.indexOf(id); const next = unitIds[k+1]||null;
+  const gatedOf = i => all[i]?.visibility==='parent_unlock'; const nexts = unitIds.slice(k+1).map(i=>({id:i, gated:gatedOf(i)}));
   const items=[...L.flow.practice,...L.flow.check];
-  const LESSON={ id, unit, title:L.title.ar, next: next?next+'.html':'index.html', home:'index.html', check_ids:items.map(i=>i.id),check_levels:Object.fromEntries(items.map(i=>[i.id,i.level||'A'])), check_kinds:Object.fromEntries(items.map(i=>[i.id,kindOf(sceneSrc(id),i)])) };
+  const LESSON={ id, unit, title:L.title.ar, ...(gatedOf(id)?{gated:true}:{}), next: next?next+'.html':'index.html', home:'index.html', check_ids:items.map(i=>i.id),check_levels:Object.fromEntries(items.map(i=>[i.id,i.level||'A'])), check_kinds:Object.fromEntries(items.map(i=>[i.id,kindOf(sceneSrc(id),i)])) };
   const TERMS=L.concepts.map(c=>({id:c.id, ar:c.term.ar, en:c.term.en, zh:c.term.zh, py:c.term.pinyin||''}));
   const sci=L.science||{};
-  const LD={ id, first: k===0, title:L.title.ar, driving_question:L.driving_question, central_fact:sci.central_fact, next,
+  const LD={ id, first: k===0, title:L.title.ar, driving_question:L.driving_question, central_fact:sci.central_fact, next, nexts,
     hook:L.flow.hook, explain:L.flow.explain, practice:L.flow.practice, check:L.flow.check, concepts:L.concepts, experiment:L.experiment||null,
     find_the_error:L.find_the_error||[], numbers:sci.numbers||[], true_size:L.true_size||[], animal:sci.animal_comparison||null, organ_letter:L.organ_letter||null,
     history:L.history||[], how_we_know:(sci.how_we_know&&sci.how_we_know[0])?{text:sci.how_we_know[0].text, limit_question:L.flow.how_we_know?.limit_question||''}:(L.flow.how_we_know||null),
@@ -104,7 +105,7 @@ ${existsSync(`app/v2/scenes/${id}.js`)?`<script src="scenes/${id}.js"></script>`
   writeFileSync(`app/v2/${id}.html`, html); made++;
   /* صفحة اختبار الدرس: بنود التقييم والنقل وعودة الذاكرة */
   const A=L.assessment||{}; const tid=testId(id);
-  const TEST={ id:tid, lesson:id, unit, title:'اختبار: '+L.title.ar, home:'index.html', next:'index.html', check_ids:[] };
+  const TEST={ id:tid, lesson:id, unit, title:'اختبار: '+L.title.ar, ...(L.visibility==='parent_unlock'?{gated:true}:{}), home:'index.html', next:'index.html', check_ids:[] };
   const TD={ id:tid, lesson:id, first:false, title:'اختبار: '+L.title.ar, lessonTitle:L.title.ar, concepts:[], check:[],
     items:(A.items||[]), transfer:(A.transfer||[]), recall:(A.delayed_recall||[]).map(d=>({...d, prompt:stripRecall(d.prompt)})) };
   writeFileSync(`app/v2/${tid}.html`, HEAD(TEST.title) + `<script src="audio-key.js"></script>
@@ -131,7 +132,7 @@ const REVIEW = ids.map(id=>{ const L=all[id]; const items=[...L.flow.practice,..
   const open=items.filter(i=>['true_false_why','explain_open','fix_model','compare'].includes(i.type)).map(i=>({id:i.id,level:i.level||'A',key:id.startsWith('U01.')?'open_'+i.id.split('.').pop():'open_'+i.id,q:plainQ(i.prompt),model:plainQ(i.answer),graded:i.type==='true_false_why',rubric:i.rubric||'R1'}));
   const A=L.assessment||{};
   const titem = i => ({id:i.id,level:i.level||'A',label:stripRecall(plainQ(i.prompt)),open:OPEN.has(i.type),tf:i.type==='true_false_why',model:OPEN.has(i.type)||i.type==='true_false_why'?plainQ(i.answer):'',rubric:i.rubric||'R1'});
-  return { id, test:testId(id), unit:L.unit.id, unitTitle:L.unit.title, title:L.title.ar,
+  return { id, test:testId(id), unit:L.unit.id, unitTitle:L.unit.title, title:L.title.ar, ...(L.visibility==='parent_unlock'?{gated:true, gateNote:L.gate_note||''}:{}),
     checks:L.flow.check.map(i=>({id:i.id,level:i.level||'A',open:kindOf(sceneSrc(id),i)==='open'})),
     closed, open, drawTitle:(L.flow.notebook?.draw||'').slice(0,80), anchors:anchors(L),
     testItems:(A.items||[]).map(titem), transfer:(A.transfer||[]).map(titem), recall:(A.delayed_recall||[]).map(titem),
@@ -151,8 +152,8 @@ const clean = t => (t||'').replace(/\{([^|}]*)\|[^}]*\}/g,'$1').replace(/\{اس�
 const tpl = readFileSync('app/v2/unit-template.html','utf8');
 const units=[...new Set(ids.map(i=>i.split('.')[0]))];
 for(const u of units){ const ls=ids.filter(i=>i.startsWith(u+'.')); const title=all[ls[0]].unit.title;
-  const ideas = u==='U01' ? U01_IDEAS : ls.flatMap((id,i)=>{ const L=all[id]; const cs=L.concepts.filter(c=>c.priority==='core').slice(0,2); return cs.map(c=>({l:`الدرس ${i+1}`, t:c.term.ar, s:clean(c.card.A)})); });
-  const data={ id:u, title, lessons: ls.map(id=>({id, test:testId(id), title:all[id].title.ar, checks:all[id].flow.check.map(i=>({id:i.id,level:i.level||'A',open:kindOf(sceneSrc(id),i)==='open'}))})), ideas };
+  const ideas = u==='U01' ? U01_IDEAS : ls.flatMap((id,i)=>{ const L=all[id]; const cs=L.concepts.filter(c=>c.priority==='core').slice(0,2); return cs.map(c=>({l:`الدرس ${i+1}`, t:c.term.ar, s:clean(c.card.A), ...(L.visibility==='parent_unlock'?{lesson:id}:{})})); });
+  const data={ id:u, title, lessons: ls.map(id=>({id, test:testId(id), title:all[id].title.ar, ...(all[id].visibility==='parent_unlock'?{gated:true}:{}), checks:all[id].flow.check.map(i=>({id:i.id,level:i.level||'A',open:kindOf(sceneSrc(id),i)==='open'}))})), ideas };
   writeFileSync(`app/v2/${u}.unit.html`, tpl.replace(/\/\*__UNIT_TITLE__\*\//g,title).replace(/\/\*__UNIT__\*\//g,u).replace('/*__UNIT_DATA__*/',safeJSON(data)));
 }
 console.log('unit pages:', units.join(' '));

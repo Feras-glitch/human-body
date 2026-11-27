@@ -215,8 +215,8 @@ function buildScenes(LD){
   /* الختام */
   S.push({ id:'end', resumable:()=>store.get('finished',false)===true, render(){ ok(); const checks=LESSON.check_ids.filter(i=>level==='B'||LESSON.check_levels?.[i]!=='B');const graded=checks.filter(i=>LESSON.check_kinds?.[i]!=='open'); const okc=graded.filter(i=>progress[i]?.firstAttempt===true).length; const opens=checks.length-graded.length; store.set('finished',true); if(!store.get('finishedAt',null)) store.set('finishedAt',Date.now());
       return `<div class="scene" style="text-align:center"><img src="img/s19-badge.webp" alt="" style="width:180px;margin:8px auto;display:block;animation:spin 1.2s ease"><h1>أنهيت{|ِ} «${LD.title}»!</h1><p class="say">${tx(LD.central_fact||'')} </p><p class="say">⭐ ${arN(stars,AR_N.star)} · أصبت{|ِ} من أول محاولة في ${okc} من ${arN(graded.length,AR_N.q,'obl')}${opens?` · وكتبت{|ِ} ${arN(opens,AR_N.ans,'obl')} يقرؤها ولي أمرك{|ِ}`:''}.</p><div class="row" style="justify-content:center">${buddy(120,'party')}</div>
-      <div class="row" style="justify-content:center;margin-top:14px"><button class="opt" style="width:auto;background:var(--teal);color:#fff" id="goHome">🏠 إلى خريطتي</button>${LD.next?`<button class="opt" style="width:auto;background:var(--coral);color:#fff" id="goNext">الدرس التالي ←</button>`:''}</div></div>`; },
-    after(){ confetti(); $('#goHome').onclick=()=>location.href=LESSON.home; const n=$('#goNext'); if(n) n.onclick=()=>location.href=LD.next+'.html'; speak([SAY.finished, tx(LD.title+'.'), tx(LD.central_fact||'')]); } });
+      <div class="row" style="justify-content:center;margin-top:14px"><button class="opt" style="width:auto;background:var(--teal);color:#fff" id="goHome">🏠 إلى خريطتي</button>${nextOpen()?`<button class="opt" style="width:auto;background:var(--coral);color:#fff" id="goNext">الدرس التالي ←</button>`:''}</div></div>`; },
+    after(){ confetti(); $('#goHome').onclick=()=>location.href=LESSON.home; const n=$('#goNext'); if(n) n.onclick=()=>location.href=nextOpen()+'.html'; speak([SAY.finished, tx(LD.title+'.'), tx(LD.central_fact||'')]); } });
   return S;
 }
 
@@ -267,6 +267,8 @@ window.BOOT_HOOK = () => {
   return at.length ? at[0] : null;
 };
 
+/* الدرس التالي المفتوح لهذا الطفل: يتخطى درساً بإذن ولي الأمر لم يُؤذن له فيه */
+function nextOpen(){ const n=(LD.nexts||[]).find(x=>!x.gated||lessonOpen(x.id)); return n? n.id : (LD.nexts? null : LD.next); }
 /* طبقة التأليف الخاص: scenes/<id>.js يعرّف CUSTOM = { replace:{id:scene}, after:{id:[scenes]}, before:{id:[scenes]}, drop:[ids] } */
 function withCards(sc, cards){ if(!cards||!cards.length) return sc; const r=sc.render; return { ...sc, render(){ const h=r.call(sc); return h==null? h : h.replace(/<\/div>\s*$/, cards.map(conceptCard).join('')+'</div>'); } }; }
 /* صورة المشهد المولَّد تُحفظ حين يُستبدل أو يُحذف وتُعرض في أول مشهد يليه */

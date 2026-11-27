@@ -395,6 +395,8 @@ test('every lesson renders every scene for both genders and levels', () => fixtu
   await create(p);
   let count = 0;
   const files = fs.readdirSync(root).filter(x => /^U\d\d\.L\d\d\.html$/.test(x));
+  // دروس بإذن ولي الأمر (U10.L02): يأذن الاختبار لها كلها ليعرضها
+  await p.evaluate(ids => Atlas.storage.setItem('atlas:unlocked', JSON.stringify(Object.fromEntries(ids.map(i => [i, Date.now()])))), files.map(f => f.replace('.html', '')));
   for (const file of files) {
     await go(p, file);
     for (const gender of ['m', 'f'])

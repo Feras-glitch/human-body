@@ -9,7 +9,7 @@ const TESTS=process.argv.includes('--tests'); if(TESTS) for(let i=0;i<ids.length
   for (const id of ids) for (const gender of ['m','f']) {
     const errors = []; const h = e => errors.push(e.message + (process.env.STACK ? ' @ ' + String(e.stack||'').split('\n').slice(1,3).join(' ') : '')); page.on('pageerror', h);
     const url = 'file://' + path.resolve(`app/v2/${id}.html`);
-    await page.goto(url); await page.evaluate((g) => { Atlas.create({name:'نور',gender:g}); }, gender);
+    await page.goto(url); await page.evaluate((g) => { Atlas.create({name:'نور',gender:g}); }, gender); await page.evaluate(l => Atlas.storage.setItem('atlas:unlocked', JSON.stringify({ [l]: Date.now() })), id.replace(/\.T(\d{2})$/, '.L$1'));
     if(TESTS){ const lid=id.replace(/\.T(\d{2})$/,'.L$1'); await page.evaluate(l=>{ Atlas.storage.setItem('atlas:'+l+':finished','true'); Atlas.storage.setItem('atlas:'+l+':finishedAt',JSON.stringify(Date.now()-4*864e5)); },lid); }
     await page.goto(url);await page.evaluate(()=>window.Atlas?.ready);await page.evaluate(l=>{level=l;store.set('level',l);},selectedLevel);
     const seen = []; let stuck = null;
