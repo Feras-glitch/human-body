@@ -310,6 +310,20 @@ function show(i, dir=1){leaveScene();{const cf=document.getElementById('confetti
 $('#nextBtn').onclick=()=>{ if(!done) return; show(idx+1, 1); };
 $('#backBtn').onclick=()=>{ if(SCENES[idx]?.noBack) return; show(idx-1, -1); };
 $('#homeBtn').onclick=()=>{leaveScene(); /* تسجيل قُطع بالمغادرة يُحفظ أولاً */ Promise.resolve(typeof recSaving!=='undefined'?recSaving:0).then(()=>{location.href=LESSON.home;});};
+/* ملاحظة ولي الأمر على المشهد (تجربة الأسر، 28 نوفمبر): تُحفظ في atlas:pnotes على الجهاز، وتظهر في شاشة ولي الأمر وتُنزَّل منها ملفاً. بلا نوافذ المتصفح المنبثقة. */
+(function(){ const hd=document.querySelector('#app>header'); if(!hd||document.getElementById('noteBtn')) return;
+  const b=document.createElement('button'); b.id='noteBtn'; b.className='home'; b.type='button'; b.title='ملاحظة لولي الأمر على هذا المشهد'; b.setAttribute('aria-label','ملاحظة لولي الأمر على هذا المشهد'); b.textContent='✎'; hd.appendChild(b);
+  const box=document.createElement('div'); box.id='noteBox'; box.hidden=true; box.setAttribute('role','dialog'); box.setAttribute('aria-label','ملاحظة لولي الأمر');
+  box.innerHTML='<div class="nbIn"><b>ملاحظة لولي الأمر على هذا المشهد</b><p class="note" style="margin:4px 0">خطأ رأيته، أو صعوبة، أو فكرة. تُحفظ على هذا الجهاز وتجدها في شاشة ولي الأمر.</p><textarea id="noteTxt" rows="4" maxlength="1000" data-raw></textarea><div class="row" style="gap:8px;margin-top:8px"><button class="opt" style="width:auto" id="noteSave">احفظ الملاحظة</button><button class="opt" style="width:auto" id="noteCancel">إلغاء</button></div><p class="note" id="noteMsg" role="status"></p></div>';
+  document.body.appendChild(box);
+  const load=()=>{ try{ const v=JSON.parse(Atlas.storage.getItem('atlas:pnotes')||'[]'); return Array.isArray(v)?v:[]; }catch{ return []; } };
+  b.onclick=()=>{ box.hidden=false; $('#noteMsg').textContent=''; const t=$('#noteTxt'); t.value=''; t.focus(); };
+  $('#noteCancel').onclick=()=>{ box.hidden=true; };
+  $('#noteSave').onclick=()=>{ const t=$('#noteTxt').value.trim(); if(!t){ $('#noteMsg').textContent='اكتب الملاحظة أولاً.'; return; }
+    const a=load(); a.push({lesson:String(LESSON.id), scene:String(SCENES[idx]?.id??idx), text:t.slice(0,1000), at:Date.now()}); while(a.length>500) a.shift();
+    try{ Atlas.storage.setItem('atlas:pnotes', JSON.stringify(a)); $('#noteMsg').textContent='حُفظت الملاحظة. شكراً لك.'; setTimeout(()=>{ box.hidden=true; },900); }
+    catch(e){ $('#noteMsg').textContent='تعذّر الحفظ: '+e.message; } };
+})();
 /* موضع الاستئناف يُحفظ بمعرّف المشهد لا برقمه: تحديث يغيّر عدد المشاهد لا يقفز بالطفل فوق أسئلة ولا يفتح له مشهد الختام.
    الرقم القديم (بلا معرّف) يُقبل مرة واحدة إن كان داخل الطول؛ ومشهد ختامي لم يُبلغ فعلاً (resumable يعيد false) لا يُستأنف عليه */
 function resumeIndex(){ const sid=store.get('sceneId',null); let i=typeof sid==='string'?SCENES.findIndex(s=>String(s.id)===sid):-1;
