@@ -1,13 +1,17 @@
-# بناء نسخة المسودة (أندرويد وويندوز) بزر من صفحة Actions، ونشرها في «إصدار» على GitHub برابط ثابت.
-# يعمل يدوياً فقط (workflow_dispatch). المسودة وحدها: الإصدار المعتمد يحتاج اعتماد المراجعين (tools/release-gate.sh).
+# بناء نسخة المسودة (أندرويد وويندوز) عند كل دمج في main، أو بزر من صفحة Actions، ونشرها في إصدار ثابت الرابط: releases/tag/draft-latest
+# المسودة وحدها: الإصدار المعتمد يحتاج اعتماد المراجعين (tools/release-gate.sh).
 #
-# مفتاح توقيع أندرويد لا يدخل المستودع أبداً. يقرؤه البناء من أسرار المستودع (Settings ← Secrets and variables ← Actions):
-#   HB_KEYSTORE_B64   ملف humanbody-2026.jks مرمّزاً base64
-#   HB_KEYSTORE_PASS  كلمة سرّه
-# ويُكتب في مجلد مؤقت خارج المستودع ويُحذف في آخر البناء. بلا السرّين تُبنى ويندوز وحدها (لا تحتاج مفتاحاً). الأدوات تُنزَّل وتُطابَق ببصماتها في packaging/README.md.
+# توقيع أندرويد (قرار صاحب المشروع 28 نوفمبر، كما في «مستكشف العالم»): المفتاح مشفّراً بـAES-256 في ci/release.jks.enc،
+# وكلمة سرّه سرّ واحد في إعدادات المستودع: HB_KEYSTORE_PASSWORD. يُفكّ في مجلد مؤقت ويُحذف بعد التوقيع،
+# وتُطابَق بصمة الشهادة مع ci/release-cert.sha256. بلا السرّ تُبنى ويندوز وحدها. الأدوات تُطابَق ببصماتها في packaging/README.md.
 name: Build apps (draft)
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
+concurrency:
+  group: build-apps
+  cancel-in-progress: true
 permissions:
   contents: write
 jobs:
@@ -54,23 +58,27 @@ jobs:
         run: ELECTRON_ZIP="$DL/electron-v45.3.0-win32-x64.zip" NSIS_DIR="$DL/nsis" PEFILE_DIR="$DL/pefile" bash packaging/build-windows.sh
       - name: Build Android (signed with the project key)
         env:
-          HB_KEYSTORE_B64: ${{ secrets.HB_KEYSTORE_B64 }}
-          HB_KEYSTORE_PASS: ${{ secrets.HB_KEYSTORE_PASS }}
+          KS_PW: ${{ secrets.HB_KEYSTORE_PASSWORD }}
         run: |
-          if [ -z "$HB_KEYSTORE_B64" ] || [ -z "$HB_KEYSTORE_PASS" ]; then
-            echo "::warning::لا مفتاح توقيع في أسرار المستودع (HB_KEYSTORE_B64 وHB_KEYSTORE_PASS)، فلم يُبنَ أندرويد. نسخة ويندوز تُنشر وحدها."; exit 0; fi
-          export HB_KEYSTORE="$RUNNER_TEMP/keys/humanbody-2026.jks"
-          mkdir -p "$(dirname "$HB_KEYSTORE")" && echo "$HB_KEYSTORE_B64" | base64 -d > "$HB_KEYSTORE"
+          if [ -z "$KS_PW" ]; then
+            echo "::warning::السرّ HB_KEYSTORE_PASSWORD غير موجود في إعدادات المستودع، فلم يُبنَ أندرويد. نسخة ويندوز تُنشر وحدها."; exit 0; fi
+          export HB_KEYSTORE="$RUNNER_TEMP/keys/humanbody.jks" HB_KEYSTORE_PASS="$KS_PW"
+          mkdir -p "$RUNNER_TEMP/keys"
+          openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in ci/release.jks.enc -out "$HB_KEYSTORE" -pass env:KS_PW
           ANDROID_JAR="$DL/android-platforms/android-34/android.jar" AAPT2="$DL/aapt2_64" D8_JAR="$DL/lib/jadx-1.5.1-all.jar" SIGNER_JAR="$DL/uber-apk-signer-1.3.0.jar" bash packaging/build-android.sh
           rm -rf "$RUNNER_TEMP/keys"
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+          GOT=$("$BT/apksigner" verify --print-certs dist/HumanBody-Android-*.apk | grep 'SHA-256 digest' | head -1 | awk '{print $NF}')
+          echo "بصمة التوقيع: $GOT"
+          [ "$GOT" = "$(cat ci/release-cert.sha256)" ] || { echo "::error::بصمة التوقيع لا تطابق البصمة المعتمدة"; exit 1; }
       - name: Publish a draft release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           V="$(node -p "require('./packaging/desktop/package.json').version")"
-          TAG="draft-$V-$(git rev-parse --short HEAD)"
-          cd dist && ls -1 HumanBody-*.apk HumanBody-*Setup.exe HumanBody-*portable.zip 2>/dev/null > files.txt || true && sha256sum $(cat files.txt) > SHA256SUMS.txt
+          C="$(git rev-parse --short HEAD)"; TAG=draft-latest
+          cd dist && { ls -1 HumanBody-*.apk HumanBody-*Setup.exe HumanBody-*portable.zip 2>/dev/null > files.txt || true; } && sha256sum $(cat files.txt) > SHA256SUMS.txt
           gh release delete "$TAG" -y --cleanup-tag 2>/dev/null || true
           gh release create "$TAG" $(cat files.txt) SHA256SUMS.txt --prerelease --target "$GITHUB_SHA" \
-            --title "رحلة داخل جسمي $V — مسودة للتجربة ($(git rev-parse --short HEAD))" \
-            --notes "مسودة غير معتمدة للتجربة في البيت، من الإيداع $(git rev-parse --short HEAD). أندرويد: ثبّت ملف .apk. ويندوز: Setup.exe للتثبيت، أو portable.zip بلا تثبيت."
+            --title "رحلة داخل جسمي $V — مسودة للتجربة ($C)" \
+            --notes "مسودة غير معتمدة للتجربة في البيت، من الإيداع $C. أندرويد: ثبّت ملف .apk. ويندوز: Setup.exe للتثبيت، أو portable.zip بلا تثبيت."
