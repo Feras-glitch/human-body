@@ -1,0 +1,84 @@
+# بناء نسخة المسودة (أندرويد وويندوز) عند كل دمج في main، أو بزر من صفحة Actions، ونشرها في إصدار ثابت الرابط: releases/tag/draft-latest
+# المسودة وحدها: الإصدار المعتمد يحتاج اعتماد المراجعين (tools/release-gate.sh).
+#
+# توقيع أندرويد (قرار صاحب المشروع 28 نوفمبر، كما في «مستكشف العالم»): المفتاح مشفّراً بـAES-256 في ci/release.jks.enc،
+# وكلمة سرّه سرّ واحد في إعدادات المستودع: HB_KEYSTORE_PASSWORD. يُفكّ في مجلد مؤقت ويُحذف بعد التوقيع،
+# وتُطابَق بصمة الشهادة مع ci/release-cert.sha256. بلا السرّ تُبنى ويندوز وحدها. الأدوات تُطابَق ببصماتها في packaging/README.md.
+name: Build apps (draft)
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+concurrency:
+  group: build-apps
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      BUILD_KIND: draft
+      DL: ${{ runner.temp }}/pkg-tools
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - run: pip install pillow
+      - name: Check that the app is built from the current lessons
+        run: node tools/build-info.mjs --check
+      - name: Download build tools and verify their checksums
+        run: |
+          mkdir -p "$DL" && cd "$DL"
+          get() { curl -fsSL -o "$2" "$1"; echo "$3  $2" | sha256sum -c -; }
+          get https://github.com/electron/electron/releases/download/v45.3.0/electron-v45.3.0-win32-x64.zip electron-v45.3.0-win32-x64.zip b43b532e712a4323f4224627b73808a039c9769fdf7ba1dbc3cb49c1dbfa350b
+          get https://github.com/ip7z/7zip/releases/download/24.08/7z2408-linux-x64.tar.xz 7z2408-linux-x64.tar.xz 9b3a2edf0644a2b00b0a39ab6843f426128e4a6f6f98c40f8c02a668e5b5b59b
+          mkdir 7zip && tar xJf 7z2408-linux-x64.tar.xz -C 7zip
+          get https://github.com/electron-userland/electron-builder-binaries/releases/download/nsis-3.0.4.1/nsis-3.0.4.1.7z nsis-3.0.4.1.7z 9877df902530f96357d13a7a31ae2b9df67f48b11ffc9a1700a7c961574ec5fa
+          ./7zip/7zz x -onsis nsis-3.0.4.1.7z > /dev/null && chmod +x nsis/linux/makensis
+          git clone -q https://github.com/erocarrera/pefile.git && git -C pefile checkout -q 58186a92164842cf758822e067bc79c59b3c80d9
+          get https://github.com/iBotPeaches/Apktool/releases/download/v2.10.0/apktool_2.10.0.jar apktool_2.10.0.jar c0350abbab5314248dfe2ee0c907def4edd14f6faef1f5d372d3d4abd28f0431
+          unzip -q -j apktool_2.10.0.jar prebuilt/linux/aapt2_64 && chmod +x aapt2_64
+          echo "e9f05c38c1b777d07b3c5a20b1b6ce66e110badc6e31384acd0aae53932b7322  aapt2_64" | sha256sum -c -
+          get https://github.com/skylot/jadx/releases/download/v1.5.1/jadx-1.5.1.zip jadx-1.5.1.zip 12fd966431903b8e15c36e5007f19343475be7d8f2a55f082e7a929eeabc937e
+          unzip -q jadx-1.5.1.zip lib/jadx-1.5.1-all.jar
+          get https://github.com/patrickfav/uber-apk-signer/releases/download/v1.3.0/uber-apk-signer-1.3.0.jar uber-apk-signer-1.3.0.jar e1299fd6fcf4da527dd53735b56127e8ea922a321128123b9c32d619bba1d835
+          git clone -q --depth 1 --filter=blob:none --sparse https://github.com/Sable/android-platforms.git && (cd android-platforms && git sparse-checkout set android-34)
+          echo "6cea1df3efb77103ac3e2beb9bf4718964b0e0869ab16d39d29d5cbae1c147ad  android-platforms/android-34/android.jar" | sha256sum -c -
+      - name: Build Windows (installer and portable)
+        run: ELECTRON_ZIP="$DL/electron-v45.3.0-win32-x64.zip" NSIS_DIR="$DL/nsis" PEFILE_DIR="$DL/pefile" bash packaging/build-windows.sh
+      - name: Build Android (signed with the project key)
+        env:
+          KS_PW: ${{ secrets.HB_KEYSTORE_PASSWORD }}
+        run: |
+          if [ -z "$KS_PW" ]; then
+            echo "::warning::السرّ HB_KEYSTORE_PASSWORD غير موجود في إعدادات المستودع، فلم يُبنَ أندرويد. نسخة ويندوز تُنشر وحدها."; exit 0; fi
+          export HB_KEYSTORE="$RUNNER_TEMP/keys/humanbody.jks" HB_KEYSTORE_PASS="$KS_PW"
+          mkdir -p "$RUNNER_TEMP/keys"
+          openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in ci/release.jks.enc -out "$HB_KEYSTORE" -pass env:KS_PW
+          ANDROID_JAR="$DL/android-platforms/android-34/android.jar" AAPT2="$DL/aapt2_64" D8_JAR="$DL/lib/jadx-1.5.1-all.jar" SIGNER_JAR="$DL/uber-apk-signer-1.3.0.jar" bash packaging/build-android.sh
+          rm -rf "$RUNNER_TEMP/keys"
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
+          GOT=$("$BT/apksigner" verify --print-certs dist/HumanBody-Android-*.apk | grep 'SHA-256 digest' | head -1 | awk '{print $NF}')
+          echo "بصمة التوقيع: $GOT"
+          [ "$GOT" = "$(cat ci/release-cert.sha256)" ] || { echo "::error::بصمة التوقيع لا تطابق البصمة المعتمدة"; exit 1; }
+      - name: Publish a draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          V="$(node -p "require('./packaging/desktop/package.json').version")"
+          C="$(git rev-parse --short HEAD)"; TAG=draft-latest
+          cd dist && { ls -1 HumanBody-*.apk HumanBody-*Setup.exe HumanBody-*portable.zip 2>/dev/null > files.txt || true; } && sha256sum $(cat files.txt) > SHA256SUMS.txt
+          gh release delete "$TAG" -y --cleanup-tag 2>/dev/null || true
+          gh release create "$TAG" $(cat files.txt) SHA256SUMS.txt --prerelease --target "$GITHUB_SHA" \
+            --title "رحلة داخل جسمي $V — مسودة للتجربة ($C)" \
+            --notes "مسودة غير معتمدة للتجربة في البيت، من الإيداع $C. أندرويد: ثبّت ملف .apk. ويندوز: Setup.exe للتثبيت، أو portable.zip بلا تثبيت."
