@@ -944,7 +944,15 @@
       "detects": "M22"
     }
   ],
-  "true_size": [],
+  "true_size": [
+    {
+      "text": "{املأ|املئي} قارورات ماء بعدد اللترات التي حسبها جواز سفرك{|ِ} في «كم لتراً من الدم في جسمي»، {وصفّها|وصفّيها} على الطاولة: هذا دمك{|ِ} كله. وقلبك{|ِ} يدفعه كله في أوعيتك{|ِ} مرات كثيرة كل يوم.",
+      "source": [
+        "S2",
+        "S3"
+      ]
+    }
+  ],
   "unit_review": {
     "text": "القلب والأوعية والدم فريق نقل واحد: مضخة، وطرق، وما يُنقل فيها.",
     "links": [
@@ -1152,6 +1160,8 @@
     "faith.closing.reflection": "U03.L04/faith.closing.reflection.fbf10ed05a.mp3",
     "number.21569c6fb7.m": "U03.L04/number.21569c6fb7.m.111341e77b.mp3",
     "number.21569c6fb7.f": "U03.L04/number.21569c6fb7.f.9bd631106f.mp3",
+    "size.34dea371be.m": "U03.L04/size.34dea371be.m.da963fd525.mp3",
+    "size.34dea371be.f": "U03.L04/size.34dea371be.f.1b5c88580c.mp3",
     "central_fact": "U03.L04/central_fact.e153c05eb7.mp3",
     "scene.31dd9da393": "U03.L04/scene.31dd9da393.31dd9da393.mp3",
     "scene.e9f5f2eaf9": "U03.L04/scene.e9f5f2eaf9.e9f5f2eaf9.mp3",

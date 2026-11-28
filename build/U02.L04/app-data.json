@@ -766,7 +766,14 @@
       "detects": "M32"
     }
   ],
-  "true_size": [],
+  "true_size": [
+    {
+      "text": "{اصنع|اصنعي} نموذج الذراع بحجم ذراعك{|ِ}: {قس|قيسي} من كتفك{|ِ} إلى مرفقك{|ِ} لقطعة العضد، ومن مرفقك{|ِ} إلى رسغك{|ِ} لقطعة الساعد، ثم {ضع|ضعي} النموذج بجانب ذراعك{|ِ} {واثنِ|واثني} الاثنين معاً.",
+      "source": [
+        "S1"
+      ]
+    }
+  ],
   "unit_review": {
     "text": "دروس هذه الوحدة قطع في آلة واحدة: العظم يحمل، والمفصل يسمح بالحركة، والعضلة تسحب، والوتر يوصل سحبها إلى العظم.",
     "links": [
@@ -962,6 +969,8 @@
     "hadith.muslim:1631": "U02.L04/hadith.muslim:1631.bb2310086d.mp3",
     "number.4f838dc692.m": "U02.L04/number.4f838dc692.m.70ee668c42.mp3",
     "number.4f838dc692.f": "U02.L04/number.4f838dc692.f.1c37351ccf.mp3",
+    "size.760a5c52cc.m": "U02.L04/size.760a5c52cc.m.0cbe7b0e0c.mp3",
+    "size.760a5c52cc.f": "U02.L04/size.760a5c52cc.f.5eae7d19be.mp3",
     "central_fact": "U02.L04/central_fact.dc00800507.mp3",
     "scene.d8052f6c7e.m": "U02.L04/scene.d8052f6c7e.m.2dedef3157.mp3",
     "scene.d8052f6c7e.f": "U02.L04/scene.d8052f6c7e.f.20e32396f4.mp3",
