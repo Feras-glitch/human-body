@@ -1318,7 +1318,14 @@
       "answer": "التوازن في القنوات الهلالية بجانب القوقعة؛ والقوقعة للسمع"
     }
   ],
-  "true_size": [],
+  "true_size": [
+    {
+      "text": "على طرف إصبعك{|ِ} {تميّز|تميّزين} رأسي قلمين بينهما عرض حبة أرز تقريباً (2–3 مم)؛ وعلى ذراعك{|ِ} تحتاج{|ين} بينهما نحو عرض إصبعين (35–40 مم).",
+      "source": [
+        "S7"
+      ]
+    }
+  ],
   "audio": {
     "title": "U08.L03/title.82b2be9d33.mp3",
     "driving_question.m": "U08.L03/driving_question.m.c31168cd5e.mp3",
@@ -1562,6 +1569,8 @@
     "number.321891be79.m": "U08.L03/number.321891be79.m.b0ac3abbc5.mp3",
     "number.321891be79.f": "U08.L03/number.321891be79.f.4fcb187a53.mp3",
     "number.f3d87e942e": "U08.L03/number.f3d87e942e.f3d87e942e.mp3",
+    "size.81291a9183.m": "U08.L03/size.81291a9183.m.9bcb53635d.mp3",
+    "size.81291a9183.f": "U08.L03/size.81291a9183.f.f79d17f4ca.mp3",
     "central_fact": "U08.L03/central_fact.fa7a7e138e.mp3",
     "scene.d81aac222f": "U08.L03/scene.d81aac222f.d81aac222f.mp3",
     "scene.62be905e2b": "U08.L03/scene.62be905e2b.62be905e2b.mp3",

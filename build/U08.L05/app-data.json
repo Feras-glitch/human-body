@@ -1310,7 +1310,15 @@
       "detects": "M94"
     }
   ],
-  "true_size": [],
+  "true_size": [
+    {
+      "text": "من 9 إلى 12 ساعة نوم من 24 ساعة: أكثر من ثلث يومك{|ِ}. وفيها يثبّت دماغك{|ِ} ما {تعلمته|تعلمتِه} في النهار.",
+      "source": [
+        "S1",
+        "S3"
+      ]
+    }
+  ],
   "audio": {
     "title": "U08.L05/title.d5df1573e8.mp3",
     "driving_question.m": "U08.L05/driving_question.m.ddd082618f.mp3",
@@ -1562,6 +1570,8 @@
     "faith.closing.reflection.f": "U08.L05/faith.closing.reflection.f.d0d2450a37.mp3",
     "number.0e741a0042": "U08.L05/number.0e741a0042.0e741a0042.mp3",
     "number.c1a0f1211d": "U08.L05/number.c1a0f1211d.c1a0f1211d.mp3",
+    "size.77b555c271.m": "U08.L05/size.77b555c271.m.743e98da6f.mp3",
+    "size.77b555c271.f": "U08.L05/size.77b555c271.f.68ae148214.mp3",
     "central_fact": "U08.L05/central_fact.db5e9e370e.mp3",
     "scene.7d1901f53e.m": "U08.L05/scene.7d1901f53e.m.421a647720.mp3",
     "scene.7d1901f53e.f": "U08.L05/scene.7d1901f53e.f.4f0754cac6.mp3",

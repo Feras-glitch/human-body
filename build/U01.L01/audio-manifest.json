@@ -1,8 +1,8 @@
 {
   "lesson": "U01.L01",
   "version": "1.0",
-  "count": 277,
-  "words": 4186,
+  "count": 284,
+  "words": 4231,
   "items": [
     {
       "key": "title",
@@ -563,6 +563,50 @@
       "hash": "eae9c8b0cd",
       "file": "U01.L01/item.U01.L01.C5.opt3.eae9c8b0cd.mp3",
       "text": "الحرف R يرمز إلى اليمين بالإنجليزية، لا إلى اسم المريض. لماذا يحتاج الطبيب أن يعرف أين يمين المريض في الصورة؟"
+    },
+    {
+      "key": "item.U01.L01.C6",
+      "hash": "7bb8f216d8",
+      "file": "U01.L01/item.U01.L01.C6.7bb8f216d8.mp3",
+      "text": "أين البطن بالنسبة إلى الصدر؟"
+    },
+    {
+      "key": "item.U01.L01.C6.hint.m",
+      "gender": "m",
+      "hash": "8876fd84ea",
+      "file": "U01.L01/item.U01.L01.C6.hint.m.8876fd84ea.mp3",
+      "text": "انظر إلى جذعك: أيهما فوق الآخر؟"
+    },
+    {
+      "key": "item.U01.L01.C6.hint.f",
+      "gender": "f",
+      "hash": "42bc2dd53d",
+      "file": "U01.L01/item.U01.L01.C6.hint.f.42bc2dd53d.mp3",
+      "text": "انظري إلى جذعكِ: أيهما فوق الآخر؟"
+    },
+    {
+      "key": "item.U01.L01.C6.why",
+      "hash": "a8e5d61718",
+      "file": "U01.L01/item.U01.L01.C6.why.a8e5d61718.mp3",
+      "text": "الصدر والبطن في الجذع: الصدر أعلى، والبطن أسفل منه."
+    },
+    {
+      "key": "item.U01.L01.C6.opt0",
+      "hash": "1584db2112",
+      "file": "U01.L01/item.U01.L01.C6.opt0.1584db2112.mp3",
+      "text": "الصدر هو الأعلى. أين البطن منه؟"
+    },
+    {
+      "key": "item.U01.L01.C6.opt1",
+      "hash": "cde81ddec3",
+      "file": "U01.L01/item.U01.L01.C6.opt1.cde81ddec3.mp3",
+      "text": "خلف الصدر الظهر لا البطن."
+    },
+    {
+      "key": "item.U01.L01.C6.opt3",
+      "hash": "03d04cad6c",
+      "file": "U01.L01/item.U01.L01.C6.opt3.03d04cad6c.mp3",
+      "text": "البطن في منتصف الجذع مثل الصدر، لكنه تحته."
     },
     {
       "key": "item.U01.L01.A1.a.m",

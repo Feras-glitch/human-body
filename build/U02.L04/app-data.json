@@ -244,6 +244,27 @@
           "1": "الساعد لا ينثني في منتصفه؛ المشكلة أن الخيط الواحد يثني ولا يمدّ.",
           "3": "الخيط يسحب ولا يدفع؛ فمن يمدّ الساعد بعد ثنيه؟"
         }
+      },
+      {
+        "id": "U02.L04.P3",
+        "objective": "U02.L04.O3",
+        "type": "choose",
+        "prompt": "{تقفز|تقفزين} عالياً. ماذا يحدث في ساقيك{|ِ}؟",
+        "answer": 1,
+        "explanation": "العضلات تنقبض فتسحب العظام عبر الأوتار، والمفاصل تسمح بالحركة: هكذا نقفز.",
+        "level": "A",
+        "options": [
+          "العضلات تطول وتدفع العظام عند المفاصل إلى الأعلى",
+          "عضلات تنقبض فتسحب العظام عند المفاصل",
+          "المفاصل تتحرك بلا عضلات",
+          "الأوتار تنقبض بدل العضلات"
+        ],
+        "feedback_wrong": "تذكّر{|ي} قاعدة الوحدة: العضلة تسحب.",
+        "feedback_by_option": {
+          "0": "العضلة لا تطول حين تعمل، ولا تدفع.",
+          "2": "المفصل لا يتحرك وحده؛ تحركه العضلة.",
+          "3": "الوتر حبل يوصل السحب، والعضلة هي التي تنقبض."
+        }
       }
     ],
     "check": [
@@ -273,6 +294,27 @@
         "answer": "لا يُظهر الأعصاب ولا الدم ولا الأربطة؛ السؤال: من يأمر العضلة؟ / من أين طاقتها؟",
         "level": "B",
         "rubric": "R2"
+      },
+      {
+        "id": "U02.L04.C4",
+        "objective": "U02.L04.O2",
+        "type": "choose",
+        "prompt": "في نموذج خاطئ، الخيط (الوتر) موصول بالعضد ولا يصل إلى الساعد. ماذا يحدث حين {تسحب|تسحبين} الخيط؟",
+        "answer": 2,
+        "explanation": "الوتر يجب أن يصل العضلة بالعظم الذي يتحرك؛ إن لم يصل إلى الساعد لم يصل إليه السحب.",
+        "level": "A",
+        "options": [
+          "ينثني الساعد أسرع من قبل",
+          "يدور المرفق كالكتف",
+          "لا ينثني الساعد",
+          "يمتد الساعد"
+        ],
+        "feedback_wrong": "إلى أي عظم يصل السحب؟",
+        "feedback_by_option": {
+          "0": "السحب لا يصل إلى الساعد أصلاً.",
+          "1": "المرفق رزّي لا يدور، والسحب لا يصل إليه.",
+          "3": "لا يتحرك الساعد لأن السحب لا يصل إليه."
+        }
       }
     ],
     "notebook": {
@@ -766,7 +808,45 @@
       "detects": "M32"
     }
   ],
-  "true_size": [],
+  "true_size": [
+    {
+      "text": "{اصنع|اصنعي} نموذج الذراع بحجم ذراعك{|ِ}: {قس|قيسي} من كتفك{|ِ} إلى مرفقك{|ِ} لقطعة العضد، ومن مرفقك{|ِ} إلى رسغك{|ِ} لقطعة الساعد، ثم {ضع|ضعي} النموذج بجانب ذراعك{|ِ} {واثنِ|واثني} الاثنين معاً.",
+      "source": [
+        "S1"
+      ]
+    }
+  ],
+  "unit_review": {
+    "text": "دروس هذه الوحدة قطع في آلة واحدة: العظم يحمل، والمفصل يسمح بالحركة، والعضلة تسحب، والوتر يوصل سحبها إلى العظم.",
+    "links": [
+      {
+        "lesson": "U02.L01",
+        "idea": "العظم حي: يدعم الجسم ويحميه، وينمو ويلتئم"
+      },
+      {
+        "lesson": "U02.L02",
+        "idea": "المفصل حيث تلتقي عظمتان، وشكله يحدد حركته"
+      },
+      {
+        "lesson": "U02.L03",
+        "idea": "العضلة تنقبض فتسحب ولا تدفع، فتعمل أزواجاً"
+      },
+      {
+        "lesson": "U02.L04",
+        "idea": "نبني نموذج ذراع ونفحص به ما تعلمناه"
+      }
+    ],
+    "question": {
+      "prompt": "حين {تثني|تثنين} مرفقك{|ِ} لترفع{|ي} كوباً، ماذا يحدث؟",
+      "options": [
+        "العضلة تدفع العظم إلى الأعلى",
+        "العظم يتحرك وحده دون عضلة",
+        "عضلة تنقبض فتسحب العظم عبر الوتر، والمفصل يسمح بالانثناء"
+      ],
+      "answer": 2,
+      "why": "العضلة تسحب ولا تدفع، والوتر يوصل سحبها إلى العظم، والمفصل يسمح بالحركة: دروس الوحدة كلها في حركة واحدة."
+    }
+  },
   "audio": {
     "title": "U02.L04/title.11e0eb8494.mp3",
     "driving_question.m": "U02.L04/driving_question.m.0d9affb72d.mp3",
@@ -810,12 +890,27 @@
     "item.U02.L04.P2.opt0": "U02.L04/item.U02.L04.P2.opt0.1307b77c16.mp3",
     "item.U02.L04.P2.opt1": "U02.L04/item.U02.L04.P2.opt1.ed4853424a.mp3",
     "item.U02.L04.P2.opt3": "U02.L04/item.U02.L04.P2.opt3.db61ad8a8d.mp3",
+    "item.U02.L04.P3.m": "U02.L04/item.U02.L04.P3.m.92ec035f6e.mp3",
+    "item.U02.L04.P3.f": "U02.L04/item.U02.L04.P3.f.b36d18f6da.mp3",
+    "item.U02.L04.P3.hint.m": "U02.L04/item.U02.L04.P3.hint.m.4c0b19980b.mp3",
+    "item.U02.L04.P3.hint.f": "U02.L04/item.U02.L04.P3.hint.f.ac7feb5f3e.mp3",
+    "item.U02.L04.P3.why": "U02.L04/item.U02.L04.P3.why.89934491ad.mp3",
+    "item.U02.L04.P3.opt0": "U02.L04/item.U02.L04.P3.opt0.c653c06866.mp3",
+    "item.U02.L04.P3.opt2": "U02.L04/item.U02.L04.P3.opt2.5017283993.mp3",
+    "item.U02.L04.P3.opt3": "U02.L04/item.U02.L04.P3.opt3.25c9c884d4.mp3",
     "item.U02.L04.C1.m": "U02.L04/item.U02.L04.C1.m.9e1dfb8c99.mp3",
     "item.U02.L04.C1.f": "U02.L04/item.U02.L04.C1.f.801eebd009.mp3",
     "item.U02.L04.C2.m": "U02.L04/item.U02.L04.C2.m.334fbaba8c.mp3",
     "item.U02.L04.C2.f": "U02.L04/item.U02.L04.C2.f.56ec5dead1.mp3",
     "item.U02.L04.C3.m": "U02.L04/item.U02.L04.C3.m.8bf84c8b02.mp3",
     "item.U02.L04.C3.f": "U02.L04/item.U02.L04.C3.f.7afdc72fa5.mp3",
+    "item.U02.L04.C4.m": "U02.L04/item.U02.L04.C4.m.3e227bf3ce.mp3",
+    "item.U02.L04.C4.f": "U02.L04/item.U02.L04.C4.f.ea563384f4.mp3",
+    "item.U02.L04.C4.hint": "U02.L04/item.U02.L04.C4.hint.4fffdec77e.mp3",
+    "item.U02.L04.C4.why": "U02.L04/item.U02.L04.C4.why.f9d0a0ee22.mp3",
+    "item.U02.L04.C4.opt0": "U02.L04/item.U02.L04.C4.opt0.9ccf3fdec6.mp3",
+    "item.U02.L04.C4.opt1": "U02.L04/item.U02.L04.C4.opt1.a4f29862c3.mp3",
+    "item.U02.L04.C4.opt3": "U02.L04/item.U02.L04.C4.opt3.d56723d247.mp3",
     "item.U02.L04.A1.a.m": "U02.L04/item.U02.L04.A1.a.m.45bc8cf26a.mp3",
     "item.U02.L04.A1.a.f": "U02.L04/item.U02.L04.A1.a.f.d2497f57c0.mp3",
     "item.U02.L04.A1.b": "U02.L04/item.U02.L04.A1.b.33ec7c361f.mp3",
@@ -907,6 +1002,14 @@
     "how_we_know.limit.f": "U02.L04/how_we_know.limit.f.ca39962992.mp3",
     "organ_letter.m": "U02.L04/organ_letter.m.e281e4ef25.mp3",
     "organ_letter.f": "U02.L04/organ_letter.f.7cdbb6258b.mp3",
+    "unit_review": "U02.L04/unit_review.ad281aca20.mp3",
+    "unit_review.1": "U02.L04/unit_review.1.6e2d464356.mp3",
+    "unit_review.2": "U02.L04/unit_review.2.4efb8b939c.mp3",
+    "unit_review.3": "U02.L04/unit_review.3.6de98c96a8.mp3",
+    "unit_review.4": "U02.L04/unit_review.4.b4777f5421.mp3",
+    "unit_review.q.m": "U02.L04/unit_review.q.m.db1e311ac5.mp3",
+    "unit_review.q.f": "U02.L04/unit_review.q.f.4579fa16d2.mp3",
+    "unit_review.why": "U02.L04/unit_review.why.e121eab657.mp3",
     "history.1.who": "U02.L04/history.1.who.e7eee5813b.mp3",
     "history.1.did": "U02.L04/history.1.did.d1b55af2fe.mp3",
     "history.1.method": "U02.L04/history.1.method.7fdc48b39c.mp3",
@@ -923,6 +1026,8 @@
     "hadith.muslim:1631": "U02.L04/hadith.muslim:1631.bb2310086d.mp3",
     "number.4f838dc692.m": "U02.L04/number.4f838dc692.m.70ee668c42.mp3",
     "number.4f838dc692.f": "U02.L04/number.4f838dc692.f.1c37351ccf.mp3",
+    "size.760a5c52cc.m": "U02.L04/size.760a5c52cc.m.0cbe7b0e0c.mp3",
+    "size.760a5c52cc.f": "U02.L04/size.760a5c52cc.f.5eae7d19be.mp3",
     "central_fact": "U02.L04/central_fact.dc00800507.mp3",
     "scene.d8052f6c7e.m": "U02.L04/scene.d8052f6c7e.m.2dedef3157.mp3",
     "scene.d8052f6c7e.f": "U02.L04/scene.d8052f6c7e.f.20e32396f4.mp3",

@@ -1302,7 +1302,14 @@
       "detects": "M92"
     }
   ],
-  "true_size": [],
+  "true_size": [
+    {
+      "text": "القشعريرة حين {تخاف|تخافين} أو {تبرد|تبردين} تصنعها عضلات أصغر من أن تُرى، واحدة عند أصل كل شعرة في جلدك{|ِ}.",
+      "source": [
+        "S7"
+      ]
+    }
+  ],
   "audio": {
     "title": "U08.L04/title.c89a516c5c.mp3",
     "driving_question.m": "U08.L04/driving_question.m.65e2206840.mp3",
@@ -1545,6 +1552,8 @@
     "number.14014fbc3d.m": "U08.L04/number.14014fbc3d.m.26f21ac87c.mp3",
     "number.14014fbc3d.f": "U08.L04/number.14014fbc3d.f.0d29d00a80.mp3",
     "number.c18ecceeef": "U08.L04/number.c18ecceeef.c18ecceeef.mp3",
+    "size.728618ea5f.m": "U08.L04/size.728618ea5f.m.4112907361.mp3",
+    "size.728618ea5f.f": "U08.L04/size.728618ea5f.f.0a632e0426.mp3",
     "central_fact": "U08.L04/central_fact.9f1d85be46.mp3",
     "scene.4103ace988": "U08.L04/scene.4103ace988.4103ace988.mp3",
     "scene.810a9870ac.m": "U08.L04/scene.810a9870ac.m.77a7184664.mp3",

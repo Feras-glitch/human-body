@@ -1116,6 +1116,37 @@
       ]
     }
   ],
+  "unit_review": {
+    "text": "هذه الوحدة عن رحلة العمر: كيف نكبر، وكيف نحفظ أجسامنا، وكيف نحترم كل جسم مهما اختلف.",
+    "links": [
+      {
+        "lesson": "U10.L01",
+        "idea": "الخلايا تنقسم، والعظام تطول من صفيحة النمو، والنوم يعين على النمو"
+      },
+      {
+        "lesson": "U10.L03",
+        "idea": "جسمي لي، وأجزائي الخاصة لا يراها أحد ولا يلمسها"
+      },
+      {
+        "lesson": "U10.L04",
+        "idea": "من خلية واحدة إلى مولود، ثم مراحل العمر حتى الشيخوخة"
+      },
+      {
+        "lesson": "U10.L05",
+        "idea": "أجسامنا مختلفة، والإعاقة والمرض المزمن لا يُعديان، ونحترم كل جسم"
+      }
+    ],
+    "question": {
+      "prompt": "أي جملة تجمع دروس الوحدة؟",
+      "options": [
+        "كل الأطفال يكبرون بالسرعة نفسها وفي الموعد نفسه",
+        "الجسم يتوقف عن التغير بعد الطفولة",
+        "كل جسم يمر بمراحل ويختلف عن غيره، وله حرمة يحترمها الجميع"
+      ],
+      "answer": 2,
+      "why": "نكبر بمواعيد مختلفة، ونتغير في كل مراحل العمر، ولجسم كل واحد منا حرمة واحترام."
+    }
+  },
   "audio": {
     "title": "U10.L05/title.0766b29213.mp3",
     "driving_question.m": "U10.L05/driving_question.m.51a8804d18.mp3",
@@ -1291,6 +1322,13 @@
     "how_we_know.limit.f": "U10.L05/how_we_know.limit.f.d7d826cdd4.mp3",
     "organ_letter.m": "U10.L05/organ_letter.m.522b66254e.mp3",
     "organ_letter.f": "U10.L05/organ_letter.f.56a93e1ca8.mp3",
+    "unit_review": "U10.L05/unit_review.fef1765975.mp3",
+    "unit_review.1": "U10.L05/unit_review.1.c247c1df22.mp3",
+    "unit_review.2": "U10.L05/unit_review.2.fda1b626f0.mp3",
+    "unit_review.3": "U10.L05/unit_review.3.da0f24aed7.mp3",
+    "unit_review.4": "U10.L05/unit_review.4.324a794d97.mp3",
+    "unit_review.q": "U10.L05/unit_review.q.131b73c120.mp3",
+    "unit_review.why": "U10.L05/unit_review.why.eae6e71e1f.mp3",
     "history.1.who": "U10.L05/history.1.who.0392ae4b58.mp3",
     "history.1.did": "U10.L05/history.1.did.6ce761d922.mp3",
     "history.1.method": "U10.L05/history.1.method.c346e02925.mp3",

@@ -271,6 +271,27 @@
           "1": "الرأس فيه الدماغ؛ والقلب في الصدر.",
           "3": "الموضع مهم: القلب في الصدر يحميه القفص الصدري، ونموذج يضعه في غير مكانه يعلّم خطأ."
         }
+      },
+      {
+        "id": "U03.L04.P3",
+        "objective": "U03.L04.O3",
+        "type": "choose",
+        "prompt": "{صعدت|صعدتِ} الدرج {مسرعاً|مسرعةً}، فأحسست{|ِ} بقلبك{|ِ} يدق أسرع. لماذا؟",
+        "answer": 1,
+        "explanation": "العضلات العاملة تحتاج أكسجيناً أكثر، فيسرع القلب ليدفع إليها دماً أكثر.",
+        "level": "A",
+        "options": [
+          "الدم يتجمع في الساقين فيبحث عنه القلب بسرعة",
+          "عضلات الساق تحتاج دماً أكثر يحمل الأكسجين",
+          "القلب تعب فصار يرتجف",
+          "الدرج يضغط على الصدر"
+        ],
+        "feedback_wrong": "ماذا تحتاج العضلة التي تعمل؟",
+        "feedback_by_option": {
+          "0": "الدم لا يتجمع في الساقين؛ يدور في حلقة مغلقة.",
+          "2": "القلب السليم يسرع لحاجة الجسم، لا من التعب.",
+          "3": "الدرج لا يضغط على الصدر."
+        }
       }
     ],
     "check": [
@@ -300,6 +321,27 @@
         "prompt": "لماذا يحتاج جسمنا إلى دورتين منفصلتين وقلب بأربع حجرات، ولماذا البطين الأيسر أسمك؟",
         "answer": "حتى لا يختلط الدم الغني بالأكسجين بالقليل الأكسجين فيصل الجسم دم غني؛ والبطين الأيسر يدفع إلى الجسم كله فيحتاج ضغطاً أعلى.",
         "rubric": "R1"
+      },
+      {
+        "id": "U03.L04.C4",
+        "objective": "U03.L04.O1",
+        "type": "choose",
+        "prompt": "في نموذج للدورة، الأوعية الخارجة من القلب ملوّنة بالأزرق. ما الصواب؟",
+        "answer": 1,
+        "explanation": "الدم أحمر في كل الأوعية؛ والأزرق في الرسوم ترميز مقبول إذا كُتب معناه بوضوح.",
+        "level": "A",
+        "options": [
+          "الدم الخارج من القلب أزرق فعلاً ثم يحمرّ في الجسم",
+          "الدم أحمر، والأزرق ترميز يُكتب معناه",
+          "الأوعية الخارجة من القلب أوردة",
+          "اللون لا يهم في أي نموذج"
+        ],
+        "feedback_wrong": "ما لون الدم في الحقيقة؟",
+        "feedback_by_option": {
+          "0": "الدم أحمر دائماً، فاتح أو داكن.",
+          "2": "الأوعية الخارجة من القلب شرايين.",
+          "3": "اللون في النموذج يحمل معنى؛ إن لم يُكتب ظن من يراه أن الدم أزرق."
+        }
       }
     ],
     "notebook": {
@@ -944,7 +986,46 @@
       "detects": "M22"
     }
   ],
-  "true_size": [],
+  "true_size": [
+    {
+      "text": "{املأ|املئي} قارورات ماء بعدد اللترات التي حسبها جواز سفرك{|ِ} في «كم لتراً من الدم في جسمي»، {وصفّها|وصفّيها} على الطاولة: هذا دمك{|ِ} كله. وقلبك{|ِ} يدفعه كله في أوعيتك{|ِ} مرات كثيرة كل يوم.",
+      "source": [
+        "S2",
+        "S3"
+      ]
+    }
+  ],
+  "unit_review": {
+    "text": "القلب والأوعية والدم فريق نقل واحد: مضخة، وطرق، وما يُنقل فيها.",
+    "links": [
+      {
+        "lesson": "U03.L01",
+        "idea": "القلب عضلة تضخ الدم بلا توقف، وتسرع حين يحتاج الجسم"
+      },
+      {
+        "lesson": "U03.L02",
+        "idea": "الدم يجري في حلقة مغلقة: شرايين ثم شعيرات ثم أوردة"
+      },
+      {
+        "lesson": "U03.L03",
+        "idea": "في الدم خلايا تنقل وتدافع وتسدّ الجروح"
+      },
+      {
+        "lesson": "U03.L04",
+        "idea": "نفحص نموذج الدورة الدموية ونفسر به مواقف"
+      }
+    ],
+    "question": {
+      "prompt": "خلية حمراء وصلت إلى إصبع قدمك{|ِ}. كيف وصلت؟",
+      "options": [
+        "دفعها القلب في الشرايين حتى الشعيرات القريبة من خلايا الإصبع",
+        "دخلت من الجلد إلى الإصبع",
+        "صُنعت في الإصبع نفسه ولم تتحرك"
+      ],
+      "answer": 0,
+      "why": "الخلايا الحمراء تُصنع في نخاع العظم، ويدفعها القلب في الشرايين حتى الشعيرات، ثم تعود في الأوردة إلى القلب."
+    }
+  },
   "audio": {
     "title": "U03.L04/title.9a9c78d8b0.mp3",
     "driving_question": "U03.L04/driving_question.6e75c4bf47.mp3",
@@ -982,11 +1063,24 @@
     "item.U03.L04.P2.opt0.f": "U03.L04/item.U03.L04.P2.opt0.f.e61facb64a.mp3",
     "item.U03.L04.P2.opt1": "U03.L04/item.U03.L04.P2.opt1.642c28cb8d.mp3",
     "item.U03.L04.P2.opt3": "U03.L04/item.U03.L04.P2.opt3.513f9cd408.mp3",
+    "item.U03.L04.P3.m": "U03.L04/item.U03.L04.P3.m.d884c67608.mp3",
+    "item.U03.L04.P3.f": "U03.L04/item.U03.L04.P3.f.226e824cf5.mp3",
+    "item.U03.L04.P3.hint": "U03.L04/item.U03.L04.P3.hint.6a524e0b7d.mp3",
+    "item.U03.L04.P3.why": "U03.L04/item.U03.L04.P3.why.439378891a.mp3",
+    "item.U03.L04.P3.opt0": "U03.L04/item.U03.L04.P3.opt0.702acfd9cf.mp3",
+    "item.U03.L04.P3.opt2": "U03.L04/item.U03.L04.P3.opt2.c31af22d24.mp3",
+    "item.U03.L04.P3.opt3": "U03.L04/item.U03.L04.P3.opt3.30f47b8331.mp3",
     "item.U03.L04.C1.m": "U03.L04/item.U03.L04.C1.m.aeaa573c4c.mp3",
     "item.U03.L04.C1.f": "U03.L04/item.U03.L04.C1.f.5273827e7d.mp3",
     "item.U03.L04.C2.m": "U03.L04/item.U03.L04.C2.m.cbf0877625.mp3",
     "item.U03.L04.C2.f": "U03.L04/item.U03.L04.C2.f.3d9708408b.mp3",
     "item.U03.L04.C3": "U03.L04/item.U03.L04.C3.d3742a118e.mp3",
+    "item.U03.L04.C4": "U03.L04/item.U03.L04.C4.31450c8797.mp3",
+    "item.U03.L04.C4.hint": "U03.L04/item.U03.L04.C4.hint.8b83830b05.mp3",
+    "item.U03.L04.C4.why": "U03.L04/item.U03.L04.C4.why.1382913279.mp3",
+    "item.U03.L04.C4.opt0": "U03.L04/item.U03.L04.C4.opt0.d93b9f47fa.mp3",
+    "item.U03.L04.C4.opt2": "U03.L04/item.U03.L04.C4.opt2.6d7be90f05.mp3",
+    "item.U03.L04.C4.opt3": "U03.L04/item.U03.L04.C4.opt3.62500a1796.mp3",
     "item.U03.L04.A1.a.m": "U03.L04/item.U03.L04.A1.a.m.6d6906dc2e.mp3",
     "item.U03.L04.A1.a.f": "U03.L04/item.U03.L04.A1.a.f.e7dc2a573a.mp3",
     "item.U03.L04.A1.b": "U03.L04/item.U03.L04.A1.b.c9a53bca5b.mp3",
@@ -1085,7 +1179,6 @@
     "item.U03.L04.D4.why": "U03.L04/item.U03.L04.D4.why.8591d19a4d.mp3",
     "item.U03.L04.D4.opt0": "U03.L04/item.U03.L04.D4.opt0.81e1c4e9e6.mp3",
     "item.U03.L04.D4.opt1": "U03.L04/item.U03.L04.D4.opt1.e2e1c565f0.mp3",
-    "item.U03.L04.D4.opt3": "U03.L04/item.U03.L04.D4.opt3.d93b9f47fa.mp3",
     "item.U03.L04.D5": "U03.L04/item.U03.L04.D5.8e83685f26.mp3",
     "item.U03.L04.D5.why": "U03.L04/item.U03.L04.D5.why.727b352b6d.mp3",
     "item.U03.L04.D5.opt0": "U03.L04/item.U03.L04.D5.opt0.a30377edfa.mp3",
@@ -1102,6 +1195,14 @@
     "how_we_know.limit.f": "U03.L04/how_we_know.limit.f.98e6c61dc0.mp3",
     "organ_letter.m": "U03.L04/organ_letter.m.ae6636890e.mp3",
     "organ_letter.f": "U03.L04/organ_letter.f.598f912fc3.mp3",
+    "unit_review": "U03.L04/unit_review.edb75dac61.mp3",
+    "unit_review.1": "U03.L04/unit_review.1.2f0be8c2b4.mp3",
+    "unit_review.2": "U03.L04/unit_review.2.ea8ae425bd.mp3",
+    "unit_review.3": "U03.L04/unit_review.3.c5dc1449dc.mp3",
+    "unit_review.4": "U03.L04/unit_review.4.eed2c949cc.mp3",
+    "unit_review.q.m": "U03.L04/unit_review.q.m.77b925e59d.mp3",
+    "unit_review.q.f": "U03.L04/unit_review.q.f.f8dae5f3a4.mp3",
+    "unit_review.why": "U03.L04/unit_review.why.ead994802a.mp3",
     "history.1.who": "U03.L04/history.1.who.c29a19b1d0.mp3",
     "history.1.did": "U03.L04/history.1.did.05afa2c9c4.mp3",
     "history.1.method": "U03.L04/history.1.method.0680a41548.mp3",
@@ -1113,6 +1214,8 @@
     "faith.closing.reflection": "U03.L04/faith.closing.reflection.fbf10ed05a.mp3",
     "number.21569c6fb7.m": "U03.L04/number.21569c6fb7.m.111341e77b.mp3",
     "number.21569c6fb7.f": "U03.L04/number.21569c6fb7.f.9bd631106f.mp3",
+    "size.34dea371be.m": "U03.L04/size.34dea371be.m.da963fd525.mp3",
+    "size.34dea371be.f": "U03.L04/size.34dea371be.f.1b5c88580c.mp3",
     "central_fact": "U03.L04/central_fact.e153c05eb7.mp3",
     "scene.31dd9da393": "U03.L04/scene.31dd9da393.31dd9da393.mp3",
     "scene.e9f5f2eaf9": "U03.L04/scene.e9f5f2eaf9.e9f5f2eaf9.mp3",

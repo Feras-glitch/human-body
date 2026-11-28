@@ -1148,6 +1148,37 @@
       ]
     }
   ],
+  "unit_review": {
+    "text": "في الوحدة الأخيرة جمعنا الرحلة كلها: أجهزة تعمل فريقاً، وأذى يصل إلى الجسم كله، ومقارنة بأجسام الحيوان، وطريقة نحكم بها على ما نسمع.",
+    "links": [
+      {
+        "lesson": "U11.L01",
+        "idea": "حين نركض تعمل أجهزة الجسم معاً كفريق"
+      },
+      {
+        "lesson": "U11.L02",
+        "idea": "الدخان يدخل من الرئتين ويصل أذاه إلى الجسم كله"
+      },
+      {
+        "lesson": "U11.L03",
+        "idea": "أجهزة الإنسان والحيوان تعمل العمل نفسه بأشكال مختلفة"
+      },
+      {
+        "lesson": "U11.L04",
+        "idea": "نحكم على المعلومة الصحية بالدليل لا بشهرة قائلها"
+      }
+    ],
+    "question": {
+      "prompt": "قال إعلان: «هذا الشراب يجعل قلبك{|ِ} ورئتيك{|ِ} أقوى في يوم واحد، والدليل أن مشهوراً يشربه». ماذا {تفعل|تفعلين}؟",
+      "options": [
+        "أصدّقه لأن كثيراً من الناس نشروه",
+        "أسأل: كيف عرفوا؟ وهل قارنوا مقارنة عادلة؟ وماذا يقول أهل العلم؟",
+        "أصدّقه لأن قائله مشهور"
+      ],
+      "answer": 1,
+      "why": "قوة القلب والرئتين تأتي بالحركة والنوم والغذاء مع الأيام، والادعاء يُحكم عليه بالدليل لا بالشهرة ولا بالانتشار."
+    }
+  },
   "audio": {
     "title": "U11.L04/title.387570be6e.mp3",
     "driving_question.m": "U11.L04/driving_question.m.802f3a261b.mp3",
@@ -1336,6 +1367,14 @@
     "how_we_know.limit": "U11.L04/how_we_know.limit.fb580d85f1.mp3",
     "organ_letter.m": "U11.L04/organ_letter.m.f70db2506a.mp3",
     "organ_letter.f": "U11.L04/organ_letter.f.246939e4bc.mp3",
+    "unit_review": "U11.L04/unit_review.f93db59dd9.mp3",
+    "unit_review.1": "U11.L04/unit_review.1.edb501bf62.mp3",
+    "unit_review.2": "U11.L04/unit_review.2.7f228e3400.mp3",
+    "unit_review.3": "U11.L04/unit_review.3.7daf74a02e.mp3",
+    "unit_review.4": "U11.L04/unit_review.4.eb5bbf877d.mp3",
+    "unit_review.q.m": "U11.L04/unit_review.q.m.e6235e6624.mp3",
+    "unit_review.q.f": "U11.L04/unit_review.q.f.897b40c551.mp3",
+    "unit_review.why": "U11.L04/unit_review.why.cf037cc219.mp3",
     "history.1.did": "U11.L04/history.1.did.e0e3d2618e.mp3",
     "history.1.method": "U11.L04/history.1.method.c21249d710.mp3",
     "life.1.situation": "U11.L04/life.1.situation.52245982a5.mp3",

@@ -406,6 +406,27 @@
           "1": "الوتر لا يتصل بالجلد؛ هو في طرف العضلة.",
           "2": "الوتر يبدأ من العضلة، لا من العظم ولا من الغضروف."
         }
+      },
+      {
+        "id": "U02.L03.P5",
+        "objective": "U02.L03.O1",
+        "type": "choose",
+        "prompt": "{ترفع|ترفعين} حقيبة بثني مرفقك{|ِ}. ماذا تفعل العضلة في مقدم العضد؟",
+        "answer": 0,
+        "explanation": "العضلة تنقبض فتقصر، وتسحب الساعد عبر الوتر فينثني المرفق.",
+        "level": "A",
+        "options": [
+          "تنقبض وتقصر فتسحب الساعد",
+          "تطول وتدفع الساعد إلى الأعلى",
+          "ترتخي وتترك الساعد",
+          "تتحول إلى وتر"
+        ],
+        "feedback_wrong": "العضلة تسحب ولا تدفع.",
+        "feedback_by_option": {
+          "1": "العضلة لا تدفع أبداً، وحين تعمل تقصر لا تطول.",
+          "2": "إن ارتخت لم يرتفع الساعد.",
+          "3": "العضلة لا تصير وتراً؛ الوتر يربطها بالعظم."
+        }
       }
     ],
     "check": [
@@ -456,6 +477,48 @@
         "answer": "ضمرت بقلة الاستعمال؛ تعود بالاستعمال التدريجي والراحة.",
         "level": "B",
         "rubric": "R1"
+      },
+      {
+        "id": "U02.L03.C5",
+        "objective": "U02.L03.O2",
+        "type": "choose",
+        "prompt": "{تمدّ|تمدّين} ركبتك{|ِ} لتركل{|ي} الكرة. ماذا تفعل العضلة التي أمام الفخذ؟",
+        "answer": 2,
+        "explanation": "العضلة أمام الفخذ تمدّ الركبة: تنقبض فتسحب الساق إلى الأمام، وترتخي أختها خلف الفخذ.",
+        "level": "A",
+        "options": [
+          "ترتخي",
+          "تدفع الساق",
+          "تنقبض",
+          "تنقطع"
+        ],
+        "feedback_wrong": "أي العضلتين تمدّ الركبة؟",
+        "feedback_by_option": {
+          "0": "المرتخية هي التي خلف الفخذ.",
+          "1": "العضلات تسحب ولا تدفع.",
+          "3": "العضلة السليمة لا تنقطع بالركل."
+        }
+      },
+      {
+        "id": "U02.L03.C6",
+        "objective": "U02.L03.O3",
+        "type": "choose",
+        "prompt": "أي عضلات {تحركها|تحركينها} بأمرك{|ِ} متى شئت{|ِ}؟",
+        "answer": 3,
+        "explanation": "عضلات الذراع والساق هيكلية إرادية تتحرك بأمرنا؛ أما عضلات المعدة والأمعاء والأوعية فملساء تعمل دون أن نأمرها.",
+        "level": "A",
+        "options": [
+          "عضلات المعدة",
+          "عضلات الأمعاء",
+          "عضلات جدار الأوعية",
+          "عضلات الذراع والساق"
+        ],
+        "feedback_wrong": "أي العضلات تحرك العظام؟",
+        "feedback_by_option": {
+          "0": "عضلات المعدة ملساء تعمل دون أمرنا.",
+          "1": "عضلات الأمعاء ملساء تعمل دون أمرنا.",
+          "2": "عضلات الأوعية ملساء تعمل دون أمرنا."
+        }
       }
     ],
     "notebook": {
@@ -1112,6 +1175,13 @@
     "item.U02.L03.P4.opt0": "U02.L03/item.U02.L03.P4.opt0.7aa135f703.mp3",
     "item.U02.L03.P4.opt1": "U02.L03/item.U02.L03.P4.opt1.e6d6ba9c4e.mp3",
     "item.U02.L03.P4.opt2": "U02.L03/item.U02.L03.P4.opt2.0645f03166.mp3",
+    "item.U02.L03.P5.m": "U02.L03/item.U02.L03.P5.m.5e55491724.mp3",
+    "item.U02.L03.P5.f": "U02.L03/item.U02.L03.P5.f.c5376b3d89.mp3",
+    "item.U02.L03.P5.hint": "U02.L03/item.U02.L03.P5.hint.0b0fcc8e1c.mp3",
+    "item.U02.L03.P5.why": "U02.L03/item.U02.L03.P5.why.08c2010222.mp3",
+    "item.U02.L03.P5.opt1": "U02.L03/item.U02.L03.P5.opt1.9cde985e65.mp3",
+    "item.U02.L03.P5.opt2": "U02.L03/item.U02.L03.P5.opt2.cb957e7601.mp3",
+    "item.U02.L03.P5.opt3": "U02.L03/item.U02.L03.P5.opt3.a3909ddf0e.mp3",
     "item.U02.L03.C1.m": "U02.L03/item.U02.L03.C1.m.ebb06a93ca.mp3",
     "item.U02.L03.C1.f": "U02.L03/item.U02.L03.C1.f.5d076fed03.mp3",
     "item.U02.L03.C2.m": "U02.L03/item.U02.L03.C2.m.0181bbd9ef.mp3",
@@ -1127,6 +1197,19 @@
     "item.U02.L03.C3.opt3.f": "U02.L03/item.U02.L03.C3.opt3.f.6b0cd1496a.mp3",
     "item.U02.L03.C4.m": "U02.L03/item.U02.L03.C4.m.fce3a392b1.mp3",
     "item.U02.L03.C4.f": "U02.L03/item.U02.L03.C4.f.4ad0a6dd40.mp3",
+    "item.U02.L03.C5.m": "U02.L03/item.U02.L03.C5.m.b68676ce5f.mp3",
+    "item.U02.L03.C5.f": "U02.L03/item.U02.L03.C5.f.c1d7f33ae9.mp3",
+    "item.U02.L03.C5.hint": "U02.L03/item.U02.L03.C5.hint.1b442d55b6.mp3",
+    "item.U02.L03.C5.why": "U02.L03/item.U02.L03.C5.why.8d6b3a58bd.mp3",
+    "item.U02.L03.C5.opt0": "U02.L03/item.U02.L03.C5.opt0.390464e15e.mp3",
+    "item.U02.L03.C5.opt3": "U02.L03/item.U02.L03.C5.opt3.cf4b76ead6.mp3",
+    "item.U02.L03.C6.m": "U02.L03/item.U02.L03.C6.m.84d79e0780.mp3",
+    "item.U02.L03.C6.f": "U02.L03/item.U02.L03.C6.f.af0c0071d7.mp3",
+    "item.U02.L03.C6.hint": "U02.L03/item.U02.L03.C6.hint.8025a725cf.mp3",
+    "item.U02.L03.C6.why": "U02.L03/item.U02.L03.C6.why.fe37c0afa9.mp3",
+    "item.U02.L03.C6.opt0": "U02.L03/item.U02.L03.C6.opt0.b1cbb17859.mp3",
+    "item.U02.L03.C6.opt1": "U02.L03/item.U02.L03.C6.opt1.6ea6581799.mp3",
+    "item.U02.L03.C6.opt2": "U02.L03/item.U02.L03.C6.opt2.be991dfde4.mp3",
     "item.U02.L03.A1.a": "U02.L03/item.U02.L03.A1.a.91012e1a67.mp3",
     "item.U02.L03.A1.a.alt.m": "U02.L03/item.U02.L03.A1.a.alt.m.8e5d206873.mp3",
     "item.U02.L03.A1.a.alt.f": "U02.L03/item.U02.L03.A1.a.alt.f.da0bf10bc1.mp3",
@@ -1217,7 +1300,6 @@
     "item.U02.L03.A4.c.alt.opt1": "U02.L03/item.U02.L03.A4.c.alt.opt1.7d1fcbd4c6.mp3",
     "item.U02.L03.A4.c.alt.opt2": "U02.L03/item.U02.L03.A4.c.alt.opt2.4e9dc87f90.mp3",
     "item.U02.L03.D1": "U02.L03/item.U02.L03.D1.5263fcd31d.mp3",
-    "item.U02.L03.D1.why": "U02.L03/item.U02.L03.D1.why.0b0fcc8e1c.mp3",
     "item.U02.L03.D1.opt0.m": "U02.L03/item.U02.L03.D1.opt0.m.7981c075b0.mp3",
     "item.U02.L03.D1.opt0.f": "U02.L03/item.U02.L03.D1.opt0.f.ca5f47f366.mp3",
     "item.U02.L03.D2": "U02.L03/item.U02.L03.D2.6f93f93240.mp3",

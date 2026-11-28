@@ -501,6 +501,27 @@
           "2": "الحرف R يُكتب على صور الصدر كلها، لا على صور من قلبه في اليمين وحدهم. هو يدل على جهة من جسم المريض.",
           "3": "الحرف R يرمز إلى اليمين بالإنجليزية، لا إلى اسم المريض. لماذا يحتاج الطبيب أن يعرف أين يمين المريض في الصورة؟"
         }
+      },
+      {
+        "id": "U01.L01.C6",
+        "objective": "U01.L01.O2",
+        "type": "choose",
+        "prompt": "أين البطن بالنسبة إلى الصدر؟",
+        "answer": 2,
+        "explanation": "الصدر والبطن في الجذع: الصدر أعلى، والبطن أسفل منه.",
+        "level": "A",
+        "options": [
+          "أعلى منه",
+          "خلفه",
+          "أسفل منه",
+          "أبعد عن المنتصف منه"
+        ],
+        "feedback_wrong": "{انظر|انظري} إلى جذعك{|ِ}: أيهما فوق الآخر؟",
+        "feedback_by_option": {
+          "0": "الصدر هو الأعلى. أين البطن منه؟",
+          "1": "خلف الصدر الظهر لا البطن.",
+          "3": "البطن في منتصف الجذع مثل الصدر، لكنه تحته."
+        }
       }
     ],
     "notebook": {
@@ -1188,6 +1209,13 @@
     "item.U01.L01.C5.opt1": "U01.L01/item.U01.L01.C5.opt1.f556b77ef0.mp3",
     "item.U01.L01.C5.opt2": "U01.L01/item.U01.L01.C5.opt2.6ca002c6cc.mp3",
     "item.U01.L01.C5.opt3": "U01.L01/item.U01.L01.C5.opt3.eae9c8b0cd.mp3",
+    "item.U01.L01.C6": "U01.L01/item.U01.L01.C6.7bb8f216d8.mp3",
+    "item.U01.L01.C6.hint.m": "U01.L01/item.U01.L01.C6.hint.m.8876fd84ea.mp3",
+    "item.U01.L01.C6.hint.f": "U01.L01/item.U01.L01.C6.hint.f.42bc2dd53d.mp3",
+    "item.U01.L01.C6.why": "U01.L01/item.U01.L01.C6.why.a8e5d61718.mp3",
+    "item.U01.L01.C6.opt0": "U01.L01/item.U01.L01.C6.opt0.1584db2112.mp3",
+    "item.U01.L01.C6.opt1": "U01.L01/item.U01.L01.C6.opt1.cde81ddec3.mp3",
+    "item.U01.L01.C6.opt3": "U01.L01/item.U01.L01.C6.opt3.03d04cad6c.mp3",
     "item.U01.L01.A1.a.m": "U01.L01/item.U01.L01.A1.a.m.931672fab6.mp3",
     "item.U01.L01.A1.a.f": "U01.L01/item.U01.L01.A1.a.f.a5e4251c7a.mp3",
     "item.U01.L01.A1.a.atlas.m": "U01.L01/item.U01.L01.A1.a.atlas.m.2fdfe700eb.mp3",

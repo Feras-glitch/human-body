@@ -1365,6 +1365,33 @@
       ]
     }
   ],
+  "unit_review": {
+    "text": "الكليتان وطريق البول والعطش تعمل معاً لهدف واحد: أن يبقى الماء في الجسم بميزان.",
+    "links": [
+      {
+        "lesson": "U07.L01",
+        "idea": "الكليتان ترشّحان الدم وتعيدان إليه معظم ما رُشّح"
+      },
+      {
+        "lesson": "U07.L02",
+        "idea": "الحالبان والمثانة والعاصرة تنقل البول وتخزّنه حتى نقرر"
+      },
+      {
+        "lesson": "U07.L03",
+        "idea": "الدماغ يحفظ ميزان الماء بالعطش وبرسالة إلى الكليتين"
+      }
+    ],
+    "question": {
+      "prompt": "في يوم حار {لعبت|لعبتِ} كثيراً و{عرقت|عرقتِ}. ماذا يفعل جسمك{|ِ}؟",
+      "options": [
+        "تُخرج الكليتان ماءً أكثر من المعتاد",
+        "لا يتغير شيء، فالبول هو نفسه كل يوم",
+        "يُشعرك{|ِ} بالعطش، وتعيد الكليتان ماءً أكثر إلى الدم فيقل البول ويغمق لونه"
+      ],
+      "answer": 2,
+      "why": "الدماغ يحس بنقص الماء فيرسل العطش ورسالة إلى الكليتين، فتعيدان ماءً أكثر؛ ولون البول رسالة عن ذلك."
+    }
+  },
   "audio": {
     "title": "U07.L03/title.0856969e38.mp3",
     "driving_question.m": "U07.L03/driving_question.m.a779c83778.mp3",
@@ -1593,6 +1620,13 @@
     "how_we_know.limit": "U07.L03/how_we_know.limit.5c17804bd1.mp3",
     "organ_letter.m": "U07.L03/organ_letter.m.10d3af109e.mp3",
     "organ_letter.f": "U07.L03/organ_letter.f.7fe68be983.mp3",
+    "unit_review": "U07.L03/unit_review.30e1e7693e.mp3",
+    "unit_review.1": "U07.L03/unit_review.1.1fb43a031a.mp3",
+    "unit_review.2": "U07.L03/unit_review.2.1e8b547350.mp3",
+    "unit_review.3": "U07.L03/unit_review.3.70f558de50.mp3",
+    "unit_review.q.m": "U07.L03/unit_review.q.m.6bd721ac05.mp3",
+    "unit_review.q.f": "U07.L03/unit_review.q.f.c173034294.mp3",
+    "unit_review.why": "U07.L03/unit_review.why.5dc413d194.mp3",
     "history.1.who": "U07.L03/history.1.who.f8f5e02c13.mp3",
     "history.1.did": "U07.L03/history.1.did.e7e7987493.mp3",
     "history.1.method": "U07.L03/history.1.method.8372516083.mp3",

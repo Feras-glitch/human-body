@@ -130,6 +130,7 @@ const extras = (E) => {
   if (L.passport?.length) { x += `\n### جواز سفر جسمي\n\n| البند | المدخلات | الحساب | الوحدة | ملاحظة |\n|---|---|---|---|---|\n`; for (const q of L.passport) x += `| ${E(q.label)} | ${(q.inputs||[]).join('، ') || '—'} | ${E(q.formula)} | ${q.unit} | ${E(q.note||'')} |\n`; }
   if (L.find_the_error?.length) { x += `\n### ابحث عن الخطأ\n\n| # | الخطأ المقصود في الرسم | الصواب |\n|---|---|---|\n`; L.find_the_error.forEach((f, i) => x += `| ${i + 1} | ${f.error} | ${f.answer} |\n`); }
   if (L.true_size?.length) { x += `\n### اصنعه بحجمه الحقيقي\n`; for (const t of L.true_size) x += `- ${E(t.text)}\n`; }
+  if (L.unit_review) { const u = L.unit_review; x += `\n### مراجعة الوحدة: كيف ترتبط دروسها\n\n> ${E(u.text)}\n\n| الدرس | فكرته |\n|---|---|\n`; for (const l of u.links) x += `| ${l.lesson} | ${E(l.idea)} |\n`; x += `\n**سؤال جامع (لا يُحتسب):** ${E(u.question.prompt)}\n${u.question.options.map((o, i) => `   ${ABJAD[i] ?? i + 1}. ${E(o)}`).join('\n')}\n> **الإجابة:** ${E(u.question.options[u.question.answer])} — ${E(u.question.why)}\n`; }
   if (L.life_application?.length) {
     x += `\n### في حياتي — الحكمة والأثر\n`;
     for (const a of L.life_application) x += `\n**الموقف:** ${E(a.situation)}\n\n- **ما يحدث في الجسم:** ${E(a.science)}\n- **ما أفعله:** ${E(a.action)}\n${a.why ? `- **لماذا:** ${E(a.why)}\n` : ''}${(a.quran||[]).map(k => `- **الآية:** قال الله تعالى: ${AYA({ quran_key: k, text: QV[k]?.text || '' })} ${SURA(k)}\n`).join('')}${(a.hadith||[]).map(k => `- **الحديث:** ${HQ(HK(k))}\n`).join('')}- **القيمة:** ${E(a.value)}${a.reference ? ` *(${a.reference})*` : ''}\n`;
@@ -252,6 +253,7 @@ add('notebook', L.flow.notebook.draw);
 add('how_we_know', SCI.how_we_know?.[0]?.text || L.flow.how_we_know.text);
 add('how_we_know.limit', L.flow.how_we_know.limit_question);
 if (L.organ_letter) add('organ_letter', L.organ_letter.text);
+if (L.unit_review) { add('unit_review', L.unit_review.text); L.unit_review.links.forEach((l, i) => add(`unit_review.${i + 1}`, l.idea)); add('unit_review.q', L.unit_review.question.prompt); add('unit_review.why', L.unit_review.question.why); }
 (L.history || []).forEach((x, i) => { add(`history.${i + 1}.who`, x.who); add(`history.${i + 1}.did`, x.did); add(`history.${i + 1}.method`, x.method_lesson); });
 const addHadith = (k) => { const hh = HK(k); add(`hadith.${k}`, hh.lead + ' ' + hh.text + '.'); };
 (L.life_application || []).forEach((a, i) => { add(`life.${i + 1}.situation`, a.situation); add(`life.${i + 1}.action`, a.action); add(`life.${i + 1}.why`, a.why); (a.hadith || []).forEach(addHadith); });
@@ -290,6 +292,7 @@ const app = {
   deferred: L.scope.deferred, prerequisites: L.scope.prerequisites,
   history: L.history || [], faith: L.faith || null, life_application: L.life_application || [],
   organ_letter: L.organ_letter || null, passport: L.passport || [], find_the_error: L.find_the_error || [], true_size: L.true_size || [],
+  ...(L.unit_review ? { unit_review: L.unit_review } : {}),
   audio: Object.fromEntries(spoken.map(s => [s.key, s.file])),
   has_gendered_text: true,
 };

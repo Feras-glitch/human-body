@@ -766,6 +766,10 @@
     questions: (v) => Array.isArray(v) && v.length <= 500 && v.every((q) => isObj(q) && isStr(q.text, 2000) && isStr(q.date, 40)),
     passed: (v) => isObj(v) && Object.values(v).every((x) => x === true),
     // دروس بإذن ولي الأمر (U10.L02): معرّف الدرس ← وقت الإذن
+    // ملاحظات ولي الأمر على المشاهد (تجربة الأسر): لكل طفل، تُنزَّل من شاشة ولي الأمر
+    pnotes: (v) => Array.isArray(v) && v.length <= 500 && v.every((n) => isObj(n) && /^U\d{2}\.[LT]\d{2}$/.test(n.lesson) && isStr(n.scene, 80) && isStr(n.text, 1000) && isNum(n.at) && plain(n)),
+    // اقتراح «من أين أبدأ؟» (اختبار تحديد المستوى الاختياري): الوحدة المقترحة للبداية ووقته
+    placement: (v) => isObj(v) && typeof v.unit === 'string' && /^U\d{2}$/.test(v.unit) && isNum(v.at) && plain(v),
     unlocked: (v) => isObj(v) && Object.keys(v).length <= 50 && Object.entries(v).every(([k, t]) => /^U\d{2}\.L\d{2}$/.test(k) && isNum(t)),
     score: (v) => isObj(v) && isInt(v.ok, 0, 1000) && isInt(v.n, 0, 1000) && isNum(v.at),
     // المحاولة الثانية في الاختبار ببنود بديلة لما أخطأ فيه (لا تغيّر score)

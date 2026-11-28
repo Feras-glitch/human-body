@@ -208,6 +208,19 @@ function buildScenes(LD){
   if(LD.notebook) S.push({ id:'draw', render(){ ok(); return `<div class="scene"><h2>دفتري</h2><p>${tx(LD.notebook.draw)}</p><div class="row">${(LD.notebook.label||[]).map(l=>`<span class="chip">${tx(l)}</span>`).join('')}</div>
       <canvas id="cv" width="500" height="560" style="margin-top:8px"></canvas><div class="row" style="margin-top:8px"><button class="opt" style="width:auto;margin:0" id="clr">🧽 امسح</button></div><p class="note">ثم {اكتب|اكتبي} على الورق: ${tx(LD.notebook.write)}</p></div>`; },
     after(){ sketchPad(); speak(tx(LD.notebook.draw)); } });
+  /* مراجعة الوحدة (آخر درس في كل وحدة): يصل الطفل كل درس بفكرته، ثم سؤال جامع لا يُحتسب */
+  if(LD.unit_review){ const U=LD.unit_review, n=U.links.length, ord=[...Array(n).keys()].map(i=>(i*2+1)%n).filter((v,i,a)=>a.indexOf(v)===i); for(let i=0;i<n;i++) if(!ord.includes(i)) ord.push(i);
+    S.push({ id:'unitrev', render(){ ok(); return `<div class="scene"><div class="row" style="justify-content:center">${buddy(100,'happy')}</div><h2>مراجعة الوحدة: كيف ترتبط دروسها؟</h2><p>${tx(U.text)}</p><p class="note">${tx('{اختر|اختاري} درساً، ثم {اختر|اختاري} فكرته.')}</p>
+      <div class="card"><b>الدرس:</b>${U.links.map((l,i)=>`<button class="opt" data-s="${i}">${tx(l.title)}</button>`).join('')}</div>
+      <div class="card"><b>فكرته:</b>${ord.map(i=>`<button class="opt" data-j="${i}">${tx(U.links[i].idea)}</button>`).join('')}</div>
+      <div class="fb" id="fb" role="status" aria-live="polite"></div></div>`; },
+      after(){ let s=null, k=0;
+        $$('[data-s]').forEach(b=>b.onclick=()=>{ if(b.classList.contains('ok')) return; $$('[data-s]').forEach(x=>x.style.outline=''); s=+b.dataset.s; b.style.outline='3px solid #3E7BB6'; });
+        $$('[data-j]').forEach(b=>b.onclick=()=>{ if(s===null || b.classList.contains('ok')) return;
+          if(+b.dataset.j===s){ b.classList.add('ok'); const a=$(`[data-s="${s}"]`); a.classList.add('ok'); a.style.outline=''; s=null; k++; if(k===n){ fb('ok', SAY.praise); award(); } else fb('ok', '✔', {say:false}); }
+          else { noteMiss(); $$('[data-s]').forEach(x=>x.style.outline=''); s=null; fb('bad', [SAY.not_this, SAY.think_again]); } });
+        speak([tx(U.text), ...U.links.map(l=>tx(l.idea))]); } });
+    S.push({ id:'unitrevq', render(){ ok(); return `<div class="scene">${choice({id:LD.id+'.UR', prompt:U.question.prompt, options:U.question.options, answer:U.question.answer, why:U.question.why, graded:false})}</div>`; }, after(){ speak(tx(U.question.prompt)); } }); }
   /* المصطلحات */
   S.push({ id:'glossary', render(){ ok(); return `<div class="scene"><div class="row" style="justify-content:center">${buddy(100,'happy')}</div><h2>كلمات تعلمتها اليوم — بثلاث لغات</h2><p class="note">المس{|ي} الكلمة لتسمعها. عربي · English · 中文 (مبسّطة + بينين)</p>
       ${TERMS.map(t=>`<div class="card gloss" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;text-align:center;padding:10px"><button class="opt" style="margin:0;padding:10px 6px;text-align:center;font-family:var(--display);font-size:1.1rem" data-say="ar" data-k="${t.id}">${t.ar}</button><button class="opt" style="margin:0;padding:10px 6px;text-align:center" data-say="en" data-k="${t.id}" dir="ltr">${t.en}</button><button class="opt" style="margin:0;padding:8px 6px;text-align:center;line-height:1.3" data-say="zh" data-k="${t.id}" dir="ltr"><span style="font-size:1.3rem">${t.zh}</span><br><small style="color:var(--muted)">${t.py}</small></button></div>`).join('')}</div>`; },
