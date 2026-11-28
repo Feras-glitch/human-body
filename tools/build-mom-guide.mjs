@@ -6,7 +6,7 @@ import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { safeJSON } from './safe-json.mjs';
 
-const norm = t => String(t || '').replace(/\{([^|}]*)\|[^}]*\}/g, '$1').replace(/\{اسم\}/g, '').replace(/\s+/g, ' ').trim();
+const norm = t => String(t || '').replace(/\{اسم\}/g, '').replace(/\s+/g, ' ').trim();
 const h = t => createHash('sha1').update(norm(t), 'utf8').digest('hex').slice(0, 10);
 const J = p => JSON.parse(readFileSync(p, 'utf8'));
 const ids = readdirSync('lessons').filter(f => /^U\d{2}\.L\d{2}\.json$/.test(f)).map(f => f.slice(0, -5)).sort();
@@ -25,7 +25,7 @@ function faithOf(L) {
   for (const { k, kind } of keys) {
     const t = kind === 'q' ? F.quran[k] : F.hadith[k];
     if (!t || t.status !== 'approved') { pending.add(k); continue; }
-    if (kind === 'q') { const v = V[k]; out.push({ kind, ar: `سورة ${v.surah_ar}، الآية ${v.ayah}`, ref: `《${F.surah_zh[v.surah_no]}》第${v.ayah}节`, zh: t.zh, src: t.source }); }
+    if (kind === 'q') { const v = V[k]; out.push({ kind, ar: `سورة ${v.surah_ar}، الآية ${v.ayah}`, ref: `《${F.surah_zh[v.surah_no]}》第${v.ayah}节`, zh: t.zh, src: t.source, ...(t.note ? { note: t.note } : {}) }); }
     else { const r = HD[k]; out.push({ kind, ar: `${r.source} (${r.grade})`, ref: t.source, zh: t.zh, src: t.kind || '大意' }); }
   }
   return out;

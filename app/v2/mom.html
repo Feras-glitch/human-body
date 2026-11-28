@@ -33,7 +33,7 @@ th{color:var(--muted);font-weight:500;font-size:.9rem} td.ar{text-align:right;fo
 .stale{background:#FDE7E3;color:#8C2A1C;border-radius:10px;padding:4px 10px;font-size:.9rem;margin:6px 0}
 .faith .ref{color:var(--muted);font-size:.9rem}
 .lesson{page-break-after:always}
-@media print{ .nav,.say{display:none} body{background:#fff;font-size:12pt} .card{box-shadow:none;border:1px solid #ddd;break-inside:avoid} }
+@media print{ .nav,.say{display:none} body{background:#fff;font-size:12pt} .card{box-shadow:none;border:1px solid #ddd} }
 </style>
 <script src="mom-data.js"></script>
 </head>
@@ -73,7 +73,7 @@ th{color:var(--muted);font-weight:500;font-size:.9rem} td.ar{text-align:right;fo
       <div class="card"><h2>4. 怎样用中文讲</h2>${st('explain')}<p>${esc(l.explain)}</p></div>
       <div class="card"><h2>5. 常见误解</h2>${st('misconceptions')}${l.mis.map(m => `<div class="mis"><p class="q">孩子可能说：${esc(m.says)}</p><p>${esc(m.answer)}</p></div>`).join('')}</div>
       <div class="card"><h2>6. 晚餐问题</h2>${st('dinner')}<p><b>问：</b>${esc(l.dinner.q)}</p><p><b>希望听到：</b>${esc(l.dinner.listen)}</p></div>
-      ${l.faith.length ? `<div class="card faith"><h2>7. 本课的经文和圣训</h2>${l.faith.map(f => `<p class="ref"><span class="ar">${esc(f.ar)}</span> · ${esc(f.ref)}</p><p>${esc(f.zh)}</p><p class="ref">${esc(f.src)}</p>`).join('')}</div>` : ''}
+      ${l.faith.length ? `<div class="card faith"><h2>7. 本课的经文和圣训</h2>${l.faith.map(f => `<p class="ref"><span class="ar">${esc(f.ar)}</span> · ${esc(f.ref)}</p><p>${esc(f.zh)}</p><p class="ref">${esc(f.src)}</p>${f.note ? `<p><b>给妈妈的说明：</b>${esc(f.note)}</p>` : ''}`).join('')}</div>` : ''}
     </article>`;
   }
   function wireSay(scope, l) {
