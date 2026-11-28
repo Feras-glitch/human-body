@@ -4,7 +4,7 @@
 # مفتاح توقيع أندرويد لا يدخل المستودع أبداً. يقرؤه البناء من أسرار المستودع (Settings ← Secrets and variables ← Actions):
 #   HB_KEYSTORE_B64   ملف humanbody-2026.jks مرمّزاً base64
 #   HB_KEYSTORE_PASS  كلمة سرّه
-# ويُكتب في مجلد مؤقت خارج المستودع ويُحذف في آخر البناء. الأدوات تُنزَّل وتُطابَق ببصماتها في packaging/README.md.
+# ويُكتب في مجلد مؤقت خارج المستودع ويُحذف في آخر البناء. بلا السرّين تُبنى ويندوز وحدها (لا تحتاج مفتاحاً). الأدوات تُنزَّل وتُطابَق ببصماتها في packaging/README.md.
 name: Build apps (draft)
 on:
   workflow_dispatch:
@@ -58,7 +58,7 @@ jobs:
           HB_KEYSTORE_PASS: ${{ secrets.HB_KEYSTORE_PASS }}
         run: |
           if [ -z "$HB_KEYSTORE_B64" ] || [ -z "$HB_KEYSTORE_PASS" ]; then
-            echo "::error::أضف السرّين HB_KEYSTORE_B64 وHB_KEYSTORE_PASS في إعدادات المستودع (Secrets and variables ← Actions)."; exit 1; fi
+            echo "::warning::لا مفتاح توقيع في أسرار المستودع (HB_KEYSTORE_B64 وHB_KEYSTORE_PASS)، فلم يُبنَ أندرويد. نسخة ويندوز تُنشر وحدها."; exit 0; fi
           export HB_KEYSTORE="$RUNNER_TEMP/keys/humanbody-2026.jks"
           mkdir -p "$(dirname "$HB_KEYSTORE")" && echo "$HB_KEYSTORE_B64" | base64 -d > "$HB_KEYSTORE"
           ANDROID_JAR="$DL/android-platforms/android-34/android.jar" AAPT2="$DL/aapt2_64" D8_JAR="$DL/lib/jadx-1.5.1-all.jar" SIGNER_JAR="$DL/uber-apk-signer-1.3.0.jar" bash packaging/build-android.sh
@@ -69,7 +69,7 @@ jobs:
         run: |
           V="$(node -p "require('./packaging/desktop/package.json').version")"
           TAG="draft-$V-$(git rev-parse --short HEAD)"
-          cd dist && ls -1 HumanBody-*.apk HumanBody-*Setup.exe HumanBody-*portable.zip > files.txt && sha256sum $(cat files.txt) > SHA256SUMS.txt
+          cd dist && ls -1 HumanBody-*.apk HumanBody-*Setup.exe HumanBody-*portable.zip 2>/dev/null > files.txt || true && sha256sum $(cat files.txt) > SHA256SUMS.txt
           gh release delete "$TAG" -y --cleanup-tag 2>/dev/null || true
           gh release create "$TAG" $(cat files.txt) SHA256SUMS.txt --prerelease --target "$GITHUB_SHA" \
             --title "رحلة داخل جسمي $V — مسودة للتجربة ($(git rev-parse --short HEAD))" \
