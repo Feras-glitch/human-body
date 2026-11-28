@@ -1,338 +1,338 @@
 {
   "U06.L06-E1.webp": {
-    "bytes": 41010,
-    "sha256": "6abef9d2ae5308a9dfa64546449a01d5e3cbf43627096c3786301d800d0d27a8"
+    "bytes": 24630,
+    "sha256": "377d4b715e38000b758b8b94d3606eaae2516df88c3e2044ee6216e8185423c7"
   },
   "U06.L06-E2.webp": {
-    "bytes": 27954,
-    "sha256": "d4bbd60c085ced3ef998556f9a495efc7c3d4e79882ce7d2bd4875c76a8579f7"
+    "bytes": 17182,
+    "sha256": "4acc4cb94bc822204a1140ec703ba9307a41187911e183ad11827aa9e4ceec3b"
   },
   "U06.L06-E3.webp": {
-    "bytes": 31488,
-    "sha256": "beafe2f127088c106e35e1a02404c3444c3be53b3c2a9c93eb77d247245825a8"
+    "bytes": 19142,
+    "sha256": "7b9a8509b9462c1458b571bc083d761207f3a7ffd680401f0a331951cd67ea9e"
   },
   "U06.L06-E4.webp": {
-    "bytes": 30862,
-    "sha256": "ccd8e13b1cbd899ff829d16a89eb1fbc26f6a65ea4a0d6f91079c815151a06e0"
+    "bytes": 20408,
+    "sha256": "ceb1cde759141eeb054e791b7f2367d5be7dba19c883fa0077bc85a727ce61fc"
   },
   "U06.L06-E5.webp": {
-    "bytes": 41670,
-    "sha256": "09720194583d8e886cebe8a87586abae7f354f0ef14ffb023f6493990e055e81"
+    "bytes": 26174,
+    "sha256": "00c3b49918d6e080d81092d75d130866d2310a5afb7f717cdb2667cf84dd92f7"
   },
   "U06.L06-E6.webp": {
-    "bytes": 19664,
-    "sha256": "79dc2627743a0f86490ebe70815a5baf59642b09125874787e9c8c84d662ac30"
+    "bytes": 13212,
+    "sha256": "1a073de0b98324d9610054874830619c34ed21d4dddac03ffdb1cd2457a674d9"
   },
   "U08.L06-E1.webp": {
-    "bytes": 34116,
-    "sha256": "3e68b91e18d68dde400843f091942b7ce9348dbc7665b978a5e87aea23bd9ce2"
+    "bytes": 21214,
+    "sha256": "e4620998066ff71ccf03048079cccf17308db17a0c1da73c2bdf5ce47ca5cd49"
   },
   "U08.L06-E2.webp": {
-    "bytes": 30336,
-    "sha256": "0edbdde45b0e86a6becd89a756801699dd3d756e577292eddb9ada5e0fc8e283"
+    "bytes": 18846,
+    "sha256": "3d023237410bee3f47a0c1b0809b441da47ee4df48febb76e477c8aaca6e88fa"
   },
   "U08.L06-E3.webp": {
-    "bytes": 30054,
-    "sha256": "37857a8db4cf3383648f114bef4a05bac0a746f3716fb4e0e5fa06d6cc567ad8"
+    "bytes": 18858,
+    "sha256": "21446f68de9e25e744a181b51645b340346535f26f0e5c1d9ab4e7d617fff90d"
   },
   "U08.L06-E4.webp": {
-    "bytes": 30978,
-    "sha256": "e4df4df744268d81e88a21995b4330e4233ff231edee224293d7239751bdffde"
+    "bytes": 20064,
+    "sha256": "c33f17c09501795a42584d4cbb6d8bfe28d1065460f75318aaef1821214d7e93"
   },
   "U08.L06-E5.webp": {
-    "bytes": 30994,
-    "sha256": "568df5e755ae53fb83f7dc4a08caa80770cbc2977e04ee827cfdea578eb7bfae"
+    "bytes": 19564,
+    "sha256": "20708de7948f45a9f891a8871b030ad9ad4c1e885efeafc06c0a52a5add8de5f"
   },
   "U08.L06-E6.webp": {
-    "bytes": 28710,
-    "sha256": "fc2b6343e443d913d58f8e0c18281cb8828659c3bb62f95b5f2a933c5027f1bb"
+    "bytes": 18382,
+    "sha256": "2665b3cdc4984760d4d3bbbdd6fb622e78d5d470a4e09d84272424e152e031cd"
   },
   "U08.L07-E1.webp": {
-    "bytes": 29082,
-    "sha256": "29cc64546bed620787da04e329432849a6f5a841b224481513c3b2e818670151"
+    "bytes": 18878,
+    "sha256": "997f3b8a12779889a318ba62d52c639cf71dbb7f2afc66ce80300d4fcbbdbf1a"
   },
   "U08.L07-E2.webp": {
-    "bytes": 31976,
-    "sha256": "e140e1c3a150715a5695600c835fd0e362e10fb175504d00769d29ed218cc8c1"
+    "bytes": 19996,
+    "sha256": "a8a4128ee18d350ed3de0be233c9068f313055d180743cb869b5abef28184c14"
   },
   "U08.L07-E3.webp": {
-    "bytes": 20218,
-    "sha256": "fb0e26bfca16e97227005d7169aab5b068e8f76192fecf35ac10eee8b874b2e9"
+    "bytes": 13696,
+    "sha256": "a178b69604ebf36134821a58a1c0c2b0fe7c7d1e4cbc1dc8cad37716ef9bae54"
   },
   "U08.L07-E4.webp": {
-    "bytes": 24328,
-    "sha256": "f151d5db032bf5e3de0ee4ba33bab31b626a62ba22ee2d098c625067825b3070"
+    "bytes": 15820,
+    "sha256": "b6e6530ddc5f75fdb491bf63c7c62e3437a06f6c5a05698cd65151c54b75a162"
   },
   "U08.L07-E5.webp": {
-    "bytes": 30898,
-    "sha256": "f0ee2a971ea0f732c1ec1f6b9ef2a27c77595e22a4b800631df3e43537308f8d"
+    "bytes": 19290,
+    "sha256": "54d5e1454a29d99aa61422c5085b1f192d615698d46e8fe6f896c799f4a9eb80"
   },
   "U08.L07-E6.webp": {
-    "bytes": 26146,
-    "sha256": "2aa71045971f264cf7df20e7b3eb943722e2572ea6b4e6361b8b8580345a5262"
+    "bytes": 16966,
+    "sha256": "f7a194b34e45203da9204071a1ef8ae7f99569e17d3720324e909126a5d80dc6"
   },
   "U09.L05-E1.webp": {
-    "bytes": 26118,
-    "sha256": "1a33b28c58bcc1884503aaea9c93277fed86f9f085a993e7732d123479658296"
+    "bytes": 16766,
+    "sha256": "dd01b3683c34ae7cfca9035e35d2c9411ecd815e21f283c06e97985d59efe962"
   },
   "U09.L05-E2.webp": {
-    "bytes": 25790,
-    "sha256": "eb8ef06b4d4c9d407b7b87fb4d7c08c5e6b18c31d963c91ae6f81cf2cb28d597"
+    "bytes": 16466,
+    "sha256": "411632ae6f7c3d24dac0329bc98b1ab6d2e51f7072f51f079da2e3abbb3d6f57"
   },
   "U09.L05-E3.webp": {
-    "bytes": 20276,
-    "sha256": "25eadf78a8beb2e2fadf7a022884417ce13ce7b550f78b6e3ebbd103fd0d6713"
+    "bytes": 13344,
+    "sha256": "bea7b98e9502f899b0e688be579b79b1c550f21f8314990179c603b87f7d77cc"
   },
   "U09.L05-E4.webp": {
-    "bytes": 21672,
-    "sha256": "7fbc19324313940ffb3ceb781c5099f5c1aa903c175a213f43d2a74c0f4533a2"
+    "bytes": 14484,
+    "sha256": "0a6a83c6ff5538582c22f403944accdca64f8270577bf43540a358044671db92"
   },
   "U09.L05-E5.webp": {
-    "bytes": 28190,
-    "sha256": "756a350cb97ee659826c705dc0336dd78a9878127c231b2527b73ecaa6f2339f"
+    "bytes": 17524,
+    "sha256": "869c3cbf2e9f0ccca00b09f70df85131cf2d951638986c3234bd9621b3e493ad"
   },
   "U09.L05-E6.webp": {
-    "bytes": 18652,
-    "sha256": "0facab163f0ce8c6e067cb97ebdc9d732efb3959682b0f678d6b976aa7d42d0e"
+    "bytes": 13016,
+    "sha256": "3f597e917c6909f1db12eadcd1d90d8f54e19413423d3b0bfc768c32f03639ce"
   },
   "U10.L04-E1.webp": {
-    "bytes": 28522,
-    "sha256": "2802573a89741b4058db995cb801743dd7d5951afbbda4a85e31dca898d1ba10"
+    "bytes": 18086,
+    "sha256": "5dbb5f92a64315184467b982d982484a1a93f212ed2e07a53ab03d0bd4d6ffb1"
   },
   "U10.L04-E2.webp": {
-    "bytes": 28274,
-    "sha256": "a557e03c2b10208ec90f9169694df2d282553054143aea0388eef5159534593d"
+    "bytes": 17292,
+    "sha256": "d7e5023f8c9e7acd616c1e2512c1c9521e8f8c5427ab42fdddafe8c5f7dccca1"
   },
   "U10.L04-E3.webp": {
-    "bytes": 25546,
-    "sha256": "bfe2fc4b983fd5aa91e6a4e0d26b02700dd074ee0f3cdc3490cbb93979fc67e4"
+    "bytes": 16610,
+    "sha256": "8f6e3b6d1f719d56adaebb90f2d9997513bfb8d4e9958e335330fc4cd84d4f95"
   },
   "U10.L04-E4.webp": {
-    "bytes": 29554,
-    "sha256": "f93cd6188dff9ccc7a79b562ee6aa2a4095dc6da02b102a9e06ff9ef3ab90397"
+    "bytes": 18898,
+    "sha256": "ac663031443d4008034d5a21505ab8ff7b0072836820380bd09e0fbe43f6390c"
   },
   "U10.L04-E5.webp": {
-    "bytes": 33898,
-    "sha256": "85655a839b3d2bdb7e14dd9248898ae42cc46e2cbf9910016126fa343b6c17e2"
+    "bytes": 21418,
+    "sha256": "15a8d74e0e6e6a053d85642325575396f4d163392a44b74239e9820eb9eb304c"
   },
   "U10.L04-E6.webp": {
-    "bytes": 30032,
-    "sha256": "e2d6f23c67412f7d09afde6348254ebc87327d2ed586236200dc65625f2febb1"
+    "bytes": 18342,
+    "sha256": "d48bd61c9327d05fdf978275e02a74176e0b921935030c81d2040f1a8f3298b5"
   },
   "U10.L05-E1.webp": {
-    "bytes": 23814,
-    "sha256": "f79db00076544787127c7c7c32711c17c45707d94244bd46e9f894e432dcf020"
+    "bytes": 15414,
+    "sha256": "b08d91ea17c8599f6762bc264d4ef619f42d054287aeb7e1287d7d40373116a0"
   },
   "U10.L05-E2.webp": {
-    "bytes": 27110,
-    "sha256": "8157f3213831569758e0140ed378f1310961fcce7426bf89830b88056b3d3839"
+    "bytes": 17852,
+    "sha256": "145a891c11322bd49bee2811253e951d2861be5820c4516416dd818b5c3ca8a6"
   },
   "U10.L05-E3.webp": {
-    "bytes": 28956,
-    "sha256": "3c3115f78f597cda5bb9940f66e3b319f94d2aa45f7d1033d449ca5bb6d4af0c"
+    "bytes": 17914,
+    "sha256": "9861c51e319ba91c38e6c1a194c9b410715224c403ce05564113b564502bbe89"
   },
   "U10.L05-E4.webp": {
-    "bytes": 31230,
-    "sha256": "8de786921ca26a56057393716b0a154e0c36303246cec6f3a30f2ba379e70a75"
+    "bytes": 19754,
+    "sha256": "6f14fd7027248938cb2a312f315ca213e16a6dc118a15964ecfa3f3c41615c64"
   },
   "U10.L05-E5.webp": {
-    "bytes": 33088,
-    "sha256": "9a9f9b3752bd8da9c030a3fcc788ed5a7b9eea7ed40e8e7ef3cf39b24cf2d87f"
+    "bytes": 21040,
+    "sha256": "df9f997441694ab75ac13d7d31be831d11763fc3af6ac5798e46c0d5c93c9eec"
   },
   "U10.L05-E6.webp": {
-    "bytes": 25296,
-    "sha256": "34febb192e41d7c7a7fa89f184cf6a40f897b599e3d7064184c15ed3d9e40acc"
+    "bytes": 16774,
+    "sha256": "b55ac8076657f95253d0cc4a3bb70c63a659ab5d774d2259641402c40c4e219d"
   },
   "U11.L03-E1.webp": {
-    "bytes": 35312,
-    "sha256": "7770878bebbb006d0618db2e92b70ced44153dc4e9040e1786b4030e5159f386"
+    "bytes": 22228,
+    "sha256": "b809c6b252ad6675494d4e43c10289bb54062a58a4197634bb9dbf836030daa1"
   },
   "U11.L03-E2.webp": {
-    "bytes": 31598,
-    "sha256": "b22a915bf23c28c37edfe55846a8820382729b75a09c0ff8b97f2d5f99269fb1"
+    "bytes": 19546,
+    "sha256": "f3d9cc0ca9ad76d67e94575589d00f428bcf284c59a994de91f5fb035d150ea0"
   },
   "U11.L03-E3.webp": {
-    "bytes": 13790,
-    "sha256": "39a0ec8a85559bbf38cab0a032ceddce206e7af3ab08639fe66481d39dc17e25"
+    "bytes": 10102,
+    "sha256": "fa5d566a54e8c86ca9bb2e45db91e80df924aca5cbbd4a4d9ca22708aa35359d"
   },
   "U11.L03-E4.webp": {
-    "bytes": 36180,
-    "sha256": "bf68b440b0f97e16916db16a07db180a89571530eaf68a36a071920fc147402e"
+    "bytes": 23124,
+    "sha256": "554fc4d5569d9498dae27305c14e4dc257bf37c8fa5872f9dcc1481243087b8b"
   },
   "U11.L03-E5.webp": {
-    "bytes": 26600,
-    "sha256": "cb0c7ee83d17128605a79abdd826561eebe87a53ff93843b8ee95e2e421d29db"
+    "bytes": 17420,
+    "sha256": "54d7f5157349f52182abe65284426cc0d678f8bd24c0f290ebfd8f3cc1de3ef6"
   },
   "U11.L03-E6.webp": {
-    "bytes": 43334,
-    "sha256": "70dc0e55bf5fa7102d163ce4db61458c955e31cb5580b8b87ccea300b9374f8d"
+    "bytes": 26580,
+    "sha256": "7556201d0196935212354778cf450f9b36c88669b7ae6788eb4da5e527250306"
   },
   "U06.L06-exp.webp": {
-    "bytes": 386284,
-    "sha256": "9d85734ac5acd5d755dbc5de01be8b3c3406e996942635191a1f7bb3f5a94dad"
+    "bytes": 181880,
+    "sha256": "dbb17691fe883f72fb231f2b0613a46345a7fc4f47399652c1f60787aeabc0c8"
   },
   "U06.L06-hist1.webp": {
-    "bytes": 708670,
-    "sha256": "7266a3666151c748075c0f465ff2181691689169ca502c4da12bc3939a47290f"
+    "bytes": 320704,
+    "sha256": "a618b0abebba47deefa3d5ac47b5ef4721fe7a88544d242e9eda277abe899c8f"
   },
   "U06.L06-letter.webp": {
-    "bytes": 482330,
-    "sha256": "9ab74e73104312bd17a7648edca0dd7d8f91814e737e573470fdf5ecbcb3f5d3"
+    "bytes": 165882,
+    "sha256": "24dc3ca9409905b323ddbcccbb3999b8c995190326e9c33647a4f7980ee9adf8"
   },
   "U06.L06-life.webp": {
-    "bytes": 475926,
-    "sha256": "cb231934115965ea861fa29d4ca78a0075d474c82faeaaa5ccda4812edcf79a0"
+    "bytes": 198718,
+    "sha256": "45f2cbb5a822665fd0668361ca78f1129a9d8780759b5dd4caf3e3d5cfa5b3e1"
   },
   "U06.L06-title-boy.webp": {
-    "bytes": 476342,
-    "sha256": "ce94828e3b27f0c646341272510800930c2f27ffe0b75a52de3cc1dc7797ff25"
+    "bytes": 187620,
+    "sha256": "b23a5cbfdf01fb63a9c200e128b11d34065e137b6a7fccb58ccc92f056582452"
   },
   "U06.L06-title-girl.webp": {
-    "bytes": 510884,
-    "sha256": "06289f7c0505e7648a5bc9339d05c4551a7cd2509fa65cd7d17cb3f5408b65a5"
+    "bytes": 189176,
+    "sha256": "25cede4e242912fb48cad9275dd3d3029083f9afba141a53ac9916f2763e236b"
   },
   "U08.L06-exp.webp": {
-    "bytes": 381110,
-    "sha256": "d1812b9b3a50bd0fe874e3227064bf6ccf65bc0f32105f023f129cd3d1daa241"
+    "bytes": 177624,
+    "sha256": "94578db4ebcf9c293d49e5652ad78bf654fe7ab6b99097d1b4d04ae9574122f9"
   },
   "U08.L06-hist1.webp": {
-    "bytes": 563258,
-    "sha256": "e06ea9245cff757c86b62b018936b02113d926102390540035fda78ec56739cf"
+    "bytes": 212436,
+    "sha256": "631f60100b176baff5106b1e16e38c25feb28d6122e9aaee977c785284cddd23"
   },
   "U08.L06-letter.webp": {
-    "bytes": 426478,
-    "sha256": "f888b6d7f7fe5c812456df6cd619562f957e2172a7f813e3b741944713f34a04"
+    "bytes": 164952,
+    "sha256": "a97b518d714ebf82506793c8d9c4abf1976e4c2bd32e3482af789523cee4d044"
   },
   "U08.L06-life.webp": {
-    "bytes": 531108,
-    "sha256": "6ccdbaf78cbdaefec7b171c668765716f74768b0ac91a10d4d1f29547191be98"
+    "bytes": 196348,
+    "sha256": "c452358f5f24054cbfe0b3dbfd0c23128373fb04548c6f500ae5f14b67379d35"
   },
   "U08.L06-title-boy.webp": {
-    "bytes": 486476,
-    "sha256": "e8ab1f5ef8a941b5d52d54099cc0ea03334d0111beff3cb58c1f080050f1909c"
+    "bytes": 187706,
+    "sha256": "3139cbd60290954e26373008032485da07c90a80474d8b13db041f539c3743c4"
   },
   "U08.L06-title-girl.webp": {
-    "bytes": 488248,
-    "sha256": "98d38d480dd88b8d1090e38afb4c126ef17da73033e5abf6a4f256299da3bd28"
+    "bytes": 187062,
+    "sha256": "c3a4130ef68411667286d3afd94d829bc85911ed1f76f24dec12990f0d79f0b7"
   },
   "U08.L07-exp.webp": {
-    "bytes": 407894,
-    "sha256": "a0a7ea73a6dc677470597cdb8e43216372650237920317c5cf099bbeb1d49ca9"
+    "bytes": 196148,
+    "sha256": "2ffb21eae93fa822238e39e603e1d2bf164f4739f6f43cb04dad2085d5aff29c"
   },
   "U08.L07-hist1.webp": {
-    "bytes": 506010,
-    "sha256": "bd98248d9fc672331bb8b7b1a4ea788c259106bab1e38a6425f7210c56f64da7"
+    "bytes": 233108,
+    "sha256": "a319b927fe14c9429e29ba0bee313112925c1c9c29c1603d8781c6c9516f20ee"
   },
   "U08.L07-letter.webp": {
-    "bytes": 348982,
-    "sha256": "5501454b61735d2275082ce522e591737d9781754b6f8cfb6b1e566a5b7c380b"
+    "bytes": 147894,
+    "sha256": "59788cb337d6be4fdef28bb8caec78a28dc83fd290914f354e23bcfb87d824b4"
   },
   "U08.L07-life.webp": {
-    "bytes": 404948,
-    "sha256": "d710a10a82df4503927ed553180c4c1d56c468fdb31fb7a47c4e07de34e109a1"
+    "bytes": 172578,
+    "sha256": "96748c8b8f6ef0eef5231ad67a8f6e4e6c30549a160d98b0d4dce198687efef2"
   },
   "U08.L07-title-boy.webp": {
-    "bytes": 463466,
-    "sha256": "bc4c192c2bb0930c6116653ae75240f6dc588c4f1a859bfc95f99071897d9d7b"
+    "bytes": 169484,
+    "sha256": "876ca043935c81b314cc0ae41b63996f7d100c6b8e059f03f7db7eb268ce2593"
   },
   "U08.L07-title-girl.webp": {
-    "bytes": 468964,
-    "sha256": "7881422bf629dff60745767b8d8a8939daf7a989b641a0047190d2cbcac9a3c4"
+    "bytes": 171408,
+    "sha256": "5eefdc55df74ebcb51dda40b9d295ad546c8f58c284ee87dba0d1d79b8270ef3"
   },
   "U09.L05-exp.webp": {
-    "bytes": 396402,
-    "sha256": "69bac3f5144d5024a15ddcdbbd2c81eadbafa141441435eb8c9a0a87dd825069"
+    "bytes": 184902,
+    "sha256": "11fa08e50c2d32d7a2d84118f722a79ffd8b5cd9a69b5e98f550962200377d8b"
   },
   "U09.L05-hist1.webp": {
-    "bytes": 604454,
-    "sha256": "6d1d6ba88cc9735f5b2729f801462035a519c8aa330c4615ebf8b555748571aa"
+    "bytes": 248156,
+    "sha256": "f5178e420f34564eb719692853905fe208caf01865c10761b207be63679f65f5"
   },
   "U09.L05-letter.webp": {
-    "bytes": 387664,
-    "sha256": "803928f551a8225fad30c46f2ac5a87af8428b2068024ed5e6c61032d5c771fc"
+    "bytes": 153860,
+    "sha256": "12da3277b433cf06af258a122ec7361e23bad239b9b2278b28cb2677ce5619a9"
   },
   "U09.L05-life.webp": {
-    "bytes": 632232,
-    "sha256": "7beb2ce9b6c302f05bf4443cd45a919a552ec073eaa9647bd8bc4ace075d061d"
+    "bytes": 293066,
+    "sha256": "f7170f75d3a4ccef837cdee504f39f158bd614e9d58277df8b3b1d2c557cfa1e"
   },
   "U09.L05-title-boy.webp": {
-    "bytes": 405046,
-    "sha256": "f21c2b828bfc0996a8205c15f1936db6bba5bac2fab9555fb68473d0f39aa72d"
+    "bytes": 140806,
+    "sha256": "abb520990bacf7e15b70a16ecac1c8f270f4f7c0c67d55ebb294be122d2ae5e6"
   },
   "U09.L05-title-girl.webp": {
-    "bytes": 496044,
-    "sha256": "c6f73fc62fd9ca6264b8b34e2c27551c4383e004e7666a5ad9069fc6427ab3c2"
+    "bytes": 169758,
+    "sha256": "59b7917831a6a87712ebfca1aed20c70524b36d064d25e8062a90e451b28eb5a"
   },
   "U10.L04-exp.webp": {
-    "bytes": 432238,
-    "sha256": "6247073e8091b3b92a54ab426af891365d39a7eaf01c4f95c7d9b158781bc4d9"
+    "bytes": 209170,
+    "sha256": "70d713256b88d4328046b2e472cbc0fd29c949f3d507db6b9426d0e8b5ed2c35"
   },
   "U10.L04-hist1.webp": {
-    "bytes": 497970,
-    "sha256": "241d590926a5037e2396b95e4600b9bd2ace1511393b31de4d9c923898071258"
+    "bytes": 204250,
+    "sha256": "4117f1c6563d9e6e81a911db6b50b3ef2fe44dc8b30bb3aa169d01a354331f7d"
   },
   "U10.L04-letter.webp": {
-    "bytes": 344950,
-    "sha256": "e8e721f4494cc2357df6e472e18d9a918533065a595c177559b67b0e220647e5"
+    "bytes": 149362,
+    "sha256": "dab16a8a03fac49e33e04e0bb104df70541c4897d2f635682a3b7cc6f359a2af"
   },
   "U10.L04-life.webp": {
-    "bytes": 585224,
-    "sha256": "2131c3dd9874f51d2cc155baecb3f5828c9c7c17d55d6fd6ac79c12fcd8e22ec"
+    "bytes": 229622,
+    "sha256": "28c4972b30f58d5d77189904713ac08e39984eb353cc705bb031685cdf3b2e56"
   },
   "U10.L04-title-boy.webp": {
-    "bytes": 553200,
-    "sha256": "f54e1ff8fb1af27b594fbb98238df9a2437fba113bc5008b8606b5b54b4fdb62"
+    "bytes": 234674,
+    "sha256": "6133bcebed96655535abd006146d0049c1cf5b130d95488e8f86e1f4ec713226"
   },
   "U10.L04-title-girl.webp": {
-    "bytes": 606872,
-    "sha256": "bf0162e88cb68eedd43eb920bb19006accf18b0ad7cb70d3e27493d4321ce243"
+    "bytes": 249216,
+    "sha256": "397a6915aeea3909557d40984dc6548bdce31766d5954648428817617d88ddee"
   },
   "U10.L05-exp.webp": {
-    "bytes": 410784,
-    "sha256": "0e21ec93999a217f2456760e56a24650ea24545df3f7ff458a7ed1fedf360f91"
+    "bytes": 172838,
+    "sha256": "d303384d34bf14063243d1bd66ade171e7fe74a9fd77c9a3829da34b05149b66"
   },
   "U10.L05-hist1.webp": {
-    "bytes": 510452,
-    "sha256": "90f5f3c2c6e951ecbc1539ae7ca5d961b36aa1ad84d327399999c1938a18a0bc"
+    "bytes": 204852,
+    "sha256": "569320be4c295e3decfe297de6952cf3d4f993b29a395e19da89994af8cef1c4"
   },
   "U10.L05-letter.webp": {
-    "bytes": 401860,
-    "sha256": "165ae631ec38ffcc37ae98921cf5f2fa62d0e755a2f13d5d4f724609f0f3aedc"
+    "bytes": 157264,
+    "sha256": "ee825e8bfe11a9f0c98a9a6f13d552ee262731346e88ab9886f6d02fe71ed981"
   },
   "U10.L05-life.webp": {
-    "bytes": 460402,
-    "sha256": "42324bbd85484fad4c9de5ea5fba3824f284b7b0a22c725b1c320157cc06cd9d"
+    "bytes": 175992,
+    "sha256": "1ac685d8d350231e31837d01b0444a84eff4a4656c5aa8ef7287e7d338f55ead"
   },
   "U10.L05-title-boy.webp": {
-    "bytes": 516218,
-    "sha256": "316fa10ee5f72dd7213d9c21cf45708b2b3c394e0db717ac99d20a34433dd4a8"
+    "bytes": 214080,
+    "sha256": "d1d5f534a76a987374617e1268d4737910248dcdd54551d8562c168cbf59382f"
   },
   "U10.L05-title-girl.webp": {
-    "bytes": 568498,
-    "sha256": "73d9b341814eeeec999073f7acb956734cd5925f2dc0e3ecfd203c5410817398"
+    "bytes": 225528,
+    "sha256": "d1400e19221d24a7de243e0e80616c508f9bcbc3a629367c147e8a1b3b34ffeb"
   },
   "U11.L03-exp.webp": {
-    "bytes": 377186,
-    "sha256": "d85dc0e3b2100a761fb7be6dbb7e841116c94956ebb5893348359d64d9050e6d"
+    "bytes": 179638,
+    "sha256": "52d866634c83f6e8d711814de82546e4d4f41ad55d7e96ed7ae8b7e11b2bda38"
   },
   "U11.L03-hist1.webp": {
-    "bytes": 771740,
-    "sha256": "1c713f8f235f1a262452a3c037371ca1e37fee243891528bff09b2bcd46c75bc"
+    "bytes": 352218,
+    "sha256": "2feb977645ea6ce61d32db6ce2b24635caccb55c04cbf400bcad0f040374b765"
   },
   "U11.L03-letter.webp": {
-    "bytes": 397422,
-    "sha256": "82d74767aa1d38ed75415cb27f00f49efddace02ac73532066293cdf9c7265c2"
+    "bytes": 184548,
+    "sha256": "ccc9eafc3c42bd3335b1e79b780866fe05e8adf3677478bf37f40013b46ac293"
   },
   "U11.L03-life.webp": {
-    "bytes": 453020,
-    "sha256": "11e72412690eaa22d3ffa2744fe89ee356e5bde2eb67c697b507524805566f12"
+    "bytes": 180676,
+    "sha256": "cb303a60f64f0648978fc2fbb03666e9dca0243b5be916bcc1c5130d2a3f18e5"
   },
   "U11.L03-title-boy.webp": {
-    "bytes": 658068,
-    "sha256": "771911d6ad2b14e4354c54f65cb9976dd5034d74860590eecbf82793f83ec447"
+    "bytes": 286576,
+    "sha256": "05b6dbd846f2f682d0f41cfbddac3f39006aaa0057fc7f9d6f1d9d3733f4b3a1"
   },
   "U11.L03-title-girl.webp": {
-    "bytes": 666858,
-    "sha256": "481da01bf43327c46d8d38d69e1d15e07d1168c2bb637053fc3b4390d86568fe"
+    "bytes": 306888,
+    "sha256": "92253db20eb4671ebc236f16829666af18bfb259c4dfc03fb3aa74a2aa2eaa28"
   }
 }
