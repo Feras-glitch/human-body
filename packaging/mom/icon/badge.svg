@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+<g transform="translate(640 640)">
+<circle cx="170" cy="170" r="185" fill="#fff" stroke="#C85A6E" stroke-width="18"/>
+<path d="M60 120 Q115 95 170 120 L170 270 Q115 245 60 270 Z" fill="#FBE3B0" stroke="#7A3B2E" stroke-width="12" stroke-linejoin="round"/>
+<path d="M280 120 Q225 95 170 120 L170 270 Q225 245 280 270 Z" fill="#FFF4D6" stroke="#7A3B2E" stroke-width="12" stroke-linejoin="round"/>
+<path d="M85 150 Q115 138 145 150 M85 185 Q115 173 145 185 M85 220 Q115 208 145 220 M195 150 Q225 138 255 150 M195 185 Q225 173 255 185 M195 220 Q225 208 255 220" stroke="#C85A6E" stroke-width="9" fill="none" stroke-linecap="round"/>
+</g></svg>
