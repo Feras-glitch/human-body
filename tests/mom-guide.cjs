@@ -43,3 +43,12 @@ test('mom guide shows only approved scripture translations', () => {
   const approved = new Set([...Object.values(F.quran), ...Object.values(F.hadith)].filter(t => t.status === 'approved').map(t => t.zh));
   for (const l of MOM.lessons) for (const f of l.faith) assert.ok(approved.has(f.zh), `${l.id}: نص شرعي لم يُقرّ`);
 });
+
+test('mom app has its own launcher icon in every density, different from the kids icon', () => {
+  for (const d of ['mdpi', 'hdpi', 'xhdpi', 'xxhdpi', 'xxxhdpi']) {
+    const mom = path.join(root, `packaging/mom/res/mipmap-${d}/ic_launcher.png`);
+    assert.ok(fs.existsSync(mom), `missing mom icon: ${d}`);
+    const kid = fs.readFileSync(path.join(root, `packaging/android/res/mipmap-${d}/ic_launcher.png`));
+    assert.notDeepEqual(fs.readFileSync(mom), kid, `mom icon equals kids icon: ${d}`);
+  }
+});
