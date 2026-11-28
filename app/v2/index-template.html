@@ -352,8 +352,16 @@ function home() {
     ...LESSONS[0],
     pct: 100
   };
-  // بطاقات الوحدات: الإهداء بعد اكتمال دروس الوحدة، وعودة الذاكرة بعد 3 أيام
+  // «من أين أبدأ؟» (اختبار تحديد المستوى الاختياري): اقتراحه يغيّر «ابدأ» وحده ما دام الطفل لم يبدأ درساً قبل الوحدة المقترحة
+  const plc = g('atlas:placement', null);
+  const allItems = Object.values(units).flatMap(d => d.items);
+  if (plc && plc.unit && resume && resume.unit < plc.unit && !resume.pct) {
+    const r2 = allItems.find(l => l.unit >= plc.unit && !l.fin);
+    if (r2) resume = r2;
+  }
   let sp = '';
+  if (!plc && !allItems.some(l => l.fin || l.pct > 0))
+    sp += `<a class="big" href="placement.html" style="background:var(--sun);color:#3A2A00;box-shadow:0 5px 0 #D9A623"><img src="img/lammah-2.webp" alt=""><span>🧭 من أين أبدأ؟ أسئلة قصيرة تقترح لك${profile.gender === 'f' ? 'ِ' : ''} البداية (اختياري)</span></a>`;
   for (const [u, d] of Object.entries(units)) {
     if (!d.items.every(l => l.fin)) continue;
     const ded = g(`atlas:${u}.unit:finished`, false);

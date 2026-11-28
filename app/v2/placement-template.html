@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="color-scheme" content="light only">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="state.js"></script>
+<title>من أين أبدأ؟</title>
+<link rel="stylesheet" href="fonts/app-fonts.css">
+<link rel="stylesheet" href="engine.css">
+<style>
+.uchip{display:inline-block;background:#E6F7F4;color:var(--teal-d);border-radius:12px;padding:2px 10px;font-size:.9rem;margin-bottom:4px}
+.plan{background:var(--card);border-radius:18px;padding:12px 14px;margin:10px 0;box-shadow:0 3px 0 var(--line)}
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <button class="home" id="homeBtn" title="خريطتي"><img src="img/ui-home.webp" alt="خريطتي" style="width:30px"></button>
+    <div class="bar"><i id="barFill"></i></div>
+    <span class="stars"><img src="img/ui-star.webp" alt="" style="width:18px;vertical-align:-3px"> <span id="starsTxt">0</span></span>
+  </header>
+  <main id="main"></main>
+  <footer><div class="fwrap">
+    <button class="back" id="backBtn" title="السابق">→</button>
+    <button class="next" id="nextBtn">التالي</button>
+    <button class="spk" id="spkBtn" title="اسمع"><img src="img/ui-speaker.webp" alt="اسمع" style="width:28px"></button>
+  </div></footer>
+</div>
+<div class="confetti" id="confetti"></div>
+<script>
+const LESSON = { id: 'placement', title: 'من أين أبدأ؟', next: 'index.html', home: 'index.html', check_ids: [] };
+const UNITS = /*__PLACEMENT__*/ ;
+const TERMS = [];
+</script>
+<script src="engine.js"></script>
+<script>
+/* اختبار تحديد المستوى الاختياري: سؤالان من كل وحدة بالترتيب، ويقف عند أول خطأ: الوحدة التي أخطأ فيها هي المقترحة للبداية.
+   لا يُحتسب ولا يغيّر تقدّم أي درس؛ يحفظ الاقتراح وحده في atlas:placement فتبدأ منه «ابدأ» في الخريطة، والدروس كلها تبقى مفتوحة. */
+/* لا نجوم هنا: الأسئلة للاقتراح لا للمكافأة */
+award = function () {};
+const QS = UNITS.flatMap(u => u.qs.map(q => ({ ...q, unit: u.id, unitTitle: u.title })));
+const missedBefore = i => { const m = store.get('missed', {}); return QS.slice(0, i).some(q => m[q.id]); };
+const weakUnit = () => { const m = store.get('missed', {}); const q = QS.find(q => m[q.id]); return q ? UNITS.find(u => u.id === q.unit) : null; };
+const savePlacement = unit => { try { Atlas.storage.setItem('atlas:placement', JSON.stringify({ unit, at: Date.now() })); } catch (e) { Atlas.error(e.message); return false; } return true; };
+const SCENES = [
+  { id: 'intro', noBack: true, render() { ok(); return `<div class="scene"><div class="row" style="justify-content:center">${buddy(110, 'think')}</div><h2>من أين أبدأ؟</h2>
+      <p>${tx('أسئلة قصيرة من كل وحدة، بترتيب الرحلة. ليست اختباراً يُحسب: تساعدنا أن نقترح لك{|ِ} من أين {تبدأ|تبدئين}.')}</p>
+      <p>${tx('إن لم {تعرف|تعرفي} جواباً فلا بأس: معناه أن هذه الوحدة {تنتظرك|تنتظركِ}، ونقف عندها.')}</p>
+      <p class="note">${tx('الدروس كلها مفتوحة، والاقتراح لا يمنعك{|ِ} من أي درس.')}</p></div>`; },
+    after() { store.set('missed', {}); store.set('passed', {}); speak([tx('من أين أبدأ؟'), tx('أسئلة قصيرة من كل وحدة، بترتيب الرحلة. ليست اختباراً يُحسب.')]); } },
+  ...QS.map((q, i) => ({ id: q.id, skip: () => missedBefore(i),
+    render() { need(); return `<div class="scene"><span class="uchip">${q.unitTitle}</span>${choice({ id: q.id, prompt: q.prompt, options: q.options, answer: q.answer, why: q.why, perOption: q.perOption, graded: false })}</div>`; },
+    after() { speak(tx(q.prompt)); } })),
+  { id: 'result', noResume: true, render() { ok(); const w = weakUnit(); const all = !w;
+      const head = all ? '{أجبت|أجبتِ} عن أسئلة الوحدات كلها!' : w.id === 'U01' ? 'نقترح أن {تبدأ|تبدئي} من أول الرحلة.' : `نقترح أن {تبدأ|تبدئي} من وحدة «${w.title}».`;
+      const why = all ? '{تستطيع|تستطيعين} أن {تختار|تختاري} من الخريطة ما {تحب|تحبين}، أو أن {تبدأ|تبدئي} من الأول لتتعمق{|ي}.'
+        : w.id === 'U01' ? 'الوحدة الأولى تعلّم كيف نصف الجسم وكيف نعرف، وكل ما بعدها يُبنى عليها.' : 'ما قبلها {عرفت|عرفتِ} أجوبته. وإن أحببت{|ِ} أن {تراجع|تراجعي} ما قبلها، فالدروس كلها مفتوحة.';
+      return `<div class="scene"><div class="row" style="justify-content:center">${buddy(110, all ? 'party' : 'happy')}</div><h2>${tx(head)}</h2><div class="plan">${tx(why)}</div>
+        ${all ? '' : `<button class="opt" id="here" style="text-align:center;background:var(--teal);color:#fff">${tx(w.id === 'U01' ? '{ابدأ|ابدئي} من الأول' : '{ابدأ|ابدئي} من هنا')}</button>`}
+        <button class="opt" id="fromStart" style="text-align:center">${tx(all || w.id === 'U01' ? 'إلى خريطتي' : 'أفضّل أن أبدأ من الأول')}</button></div>`; },
+    after() { const w = weakUnit(); const go = u => { if (savePlacement(u)) location.href = 'index.html'; };
+      if ($('#here')) $('#here').onclick = () => go(w.id);
+      $('#fromStart').onclick = () => go(w && w.id !== 'U01' ? 'U01' : (w ? w.id : 'U01'));
+      speak(tx($('#main h2').textContent)); } },
+];
+window.BOOT_HOOK = () => 0;
+boot();
+</script>
+</body>
+</html>
