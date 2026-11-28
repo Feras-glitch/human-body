@@ -20,7 +20,7 @@ jobs:
     timeout-minutes: 40
     env:
       BUILD_KIND: draft
-      DL: ${{ runner.temp }}/pkg-tools
+      DL: /tmp/pkg-tools
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
