@@ -1204,7 +1204,7 @@ test('teacher books: a hadith opening is never printed as a verse, cards carry t
 test('the hinge joint is «الرزّي» everywhere a child or teacher reads it', () => {
   const repo = path.resolve(__dirname, '..');
   const bad = /المفصل المفصلي|مفصل مفصلي|المفصّلي/;
-  for (const d of ['lessons', 'app/v2/scenes']) for (const f of fs.readdirSync(path.join(repo, d))) {
+  for (const d of ['lessons', 'app/v2/scenes']) for (const f of fs.readdirSync(path.join(repo, d)).filter((x) => /\.(json|js)$/.test(x))) {
     const s = fs.readFileSync(path.join(repo, d, f), 'utf8');
     assert.doesNotMatch(s.replace(/"changelog"[\s\S]*?\]/, ''), bad, d + '/' + f);
   }

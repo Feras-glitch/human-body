@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN" dir="ltr">
+<head>
+<meta charset="utf-8"><meta name="color-scheme" content="light only">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>妈妈指南 · 身体里的旅程</title>
+<link rel="stylesheet" href="fonts/app-fonts.css">
+<style>
+/* دليل الأم بالصينية: يُقرأ لا يُلعب. عمود واحد، الدرس صفحة واحدة بأقسام ثابتة الترتيب، ويُطبع نظيفاً */
+:root{--bg:#FFF6E3;--card:#fff;--ink:#2A2422;--muted:#5F544D;--line:#F0E3CF;--teal:#1F7A70;--teal-d:#155E56;--coral:#C2412F;--sun:#FFF0C2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;line-height:1.85;font-size:17px}
+main{max-width:780px;margin:0 auto;padding:12px 16px 40px}
+a{color:var(--teal-d)} .nav{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:4px 0 8px}
+.nav a,.nav button{min-height:40px;display:inline-flex;align-items:center;font:inherit;font-size:.95rem}
+.nav button{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:0 12px;cursor:pointer;color:var(--ink)}
+h1{font-size:1.6rem;color:var(--teal-d);margin:6px 0 2px;line-height:1.4} h2{font-size:1.15rem;color:var(--teal-d);margin:0 0 6px}
+.ar{font-family:'IBM Plex Sans Arabic',sans-serif;direction:rtl;unicode-bidi:isolate}
+.sub{color:var(--muted);font-size:.95rem}
+.card{background:var(--card);border-radius:18px;padding:12px 16px;margin:12px 0;box-shadow:0 3px 0 var(--line)}
+.unit h2{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.lesson-link{display:block;padding:8px 10px;border-radius:12px;text-decoration:none;color:var(--ink);border:2px solid transparent}
+.lesson-link:hover,.lesson-link:focus-visible{border-color:var(--teal);outline:none}
+.lesson-link b{display:block} .lesson-link .ar{font-size:.9rem;color:var(--muted)}
+ol,ul{margin:4px 0;padding-inline-start:22px} li{margin:4px 0}
+.tag{display:inline-block;background:var(--sun);border-radius:8px;padding:0 6px;font-size:.8rem;margin-inline-end:4px}
+table{width:100%;border-collapse:collapse} th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+th{color:var(--muted);font-weight:500;font-size:.9rem} td.ar{text-align:right;font-size:1.1rem}
+.say{border:0;background:#E6F3F1;border-radius:10px;min-width:40px;min-height:36px;cursor:pointer;font-size:1rem}
+.mis{border-inline-start:4px solid var(--coral);padding-inline-start:10px;margin:8px 0}
+.mis .q{color:var(--coral)}
+.stale{background:#FDE7E3;color:#8C2A1C;border-radius:10px;padding:4px 10px;font-size:.9rem;margin:6px 0}
+.faith .ref{color:var(--muted);font-size:.9rem}
+.lesson{page-break-after:always}
+@media print{ .nav,.say{display:none} body{background:#fff;font-size:12pt} .card{box-shadow:none;border:1px solid #ddd} }
+</style>
+<script src="mom-data.js"></script>
+</head>
+<body><main id="m"></main>
+<script>
+(() => {
+  const $m = document.getElementById('m');
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const voices = () => { try { return speechSynthesis.getVoices(); } catch { return []; } };
+  const say = (t, lang) => { try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(t); u.lang = lang;
+    const v = voices().find(v => v.lang && v.lang.toLowerCase().startsWith(lang.slice(0, 2)) && v.localService !== false); if (v) u.voice = v; speechSynthesis.speak(u); } catch {} };
+  const unitTitle = u => { const x = MOM.units.find(y => y.id === u); return x ? x.zh : u; };
+  const nav = extra => `<div class="nav"><a href="#">目录</a><a href="guide-zh.html">家长使用说明</a>${extra || ''}</div>`;
+  const STALE = '阿拉伯语原文已更新，这部分译文等待更新；请以应用中的阿拉伯语内容为准。';
+
+  function home() {
+    const byUnit = MOM.units.map(u => {
+      const ls = MOM.lessons.filter(l => l.unit === u.id);
+      if (!ls.length) return '';
+      return `<div class="card unit"><h2><span>${esc(u.zh)}</span><span class="ar sub">${esc(u.ar)}</span></h2>${ls.map(l =>
+        `<a class="lesson-link" href="#${l.id}"><b>${esc(l.zh)}${l.gated ? ' <span class="tag">需家长开放</span>' : ''}</b><span class="ar">${esc(l.ar)}</span></a>`).join('')}</div>`;
+    }).join('');
+    $m.innerHTML = `${nav('<button type="button" id="pAll">打印全部</button>')}<h1>妈妈指南</h1>
+      <p class="sub">《身体里的旅程》（阿拉伯语：<span class="ar">رحلة داخل جسمي</span>）是给8到12岁孩子的人体科学课程。孩子用阿拉伯语学习；这份指南用中文告诉您每一课讲什么，方便您在孩子需要时用中文给他讲解。</p>
+      <div class="card"><h2>每一课里有什么</h2><ol><li>本课要点</li><li>关键词：阿拉伯语、中文和拼音对照，孩子在应用里看到的是阿拉伯语词</li><li>孩子会做什么（实验和安全提示）</li><li>怎样用中文讲给孩子听</li><li>常见误解：如果孩子这样说，可以这样纠正</li><li>晚餐问题：饭桌上可以问孩子的一个问题</li></ol></div>
+      ${byUnit}`;
+    document.getElementById('pAll').onclick = () => { location.hash = 'all'; setTimeout(() => window.print(), 300); };
+  }
+
+  function lessonHTML(l) {
+    const st = n => l.stale && l.stale.includes(n) ? `<div class="stale">${STALE}</div>` : '';
+    return `<article class="lesson"><p class="sub">${esc(unitTitle(l.unit))} · ${l.id}</p><h1>${esc(l.zh)}</h1><p class="ar sub">${esc(l.ar)}</p>${st('title')}
+      <div class="card"><h2>1. 本课要点</h2>${st('point')}<p>${esc(l.point)}</p>${st('objectives')}<ul>${l.objectives.map(o => `<li>${o.b ? '<span class="tag">B级·加深</span>' : ''}${esc(o.zh)}</li>`).join('')}</ul></div>
+      <div class="card"><h2>2. 关键词</h2><table><thead><tr><th>阿拉伯语</th><th>中文</th><th>拼音</th></tr></thead><tbody>${l.terms.map((t, i) =>
+        `<tr><td class="ar">${esc(t.ar)} <button class="say" type="button" data-ar="${i}" aria-label="听阿拉伯语">🔊</button></td><td>${esc(t.zh)} <button class="say" type="button" data-zh="${i}" aria-label="听中文">🔊</button></td><td>${esc(t.py)}</td></tr>`).join('')}</tbody></table></div>
+      <div class="card"><h2>3. 孩子会做什么</h2>${st('do')}<p>${esc(l.do)}</p>${l.safety.length ? `<p><b>安全提示</b></p>${st('safety')}<ul>${l.safety.map(s => `<li>${esc(s)}</li>`).join('')}</ul>` : ''}</div>
+      <div class="card"><h2>4. 怎样用中文讲</h2>${st('explain')}<p>${esc(l.explain)}</p></div>
+      <div class="card"><h2>5. 常见误解</h2>${st('misconceptions')}${l.mis.map(m => `<div class="mis"><p class="q">孩子可能说：${esc(m.says)}</p><p>${esc(m.answer)}</p></div>`).join('')}</div>
+      <div class="card"><h2>6. 晚餐问题</h2>${st('dinner')}<p><b>问：</b>${esc(l.dinner.q)}</p><p><b>希望听到：</b>${esc(l.dinner.listen)}</p></div>
+      ${l.faith.length ? `<div class="card faith"><h2>7. 本课的经文和圣训</h2>${l.faith.map(f => `<p class="ref"><span class="ar">${esc(f.ar)}</span> · ${esc(f.ref)}</p><p>${esc(f.zh)}</p><p class="ref">${esc(f.src)}</p>${f.note ? `<p><b>给妈妈的说明：</b>${esc(f.note)}</p>` : ''}`).join('')}</div>` : ''}
+    </article>`;
+  }
+  function wireSay(scope, l) {
+    scope.querySelectorAll('[data-ar]').forEach(b => b.onclick = () => say((l || MOM.lessons.find(x => x.id === b.closest('article').dataset.id)).terms[+b.dataset.ar].ar, 'ar-SA'));
+    scope.querySelectorAll('[data-zh]').forEach(b => b.onclick = () => say((l || MOM.lessons.find(x => x.id === b.closest('article').dataset.id)).terms[+b.dataset.zh].zh, 'zh-CN'));
+  }
+  function lesson(id) {
+    const i = MOM.lessons.findIndex(l => l.id === id); const l = MOM.lessons[i]; if (!l) return home();
+    const prev = MOM.lessons[i - 1], next = MOM.lessons[i + 1];
+    $m.innerHTML = nav(`<button type="button" id="pr">打印本课</button>`) + lessonHTML(l) +
+      `<div class="nav">${prev ? `<a href="#${prev.id}">← ${esc(prev.zh)}</a>` : ''}${next ? `<a href="#${next.id}">${esc(next.zh)} →</a>` : ''}</div>`;
+    wireSay($m, l); document.getElementById('pr').onclick = () => window.print(); window.scrollTo(0, 0);
+  }
+  function all() {
+    $m.innerHTML = nav() + `<h1>妈妈指南 · 全部课程</h1>` + MOM.lessons.map(l => lessonHTML(l).replace('<article class="lesson">', `<article class="lesson" data-id="${l.id}">`)).join('');
+    wireSay($m, null);
+  }
+  const route = () => { const h = decodeURIComponent(location.hash.slice(1)); if (h === 'all') all(); else if (/^U\d{2}\.L\d{2}$/.test(h)) lesson(h); else home(); };
+  addEventListener('hashchange', route); route();
+})();
+</script>
+</body></html>
