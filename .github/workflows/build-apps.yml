@@ -66,6 +66,7 @@ jobs:
           mkdir -p "$RUNNER_TEMP/keys"
           openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in ci/release.jks.enc -out "$HB_KEYSTORE" -pass env:KS_PW
           ANDROID_JAR="$DL/android-platforms/android-34/android.jar" AAPT2="$DL/aapt2_64" D8_JAR="$DL/lib/jadx-1.5.1-all.jar" SIGNER_JAR="$DL/uber-apk-signer-1.3.0.jar" bash packaging/build-android.sh
+          ANDROID_JAR="$DL/android-platforms/android-34/android.jar" AAPT2="$DL/aapt2_64" D8_JAR="$DL/lib/jadx-1.5.1-all.jar" SIGNER_JAR="$DL/uber-apk-signer-1.3.0.jar" bash packaging/build-mom-android.sh
           rm -rf "$RUNNER_TEMP/keys"
           BT=$(ls -d "$ANDROID_HOME"/build-tools/* | sort -V | tail -1)
           GOT=$("$BT/apksigner" verify --print-certs dist/HumanBody-Android-*.apk | grep 'SHA-256 digest' | head -1 | awk '{print $NF}')
@@ -77,8 +78,8 @@ jobs:
         run: |
           V="$(node -p "require('./packaging/desktop/package.json').version")"
           C="$(git rev-parse --short HEAD)"; TAG=draft-latest
-          cd dist && { ls -1 HumanBody-*.apk HumanBody-*Setup.exe HumanBody-*portable.zip 2>/dev/null > files.txt || true; } && sha256sum $(cat files.txt) > SHA256SUMS.txt
+          cd dist && { cp ../build/pdf/mom-zh.pdf HumanBody-MomGuide-zh.pdf && ls -1 HumanBody-*.apk HumanBody-*Setup.exe HumanBody-*portable.zip HumanBody-MomGuide-zh.pdf 2>/dev/null > files.txt || true; } && sha256sum $(cat files.txt) > SHA256SUMS.txt
           gh release delete "$TAG" -y --cleanup-tag 2>/dev/null || true
           gh release create "$TAG" $(cat files.txt) SHA256SUMS.txt --prerelease --target "$GITHUB_SHA" \
             --title "رحلة داخل جسمي $V — مسودة للتجربة ($C)" \
-            --notes "مسودة غير معتمدة للتجربة في البيت، من الإيداع $C. أندرويد: ثبّت ملف .apk. ويندوز: Setup.exe للتثبيت، أو portable.zip بلا تثبيت."
+            --notes "مسودة غير معتمدة للتجربة في البيت، من الإيداع $C. أندرويد: ثبّت ملف .apk. ويندوز: Setup.exe للتثبيت، أو portable.zip بلا تثبيت. دليل الأم بالصينية تطبيق مستقل: HumanBody-MomGuide-zh-*.apk، وكتابه PDF."

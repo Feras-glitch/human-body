@@ -46,7 +46,7 @@ th{color:var(--muted);font-weight:500;font-size:.9rem} td.ar{text-align:right;fo
   const say = (t, lang) => { try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(t); u.lang = lang;
     const v = voices().find(v => v.lang && v.lang.toLowerCase().startsWith(lang.slice(0, 2)) && v.localService !== false); if (v) u.voice = v; speechSynthesis.speak(u); } catch {} };
   const unitTitle = u => { const x = MOM.units.find(y => y.id === u); return x ? x.zh : u; };
-  const nav = extra => `<div class="nav"><a href="index.html">← 返回应用</a><a href="#">目录</a><a href="guide-zh.html">家长使用说明</a>${extra || ''}</div>`;
+  const nav = extra => `<div class="nav"><a href="#">目录</a><a href="guide-zh.html">家长使用说明</a>${extra || ''}</div>`;
   const STALE = '阿拉伯语原文已更新，这部分译文等待更新；请以应用中的阿拉伯语内容为准。';
 
   function home() {

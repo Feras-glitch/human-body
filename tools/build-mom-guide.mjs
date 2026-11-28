@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// «妈妈指南» دليل الأم بالصينية (قرار 28 نوفمبر): app/v2/mom-data.js من lessons/zh/<id>.json وlessons/zh/faith.json وملفات الدروس.
+// «妈妈指南» دليل الأم بالصينية (قرار 28 نوفمبر): mom/mom-data.js من lessons/zh/<id>.json وlessons/zh/faith.json وملفات الدروس.
 // كل حقل مترجم يحمل بصمة نصه العربي (tools/zh_guide.py)؛ إن تغيّر العربي بعد الترجمة يُعلَّم الحقل «待更新» في الصفحة ويُعدّ هنا.
 // المصطلحات من الدرس نفسه (عربي، صيني، بنين). النص الشرعي لا يظهر إلا ما أقرّه صاحب المشروع (status: approved).
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
@@ -54,5 +54,5 @@ for (const id of ids) {
     faith: faithOf(L), stale: stl.length ? stl : undefined });
 }
 const units = Object.entries(UNITS).map(([id, zh]) => ({ id, zh, ar: J(`lessons/${ids.find(i => i.startsWith(id + '.'))}.json`).unit.title }));
-writeFileSync('app/v2/mom-data.js', '/* مولَّد: node tools/build-mom-guide.mjs — لا يُحرَّر يدوياً */\nconst MOM = ' + safeJSON({ units, lessons }) + ';\n');
-console.log(`app/v2/mom-data.js — ${lessons.length}/${ids.length} درساً بالصينية${missing.length ? '، ينقص: ' + missing.join(' ') : ''}؛ نصوص شرعية تنتظر الإقرار: ${pending.size}${stale.length ? '\n  ترجمة تحتاج تحديثاً: ' + stale.join(' | ') : ''}`);
+writeFileSync('mom/mom-data.js', '/* مولَّد: node tools/build-mom-guide.mjs — لا يُحرَّر يدوياً */\nconst MOM = ' + safeJSON({ units, lessons }) + ';\n');
+console.log(`mom/mom-data.js — ${lessons.length}/${ids.length} درساً بالصينية${missing.length ? '، ينقص: ' + missing.join(' ') : ''}؛ نصوص شرعية تنتظر الإقرار: ${pending.size}${stale.length ? '\n  ترجمة تحتاج تحديثاً: ' + stale.join(' | ') : ''}`);
