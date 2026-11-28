@@ -1341,7 +1341,14 @@
       "answer": "في الظلام يتسع البؤبؤ ليُدخل ضوءاً أكثر"
     }
   ],
-  "true_size": [],
+  "true_size": [
+    {
+      "text": "في عينك{|ِ} الواحدة نحو 120 مليون خلية ترى في الضوء الخافت. لو {عددت|عددتِ} خلية كل ثانية بلا توقف، لاحتجت{|ِ} نحو أربع سنوات لتعدّها.",
+      "source": [
+        "S2"
+      ]
+    }
+  ],
   "audio": {
     "title": "U08.L02/title.afdf530cc0.mp3",
     "driving_question.m": "U08.L02/driving_question.m.4686c15841.mp3",
@@ -1595,6 +1602,8 @@
     "number.c4567fcca2.f": "U08.L02/number.c4567fcca2.f.ad8804bc3c.mp3",
     "number.4c699a8a1c.m": "U08.L02/number.4c699a8a1c.m.92f70f4049.mp3",
     "number.4c699a8a1c.f": "U08.L02/number.4c699a8a1c.f.85d7247302.mp3",
+    "size.4799adbaa7.m": "U08.L02/size.4799adbaa7.m.d043d5b719.mp3",
+    "size.4799adbaa7.f": "U08.L02/size.4799adbaa7.f.938d8b5571.mp3",
     "central_fact": "U08.L02/central_fact.ca8b86e6ed.mp3",
     "scene.79b03f8530.m": "U08.L02/scene.79b03f8530.m.9267d8c8be.mp3",
     "scene.79b03f8530.f": "U08.L02/scene.79b03f8530.f.b19f9dafd9.mp3",
