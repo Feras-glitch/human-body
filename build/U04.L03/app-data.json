@@ -1068,6 +1068,33 @@
       ]
     }
   ],
+  "unit_review": {
+    "text": "رحلة الهواء في هذه الوحدة لها ثلاث محطات: كيف يدخل، وماذا يحدث له في الرئتين، وكيف نحمي طريقه.",
+    "links": [
+      {
+        "lesson": "U04.L01",
+        "idea": "الحجاب الحاجز وعضلات الأضلاع توسّع الصدر فيدخل الهواء"
+      },
+      {
+        "lesson": "U04.L02",
+        "idea": "في الحويصلات يعبر الأكسجين إلى الدم وثاني أكسيد الكربون إلى الهواء"
+      },
+      {
+        "lesson": "U04.L03",
+        "idea": "المخاط والأهداب والسعال تحمي مجاري الهواء، والدخان يبطل حمايتها"
+      }
+    ],
+    "question": {
+      "prompt": "{تنفّست|تنفّستِ} هواءً نقياً. إلى أين يصل الأكسجين في النهاية؟",
+      "options": [
+        "يخرج كله مع الزفير كما دخل",
+        "إلى كل خلية في الجسم، يحمله الدم من الرئتين",
+        "يبقى في الرئتين ولا يخرج منهما"
+      ],
+      "answer": 1,
+      "why": "يدخل الهواء بحركة الحجاب الحاجز، ويعبر الأكسجين في الحويصلات إلى الدم، والدم يوصله إلى كل خلية؛ ويخرج مع الزفير ثاني أكسيد الكربون."
+    }
+  },
   "audio": {
     "title": "U04.L03/title.644de06496.mp3",
     "driving_question.m": "U04.L03/driving_question.m.a9b0a34bea.mp3",
@@ -1235,6 +1262,13 @@
     "how_we_know.limit": "U04.L03/how_we_know.limit.54c23b23a3.mp3",
     "organ_letter.m": "U04.L03/organ_letter.m.2c0ba50fd7.mp3",
     "organ_letter.f": "U04.L03/organ_letter.f.b9a2cd7544.mp3",
+    "unit_review": "U04.L03/unit_review.0178dfea08.mp3",
+    "unit_review.1": "U04.L03/unit_review.1.111d4ee5e8.mp3",
+    "unit_review.2": "U04.L03/unit_review.2.9ee765212a.mp3",
+    "unit_review.3": "U04.L03/unit_review.3.657a7855fd.mp3",
+    "unit_review.q.m": "U04.L03/unit_review.q.m.ba5a150272.mp3",
+    "unit_review.q.f": "U04.L03/unit_review.q.f.8aeec8147a.mp3",
+    "unit_review.why": "U04.L03/unit_review.why.ac2d3929d2.mp3",
     "history.1.who": "U04.L03/history.1.who.340306e5dd.mp3",
     "history.1.did": "U04.L03/history.1.did.d44c4ade07.mp3",
     "history.1.method": "U04.L03/history.1.method.e8145c9641.mp3",

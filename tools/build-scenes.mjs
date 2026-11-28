@@ -83,6 +83,7 @@ for(const id of ids){ if(HAND.has(id)) continue; const L=all[id]; const unit=L.u
     history:L.history||[], how_we_know:(sci.how_we_know&&sci.how_we_know[0])?{text:sci.how_we_know[0].text, limit_question:L.flow.how_we_know?.limit_question||''}:(L.flow.how_we_know||null),
     what_changed:sci.what_changed||[], model_limits:sci.model_limits||[], faith:{opening:faithLD(L.faith?.opening), closing:faithLD(L.faith?.closing)}, life:(L.life_application||[]).map(lifeLD),
     open_questions:sci.open_questions||[], notebook:L.flow.notebook||null,
+    ...(L.unit_review ? { unit_review: { ...L.unit_review, links: L.unit_review.links.map(l=>{ if(!all[l.lesson] || !l.lesson.startsWith(unit+'.')) throw new Error(id+': unit_review يشير إلى درس خارج الوحدة: '+l.lesson); if(gatedOf(l.lesson)) throw new Error(id+': unit_review لا يشير إلى درس بإذن ولي الأمر: '+l.lesson); return { ...l, title: all[l.lesson].title.ar }; }) } } : {}),
     imgs: readdirSync('app/v2/img').filter(f=>f.startsWith(id+'-')&&f.endsWith('.webp')).map(f=>f.replace('.webp','')) };
   const AUDIO = audioMap(id, L);
   const html = HEAD(L.title.ar) + `<script src="audio-key.js"></script>

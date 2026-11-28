@@ -1,8 +1,8 @@
 {
   "lesson": "U03.L04",
   "version": "1.1",
-  "count": 173,
-  "words": 2531,
+  "count": 181,
+  "words": 2610,
   "items": [
     {
       "key": "title",
@@ -999,6 +999,56 @@
       "hash": "598f912fc3",
       "file": "U03.L04/organ_letter.f.598f912fc3.mp3",
       "text": "أنا الرسم الذي في كتابكِ. أكبّر الشعيرات ألف مرة وألوّن نصف الدم بالأزرق وأرسم عشرة أوعية بدل مليارات، وأقف ساكناً مع أن كل ما فيّ يتحرك. لست كاذباً؛ أنا نموذج. أُظهر لكِ الفكرة وأخفي التفاصيل. اسألني دائماً: ماذا تُظهر؟ وماذا تخفي؟ ولا تصدّقني أكثر مما أستحق."
+    },
+    {
+      "key": "unit_review",
+      "hash": "edb75dac61",
+      "file": "U03.L04/unit_review.edb75dac61.mp3",
+      "text": "القلب والأوعية والدم فريق نقل واحد: مضخة، وطرق، وما يُنقل فيها."
+    },
+    {
+      "key": "unit_review.1",
+      "hash": "2f0be8c2b4",
+      "file": "U03.L04/unit_review.1.2f0be8c2b4.mp3",
+      "text": "القلب عضلة تضخ الدم بلا توقف، وتسرع حين يحتاج الجسم"
+    },
+    {
+      "key": "unit_review.2",
+      "hash": "ea8ae425bd",
+      "file": "U03.L04/unit_review.2.ea8ae425bd.mp3",
+      "text": "الدم يجري في حلقة مغلقة: شرايين ثم شعيرات ثم أوردة"
+    },
+    {
+      "key": "unit_review.3",
+      "hash": "c5dc1449dc",
+      "file": "U03.L04/unit_review.3.c5dc1449dc.mp3",
+      "text": "في الدم خلايا تنقل وتدافع وتسدّ الجروح"
+    },
+    {
+      "key": "unit_review.4",
+      "hash": "eed2c949cc",
+      "file": "U03.L04/unit_review.4.eed2c949cc.mp3",
+      "text": "نفحص نموذج الدورة الدموية ونفسر به مواقف"
+    },
+    {
+      "key": "unit_review.q.m",
+      "gender": "m",
+      "hash": "77b925e59d",
+      "file": "U03.L04/unit_review.q.m.77b925e59d.mp3",
+      "text": "خلية حمراء وصلت إلى إصبع قدمك. كيف وصلت؟"
+    },
+    {
+      "key": "unit_review.q.f",
+      "gender": "f",
+      "hash": "f8dae5f3a4",
+      "file": "U03.L04/unit_review.q.f.f8dae5f3a4.mp3",
+      "text": "خلية حمراء وصلت إلى إصبع قدمكِ. كيف وصلت؟"
+    },
+    {
+      "key": "unit_review.why",
+      "hash": "ead994802a",
+      "file": "U03.L04/unit_review.why.ead994802a.mp3",
+      "text": "الخلايا الحمراء تُصنع في نخاع العظم، ويدفعها القلب في الشرايين حتى الشعيرات، ثم تعود في الأوردة إلى القلب."
     },
     {
       "key": "history.1.who",

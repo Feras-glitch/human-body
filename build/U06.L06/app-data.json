@@ -1160,6 +1160,45 @@
       ]
     }
   ],
+  "unit_review": {
+    "text": "هذه الوحدة رحلة طعام واحدة من الفم إلى الدم، ثم سؤال: ماذا نضع في الطبق؟",
+    "links": [
+      {
+        "lesson": "U06.L01",
+        "idea": "الأسنان تقطع وتطحن، واللعاب يبدأ تكسير النشا"
+      },
+      {
+        "lesson": "U06.L02",
+        "idea": "عضلات المريء تدفع الطعام، والمعدة تخلطه بعصارات"
+      },
+      {
+        "lesson": "U06.L03",
+        "idea": "الكبد والبنكرياس والمرارة تصنع وتخزّن ما يكمل الهضم"
+      },
+      {
+        "lesson": "U06.L04",
+        "idea": "الغذاء المهضوم يعبر جدار الأمعاء الدقيقة إلى الدم"
+      },
+      {
+        "lesson": "U06.L05",
+        "idea": "ميكروبات نافعة في الأمعاء الغليظة يطعمها الطعام النباتي"
+      },
+      {
+        "lesson": "U06.L06",
+        "idea": "لكل مادة غذائية عمل، ولا يعطيها كلها طعام واحد"
+      }
+    ],
+    "question": {
+      "prompt": "لقمة خبز مع خضار. كيف يصير النشا الذي فيها سكراً في الدم؟",
+      "options": [
+        "يبدأ تكسيره في الفم، وتكمله عصارة البنكرياس، ثم يعبر جدار الأمعاء الدقيقة",
+        "يصير سكراً في المعدة ويعبر جدارها",
+        "يصل إلى الأمعاء الغليظة ثم يعبر منها"
+      ],
+      "answer": 0,
+      "why": "الهضم سلسلة: الفم يبدأ، والبنكرياس يكمل، والامتصاص في الأمعاء الدقيقة؛ وألياف الخضار تصل إلى ميكروبات الأمعاء الغليظة."
+    }
+  },
   "audio": {
     "title": "U06.L06/title.27728953d1.mp3",
     "driving_question.m": "U06.L06/driving_question.m.deda677f49.mp3",
@@ -1351,6 +1390,15 @@
     "how_we_know.limit": "U06.L06/how_we_know.limit.da72ea1cec.mp3",
     "organ_letter.m": "U06.L06/organ_letter.m.335cbcfe7b.mp3",
     "organ_letter.f": "U06.L06/organ_letter.f.88d208c537.mp3",
+    "unit_review": "U06.L06/unit_review.d2da93ec55.mp3",
+    "unit_review.1": "U06.L06/unit_review.1.85623d73bc.mp3",
+    "unit_review.2": "U06.L06/unit_review.2.c21b85fc48.mp3",
+    "unit_review.3": "U06.L06/unit_review.3.46ad572d85.mp3",
+    "unit_review.4": "U06.L06/unit_review.4.a8b6395ed6.mp3",
+    "unit_review.5": "U06.L06/unit_review.5.302074ab3c.mp3",
+    "unit_review.6": "U06.L06/unit_review.6.503fdae5d7.mp3",
+    "unit_review.q": "U06.L06/unit_review.q.961b0ef1b4.mp3",
+    "unit_review.why": "U06.L06/unit_review.why.a60091200d.mp3",
     "history.1.who": "U06.L06/history.1.who.61bb3eea44.mp3",
     "history.1.did": "U06.L06/history.1.did.1f5dba6ec0.mp3",
     "history.1.method": "U06.L06/history.1.method.f164cfba4b.mp3",

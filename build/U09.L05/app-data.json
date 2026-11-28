@@ -1087,6 +1087,41 @@
       ]
     }
   ],
+  "unit_review": {
+    "text": "دروس هذه الوحدة عن حماية الجسم: جلد يحيط به، وحرارة يضبطها، ودفاع يمنع الميكروبات، ولقاح يدرّبه، ودواء يُؤخذ بحكمة.",
+    "links": [
+      {
+        "lesson": "U09.L01",
+        "idea": "الجلد عضو حي يتجدد ويحمي من أشعة الشمس"
+      },
+      {
+        "lesson": "U09.L02",
+        "idea": "الجسم يبرد بالعرق ويدفأ بالارتجاف ليبقى قريباً من 37 درجة"
+      },
+      {
+        "lesson": "U09.L03",
+        "idea": "حواجز ثم خلايا بيضاء ثم أجسام مضادة تمنع الميكروبات"
+      },
+      {
+        "lesson": "U09.L04",
+        "idea": "اللقاح يدرّب الدفاع دون المرض، ويحمي من لا يستطيع التلقح"
+      },
+      {
+        "lesson": "U09.L05",
+        "idea": "الدواء نافع كما قال الطبيب، ولا نأخذ دواء غيرنا"
+      }
+    ],
+    "question": {
+      "prompt": "جُرح صغير في الركبة. ما الذي يحمي الجسم من الميكروبات؟",
+      "options": [
+        "الجلد حاجز، فإن انجرح أتت الخلايا البيضاء وسدّت الصفائح الجرح، ونغسله بماء نظيف",
+        "الدواء الذي في البيت، نأخذه دون أن نسأل كبيراً",
+        "الميكروبات لا تدخل من الجروح أبداً"
+      ],
+      "answer": 0,
+      "why": "الجلد أول حاجز، والدفاع يعمل إن عبرت الميكروبات، والدواء يُؤخذ من يد كبير كما قال الطبيب أو الصيدلي."
+    }
+  },
   "audio": {
     "title": "U09.L05/title.387b831e40.mp3",
     "driving_question.m": "U09.L05/driving_question.m.24529dc861.mp3",
@@ -1261,6 +1296,14 @@
     "how_we_know.limit": "U09.L05/how_we_know.limit.c1da33570c.mp3",
     "organ_letter.m": "U09.L05/organ_letter.m.c69c018e12.mp3",
     "organ_letter.f": "U09.L05/organ_letter.f.c9836df9e3.mp3",
+    "unit_review": "U09.L05/unit_review.cc6f80a565.mp3",
+    "unit_review.1": "U09.L05/unit_review.1.80b19e91c3.mp3",
+    "unit_review.2": "U09.L05/unit_review.2.1d4b107101.mp3",
+    "unit_review.3": "U09.L05/unit_review.3.297dbc959f.mp3",
+    "unit_review.4": "U09.L05/unit_review.4.bf8b375697.mp3",
+    "unit_review.5": "U09.L05/unit_review.5.ce606eabdd.mp3",
+    "unit_review.q": "U09.L05/unit_review.q.c79c77e6e2.mp3",
+    "unit_review.why": "U09.L05/unit_review.why.2f8398f066.mp3",
     "history.1.who": "U09.L05/history.1.who.ffde0d6fc0.mp3",
     "history.1.did": "U09.L05/history.1.did.1934c1dde7.mp3",
     "history.1.method": "U09.L05/history.1.method.acfa14e696.mp3",

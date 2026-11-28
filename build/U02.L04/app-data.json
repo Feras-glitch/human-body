@@ -767,6 +767,37 @@
     }
   ],
   "true_size": [],
+  "unit_review": {
+    "text": "دروس هذه الوحدة قطع في آلة واحدة: العظم يحمل، والمفصل يسمح بالحركة، والعضلة تسحب، والوتر يوصل سحبها إلى العظم.",
+    "links": [
+      {
+        "lesson": "U02.L01",
+        "idea": "العظم حي: يدعم الجسم ويحميه، وينمو ويلتئم"
+      },
+      {
+        "lesson": "U02.L02",
+        "idea": "المفصل حيث تلتقي عظمتان، وشكله يحدد حركته"
+      },
+      {
+        "lesson": "U02.L03",
+        "idea": "العضلة تنقبض فتسحب ولا تدفع، فتعمل أزواجاً"
+      },
+      {
+        "lesson": "U02.L04",
+        "idea": "نبني نموذج ذراع ونفحص به ما تعلمناه"
+      }
+    ],
+    "question": {
+      "prompt": "حين {تثني|تثنين} مرفقك{|ِ} لترفع{|ي} كوباً، ماذا يحدث؟",
+      "options": [
+        "العضلة تدفع العظم إلى الأعلى",
+        "العظم يتحرك وحده دون عضلة",
+        "عضلة تنقبض فتسحب العظم عبر الوتر، والمفصل يسمح بالانثناء"
+      ],
+      "answer": 2,
+      "why": "العضلة تسحب ولا تدفع، والوتر يوصل سحبها إلى العظم، والمفصل يسمح بالحركة: دروس الوحدة كلها في حركة واحدة."
+    }
+  },
   "audio": {
     "title": "U02.L04/title.11e0eb8494.mp3",
     "driving_question.m": "U02.L04/driving_question.m.0d9affb72d.mp3",
@@ -907,6 +938,14 @@
     "how_we_know.limit.f": "U02.L04/how_we_know.limit.f.ca39962992.mp3",
     "organ_letter.m": "U02.L04/organ_letter.m.e281e4ef25.mp3",
     "organ_letter.f": "U02.L04/organ_letter.f.7cdbb6258b.mp3",
+    "unit_review": "U02.L04/unit_review.ad281aca20.mp3",
+    "unit_review.1": "U02.L04/unit_review.1.6e2d464356.mp3",
+    "unit_review.2": "U02.L04/unit_review.2.4efb8b939c.mp3",
+    "unit_review.3": "U02.L04/unit_review.3.6de98c96a8.mp3",
+    "unit_review.4": "U02.L04/unit_review.4.b4777f5421.mp3",
+    "unit_review.q.m": "U02.L04/unit_review.q.m.db1e311ac5.mp3",
+    "unit_review.q.f": "U02.L04/unit_review.q.f.4579fa16d2.mp3",
+    "unit_review.why": "U02.L04/unit_review.why.e121eab657.mp3",
     "history.1.who": "U02.L04/history.1.who.e7eee5813b.mp3",
     "history.1.did": "U02.L04/history.1.did.d1b55af2fe.mp3",
     "history.1.method": "U02.L04/history.1.method.7fdc48b39c.mp3",

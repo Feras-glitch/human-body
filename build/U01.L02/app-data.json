@@ -969,6 +969,29 @@
       ]
     }
   ],
+  "unit_review": {
+    "text": "في هذه الوحدة تعلمنا أمرين نحتاجهما في الرحلة كلها: كيف نصف الجسم بأسماء واتجاهات متفق عليها، وكيف نعرف ما نعرفه عنه.",
+    "links": [
+      {
+        "lesson": "U01.L01",
+        "idea": "نسمّي مناطق الجسم واتجاهاته بأسماء متفق عليها، وكل رسم نموذج يُظهر ويخفي"
+      },
+      {
+        "lesson": "U01.L02",
+        "idea": "نعرف بالملاحظة والقياس المكرر والمقارنة العادلة، والتخمين ليس معرفة حتى يُفحص"
+      }
+    ],
+    "question": {
+      "prompt": "قال لمّاح: «رأيت رسماً للجسم في كتاب، فالجسم من الداخل مثله تماماً». ماذا {تقول|تقولين} له؟",
+      "options": [
+        "الرسوم لا تنفع في تعلم الجسم",
+        "الرسم نموذج يُظهر فكرة ويخفي تفاصيل، وما نريد معرفته نفحصه بالملاحظة والقياس",
+        "كل رسم في كتاب يطابق الجسم الحقيقي في كل شيء"
+      ],
+      "answer": 1,
+      "why": "الرسم نموذج: ينفع لفهم فكرة ولا يطابق الجسم في كل شيء؛ وما نريد أن نعرفه عن الجسم نفسه نعرفه بالملاحظة والقياس."
+    }
+  },
   "audio": {
     "title": "U01.L02/title.5f18f2484e.mp3",
     "driving_question.m": "U01.L02/driving_question.m.687c677ab1.mp3",
@@ -1151,6 +1174,12 @@
     "how_we_know.limit.f": "U01.L02/how_we_know.limit.f.7fc996ece6.mp3",
     "organ_letter.m": "U01.L02/organ_letter.m.21d96d32e7.mp3",
     "organ_letter.f": "U01.L02/organ_letter.f.f020a81650.mp3",
+    "unit_review": "U01.L02/unit_review.cf900fb48f.mp3",
+    "unit_review.1": "U01.L02/unit_review.1.3346f4865e.mp3",
+    "unit_review.2": "U01.L02/unit_review.2.1c27748295.mp3",
+    "unit_review.q.m": "U01.L02/unit_review.q.m.45b7939ef3.mp3",
+    "unit_review.q.f": "U01.L02/unit_review.q.f.a4569d559c.mp3",
+    "unit_review.why": "U01.L02/unit_review.why.a77edd87da.mp3",
     "history.1.who": "U01.L02/history.1.who.ed9dba3675.mp3",
     "history.1.did": "U01.L02/history.1.did.63702f63d4.mp3",
     "history.1.method": "U01.L02/history.1.method.bb2738ab17.mp3",

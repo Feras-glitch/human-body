@@ -988,6 +988,22 @@
         }
       }
     },
+    "unit_review": {
+      "type": "object",
+      "description": "مراجعة الوحدة: في آخر درس من كل وحدة فقط، مشهد يربط دروس الوحدة ببعض (فكرة كل درس) ثم سؤال جامع غير محتسب. لا معرفة جديدة ولا نص شرعي جديد",
+      "required": ["text", "links", "question"],
+      "additionalProperties": false,
+      "properties": {
+        "text": { "type": "string", "minLength": 20, "description": "تمهيد منطوق يربط دروس الوحدة" },
+        "links": {
+          "type": "array", "minItems": 2,
+          "items": { "type": "object", "required": ["lesson", "idea"], "additionalProperties": false,
+            "properties": { "lesson": { "type": "string", "pattern": "^U[0-9]{2}\\.L[0-9]{2}$" }, "idea": { "type": "string", "minLength": 8 } } }
+        },
+        "question": { "type": "object", "required": ["prompt", "options", "answer", "why"], "additionalProperties": false,
+          "properties": { "prompt": { "type": "string" }, "options": { "type": "array", "minItems": 3, "items": { "type": "string" } }, "answer": { "type": "integer", "minimum": 0 }, "why": { "type": "string", "minLength": 10 } } }
+      }
+    },
     "dinner": {
       "type": "object",
       "description": "سؤال حوار لولي الأمر يسأله الطفل في البيت بعد الدرس (بطاقة «اسأله على العشاء» في شاشة ولي الأمر)، وما ينتظر أن يسمعه",

@@ -945,6 +945,37 @@
     }
   ],
   "true_size": [],
+  "unit_review": {
+    "text": "القلب والأوعية والدم فريق نقل واحد: مضخة، وطرق، وما يُنقل فيها.",
+    "links": [
+      {
+        "lesson": "U03.L01",
+        "idea": "القلب عضلة تضخ الدم بلا توقف، وتسرع حين يحتاج الجسم"
+      },
+      {
+        "lesson": "U03.L02",
+        "idea": "الدم يجري في حلقة مغلقة: شرايين ثم شعيرات ثم أوردة"
+      },
+      {
+        "lesson": "U03.L03",
+        "idea": "في الدم خلايا تنقل وتدافع وتسدّ الجروح"
+      },
+      {
+        "lesson": "U03.L04",
+        "idea": "نفحص نموذج الدورة الدموية ونفسر به مواقف"
+      }
+    ],
+    "question": {
+      "prompt": "خلية حمراء وصلت إلى إصبع قدمك{|ِ}. كيف وصلت؟",
+      "options": [
+        "دفعها القلب في الشرايين حتى الشعيرات القريبة من خلايا الإصبع",
+        "دخلت من الجلد إلى الإصبع",
+        "صُنعت في الإصبع نفسه ولم تتحرك"
+      ],
+      "answer": 0,
+      "why": "الخلايا الحمراء تُصنع في نخاع العظم، ويدفعها القلب في الشرايين حتى الشعيرات، ثم تعود في الأوردة إلى القلب."
+    }
+  },
   "audio": {
     "title": "U03.L04/title.9a9c78d8b0.mp3",
     "driving_question": "U03.L04/driving_question.6e75c4bf47.mp3",
@@ -1102,6 +1133,14 @@
     "how_we_know.limit.f": "U03.L04/how_we_know.limit.f.98e6c61dc0.mp3",
     "organ_letter.m": "U03.L04/organ_letter.m.ae6636890e.mp3",
     "organ_letter.f": "U03.L04/organ_letter.f.598f912fc3.mp3",
+    "unit_review": "U03.L04/unit_review.edb75dac61.mp3",
+    "unit_review.1": "U03.L04/unit_review.1.2f0be8c2b4.mp3",
+    "unit_review.2": "U03.L04/unit_review.2.ea8ae425bd.mp3",
+    "unit_review.3": "U03.L04/unit_review.3.c5dc1449dc.mp3",
+    "unit_review.4": "U03.L04/unit_review.4.eed2c949cc.mp3",
+    "unit_review.q.m": "U03.L04/unit_review.q.m.77b925e59d.mp3",
+    "unit_review.q.f": "U03.L04/unit_review.q.f.f8dae5f3a4.mp3",
+    "unit_review.why": "U03.L04/unit_review.why.ead994802a.mp3",
     "history.1.who": "U03.L04/history.1.who.c29a19b1d0.mp3",
     "history.1.did": "U03.L04/history.1.did.05afa2c9c4.mp3",
     "history.1.method": "U03.L04/history.1.method.0680a41548.mp3",

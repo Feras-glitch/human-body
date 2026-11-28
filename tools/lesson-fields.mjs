@@ -9,7 +9,7 @@ const TOP = {
   title: 'عنوان الدرس', driving_question: 'سؤال الدرس الكبير', scope: 'نطاق الدرس', objectives: 'أهداف الدرس', concepts: 'المصطلحات',
   science: 'المحتوى العلمي', misconceptions: 'التصورات الخاطئة', experiment: 'التجربة', flow: 'مسار الدرس', organ_letter: 'رسالة العضو',
   passport: 'جواز المعرفة', find_the_error: 'اكتشف الخطأ', true_size: 'الحجم الحقيقي', history: 'علماء حضارتنا', faith: 'الإيمان',
-  assessment: 'التقويم', teacher: 'دليل المعلم', sources: 'المصادر', life_application: 'في حياتي', unit: 'الوحدة',
+  assessment: 'التقويم', teacher: 'دليل المعلم', sources: 'المصادر', life_application: 'في حياتي', unit: 'الوحدة', unit_review: 'مراجعة الوحدة',
 };
 const FLOW = { hook: 'الافتتاح', explain: 'الشرح', practice: 'التدريب', check: 'التحقق', notebook: 'دفتري', how_we_know: 'كيف عرفنا' };
 

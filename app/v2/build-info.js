@@ -1,2 +1,2 @@
 /* مولَّد: tools/build-info.mjs — لا يُعدَّل يدوياً */
-window.BUILD_INFO = {"kind":"dev","version":"1.3.0","content":"1033e0ecd7"};
+window.BUILD_INFO = {"kind":"dev","version":"1.3.0","content":"9bc8b4a688"};

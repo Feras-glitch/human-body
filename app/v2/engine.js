@@ -315,7 +315,7 @@ $('#nextBtn').onclick=()=>{ if(!done) return; show(idx+1, 1); };
 $('#backBtn').onclick=()=>{ if(SCENES[idx]?.noBack) return; show(idx-1, -1); };
 $('#homeBtn').onclick=()=>{leaveScene(); /* تسجيل قُطع بالمغادرة يُحفظ أولاً */ Promise.resolve(typeof recSaving!=='undefined'?recSaving:0).then(()=>{location.href=LESSON.home;});};
 /* ملاحظة ولي الأمر على المشهد (تجربة الأسر، 28 نوفمبر): تُحفظ في atlas:pnotes على الجهاز، وتظهر في شاشة ولي الأمر وتُنزَّل منها ملفاً. بلا نوافذ المتصفح المنبثقة. */
-(function(){ const hd=document.querySelector('#app>header'); if(!hd||document.getElementById('noteBtn')) return;
+(function(){ const hd=document.querySelector('#app>header'); if(!hd||typeof hd.appendChild!=='function'||document.getElementById('noteBtn')) return;
   const b=document.createElement('button'); b.id='noteBtn'; b.className='home'; b.type='button'; b.title='ملاحظة لولي الأمر على هذا المشهد'; b.setAttribute('aria-label','ملاحظة لولي الأمر على هذا المشهد'); b.textContent='✎'; hd.appendChild(b);
   const box=document.createElement('div'); box.id='noteBox'; box.hidden=true; box.setAttribute('role','dialog'); box.setAttribute('aria-label','ملاحظة لولي الأمر');
   box.innerHTML='<div class="nbIn"><b>ملاحظة لولي الأمر على هذا المشهد</b><p class="note" style="margin:4px 0">خطأ رأيته، أو صعوبة، أو فكرة. تُحفظ على هذا الجهاز وتجدها في شاشة ولي الأمر.</p><textarea id="noteTxt" rows="4" maxlength="1000" data-raw></textarea><div class="row" style="gap:8px;margin-top:8px"><button class="opt" style="width:auto" id="noteSave">احفظ الملاحظة</button><button class="opt" style="width:auto" id="noteCancel">إلغاء</button></div><p class="note" id="noteMsg" role="status"></p></div>';

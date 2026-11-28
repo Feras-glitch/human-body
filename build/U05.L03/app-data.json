@@ -1334,6 +1334,33 @@
       ]
     }
   ],
+  "unit_review": {
+    "text": "في هذه الوحدة التقت الوحدات السابقة في الخلية: إليها يصل الطعام والهواء، وفيها تُطلق الطاقة.",
+    "links": [
+      {
+        "lesson": "U05.L01",
+        "idea": "الجسم مبني من خلايا متخصصة لا تُرى إلا بالمجهر"
+      },
+      {
+        "lesson": "U05.L02",
+        "idea": "الخلية تطلق الطاقة من السكر بالأكسجين، فينتج ثاني أكسيد الكربون"
+      },
+      {
+        "lesson": "U05.L03",
+        "idea": "من لقمة الخبز والهواء إلى عضلة تنقبض فنقفز"
+      }
+    ],
+    "question": {
+      "prompt": "حين {تركض|تركضين} يزيد تنفسك{|ِ} ونبضك{|ِ}. لماذا؟",
+      "options": [
+        "لأن الرئتين تصنعان الطاقة للعضلات",
+        "لأن القلب يصنع الأكسجين حين يسرع",
+        "خلايا العضلات تطلق طاقة أكثر، فتحتاج أكسجيناً وسكراً أكثر، ويخرج منها ثاني أكسيد الكربون أكثر"
+      ],
+      "answer": 2,
+      "why": "الطاقة تُطلق في الخلية؛ والرئتان والقلب والدم يوصلون إليها ما تحتاجه، ويحملون عنها ما تُخرجه."
+    }
+  },
   "audio": {
     "title": "U05.L03/title.94ebf878e8.mp3",
     "driving_question.m": "U05.L03/driving_question.m.0ffd1cbb1d.mp3",
@@ -1562,6 +1589,13 @@
     "how_we_know.limit": "U05.L03/how_we_know.limit.4e10c2224d.mp3",
     "organ_letter.m": "U05.L03/organ_letter.m.bb8b477e85.mp3",
     "organ_letter.f": "U05.L03/organ_letter.f.3ad709806e.mp3",
+    "unit_review": "U05.L03/unit_review.82983cfb9b.mp3",
+    "unit_review.1": "U05.L03/unit_review.1.7f77d214b1.mp3",
+    "unit_review.2": "U05.L03/unit_review.2.05abab2134.mp3",
+    "unit_review.3": "U05.L03/unit_review.3.8a722372de.mp3",
+    "unit_review.q.m": "U05.L03/unit_review.q.m.7bf1318920.mp3",
+    "unit_review.q.f": "U05.L03/unit_review.q.f.c472afbe90.mp3",
+    "unit_review.why": "U05.L03/unit_review.why.71bc18bf9a.mp3",
     "life.1.situation": "U05.L03/life.1.situation.89f0fcb9c0.mp3",
     "life.1.action": "U05.L03/life.1.action.1dee0f67c3.mp3",
     "life.1.why": "U05.L03/life.1.why.29762c35fd.mp3",
